@@ -173,6 +173,137 @@
             color: #999;
         }
 
+        /* 微信公众号弹窗样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: auto;
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+            max-width: 400px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.3s ease;
+        }
+
+        .modal-content h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-content p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .close-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .close-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .wechat-qr-btn {
+            cursor: pointer;
+        }
+
+        .wechat-qr-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .modal-content {
+                padding: 30px 20px;
+                max-width: 90%;
+            }
+
+            .modal-content h2 {
+                font-size: 20px;
+                margin-bottom: 15px;
+            }
+
+            .close-btn {
+                padding: 10px 25px;
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .modal-content {
+                padding: 25px 15px;
+                max-width: 95%;
+            }
+
+            .modal-content h2 {
+                font-size: 18px;
+                margin-bottom: 12px;
+            }
+
+            .close-btn {
+                padding: 10px 20px;
+                font-size: 12px;
+            }
+        }
+
         /* 平板设备优化 (768px - 1024px) */
         @media (max-width: 1024px) {
             .container {
@@ -421,6 +552,10 @@
                     <i class="fab fa-weibo"></i>
                     <span>微博</span>
                 </a>
+                <a href="javascript:void(0);" onclick="openWechatQRModal()" class="social-link wechat-qr-btn" title="微信公众号">
+                    <i class="fab fa-weixin"></i>
+                    <span>公众号</span>
+                </a>
             </div>
         </div>
 
@@ -469,9 +604,10 @@
         <!-- 微信 -->
         <div class="section">
             <div class="section-title">微信</div>
-            <div class="wechat-section">
-                <p>添加微信号：</p>
+            <div class="wechat-section" onclick="openPersonalWechatQRModal()" style="cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='#e8eef8'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 10px 20px rgba(102, 126, 234, 0.2)'" onmouseout="this.style.backgroundColor='#f0f2f7'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                <p>个人微信</p>
                 <div class="wechat-id">wenyaoyefei2025</div>
+                <p style="font-size: 12px; color: #999; margin-top: 10px;">👆 点击查看二维码</p>
             </div>
         </div>
 
@@ -480,5 +616,71 @@
             <p>© 2026 文鳐夜飞 | Made with ❤️ | 全网同名</p>
         </div>
     </div>
-</body>
-</html>
+
+    <!-- 微信公众号二维码弹窗 -->
+    <div id="wechatQRModal" class="modal">
+        <div class="modal-content">
+            <h2>微信公众号</h2>
+            <img src="qrcode_for_gh_9012d0f14829_258.jpg" alt="微信公众号二维码">
+            <p>扫码关注我的微信公众号<br>获取更多精彩内容</p>
+            <button class="close-btn" onclick="closeWechatQRModal()">关闭</button>
+        </div>
+    </div>
+
+    <!-- 个人微信二维码弹窗 -->
+    <div id="personalWechatQRModal" class="modal">
+        <div class="modal-content">
+            <h2>个人微信</h2>
+            <img src="微信图片_20260131232900_90_91.jpg" alt="个人微信二维码">
+            <p>扫码添加我的个人微信<br>一起交流分享</p>
+            <button class="close-btn" onclick="closePersonalWechatQRModal()">关闭</button>
+        </div>
+    </div>
+
+    <script>
+        // 微信公众号弹窗函数
+        function openWechatQRModal() {
+            const modal = document.getElementById('wechatQRModal');
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeWechatQRModal() {
+            const modal = document.getElementById('wechatQRModal');
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        // 个人微信弹窗函数
+        function openPersonalWechatQRModal() {
+            const modal = document.getElementById('personalWechatQRModal');
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePersonalWechatQRModal() {
+            const modal = document.getElementById('personalWechatQRModal');
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        // 点击模态框外部关闭
+        window.onclick = function(event) {
+            const wechatModal = document.getElementById('wechatQRModal');
+            const personalModal = document.getElementById('personalWechatQRModal');
+            if (event.target == wechatModal) {
+                closeWechatQRModal();
+            }
+            if (event.target == personalModal) {
+                closePersonalWechatQRModal();
+            }
+        }
+
+        // 按 Esc 键关闭模态框
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeWechatQRModal();
+                closePersonalWechatQRModal();
+            }
+        });
+    </script>
