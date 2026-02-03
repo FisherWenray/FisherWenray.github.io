@@ -655,9 +655,6 @@
                 <button class="filter-tab active" onclick="filterByPlatform('all')">
                     <i class="fas fa-list"></i> 全部
                 </button>
-                <button class="filter-tab" onclick="filterByPlatform('xiaoyuzhoufm')">
-                    <i class="fas fa-microphone"></i> 小宇宙
-                </button>
                 <button class="filter-tab" onclick="filterByPlatform('apple')">
                     <i class="fab fa-apple"></i> 苹果播客
                 </button>
@@ -718,10 +715,7 @@
         let filteredEpisodes = [];
         let currentFilter = 'all';
         let currentPlayer = null;
-
-        // 小宇宙播客 ID（可根据需要修改）
-        const XIAOYUZHOUFM_PODCAST_ID = '686bb3edb21def6f47390305';
-        
+                
         // 苹果播客 ID（可根据需要修改）
         const APPLE_PODCAST_ID = '1825759955';
 
@@ -741,14 +735,13 @@
                     </div>
                 `;
 
-                // 并行加载小宇宙和苹果播客数据
-                const [xiaoyuzhouEpisodes, appleEpisodes] = await Promise.all([
-                    loadXiaoyuzhouPodcasts(),
+                // 并行加载和苹果播客数据
+                const [appleEpisodes] = await Promise.all([
                     loadApplePodcasts()
                 ]);
 
                 // 合并所有剧集
-                allEpisodes = [...xiaoyuzhouEpisodes, ...appleEpisodes];
+                allEpisodes = [ ...appleEpisodes];
                 filteredEpisodes = [...allEpisodes];
 
                 // 按日期排序（最新的优先）
@@ -765,95 +758,6 @@
                         <p>无法获取播客数据，请检查网络连接或稍后重试</p>
                     </div>
                 `;
-            }
-        }
-
-        // 从小宇宙加载播客
-        async function loadXiaoyuzhouPodcasts() {
-            try {
-                // 使用小宇宙的 API 端点
-                const response = await fetch(
-                    `https://www.xiaoyuzhoufm.com/api/v1/podcast/${XIAOYUZHOUFM_PODCAST_ID}/episodes?limit=50`,
-                    {
-                        headers: {
-                            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-                            'Accept': 'application/json'
-                        }
-                    }
-                );
-
-                if (!response.ok) {
-                    // 如果 API 失败，尝试 RSS 源
-                    return await loadXiaoyuzhouFromRSS();
-                }
-
-                const data = await response.json();
-                const episodes = (data.data?.episodes || data.episodes || []);
-
-                return episodes.map((ep, index) => ({
-                    id: `xyzfm_${index}`,
-                    platform: 'xiaoyuzhoufm',
-                    platformName: '小宇宙',
-                    title: ep.title || ep.name || '未知标题',
-                    description: ep.description || ep.intro || '暂无描述',
-                    date: ep.pub_date || ep.publishedAt || new Date().toISOString().split('T')[0],
-                    duration: formatDuration(ep.duration || 0),
-                    audioUrl: ep.media_url || ep.audio_url || '',
-                    coverUrl: ep.image_url || ep.cover_url || '',
-                    externalUrl: `https://www.xiaoyuzhoufm.com/podcast/${XIAOYUZHOUFM_PODCAST_ID}`
-                }));
-            } catch (error) {
-                console.warn('小宇宙 API 加载失败，尝试 RSS:', error);
-                try {
-                    return await loadXiaoyuzhouFromRSS();
-                } catch (rssError) {
-                    console.error('小宇宙 RSS 加载失败:', rssError);
-                    return [];
-                }
-            }
-        }
-
-        // 从小宇宙 RSS 加载
-        async function loadXiaoyuzhouFromRSS() {
-            try {
-                // 小宇宙 RSS 源
-                const rssUrl = `https://www.xiaoyuzhoufm.com/rss/feed/${XIAOYUZHOUFM_PODCAST_ID}.xml`;
-                const response = await fetch(rssUrl);
-                const xmlText = await response.text();
-                
-                // 解析 RSS XML
-                const parser = new DOMParser();
-                const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
-                
-                const items = xmlDoc.querySelectorAll('item');
-                const episodes = [];
-
-                items.forEach((item, index) => {
-                    const title = item.querySelector('title')?.textContent || '未知标题';
-                    const description = item.querySelector('description')?.textContent || '暂无描述';
-                    const pubDate = item.querySelector('pubDate')?.textContent || new Date().toISOString();
-                    const enclosure = item.querySelector('enclosure');
-                    const audioUrl = enclosure?.getAttribute('url') || '';
-                    const image = item.querySelector('image')?.textContent || '';
-
-                    episodes.push({
-                        id: `xyzfm_${index}`,
-                        platform: 'xiaoyuzhoufm',
-                        platformName: '小宇宙',
-                        title: title,
-                        description: description.substring(0, 200),
-                        date: new Date(pubDate).toISOString().split('T')[0],
-                        duration: '未知',
-                        audioUrl: audioUrl,
-                        coverUrl: image,
-                        externalUrl: `https://www.xiaoyuzhoufm.com/podcast/${XIAOYUZHOUFM_PODCAST_ID}`
-                    });
-                });
-
-                return episodes;
-            } catch (error) {
-                console.error('小宇宙 RSS 加载失败:', error);
-                return [];
             }
         }
 
@@ -974,9 +878,9 @@
                 return;
             }
 
-            const episodesHTML = filteredEpisodes.map(ep => `
+            const episodesHTML = filteredEpisodes.map((ep, index) => `
                 <div class="episode-card">
-                    <div class="episode-cover" onclick="openPlayer(${ep.id})">
+                    <div class="episode-cover" onclick="openPlayer(${index})">
                         ${ep.coverUrl ? `<img src="${ep.coverUrl}" alt="${ep.title}">` : '🎙️'}
                     </div>
                     <div class="episode-info">
@@ -991,7 +895,7 @@
                             <i class="fas fa-clock" style="margin-right: 5px;"></i>
                             ${ep.duration}
                         </div>
-                        <button class="play-btn" onclick="openPlayer(${ep.id})">
+                        <button class="play-btn" onclick="openPlayer(${index})">
                             <i class="fas fa-play"></i>
                             <span>播放</span>
                         </button>
@@ -1003,8 +907,8 @@
         }
 
         // 打开播放器
-        function openPlayer(episodeId) {
-            const episode = allEpisodes.find(ep => ep.id === episodeId);
+        function openPlayer(episodeIndex) {
+            const episode = filteredEpisodes[episodeIndex];
             if (!episode) return;
 
             currentPlayer = episode;
@@ -1018,9 +922,10 @@
             const audioPlayer = document.getElementById('audioPlayer');
             if (episode.audioUrl) {
                 audioPlayer.src = episode.audioUrl;
+                audioPlayer.load(); // 重新加载音频源
             } else {
                 audioPlayer.src = '';
-                console.warn('该剧集没有音频 URL');
+                console.warn('该剧集没有音频 URL:', episode.title);
             }
 
             if (episode.coverUrl) {
