@@ -18,6 +18,11 @@
             background: linear-gradient(135deg, #5D7B93 80%, #2A3645 100%);
             min-height: 100vh;
             padding: 30px;
+            padding-bottom: 150px;
+        }
+
+        body.player-active {
+            padding-bottom: 180px;
         }
 
         .header {
@@ -570,20 +575,70 @@
             </div>
         </div>
 
-        <!-- 迷你播放器 -->
-        <div id="miniPlayer" style="display: none; position: fixed; bottom: 20px; right: 20px; background: white; border-radius: 16px; padding: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); z-index: 999; width: 320px;">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
-                <div style="flex: 1; min-width: 0;">
-                    <div style="font-weight: 600; font-size: 14px; color: #333; line-height: 1.3; margin-bottom: 8px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                        <span id="miniPlayerTitle">播放中...</span>
+        <!-- 底部播放器 -->
+        <div id="miniPlayer" style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: white; border-top: 1px solid #e0e0e0; z-index: 999; box-shadow: 0 -2px 10px rgba(0,0,0,0.1);">
+            <div style="max-width: 100%; margin: 0 auto; padding: 12px 20px;">
+                <!-- 进度条 -->
+                <div style="width: 100%; height: 4px; background: #f0f0f0; border-radius: 2px; margin-bottom: 12px; cursor: pointer;">
+                    <div id="progressBar" style="height: 100%; background: linear-gradient(135deg, #5D7B93, #2A3645); border-radius: 2px; width: 0%;"></div>
+                </div>
+                
+                <!-- 主体行 -->
+                <div style="display: flex; align-items: center; gap: 16px;">
+                    <!-- 左侧：封面和标题 -->
+                    <div style="flex: 1; min-width: 0; display: flex; align-items: center; gap: 12px;">
+                        <div style="width: 50px; height: 50px; border-radius: 4px; background: linear-gradient(135deg, #5D7B93, #2A3645); display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; flex-shrink: 0;">
+                            <i class="fas fa-microphone"></i>
+                        </div>
+                        <div style="min-width: 0;">
+                            <div style="font-weight: 600; font-size: 14px; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                <span id="miniPlayerTitle">未选择</span>
+                            </div>
+                            <div style="font-size: 12px; color: #999; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                <span id="miniPlayerPlatform">-</span> • <span id="miniPlayerTime">00:00 / 00:00</span>
+                            </div>
+                        </div>
                     </div>
-                    <div style="font-size: 11px; color: #999;">
-                        <span id="miniPlayerPlatform">苹果播客</span> • <span id="miniPlayerDate">-</span>
+                    
+                    <!-- 中间：播放控制 -->
+                    <div style="display: flex; align-items: center; gap: 12px; flex-shrink: 0;">
+                        <button id="playPrevBtn" style="background: none; border: none; color: #999; font-size: 20px; cursor: pointer; padding: 8px; transition: all 0.3s ease;" title="上一集">
+                            <i class="fas fa-step-backward"></i>
+                        </button>
+                        <button id="playToggleBtn" style="background: linear-gradient(135deg, #5D7B93, #2A3645); color: white; border: none; border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer; transition: all 0.3s ease;" title="播放/暂停">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <button id="playNextBtn" style="background: none; border: none; color: #999; font-size: 20px; cursor: pointer; padding: 8px; transition: all 0.3s ease;" title="下一集">
+                            <i class="fas fa-step-forward"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- 右侧：功能按钮 -->
+                    <div style="display: flex; align-items: center; gap: 8px; flex-shrink: 0; position: relative;">
+                        <div style="position: relative; display: inline-block;">
+                            <button id="speedBtn" style="background: none; border: none; color: #999; font-size: 14px; cursor: pointer; padding: 8px; transition: all 0.3s ease; min-width: 30px;" title="播放速度">1x</button>
+                            <div id="speedMenu" style="display: none; position: absolute; bottom: 100%; right: 0; background: white; border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 -2px 8px rgba(0,0,0,0.15); z-index: 1000; min-width: 80px; margin-bottom: 4px;">
+                                <div data-speed="0.25" style="padding: 8px 16px; cursor: pointer; font-size: 13px; color: #666; transition: all 0.2s ease; white-space: nowrap;">0.25x</div>
+                                <div data-speed="0.5" style="padding: 8px 16px; cursor: pointer; font-size: 13px; color: #666; transition: all 0.2s ease; white-space: nowrap;">0.5x</div>
+                                <div data-speed="0.75" style="padding: 8px 16px; cursor: pointer; font-size: 13px; color: #666; transition: all 0.2s ease; white-space: nowrap;">0.75x</div>
+                                <div data-speed="1" style="padding: 8px 16px; cursor: pointer; font-size: 13px; color: #5D7B93; font-weight: 600; background: #f5f5f5; transition: all 0.2s ease; white-space: nowrap;">1.0x</div>
+                                <div data-speed="1.25" style="padding: 8px 16px; cursor: pointer; font-size: 13px; color: #666; transition: all 0.2s ease; white-space: nowrap;">1.25x</div>
+                                <div data-speed="1.5" style="padding: 8px 16px; cursor: pointer; font-size: 13px; color: #666; transition: all 0.2s ease; white-space: nowrap;">1.5x</div>
+                                <div data-speed="1.75" style="padding: 8px 16px; cursor: pointer; font-size: 13px; color: #666; transition: all 0.2s ease; white-space: nowrap;">1.75x</div>
+                                <div data-speed="2" style="padding: 8px 16px; cursor: pointer; font-size: 13px; color: #666; transition: all 0.2s ease; white-space: nowrap;">2x</div>
+                            </div>
+                        </div>
+                        <input type="range" id="volumeSlider" min="0" max="100" value="100" style="width: 80px; height: 4px; cursor: pointer; accent-color: #5D7B93; appearance: slider-horizontal;" title="音量控制">
+
+
+                        <button onclick="closeMiniPlayer()" style="background: none; border: none; color: #999; font-size: 18px; cursor: pointer; padding: 8px; transition: all 0.3s ease;" title="关闭">
+                            <i class="fas fa-times"></i>
+                        </button>
                     </div>
                 </div>
-                <button onclick="closeMiniPlayer()" style="background: none; border: none; font-size: 20px; color: #999; cursor: pointer; flex-shrink: 0; transition: all 0.3s ease; margin-left: 10px;" onmouseover="this.style.color='#333'; this.style.transform='scale(1.2)'" onmouseout="this.style.color='#999'; this.style.transform='scale(1)'">×</button>
             </div>
-            <audio id="audioPlayer" controls style="width: 100%; margin-bottom: 12px; height: 32px;">
+            <!-- 隐藏的音频元素 -->
+            <audio id="audioPlayer" style="display: none;">
                 您的浏览器不支持音频播放
             </audio>
         </div>
@@ -791,6 +846,7 @@
 
         // 播放剧集
         // 播放剧集
+        // 播放剧集
         function playEpisode(episodeIndex) {
             const episode = filteredEpisodes[episodeIndex];
             if (!episode) return;
@@ -800,7 +856,6 @@
             // 更新迷你播放器
             document.getElementById('miniPlayerTitle').textContent = episode.title;
             document.getElementById('miniPlayerPlatform').textContent = episode.platformName;
-            document.getElementById('miniPlayerDate').textContent = formatDate(episode.date);
             
             // 设置音频源
             const audioPlayer = document.getElementById('audioPlayer');
@@ -817,8 +872,52 @@
                 return;
             }
 
-            // 显示迷你播放器
+            // 显示迷你播放器并更新样式
             document.getElementById('miniPlayer').style.display = 'block';
+            document.body.classList.add('player-active');
+            
+            // 更新播放按钮
+            updatePlayButton();
+            
+            // 监听播放器事件
+            audioPlayer.addEventListener('play', updatePlayButton);
+            audioPlayer.addEventListener('pause', updatePlayButton);
+            audioPlayer.addEventListener('timeupdate', updateProgress);
+        }
+
+        // 更新播放按钮状态
+        function updatePlayButton() {
+            const audioPlayer = document.getElementById('audioPlayer');
+            const btn = document.getElementById('playToggleBtn');
+            if (audioPlayer.paused) {
+                btn.innerHTML = '<i class="fas fa-play"></i>';
+            } else {
+                btn.innerHTML = '<i class="fas fa-pause"></i>';
+            }
+        }
+
+        // 更新进度条
+        function updateProgress() {
+            const audioPlayer = document.getElementById('audioPlayer');
+            const progressBar = document.getElementById('progressBar');
+            const timeDisplay = document.getElementById('miniPlayerTime');
+            
+            if (audioPlayer.duration) {
+                const percent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+                progressBar.style.width = percent + '%';
+                
+                const current = formatTime(audioPlayer.currentTime);
+                const total = formatTime(audioPlayer.duration);
+                timeDisplay.textContent = current + ' / ' + total;
+            }
+        }
+
+        // 格式化时间显示
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return '00:00';
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
         }
 
         // 关闭迷你播放器
@@ -826,7 +925,94 @@
             const audioPlayer = document.getElementById('audioPlayer');
             audioPlayer.pause();
             document.getElementById('miniPlayer').style.display = 'none';
+            document.body.classList.remove('player-active');
         }
+        
+        // 播放/暂停
+        document.addEventListener('DOMContentLoaded', function() {
+            const playToggleBtn = document.getElementById('playToggleBtn');
+            if (playToggleBtn) {
+                playToggleBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const audioPlayer = document.getElementById('audioPlayer');
+                    if (audioPlayer.paused) {
+                        audioPlayer.play();
+                    } else {
+                        audioPlayer.pause();
+                    }
+                });
+            }
+
+            // 速度控制菜单
+            const speedBtn = document.getElementById('speedBtn');
+            const speedMenu = document.getElementById('speedMenu');
+            if (speedBtn && speedMenu) {
+                speedBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    speedMenu.style.display = speedMenu.style.display === 'none' ? 'block' : 'none';
+                });
+
+                // 为每个速度选项添加点击处理
+                const speedOptions = speedMenu.querySelectorAll('[data-speed]');
+                speedOptions.forEach(option => {
+                    option.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const speed = parseFloat(this.getAttribute('data-speed'));
+                        const audioPlayer = document.getElementById('audioPlayer');
+                        audioPlayer.playbackRate = speed;
+                        
+                        // 更新按钮显示
+                        speedBtn.textContent = speed === 1 ? '1x' : speed.toFixed(2) + 'x';
+                        
+                        // 更新菜单项的样式
+                        speedOptions.forEach(opt => {
+                            const optSpeed = parseFloat(opt.getAttribute('data-speed'));
+                            if (optSpeed === speed) {
+                                opt.style.color = '#5D7B93';
+                                opt.style.fontWeight = '600';
+                                opt.style.background = '#f5f5f5';
+                            } else {
+                                opt.style.color = '#666';
+                                opt.style.fontWeight = '400';
+                                opt.style.background = 'transparent';
+                            }
+                        });
+                        
+                        // 关闭菜单
+                        speedMenu.style.display = 'none';
+                    });
+
+                    // 悬停效果
+                    option.addEventListener('mouseenter', function() {
+                        this.style.background = '#fafafa';
+                    });
+                    option.addEventListener('mouseleave', function() {
+                        const speed = parseFloat(this.getAttribute('data-speed'));
+                        const currentSpeed = document.getElementById('audioPlayer').playbackRate;
+                        if (speed !== currentSpeed) {
+                            this.style.background = 'transparent';
+                        }
+                    });
+                });
+
+                // 点击其他地方关闭菜单
+                document.addEventListener('click', function(e) {
+                    if (!speedBtn.contains(e.target) && !speedMenu.contains(e.target)) {
+                        speedMenu.style.display = 'none';
+                    }
+                });
+            }
+
+            // 音量控制滑块
+            const volumeSlider = document.getElementById('volumeSlider');
+            const audioPlayer = document.getElementById('audioPlayer');
+            if (volumeSlider && audioPlayer) {
+                volumeSlider.addEventListener('input', function(e) {
+                    audioPlayer.volume = this.value / 100;
+                });
+            }
+        });
+
 
         // 日期格式化
         function formatDate(dateString) {
