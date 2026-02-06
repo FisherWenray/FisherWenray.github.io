@@ -1,0 +1,16 @@
+{
+  "articles": [
+    {
+      "id": "001",
+      "title": "通识教育_什么是通识教育",
+      "description": "通识教育的英文是，liberal education，即自由教育",
+      "author": "文鳐夜飞",
+      "date": "2023-04-12",
+      "category": "教育",
+      "tags": ["通识教育"],
+      "markdown": "articles/通识教育_什么是通识教育(一).md",
+      "image": "https://via.placeholder.com/400x200?text=Software+Overseas"
+    }
+    
+  ]
+}
