@@ -782,45 +782,67 @@
                 }
             }
 
-            // 从苹果播客加载
+            // 从苹果播客加载 (使用 JSONP 避免 CORS 问题)
             async function loadApplePodcasts() {
-                try {
-                    // 使用苹果播客搜索 API
-                    const response = await fetch(
-                        `https://itunes.apple.com/lookup?id=${APPLE_PODCAST_ID}&country=CN&media=podcast&entity=podcastEpisode&limit=200`,
-                        {
-                            headers: {
-                                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+                return new Promise((resolve, reject) => {
+                    try {
+                        // 创建唯一的回调函数名
+                        const callbackName = 'applePodcastCallback_' + Date.now();
+
+                        // 定义回调函数
+                        window[callbackName] = function (data) {
+                            // 清理
+                            delete window[callbackName];
+                            document.body.removeChild(script);
+
+                            const results = data.results || [];
+                            // 第一个结果是播客本身，后面才是剧集
+                            const episodes = results.slice(1);
+
+                            const mappedEpisodes = episodes.map((ep, index) => ({
+                                id: `apple_${index}`,
+                                platform: 'apple',
+                                platformName: '苹果播客',
+                                title: ep.trackName || '未知标题',
+                                description: ep.description || '暂无描述',
+                                date: new Date(ep.releaseDate).toISOString().split('T')[0],
+                                duration: formatDuration(Math.round((ep.trackTimeMillis || 0) / 1000)),
+                                audioUrl: ep.episodeUrl || '',
+                                coverUrl: ep.artworkUrl600 || ep.artworkUrl100 || '',
+                                externalUrl: `https://podcasts.apple.com/cn/podcast/id${APPLE_PODCAST_ID}`
+                            }));
+
+                            resolve(mappedEpisodes);
+                        };
+
+                        // 创建 script 标签进行 JSONP 请求
+                        const script = document.createElement('script');
+                        script.src = `https://itunes.apple.com/lookup?id=${APPLE_PODCAST_ID}&country=CN&media=podcast&entity=podcastEpisode&limit=200&callback=${callbackName}`;
+                        script.onerror = function () {
+                            delete window[callbackName];
+                            document.body.removeChild(script);
+                            console.warn('苹果播客 JSONP 加载失败');
+                            resolve([]);
+                        };
+
+                        // 设置超时
+                        setTimeout(() => {
+                            if (window[callbackName]) {
+                                delete window[callbackName];
+                                if (script.parentNode) {
+                                    document.body.removeChild(script);
+                                }
+                                console.warn('苹果播客加载超时');
+                                resolve([]);
                             }
-                        }
-                    );
+                        }, 10000);
 
-                    if (!response.ok) {
-                        throw new Error('苹果播客 API 请求失败');
+                        document.body.appendChild(script);
+                    } catch (error) {
+                        console.warn('苹果播客加载失败:', error);
+                        resolve([]);
                     }
-
-                    const data = await response.json();
-                    const results = data.results || [];
-
-                    // 第一个结果是播客本身，后面才是剧集
-                    const episodes = results.slice(1);
-
-                    return episodes.map((ep, index) => ({
-                        id: `apple_${index}`,
-                        platform: 'apple',
-                        platformName: '苹果播客',
-                        title: ep.trackName || '未知标题',
-                        description: ep.description || '暂无描述',
-                        date: new Date(ep.releaseDate).toISOString().split('T')[0],
-                        duration: formatDuration(Math.round((ep.trackTimeMillis || 0) / 1000)),
-                        audioUrl: ep.episodeUrl || '',
-                        coverUrl: ep.artworkUrl600 || ep.artworkUrl100 || '',
-                        externalUrl: `https://podcasts.apple.com/cn/podcast/id${APPLE_PODCAST_ID}`
-                    }));
-                } catch (error) {
-                    console.warn('苹果播客加载失败:', error);
-                    return [];
-                }
+                });
             }
 
             // 格式化时长（秒 -> HH:MM:SS）
