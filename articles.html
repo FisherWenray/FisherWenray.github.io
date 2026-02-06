@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,47 +16,91 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #5D7B93 80%, #2A3645 100%);
+            background: #f5f5f5;
             min-height: 100vh;
             padding: 40px 20px;
+            padding-top: 100px;
+        }
+
+        /* 顶部导航栏样式 */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+            padding: 0;
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0;
+        }
+
+        .nav-links a {
+            display: block;
+            padding: 20px 40px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #5D7B93;
+            background: rgba(93, 123, 147, 0.05);
+            border-bottom-color: #c5b358;
+        }
+
+        .nav-links a.active {
+            color: #5D7B93;
+            border-bottom-color: #c5b358;
+            background: rgba(93, 123, 147, 0.05);
         }
 
         .header {
             max-width: 1000px;
             margin: 0 auto 50px;
             text-align: center;
-            color: white;
+            color: #333;
         }
 
         .header-title {
             font-size: 48px;
             font-weight: 700;
             margin-bottom: 20px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            color: #5D7B93;
         }
 
         .header-subtitle {
             font-size: 18px;
-            opacity: 0.9;
+            color: #666;
             margin-bottom: 15px;
         }
 
-        .back-btn {
-            display: inline-block;
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 2px solid white;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            margin-top: 10px;
-        }
 
-        .back-btn:hover {
-            background: white;
-            color: #5D7B93;
-            transform: translateY(-3px);
-        }
+
+
 
         .container {
             max-width: 1200px;
@@ -200,25 +245,24 @@
         .empty-state {
             text-align: center;
             padding: 60px 20px;
-            color: white;
+            color: #666;
         }
 
         .empty-state-icon {
             font-size: 60px;
             margin-bottom: 20px;
-            opacity: 0.7;
+            color: #ccc;
         }
 
         .empty-state-text {
             font-size: 18px;
-            opacity: 0.9;
+            color: #999;
         }
 
         .footer {
             text-align: center;
-            color: white;
+            color: #999;
             padding: 30px;
-            opacity: 0.8;
             font-size: 14px;
         }
 
@@ -325,11 +369,22 @@
         }
     </style>
 </head>
+
 <body>
+    <!-- 顶部导航栏 -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="articles.html" class="active">博客</a></li>
+                <li><a href="podcast.html">播客</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="header">
         <h1 class="header-title">文章</h1>
         <p class="header-subtitle">分享关于软件出海、投资悟道、自我成长的思考</p>
-        <a href="index.html" class="back-btn">← 返回首页</a>
     </div>
 
     <div class="container">
@@ -364,13 +419,13 @@
                 const response = await fetch('articles.json');
                 const data = await response.json();
                 allArticles = data.articles;
-                
+
                 // 按日期排序（最新的在前）
                 allArticles.sort((a, b) => new Date(b.date) - new Date(a.date));
-                
+
                 // 初始化分类过滤器
                 initializeFilters();
-                
+
                 // 渲染文章
                 renderArticles(allArticles);
             } catch (error) {
@@ -400,7 +455,7 @@
         // 过滤文章
         function filterArticles(category, btn) {
             currentFilter = category;
-            
+
             // 更新按钮样式
             document.querySelectorAll('.filter-btn').forEach(button => {
                 button.classList.remove('active');
@@ -408,10 +463,10 @@
             btn.classList.add('active');
 
             // 过滤显示文章
-            const filtered = category === 'all' 
-                ? allArticles 
+            const filtered = category === 'all'
+                ? allArticles
                 : allArticles.filter(article => article.category === category);
-            
+
             renderArticles(filtered);
         }
 
@@ -448,10 +503,6 @@
                                     <i class="far fa-calendar"></i>
                                     <span>${date}</span>
                                 </div>
-                                <div class="read-time">
-                                    <i class="far fa-clock"></i>
-                                    <span>${article.readTime} 分钟</span>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -468,4 +519,5 @@
         document.addEventListener('DOMContentLoaded', loadArticles);
     </script>
 </body>
+
 </html>

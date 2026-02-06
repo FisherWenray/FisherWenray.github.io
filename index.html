@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,23 +16,80 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #5D7B93 80%, #2A3645 100%);
+            background: #f5f5f5;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 30px;
+            padding-top: 100px;
+        }
+
+        /* 顶部导航栏样式 */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+            padding: 0;
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0;
+        }
+
+        .nav-links a {
+            display: block;
+            padding: 20px 40px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #5D7B93;
+            background: rgba(93, 123, 147, 0.05);
+            border-bottom-color: #c5b358;
+        }
+
+        .nav-links a.active {
+            color: #5D7B93;
+            border-bottom-color: #c5b358;
+            background: rgba(93, 123, 147, 0.05);
         }
 
         .container {
             max-width: 1000px;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
+            background: #ffffff;
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e0e0e0;
             padding: 60px 80px;
             text-align: center;
-            backdrop-filter: blur(10px);
         }
 
         .avatar {
@@ -195,6 +253,7 @@
             from {
                 opacity: 0;
             }
+
             to {
                 opacity: 1;
             }
@@ -205,6 +264,7 @@
                 transform: scale(0.9);
                 opacity: 0;
             }
+
             to {
                 transform: scale(1);
                 opacity: 1;
@@ -336,6 +396,16 @@
         @media (max-width: 768px) {
             body {
                 padding: 20px;
+                padding-top: 80px;
+            }
+
+            .top-nav {
+                padding: 0;
+            }
+
+            .nav-links a {
+                padding: 15px 20px;
+                font-size: 14px;
             }
 
             .container {
@@ -423,6 +493,12 @@
         @media (max-width: 480px) {
             body {
                 padding: 15px;
+                padding-top: 70px;
+            }
+
+            .nav-links a {
+                padding: 12px 15px;
+                font-size: 13px;
             }
 
             .container {
@@ -514,7 +590,19 @@
         }
     </style>
 </head>
+
 <body>
+    <!-- 顶部导航栏 -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">首页</a></li>
+                <li><a href="articles.html">博客</a></li>
+                <li><a href="podcast.html">播客</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container">
         <!-- 头像 -->
         <img src="微信图片_2026-01-23_124826_064.jpg" alt="头像" class="avatar">
@@ -526,26 +614,25 @@
 
         <!-- 描述 -->
         <div class="description">
-            这里主要分享<strong>软件出海</strong>、<strong>投资悟道</strong>、<strong>自我成长</strong>三个主题。三者表面上看似分散，但在我看来，底层逻辑都是 Follow Heart，跟随内心，追求自由之路。希望每一位关注者，都能找到属于自己的那条无限自由之路。
+            这里主要分享<strong>软件出海</strong>、<strong>投资悟道</strong>、<strong>自我成长</strong>三个主题。三者表面上看似分散，但在我看来，底层逻辑都是 Follow
+            Heart，跟随内心，追求自由之路。希望每一位关注者，都能找到属于自己的那条无限自由之路。
         </div>
 
         <!-- 文章和日常想法 -->
         <div class="section">
             <div class="section-title">文章 & 日常想法</div>
             <div class="social-links">
-                <a href="articles.html" class="social-link" title="我的文章">
-                    <i class="fas fa-pen"></i>
-                    <span>我的文章</span>
-                </a>
                 <a href="https://www.zhihu.com/people/wenyaoyefei" target="_blank" class="social-link" title="知乎">
                     <i class="fas fa-circle-notch"></i>
                     <span>知乎</span>
                 </a>
-                <a href="https://www.toutiao.com/c/user/token/CibyD1cyR2lQbyWSS6yBDCR8wtOfUjuh_iMBSvRuCWeM46eTG_jwxhpJCjwAAAAAAAAAAAAAUARWllQ7lyZwO7F0qy5NsjQoFYtqS9cy7kH5NDcZj5U92FZghd4weQ5EjX9G_Az3Xj0Q4bCIDhjDxYPqBCIBA-keqSI=/?source=list&log_from=ca2a8ff7febc48_1769870047363" target="_blank" class="social-link" title="今日头条">
+                <a href="https://www.toutiao.com/c/user/token/CibyD1cyR2lQbyWSS6yBDCR8wtOfUjuh_iMBSvRuCWeM46eTG_jwxhpJCjwAAAAAAAAAAAAAUARWllQ7lyZwO7F0qy5NsjQoFYtqS9cy7kH5NDcZj5U92FZghd4weQ5EjX9G_Az3Xj0Q4bCIDhjDxYPqBCIBA-keqSI=/?source=list&log_from=ca2a8ff7febc48_1769870047363"
+                    target="_blank" class="social-link" title="今日头条">
                     <i class="fas fa-newspaper"></i>
                     <span>头条</span>
                 </a>
-                <a href="https://www.xiaohongshu.com/user/profile/607660630000000001000f0e?xsec_token=AB5oTA9fKb08iEqS2QoXQpd8BbmyYVkdDZBbguTb4CXhU%3D&xsec_source=pc_search" target="_blank" class="social-link" title="小红书">
+                <a href="https://www.xiaohongshu.com/user/profile/607660630000000001000f0e?xsec_token=AB5oTA9fKb08iEqS2QoXQpd8BbmyYVkdDZBbguTb4CXhU%3D&xsec_source=pc_search"
+                    target="_blank" class="social-link" title="小红书">
                     <i class="fas fa-book"></i>
                     <span>小红书</span>
                 </a>
@@ -557,7 +644,8 @@
                     <i class="fab fa-weibo"></i>
                     <span>微博</span>
                 </a>
-                <a href="javascript:void(0);" onclick="openWechatQRModal()" class="social-link wechat-qr-btn" title="微信公众号">
+                <a href="javascript:void(0);" onclick="openWechatQRModal()" class="social-link wechat-qr-btn"
+                    title="微信公众号">
                     <i class="fab fa-weixin"></i>
                     <span>公众号</span>
                 </a>
@@ -568,11 +656,13 @@
         <div class="section">
             <div class="section-title">视频</div>
             <div class="social-links">
-                <a href="https://space.bilibili.com/1671224161?spm_id_from=333.788.upinfo.head.click" target="_blank" class="social-link" title="哔哩哔哩">
+                <a href="https://space.bilibili.com/1671224161?spm_id_from=333.788.upinfo.head.click" target="_blank"
+                    class="social-link" title="哔哩哔哩">
                     <i class="fab fa-bilibili"></i>
                     <span>B站</span>
                 </a>
-                <a href="https://www.douyin.com/user/MS4wLjABAAAAW24kFta-WTJiM81SDJtCq4Tqh0p6HhB56X3e85ZB0DU?from_tab_name=main" target="_blank" class="social-link" title="抖音">
+                <a href="https://www.douyin.com/user/MS4wLjABAAAAW24kFta-WTJiM81SDJtCq4Tqh0p6HhB56X3e85ZB0DU?from_tab_name=main"
+                    target="_blank" class="social-link" title="抖音">
                     <i class="fas fa-video"></i>
                     <span>抖音</span>
                 </a>
@@ -587,11 +677,8 @@
         <div class="section">
             <div class="section-title">播客</div>
             <div class="social-links">
-                <a href="podcast.html" class="social-link" title="播客播放器">
-                    <i class="fas fa-play-circle"></i>
-                    <span>在线播放</span>
-                </a>
-                <a href="https://www.xiaoyuzhoufm.com/podcast/686bb3edb21def6f47390305" target="_blank" class="social-link" title="小宇宙">
+                <a href="https://www.xiaoyuzhoufm.com/podcast/686bb3edb21def6f47390305" target="_blank"
+                    class="social-link" title="小宇宙">
                     <i class="fas fa-microphone"></i>
                     <span>小宇宙</span>
                 </a>
@@ -599,7 +686,8 @@
                     <i class="fas fa-podcast"></i>
                     <span>喜马拉雅</span>
                 </a>
-                <a href="https://podcasts.apple.com/cn/podcast/%E6%96%87%E9%B3%90%E5%A4%9C%E9%A3%9E/id1825759955" target="_blank" class="social-link" title="苹果播客">
+                <a href="https://podcasts.apple.com/cn/podcast/%E6%96%87%E9%B3%90%E5%A4%9C%E9%A3%9E/id1825759955"
+                    target="_blank" class="social-link" title="苹果播客">
                     <i class="fab fa-apple"></i>
                     <span>苹果播客</span>
                 </a>
@@ -613,7 +701,10 @@
         <!-- 微信 -->
         <div class="section">
             <div class="section-title">微信</div>
-            <div class="wechat-section" onclick="openPersonalWechatQRModal()" style="cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='#e8eef8'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 10px 20px rgba(93, 123, 147, 0.2)'" onmouseout="this.style.backgroundColor='#f0f2f7'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+            <div class="wechat-section" onclick="openPersonalWechatQRModal()"
+                style="cursor: pointer; transition: all 0.3s ease;"
+                onmouseover="this.style.backgroundColor='#e8eef8'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 10px 20px rgba(93, 123, 147, 0.2)'"
+                onmouseout="this.style.backgroundColor='#f0f2f7'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                 <p>个人微信</p>
                 <div class="wechat-id">wenyaoyefei2025</div>
                 <p style="font-size: 12px; color: #999; margin-top: 10px;">👆 点击查看二维码</p>
@@ -674,7 +765,7 @@
         }
 
         // 点击模态框外部关闭
-        window.onclick = function(event) {
+        window.onclick = function (event) {
             const wechatModal = document.getElementById('wechatQRModal');
             const personalModal = document.getElementById('personalWechatQRModal');
             if (event.target == wechatModal) {
@@ -686,7 +777,7 @@
         }
 
         // 按 Esc 键关闭模态框
-        document.addEventListener('keydown', function(event) {
+        document.addEventListener('keydown', function (event) {
             if (event.key === 'Escape') {
                 closeWechatQRModal();
                 closePersonalWechatQRModal();
