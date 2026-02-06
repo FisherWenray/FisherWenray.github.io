@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>文章列表 - 文鳐夜飞</title>
     <link rel="icon" type="image/jpeg" href="微信图片_2026-01-23_124826_064.jpg">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -493,7 +493,7 @@
 
                 return `
                     <div class="article-card" onclick="goToArticle('${article.id}')">
-                        <img src="${article.image}" alt="${article.title}" class="article-image" onerror="this.src='https://via.placeholder.com/400x200?text=文章'">
+                        <img src="${article.image}" alt="${article.title}" class="article-image" loading="lazy" onerror="this.src='images/article-placeholder.svg'">
                         <div class="article-content">
                             <span class="article-category">${article.category}</span>
                             <h3 class="article-title">${article.title}</h3>

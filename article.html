@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>文章详情 - 文鳐夜飞</title>
     <link rel="icon" type="image/jpeg" href="微信图片_2026-01-23_124826_064.jpg">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
     <style>
         * {
             margin: 0;
@@ -325,7 +327,9 @@
         }
 
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .error {
@@ -474,6 +478,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="article-header">
@@ -507,7 +512,7 @@
             const articleId = ArticleLoader.getUrlParam('id');
 
             if (!articleId) {
-                document.getElementById('articleContent').innerHTML = 
+                document.getElementById('articleContent').innerHTML =
                     '<div class="error"><i class="fas fa-exclamation-circle"></i> 文章ID无效</div>';
                 return;
             }
@@ -560,7 +565,7 @@
             });
 
             // 添加标签
-            const tagsHtml = article.tags.map(tag => 
+            const tagsHtml = article.tags.map(tag =>
                 `<span class="tag"><i class="fas fa-tag"></i> ${tag}</span>`
             ).join('');
 
@@ -626,4 +631,5 @@
         document.addEventListener('DOMContentLoaded', initPage);
     </script>
 </body>
+
 </html>
