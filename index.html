@@ -7,6 +7,10 @@
     <title>文鳐夜飞 - Follow Heart, 追求自由之路</title>
     <link rel="icon" type="image/jpeg" href="微信图片_2026-01-23_124826_064.jpg">
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,7 +19,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background: #f5f5f5;
             min-height: 100vh;
             display: flex;
@@ -23,6 +27,31 @@
             align-items: center;
             padding: 30px;
             padding-top: 100px;
+        }
+
+        /* 入场动画 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         /* 顶部导航栏样式 */
@@ -64,20 +93,35 @@
             color: #333;
             font-weight: 600;
             font-size: 16px;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             border-bottom: 3px solid transparent;
             position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #c5b358, #d4c56a);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform: translateX(-50%);
         }
 
         .nav-links a:hover {
             color: #5D7B93;
             background: rgba(93, 123, 147, 0.05);
-            border-bottom-color: #c5b358;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 60%;
         }
 
         .nav-links a.active {
             color: #5D7B93;
-            border-bottom-color: #c5b358;
             background: rgba(93, 123, 147, 0.05);
         }
 
@@ -86,10 +130,20 @@
             width: 100%;
             background: #ffffff;
             border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            border: 1px solid #e0e0e0;
+            box-shadow:
+                0 2px 8px rgba(0, 0, 0, 0.04),
+                0 8px 24px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e8e8e8;
             padding: 60px 80px;
             text-align: center;
+            animation: fadeInUp 0.6s ease forwards;
+            transition: box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .container:hover {
+            box-shadow:
+                0 4px 12px rgba(0, 0, 0, 0.06),
+                0 16px 32px rgba(0, 0, 0, 0.1);
         }
 
         .avatar {
@@ -100,6 +154,13 @@
             object-fit: cover;
             border: 4px solid #5D7B93;
             box-shadow: 0 10px 30px rgba(93, 123, 147, 0.3);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            animation: scaleIn 0.5s ease forwards;
+        }
+
+        .avatar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(93, 123, 147, 0.4);
         }
 
         .name {
@@ -191,9 +252,14 @@
             border-color: #5D7B93;
         }
 
+        .social-link:hover i {
+            transform: scale(1.15);
+        }
+
         .social-link i {
             font-size: 32px;
             margin-bottom: 10px;
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .social-link span {

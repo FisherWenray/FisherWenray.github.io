@@ -7,6 +7,10 @@
     <title>文章列表 - 文鳐夜飞</title>
     <link rel="icon" type="image/jpeg" href="微信图片_2026-01-23_124826_064.jpg">
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,11 +19,24 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background: #f5f5f5;
             min-height: 100vh;
             padding: 40px 20px;
             padding-top: 100px;
+        }
+
+        /* 入场动画 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* 顶部导航栏样式 */
@@ -61,20 +78,35 @@
             color: #333;
             font-weight: 600;
             font-size: 16px;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             border-bottom: 3px solid transparent;
             position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #c5b358, #d4c56a);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform: translateX(-50%);
         }
 
         .nav-links a:hover {
             color: #5D7B93;
             background: rgba(93, 123, 147, 0.05);
-            border-bottom-color: #c5b358;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 60%;
         }
 
         .nav-links a.active {
             color: #5D7B93;
-            border-bottom-color: #c5b358;
             background: rgba(93, 123, 147, 0.05);
         }
 
@@ -143,17 +175,24 @@
             background: white;
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+            box-shadow:
+                0 2px 8px rgba(0, 0, 0, 0.06),
+                0 8px 24px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             cursor: pointer;
             display: flex;
             flex-direction: column;
             height: 100%;
+            animation: fadeInUp 0.6s ease forwards;
+            animation-delay: calc(var(--card-index, 0) * 0.08s);
+            opacity: 0;
         }
 
         .article-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(93, 123, 147, 0.3);
+            box-shadow:
+                0 8px 16px rgba(93, 123, 147, 0.15),
+                0 24px 48px rgba(93, 123, 147, 0.2);
         }
 
         .article-image {
@@ -190,6 +229,7 @@
             line-height: 1.4;
             display: -webkit-box;
             -webkit-line-clamp: 2;
+            line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
@@ -201,6 +241,7 @@
             line-height: 1.6;
             display: -webkit-box;
             -webkit-line-clamp: 3;
+            line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
             flex: 1;
@@ -484,7 +525,7 @@
             grid.style.display = 'grid';
             emptyState.style.display = 'none';
 
-            grid.innerHTML = articles.map(article => {
+            grid.innerHTML = articles.map((article, index) => {
                 const date = new Date(article.date).toLocaleDateString('zh-CN', {
                     year: 'numeric',
                     month: '2-digit',
@@ -492,7 +533,7 @@
                 });
 
                 return `
-                    <div class="article-card" onclick="goToArticle('${article.id}')">
+                    <div class="article-card" style="--card-index: ${index}" onclick="goToArticle('${article.id}')">
                         <img src="${article.image}" alt="${article.title}" class="article-image" loading="lazy" onerror="this.src='images/article-placeholder.svg'">
                         <div class="article-content">
                             <span class="article-category">${article.category}</span>
