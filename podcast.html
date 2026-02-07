@@ -228,20 +228,38 @@
         .episode-item {
             background: #f8f9fa;
             border-radius: 12px;
-            padding: 16px 20px;
+            padding: 0;
             display: flex;
-            align-items: center;
-            gap: 16px;
+            align-items: stretch;
+            gap: 0;
             transition: all 0.3s ease;
             cursor: pointer;
             border: 1px solid #e8e8e8;
             border-left: 4px solid #c5b358;
+            overflow: hidden;
+            min-height: 140px;
         }
 
         .episode-item:hover {
             background: #f0f2f7;
             box-shadow: 0 8px 20px rgba(93, 123, 147, 0.15);
             border-left-color: #5D7B93;
+        }
+
+        .episode-cover {
+            width: 150px;
+            height: auto;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .episode-main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px 24px;
+            min-width: 0;
         }
 
         .play-btn-icon {
@@ -510,7 +528,19 @@
             }
 
             .episode-item {
-                padding: 12px 16px;
+                flex-direction: column;
+                min-height: auto;
+            }
+
+            .episode-cover {
+                width: 100%;
+                height: 150px;
+            }
+
+            .episode-main {
+                padding: 16px;
+                width: 100%;
+                gap: 12px;
             }
 
             .play-btn-icon {
@@ -797,6 +827,8 @@
 
                             const results = data.results || [];
                             // 第一个结果是播客本身，后面才是剧集
+                            const collection = results[0];
+                            const collectionCover = collection ? (collection.artworkUrl600 || collection.artworkUrl100) : '';
                             const episodes = results.slice(1);
 
                             const mappedEpisodes = episodes.map((ep, index) => ({
@@ -808,7 +840,7 @@
                                 date: new Date(ep.releaseDate).toISOString().split('T')[0],
                                 duration: formatDuration(Math.round((ep.trackTimeMillis || 0) / 1000)),
                                 audioUrl: ep.episodeUrl || '',
-                                coverUrl: ep.artworkUrl600 || ep.artworkUrl100 || '',
+                                coverUrl: ep.artworkUrl600 || ep.artworkUrl100 || collectionCover || '',
                                 externalUrl: `https://podcasts.apple.com/cn/podcast/id${APPLE_PODCAST_ID}`
                             }));
 
@@ -924,23 +956,26 @@
 
                 const episodesHTML = filteredEpisodes.map((ep, index) => `
                 <div class="episode-item" id="episode-${index}">
-                    <div class="play-btn-icon" onclick="event.stopPropagation(); playEpisode(${index})">
-                        <i class="fas fa-play"></i>
-                    </div>
-                    <div class="episode-content">
-                        <div class="episode-header">
-                            <div class="episode-title">${ep.title}</div>
+                    <img src="${ep.coverUrl}" class="episode-cover" alt="封面" onerror="this.src='images/article-placeholder.svg'">
+                    <div class="episode-main">
+                        <div class="play-btn-icon" onclick="event.stopPropagation(); playEpisode(${index})">
+                            <i class="fas fa-play"></i>
                         </div>
-                        <div class="episode-meta">
-                            <span>${formatDate(ep.date)}</span>
-                            <span>•</span>
-                            <span>${ep.duration}</span>
-                        </div>
-                        <div class="episode-description">${ep.description}</div>
-                        <span class="more-link" onclick="event.stopPropagation(); toggleShowNotes(${index})">MORE</span>
-                        <div class="shownotes-container">
-                            <div class="shownotes-content">${ep.description}</div>
-                            <span class="collapse-link" onclick="event.stopPropagation(); toggleShowNotes(${index})">收起</span>
+                        <div class="episode-content">
+                            <div class="episode-header">
+                                <div class="episode-title">${ep.title}</div>
+                            </div>
+                            <div class="episode-meta">
+                                <span>${formatDate(ep.date)}</span>
+                                <span>•</span>
+                                <span>${ep.duration}</span>
+                            </div>
+                            <div class="episode-description">${ep.description}</div>
+                            <span class="more-link" onclick="event.stopPropagation(); toggleShowNotes(${index})">MORE</span>
+                            <div class="shownotes-container">
+                                <div class="shownotes-content">${ep.description}</div>
+                                <span class="collapse-link" onclick="event.stopPropagation(); toggleShowNotes(${index})">收起</span>
+                            </div>
                         </div>
                     </div>
                 </div>
