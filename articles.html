@@ -361,6 +361,8 @@
         <p>© 2026 文鳐夜飞 | 追求自由之路</p>
     </div>
 
+    <script src="js/umami-config.js"></script>
+    <script src="js/analytics.js"></script>
     <script>
         let allArticles = [];
         let currentFilter = 'all';
@@ -388,6 +390,11 @@
             });
 
             const filterSection = document.getElementById('filterSection');
+            const allBtn = filterSection.querySelector('[data-filter="all"]');
+            if (allBtn) {
+                allBtn.addEventListener('click', () => filterArticles('all', allBtn));
+            }
+
             categories.forEach(category => {
                 const btn = document.createElement('button');
                 btn.className = 'filter-btn';
@@ -400,6 +407,7 @@
 
         function filterArticles(category, btn) {
             currentFilter = category;
+            trackEvent('articles_filter_click', { category: category });
 
             document.querySelectorAll('.filter-btn').forEach(button => {
                 button.classList.remove('active');
@@ -453,6 +461,10 @@
         }
 
         function goToArticle(articleId) {
+            trackEvent('article_card_click', {
+                article_id: articleId,
+                from_filter: currentFilter
+            });
             window.location.href = `article.html?id=${articleId}`;
         }
 

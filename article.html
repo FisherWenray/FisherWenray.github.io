@@ -504,6 +504,8 @@
         </div>
     </main>
 
+    <script src="js/umami-config.js"></script>
+    <script src="js/analytics.js"></script>
     <script src="js/article-loader.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
     <script>
@@ -521,6 +523,11 @@
             if (!article) {
                 return;
             }
+
+            trackEvent('article_detail_view', {
+                article_id: articleId,
+                category: article.category
+            });
 
             document.title = `${article.title} - 文鳐夜飞`;
 
@@ -599,10 +606,12 @@
         }
 
         function shareToWechat() {
+            trackEvent('article_share_click', { channel: 'wechat' });
             alert('请扫描二维码后，在微信中分享此链接');
         }
 
         function shareToWeibo() {
+            trackEvent('article_share_click', { channel: 'weibo' });
             const url = encodeURIComponent(window.location.href);
             const title = encodeURIComponent(document.title);
             window.open(`https://service.weibo.com/share/share.php?url=${url}&title=${title}`);
@@ -611,8 +620,10 @@
         function copyLink() {
             const text = window.location.href;
             navigator.clipboard.writeText(text).then(() => {
+                trackEvent('article_copy_link', { status: 'success' });
                 alert('链接已复制到剪贴板');
             }).catch(err => {
+                trackEvent('article_copy_link', { status: 'failed' });
                 console.error('复制失败:', err);
             });
         }

@@ -730,6 +730,8 @@
         </div>
         <audio id="audioPlayer" style="display: none;">您的浏览器不支持音频播放</audio>
     </div>
+        <script src="js/umami-config.js"></script>
+        <script src="js/analytics.js"></script>
         <script>
             let allEpisodes = [];
             let filteredEpisodes = [];
@@ -859,10 +861,13 @@
             // 过滤播客平台
             function filterByPlatform(platform) {
                 currentFilter = platform;
+                trackEvent('podcast_filter_click', { platform: platform });
                 document.querySelectorAll('.filter-tab').forEach(tab => {
                     tab.classList.remove('active');
                 });
-                event.target.closest('.filter-tab').classList.add('active');
+                if (typeof event !== 'undefined' && event.target && event.target.closest('.filter-tab')) {
+                    event.target.closest('.filter-tab').classList.add('active');
+                }
 
                 if (platform === 'all') {
                     filteredEpisodes = [...allEpisodes];
@@ -890,6 +895,11 @@
                     }
                 }
                 renderEpisodes();
+                trackEvent('podcast_search', {
+                    keyword: keyword || 'all',
+                    filter: currentFilter,
+                    result_count: filteredEpisodes.length
+                });
             }
 
             // 回车键搜索
@@ -977,6 +987,11 @@
             function playEpisode(episodeIndex) {
                 const episode = filteredEpisodes[episodeIndex];
                 if (!episode) return;
+
+                trackEvent('podcast_play_click', {
+                    episode_id: episode.id,
+                    platform: episode.platform
+                });
 
                 currentPlayer = episode;
 
@@ -1087,6 +1102,7 @@
                             const speed = parseFloat(this.getAttribute('data-speed'));
                             const audioPlayer = document.getElementById('audioPlayer');
                             audioPlayer.playbackRate = speed;
+                            trackEvent('podcast_speed_change', { speed: speed });
 
                             // 更新按钮显示
                             speedBtn.textContent = speed === 1 ? '1x' : speed.toFixed(2) + 'x';
