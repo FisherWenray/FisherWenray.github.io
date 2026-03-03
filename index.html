@@ -304,10 +304,40 @@
 
         .footer {
             width: min(1220px, 94vw);
-            margin: 0 auto 34px;
+            margin: 40px auto 34px;
             text-align: center;
             font-size: 13px;
             color: #85909b;
+            border-top: 1px solid var(--line);
+            padding-top: 30px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: var(--ink-soft);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+            transition: all 0.25s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-links .link-label {
+            color: var(--primary);
+            font-weight: 700;
+            margin-right: 4px;
         }
 
         .modal {
@@ -555,21 +585,17 @@
                     </a>
                 </div>
             </section>
-
-            <section class="section reveal" style="--delay: 0.32s;">
-                <div class="section-title">友情链接</div>
-                <div class="social-links">
-                    <a href="https://muimi.club" target="_blank" rel="noopener" class="social-link" title="Muimi Club"
-                        data-umami-event="friend_link_click" data-umami-props='{"site":"muimi.club"}'>
-                        <i class="fas fa-link"></i>
-                        <span>Muimi Club</span>
-                    </a>
-                </div>
-            </section>
         </div>
     </main>
 
     <div class="footer">
+        <div class="footer-links">
+            <span class="link-label">友情链接</span>
+            <a href="https://muimi.club" target="_blank" rel="noopener" data-umami-event="friend_link_click" data-umami-props='{"site":"muimi.club", "from":"footer"}'>
+                <i class="fas fa-link"></i>
+                <span>Muimi Club</span>
+            </a>
+        </div>
         <p>© 2026 文鳐夜飞 | Made with ❤️ | 全网同名</p>
     </div>
 

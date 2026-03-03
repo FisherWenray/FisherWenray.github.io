@@ -155,57 +155,6 @@
             flex-wrap: wrap;
         }
 
-        /* 友情链接样式 */
-        .friend-links-card {
-            margin-top: 24px;
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--line);
-            background: var(--surface);
-            box-shadow: var(--shadow);
-            padding: clamp(16px, 3vw, 26px);
-            text-align: center;
-        }
-
-        .friend-links-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .friend-links-container {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .friend-link {
-            text-decoration: none;
-            color: var(--ink-soft);
-            background: rgba(var(--primary-rgb), 0.08);
-            border: 1px solid rgba(var(--primary-rgb), 0.22);
-            padding: 8px 18px;
-            border-radius: 999px;
-            font-size: 14px;
-            font-weight: 600;
-            transition: all 0.25s ease;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .friend-link:hover {
-            color: var(--primary);
-            background: rgba(var(--primary-rgb), 0.15);
-            border-color: var(--primary);
-            transform: translateY(-2px);
-        }
-
         .filter-btn {
             padding: 9px 18px;
             background: rgba(var(--primary-rgb), 0.08);
@@ -348,10 +297,40 @@
 
         .footer {
             width: min(1200px, 94vw);
-            margin: 0 auto 34px;
+            margin: 40px auto 34px;
             text-align: center;
             color: #8b97a2;
             font-size: 13px;
+            border-top: 1px solid var(--line);
+            padding-top: 30px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: var(--ink-soft);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+            transition: all 0.25s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-links .link-label {
+            color: var(--primary);
+            font-weight: 700;
+            margin-right: 4px;
         }
 
         @media (max-width: 760px) {
@@ -406,23 +385,16 @@
                 <div class="empty-state-text">暂无文章</div>
             </div>
         </div>
-
-        <div class="friend-links-card">
-            <div class="friend-links-title">
-                <i class="fas fa-link"></i>
-                <span>友情链接</span>
-            </div>
-            <div class="friend-links-container">
-                <a href="https://muimi.club" target="_blank" rel="noopener" class="friend-link" title="Muimi Club"
-                    data-umami-event="friend_link_click" data-umami-props='{"site":"muimi.club", "from":"articles"}'>
-                    <i class="fas fa-link"></i>
-                    <span>Muimi Club</span>
-                </a>
-            </div>
-        </div>
     </div>
 
     <div class="footer">
+        <div class="footer-links">
+            <span class="link-label">友情链接</span>
+            <a href="https://muimi.club" target="_blank" rel="noopener" data-umami-event="friend_link_click" data-umami-props='{"site":"muimi.club", "from":"footer"}'>
+                <i class="fas fa-link"></i>
+                <span>Muimi Club</span>
+            </a>
+        </div>
         <p>© 2026 文鳐夜飞 | 追求自由之路</p>
     </div>
 
