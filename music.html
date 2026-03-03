@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- 预连接 API 和 CDN 域名，减少 DNS/TLS 延迟 -->
+    <link rel="preconnect" href="https://api.i-meto.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://p3.music.126.net">
+    <link rel="dns-prefetch" href="https://m801.music.126.net">
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap"
         rel="stylesheet">
@@ -223,6 +228,66 @@
             margin-top: 10px;
         }
 
+        /* 骨架屏加载动画 */
+        .aplayer-skeleton {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            gap: 12px;
+            border-radius: var(--radius-md);
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid var(--line);
+        }
+
+        .skeleton-cover {
+            width: 66px;
+            height: 66px;
+            border-radius: 6px;
+            background: linear-gradient(110deg, #e8ecf0 30%, #f4f6f8 50%, #e8ecf0 70%);
+            background-size: 200% 100%;
+            animation: skeleton-pulse 1.4s ease-in-out infinite;
+            flex-shrink: 0;
+        }
+
+        .skeleton-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .skeleton-line {
+            height: 12px;
+            border-radius: 6px;
+            background: linear-gradient(110deg, #e8ecf0 30%, #f4f6f8 50%, #e8ecf0 70%);
+            background-size: 200% 100%;
+            animation: skeleton-pulse 1.4s ease-in-out infinite;
+        }
+
+        .skeleton-title {
+            width: 60%;
+        }
+
+        .skeleton-artist {
+            width: 35%;
+        }
+
+        .skeleton-bar {
+            width: 100%;
+            height: 4px;
+            margin-top: 6px;
+        }
+
+        @keyframes skeleton-pulse {
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
         .footer {
             width: min(1200px, 94vw);
             margin: 40px auto 34px;
@@ -293,7 +358,17 @@
         </div>
 
         <div class="music-card">
-            <div id="aplayer"></div>
+            <div id="aplayer">
+                <!-- 加载骨架屏 -->
+                <div class="aplayer-skeleton">
+                    <div class="skeleton-cover"></div>
+                    <div class="skeleton-info">
+                        <div class="skeleton-line skeleton-title"></div>
+                        <div class="skeleton-line skeleton-artist"></div>
+                        <div class="skeleton-line skeleton-bar"></div>
+                    </div>
+                </div>
+            </div>
             <p class="music-hint">
                 <i class="fas fa-music"></i> 点击播放即可查看实时滚动歌词
             </p>
@@ -321,32 +396,26 @@
             const SONG_ID = '3353644885';
 
             try {
-                // 1. 获取歌曲基本信息
-                const infoRes = await fetch(`${METING_API}?server=netease&type=song&id=${SONG_ID}`);
-                const songList = await infoRes.json();
+                // 1. 并行获取歌曲信息和歌词（比串行快一倍）
+                const infoPromise = fetch(`${METING_API}?server=netease&type=song&id=${SONG_ID}`).then(r => r.json());
+                // 预先构造歌词URL（Meting API的歌词URL格式是固定的）
+                const lrcPromise = fetch(`${METING_API}?server=netease&type=lrc&id=${SONG_ID}`).then(r => r.text()).catch(() => '[00:00.00]暂无歌词');
+
+                const [songList, lrcText] = await Promise.all([infoPromise, lrcPromise]);
+
                 if (!songList || songList.length === 0) {
                     document.getElementById('aplayer').innerHTML = '<p style="text-align:center;padding:20px;color:#999;">歌曲信息加载失败</p>';
                     return;
                 }
                 const song = songList[0];
 
-                // 2. 获取歌词
-                let lrcText = '';
-                try {
-                    const lrcRes = await fetch(song.lrc);
-                    lrcText = await lrcRes.text();
-                } catch (e) {
-                    console.warn('歌词加载失败:', e);
-                    lrcText = '[00:00.00]暂无歌词';
-                }
-
-                // 3. 初始化 APlayer
+                // 2. 初始化 APlayer
                 const ap = new APlayer({
                     container: document.getElementById('aplayer'),
                     theme: '#5D7B93',
                     autoplay: false,
                     loop: 'all',
-                    preload: 'auto',
+                    preload: 'metadata',
                     lrcType: 1,
                     audio: [{
                         name: song.title,
