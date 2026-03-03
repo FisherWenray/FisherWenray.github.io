@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap"
         rel="stylesheet">
     <style>
         :root {
@@ -17,21 +18,24 @@
             --primary-rgb: 93, 123, 147;
             --deep: #2A3645;
             --gold: #c5b358;
-            --ink: #2a3138;
-            --ink-soft: #5f6974;
+            --ink: #273039;
+            --ink-soft: #5f6a75;
             --paper: #f4f6f8;
-            --surface: rgba(255, 255, 255, 0.85);
-            --line: rgba(93, 123, 147, 0.2);
-            --radius-xl: 24px;
-            --radius-lg: 18px;
+            --surface: rgba(255, 255, 255, 0.86);
+            --line: rgba(93, 123, 147, 0.22);
+            --radius-lg: 20px;
             --radius-md: 14px;
-            --shadow: 0 20px 44px rgba(28, 39, 50, 0.14);
+            --shadow: 0 20px 44px rgba(28, 39, 50, 0.13);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html {
+            scrollbar-gutter: stable;
         }
 
         body {
@@ -42,7 +46,7 @@
                 radial-gradient(1200px 620px at 88% 6%, rgba(var(--primary-rgb), 0.22), transparent 62%),
                 radial-gradient(980px 560px at 8% 92%, rgba(42, 54, 69, 0.12), transparent 60%),
                 linear-gradient(180deg, #f8fafc 0%, var(--paper) 56%, #eef2f6 100%);
-            overflow-x: hidden;
+            scrollbar-gutter: stable;
         }
 
         body::before {
@@ -67,7 +71,7 @@
                 radial-gradient(circle at 18% 24%, rgba(18, 26, 34, 0.06) 0.5px, transparent 0.7px),
                 radial-gradient(circle at 74% 68%, rgba(255, 255, 255, 0.26) 0.45px, transparent 0.7px);
             background-size: 3px 3px, 4px 4px;
-            opacity: 0.12;
+            opacity: 0.1;
             z-index: -1;
         }
 
@@ -75,32 +79,34 @@
             position: sticky;
             top: 0;
             z-index: 120;
-            background: rgba(244, 246, 248, 0.82);
+            background: rgba(244, 246, 248, 0.84);
             backdrop-filter: blur(14px);
             border-bottom: 1px solid var(--line);
         }
 
         .nav-container {
-            width: min(1220px, 94vw);
+            width: min(1200px, 94vw);
             margin: 0 auto;
         }
 
         .nav-links {
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
-            list-style: none;
             gap: 10px;
+            list-style: none;
+            flex-wrap: wrap;
             padding: 14px 0;
         }
 
         .nav-links a {
+            display: block;
             text-decoration: none;
             color: var(--ink-soft);
-            font-size: 14px;
             font-weight: 600;
-            letter-spacing: 0.4px;
-            padding: 10px 18px;
+            font-size: 14px;
+            padding: 10px 0;
+            width: 80px;
+            text-align: center;
             border-radius: 999px;
             border: 1px solid transparent;
             transition: all 0.25s ease;
@@ -109,12 +115,12 @@
         .nav-links a:hover,
         .nav-links a.active {
             color: var(--primary);
-            border-color: rgba(var(--primary-rgb), 0.35);
+            border-color: rgba(var(--primary-rgb), 0.36);
             background: rgba(var(--primary-rgb), 0.08);
         }
 
         .page {
-            width: min(1220px, 94vw);
+            width: min(1200px, 94vw);
             margin: 36px auto 34px;
             display: grid;
             grid-template-columns: minmax(300px, 0.95fr) minmax(520px, 1.25fr);
@@ -303,7 +309,7 @@
         }
 
         .footer {
-            width: min(1220px, 94vw);
+            width: min(1200px, 94vw);
             margin: 40px auto 34px;
             text-align: center;
             font-size: 13px;
@@ -482,7 +488,8 @@
             <p class="tagline">Follow Heart, 追求自由之路</p>
             <div class="divider"></div>
             <div class="description">
-                这里主要分享<strong>一人公司</strong>、<strong>投资悟道</strong>、<strong>自我成长</strong>三个主题。三者表面上看似分散，但在我看来，底层逻辑都是 Follow
+                这里主要分享<strong>一人公司</strong>、<strong>投资悟道</strong>、<strong>自我成长</strong>三个主题。三者表面上看似分散，但在我看来，底层逻辑都是
+                Follow
                 Heart，跟随内心，追求自由之路。希望每一位关注者，都能找到属于自己的那条无限自由之路。
             </div>
 
@@ -500,35 +507,37 @@
             <section class="section reveal" style="--delay: 0.08s;">
                 <div class="section-title">文章 & 日常想法</div>
                 <div class="social-links">
-                    <a href="https://www.zhihu.com/people/wenyaoyefei" target="_blank" rel="noopener" class="social-link" title="知乎"
-                        data-umami-event="social_link_click" data-umami-props='{"platform":"zhihu"}'>
+                    <a href="https://www.zhihu.com/people/wenyaoyefei" target="_blank" rel="noopener"
+                        class="social-link" title="知乎" data-umami-event="social_link_click"
+                        data-umami-props='{"platform":"zhihu"}'>
                         <i class="fas fa-circle-notch"></i>
                         <span>知乎</span>
                     </a>
                     <a href="https://www.toutiao.com/c/user/token/CibyD1cyR2lQbyWSS6yBDCR8wtOfUjuh_iMBSvRuCWeM46eTG_jwxhpJCjwAAAAAAAAAAAAAUARWllQ7lyZwO7F0qy5NsjQoFYtqS9cy7kH5NDcZj5U92FZghd4weQ5EjX9G_Az3Xj0Q4bCIDhjDxYPqBCIBA-keqSI=/?source=list&log_from=ca2a8ff7febc48_1769870047363"
-                        target="_blank" rel="noopener" class="social-link" title="今日头条" data-umami-event="social_link_click"
-                        data-umami-props='{"platform":"toutiao"}'>
+                        target="_blank" rel="noopener" class="social-link" title="今日头条"
+                        data-umami-event="social_link_click" data-umami-props='{"platform":"toutiao"}'>
                         <i class="fas fa-newspaper"></i>
                         <span>头条</span>
                     </a>
                     <a href="https://www.xiaohongshu.com/user/profile/607660630000000001000f0e?xsec_token=AB5oTA9fKb08iEqS2QoXQpd8BbmyYVkdDZBbguTb4CXhU%3D&xsec_source=pc_search"
-                        target="_blank" rel="noopener" class="social-link" title="小红书" data-umami-event="social_link_click"
-                        data-umami-props='{"platform":"xiaohongshu"}'>
+                        target="_blank" rel="noopener" class="social-link" title="小红书"
+                        data-umami-event="social_link_click" data-umami-props='{"platform":"xiaohongshu"}'>
                         <i class="fas fa-book"></i>
                         <span>小红书</span>
                     </a>
-                    <a href="https://x.com/wenyaoyefei" target="_blank" rel="noopener" class="social-link" title="X (Twitter)"
-                        data-umami-event="social_link_click" data-umami-props='{"platform":"x"}'>
+                    <a href="https://x.com/wenyaoyefei" target="_blank" rel="noopener" class="social-link"
+                        title="X (Twitter)" data-umami-event="social_link_click" data-umami-props='{"platform":"x"}'>
                         <i class="fab fa-twitter"></i>
                         <span>X</span>
                     </a>
-                    <a href="https://weibo.com/u/7527763202" target="_blank" rel="noopener" class="social-link" title="微博"
-                        data-umami-event="social_link_click" data-umami-props='{"platform":"weibo"}'>
+                    <a href="https://weibo.com/u/7527763202" target="_blank" rel="noopener" class="social-link"
+                        title="微博" data-umami-event="social_link_click" data-umami-props='{"platform":"weibo"}'>
                         <i class="fab fa-weibo"></i>
                         <span>微博</span>
                     </a>
-                    <a href="javascript:void(0);" onclick="openWechatQRModal()" class="social-link wechat-qr-btn" title="微信公众号"
-                        data-umami-event="social_link_click" data-umami-props='{"platform":"wechat_public_account"}'>
+                    <a href="javascript:void(0);" onclick="openWechatQRModal()" class="social-link wechat-qr-btn"
+                        title="微信公众号" data-umami-event="social_link_click"
+                        data-umami-props='{"platform":"wechat_public_account"}'>
                         <i class="fab fa-weixin"></i>
                         <span>公众号</span>
                     </a>
@@ -538,20 +547,20 @@
             <section class="section reveal" style="--delay: 0.16s;">
                 <div class="section-title">视频</div>
                 <div class="social-links">
-                    <a href="https://space.bilibili.com/1671224161?spm_id_from=333.788.upinfo.head.click" target="_blank"
-                        rel="noopener" class="social-link" title="哔哩哔哩" data-umami-event="social_link_click"
-                        data-umami-props='{"platform":"bilibili"}'>
+                    <a href="https://space.bilibili.com/1671224161?spm_id_from=333.788.upinfo.head.click"
+                        target="_blank" rel="noopener" class="social-link" title="哔哩哔哩"
+                        data-umami-event="social_link_click" data-umami-props='{"platform":"bilibili"}'>
                         <i class="fab fa-bilibili"></i>
                         <span>B站</span>
                     </a>
                     <a href="https://www.douyin.com/user/MS4wLjABAAAAW24kFta-WTJiM81SDJtCq4Tqh0p6HhB56X3e85ZB0DU?from_tab_name=main"
-                        target="_blank" rel="noopener" class="social-link" title="抖音" data-umami-event="social_link_click"
-                        data-umami-props='{"platform":"douyin"}'>
+                        target="_blank" rel="noopener" class="social-link" title="抖音"
+                        data-umami-event="social_link_click" data-umami-props='{"platform":"douyin"}'>
                         <i class="fas fa-video"></i>
                         <span>抖音</span>
                     </a>
-                    <a href="https://www.youtube.com/@wenyaoyefei" target="_blank" rel="noopener" class="social-link" title="YouTube"
-                        data-umami-event="social_link_click" data-umami-props='{"platform":"youtube"}'>
+                    <a href="https://www.youtube.com/@wenyaoyefei" target="_blank" rel="noopener" class="social-link"
+                        title="YouTube" data-umami-event="social_link_click" data-umami-props='{"platform":"youtube"}'>
                         <i class="fab fa-youtube"></i>
                         <span>YouTube</span>
                     </a>
@@ -567,14 +576,14 @@
                         <i class="fas fa-microphone"></i>
                         <span>小宇宙</span>
                     </a>
-                    <a href="https://www.ximalaya.com/zhubo/9369408" target="_blank" rel="noopener" class="social-link" title="喜马拉雅"
-                        data-umami-event="social_link_click" data-umami-props='{"platform":"ximalaya"}'>
+                    <a href="https://www.ximalaya.com/zhubo/9369408" target="_blank" rel="noopener" class="social-link"
+                        title="喜马拉雅" data-umami-event="social_link_click" data-umami-props='{"platform":"ximalaya"}'>
                         <i class="fas fa-podcast"></i>
                         <span>喜马拉雅</span>
                     </a>
-                    <a href="https://podcasts.apple.com/cn/podcast/%E6%96%87%E9%B3%90%E5%A4%9C%E9%A3%9E/id1825759955" target="_blank"
-                        rel="noopener" class="social-link" title="苹果播客" data-umami-event="social_link_click"
-                        data-umami-props='{"platform":"apple_podcast"}'>
+                    <a href="https://podcasts.apple.com/cn/podcast/%E6%96%87%E9%B3%90%E5%A4%9C%E9%A3%9E/id1825759955"
+                        target="_blank" rel="noopener" class="social-link" title="苹果播客"
+                        data-umami-event="social_link_click" data-umami-props='{"platform":"apple_podcast"}'>
                         <i class="fab fa-apple"></i>
                         <span>苹果播客</span>
                     </a>
@@ -591,7 +600,8 @@
     <div class="footer">
         <div class="footer-links">
             <span class="link-label">友情链接</span>
-            <a href="https://muimi.club" target="_blank" rel="noopener" data-umami-event="friend_link_click" data-umami-props='{"site":"muimi.club", "from":"footer"}'>
+            <a href="https://muimi.club" target="_blank" rel="noopener" data-umami-event="friend_link_click"
+                data-umami-props='{"site":"muimi.club", "from":"footer"}'>
                 <i class="fas fa-link"></i>
                 <span>Muimi Club</span>
             </a>

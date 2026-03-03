@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap"
         rel="stylesheet">
     <style>
         :root {
@@ -33,6 +34,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            scrollbar-gutter: stable;
+        }
+
         body {
             font-family: 'Noto Sans SC', sans-serif;
             color: var(--ink);
@@ -42,6 +47,7 @@
                 radial-gradient(980px 560px at 8% 92%, rgba(42, 54, 69, 0.12), transparent 60%),
                 linear-gradient(180deg, #f8fafc 0%, var(--paper) 56%, #eef2f6 100%);
             padding-bottom: 124px;
+            scrollbar-gutter: stable;
         }
 
         body.player-active {
@@ -77,7 +83,7 @@
         .top-nav {
             position: sticky;
             top: 0;
-            z-index: 160;
+            z-index: 120;
             background: rgba(244, 246, 248, 0.84);
             backdrop-filter: blur(14px);
             border-bottom: 1px solid var(--line);
@@ -103,7 +109,9 @@
             color: var(--ink-soft);
             font-weight: 600;
             font-size: 14px;
-            padding: 10px 18px;
+            padding: 10px 0;
+            width: 80px;
+            text-align: center;
             border-radius: 999px;
             border: 1px solid transparent;
             transition: all 0.25s ease;
@@ -720,7 +728,8 @@
     <div class="footer">
         <div class="footer-links">
             <span class="link-label">友情链接</span>
-            <a href="https://muimi.club" target="_blank" rel="noopener" data-umami-event="friend_link_click" data-umami-props='{"site":"muimi.club", "from":"footer"}'>
+            <a href="https://muimi.club" target="_blank" rel="noopener" data-umami-event="friend_link_click"
+                data-umami-props='{"site":"muimi.club", "from":"footer"}'>
                 <i class="fas fa-link"></i>
                 <span>Muimi Club</span>
             </a>
@@ -741,7 +750,8 @@
                     </div>
                     <div class="mini-text">
                         <div class="mini-title"><span id="miniPlayerTitle">未选择</span></div>
-                        <div class="mini-sub"><span id="miniPlayerPlatform">-</span> • <span id="miniPlayerTime">00:00 / 00:00</span></div>
+                        <div class="mini-sub"><span id="miniPlayerPlatform">-</span> • <span id="miniPlayerTime">00:00 /
+                                00:00</span></div>
                     </div>
                 </div>
 
@@ -764,7 +774,8 @@
                             <div data-speed="0.25">0.25x</div>
                             <div data-speed="0.5">0.5x</div>
                             <div data-speed="0.75">0.75x</div>
-                            <div data-speed="1" style="color: #5D7B93; font-weight: 600; background: #f5f5f5;">1.0x</div>
+                            <div data-speed="1" style="color: #5D7B93; font-weight: 600; background: #f5f5f5;">1.0x
+                            </div>
                             <div data-speed="1.25">1.25x</div>
                             <div data-speed="1.5">1.5x</div>
                             <div data-speed="1.75">1.75x</div>
@@ -780,207 +791,207 @@
         </div>
         <audio id="audioPlayer" style="display: none;">您的浏览器不支持音频播放</audio>
     </div>
-        <script src="js/umami-config.js"></script>
-        <script src="js/analytics.js"></script>
-        <script>
-            let allEpisodes = [];
-            let filteredEpisodes = [];
-            let currentFilter = 'all';
-            let currentPlayer = null;
+    <script src="js/umami-config.js"></script>
+    <script src="js/analytics.js"></script>
+    <script>
+        let allEpisodes = [];
+        let filteredEpisodes = [];
+        let currentFilter = 'all';
+        let currentPlayer = null;
 
-            // 苹果播客 ID（可根据需要修改）
-            const APPLE_PODCAST_ID = '1825759955';
+        // 苹果播客 ID（可根据需要修改）
+        const APPLE_PODCAST_ID = '1825759955';
 
-            // 初始加载
-            window.addEventListener('DOMContentLoaded', function () {
-                loadPodcasts();
-            });
+        // 初始加载
+        window.addEventListener('DOMContentLoaded', function () {
+            loadPodcasts();
+        });
 
-            // 加载所有播客数据
-            async function loadPodcasts() {
-                try {
-                    // 显示加载状态
-                    document.getElementById('contentArea').innerHTML = `
+        // 加载所有播客数据
+        async function loadPodcasts() {
+            try {
+                // 显示加载状态
+                document.getElementById('contentArea').innerHTML = `
                     <div class="loading">
                         <i class="fas fa-spinner"></i>
                         <p>正在加载播客节目...</p>
                     </div>
                 `;
 
-                    // 加载苹果播客数据
-                    const appleEpisodes = await loadApplePodcasts();
+                // 加载苹果播客数据
+                const appleEpisodes = await loadApplePodcasts();
 
-                    // 合并所有剧集
-                    allEpisodes = [...appleEpisodes];
-                    filteredEpisodes = [...allEpisodes];
+                // 合并所有剧集
+                allEpisodes = [...appleEpisodes];
+                filteredEpisodes = [...allEpisodes];
 
-                    // 按日期排序（最新的优先）
-                    allEpisodes.sort((a, b) => new Date(b.date) - new Date(a.date));
-                    filteredEpisodes.sort((a, b) => new Date(b.date) - new Date(a.date));
-                    renderEpisodes();
-                } catch (error) {
-                    console.error('加载播客失败:', error);
-                    document.getElementById('contentArea').innerHTML = `
+                // 按日期排序（最新的优先）
+                allEpisodes.sort((a, b) => new Date(b.date) - new Date(a.date));
+                filteredEpisodes.sort((a, b) => new Date(b.date) - new Date(a.date));
+                renderEpisodes();
+            } catch (error) {
+                console.error('加载播客失败:', error);
+                document.getElementById('contentArea').innerHTML = `
                     <div class="empty-state">
                         <i class="fas fa-exclamation-triangle"></i>
                         <h3>加载失败</h3>
                         <p>无法获取播客数据，请检查网络连接或稍后重试</p>
                     </div>
                 `;
-                }
             }
+        }
 
-            // 从苹果播客加载 (使用 JSONP 避免 CORS 问题)
-            async function loadApplePodcasts() {
-                return new Promise((resolve, reject) => {
-                    try {
-                        // 创建唯一的回调函数名
-                        const callbackName = 'applePodcastCallback_' + Date.now();
+        // 从苹果播客加载 (使用 JSONP 避免 CORS 问题)
+        async function loadApplePodcasts() {
+            return new Promise((resolve, reject) => {
+                try {
+                    // 创建唯一的回调函数名
+                    const callbackName = 'applePodcastCallback_' + Date.now();
 
-                        // 定义回调函数
-                        window[callbackName] = function (data) {
-                            // 清理
-                            delete window[callbackName];
-                            document.body.removeChild(script);
+                    // 定义回调函数
+                    window[callbackName] = function (data) {
+                        // 清理
+                        delete window[callbackName];
+                        document.body.removeChild(script);
 
-                            const results = data.results || [];
-                            // 第一个结果是播客本身，后面才是剧集
-                            const collection = results[0];
-                            const collectionCover = collection ? (collection.artworkUrl600 || collection.artworkUrl100) : '';
-                            const episodes = results.slice(1);
+                        const results = data.results || [];
+                        // 第一个结果是播客本身，后面才是剧集
+                        const collection = results[0];
+                        const collectionCover = collection ? (collection.artworkUrl600 || collection.artworkUrl100) : '';
+                        const episodes = results.slice(1);
 
-                            const mappedEpisodes = episodes.map((ep, index) => ({
-                                id: `apple_${index}`,
-                                platform: 'apple',
-                                platformName: '苹果播客',
-                                title: ep.trackName || '未知标题',
-                                description: ep.description || '暂无描述',
-                                date: new Date(ep.releaseDate).toISOString().split('T')[0],
-                                duration: formatDuration(Math.round((ep.trackTimeMillis || 0) / 1000)),
-                                audioUrl: ep.episodeUrl || '',
-                                coverUrl: ep.artworkUrl600 || ep.artworkUrl100 || collectionCover || '',
-                                externalUrl: `https://podcasts.apple.com/cn/podcast/id${APPLE_PODCAST_ID}`
-                            }));
+                        const mappedEpisodes = episodes.map((ep, index) => ({
+                            id: `apple_${index}`,
+                            platform: 'apple',
+                            platformName: '苹果播客',
+                            title: ep.trackName || '未知标题',
+                            description: ep.description || '暂无描述',
+                            date: new Date(ep.releaseDate).toISOString().split('T')[0],
+                            duration: formatDuration(Math.round((ep.trackTimeMillis || 0) / 1000)),
+                            audioUrl: ep.episodeUrl || '',
+                            coverUrl: ep.artworkUrl600 || ep.artworkUrl100 || collectionCover || '',
+                            externalUrl: `https://podcasts.apple.com/cn/podcast/id${APPLE_PODCAST_ID}`
+                        }));
 
-                            resolve(mappedEpisodes);
-                        };
+                        resolve(mappedEpisodes);
+                    };
 
-                        // 创建 script 标签进行 JSONP 请求
-                        const script = document.createElement('script');
-                        script.src = `https://itunes.apple.com/lookup?id=${APPLE_PODCAST_ID}&country=CN&media=podcast&entity=podcastEpisode&limit=200&callback=${callbackName}`;
-                        script.onerror = function () {
-                            delete window[callbackName];
-                            document.body.removeChild(script);
-                            console.warn('苹果播客 JSONP 加载失败');
-                            resolve([]);
-                        };
-
-                        // 设置超时
-                        setTimeout(() => {
-                            if (window[callbackName]) {
-                                delete window[callbackName];
-                                if (script.parentNode) {
-                                    document.body.removeChild(script);
-                                }
-                                console.warn('苹果播客加载超时');
-                                resolve([]);
-                            }
-                        }, 10000);
-
-                        document.body.appendChild(script);
-                    } catch (error) {
-                        console.warn('苹果播客加载失败:', error);
+                    // 创建 script 标签进行 JSONP 请求
+                    const script = document.createElement('script');
+                    script.src = `https://itunes.apple.com/lookup?id=${APPLE_PODCAST_ID}&country=CN&media=podcast&entity=podcastEpisode&limit=200&callback=${callbackName}`;
+                    script.onerror = function () {
+                        delete window[callbackName];
+                        document.body.removeChild(script);
+                        console.warn('苹果播客 JSONP 加载失败');
                         resolve([]);
-                    }
-                });
-            }
+                    };
 
-            // 格式化时长（秒 -> HH:MM:SS）
-            function formatDuration(seconds) {
-                if (!seconds || seconds === 0) return '未知';
-                const hours = Math.floor(seconds / 3600);
-                const minutes = Math.floor((seconds % 3600) / 60);
-                const secs = seconds % 60;
-
-                if (hours > 0) {
-                    return `${hours}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
-                }
-                return `${minutes}:${String(secs).padStart(2, '0')}`;
-            }
-
-            // 过滤播客平台
-            function filterByPlatform(platform) {
-                currentFilter = platform;
-                trackEvent('podcast_filter_click', { platform: platform });
-                document.querySelectorAll('.filter-tab').forEach(tab => {
-                    tab.classList.remove('active');
-                });
-                if (typeof event !== 'undefined' && event.target && event.target.closest('.filter-tab')) {
-                    event.target.closest('.filter-tab').classList.add('active');
-                }
-
-                if (platform === 'all') {
-                    filteredEpisodes = [...allEpisodes];
-                } else {
-                    filteredEpisodes = allEpisodes.filter(ep => ep.platform === platform);
-                }
-                renderEpisodes();
-            }
-
-            // 搜索
-            function performSearch() {
-                const keyword = document.getElementById('searchInput').value.trim().toLowerCase();
-                if (keyword) {
-                    filteredEpisodes = allEpisodes.filter(ep => {
-                        const matchFilter = currentFilter === 'all' || ep.platform === currentFilter;
-                        const matchKeyword = ep.title.toLowerCase().includes(keyword) ||
-                            ep.description.toLowerCase().includes(keyword);
-                        return matchFilter && matchKeyword;
-                    });
-                } else {
-                    if (currentFilter === 'all') {
-                        filteredEpisodes = [...allEpisodes];
-                    } else {
-                        filteredEpisodes = allEpisodes.filter(ep => ep.platform === currentFilter);
-                    }
-                }
-                renderEpisodes();
-                trackEvent('podcast_search', {
-                    keyword: keyword || 'all',
-                    filter: currentFilter,
-                    result_count: filteredEpisodes.length
-                });
-            }
-
-            // 回车键搜索
-            window.addEventListener('DOMContentLoaded', function () {
-                const searchInput = document.getElementById('searchInput');
-                if (searchInput) {
-                    searchInput.addEventListener('keypress', function (e) {
-                        if (e.key === 'Enter') {
-                            performSearch();
+                    // 设置超时
+                    setTimeout(() => {
+                        if (window[callbackName]) {
+                            delete window[callbackName];
+                            if (script.parentNode) {
+                                document.body.removeChild(script);
+                            }
+                            console.warn('苹果播客加载超时');
+                            resolve([]);
                         }
-                    });
+                    }, 10000);
+
+                    document.body.appendChild(script);
+                } catch (error) {
+                    console.warn('苹果播客加载失败:', error);
+                    resolve([]);
                 }
             });
+        }
 
-            // 渲染剧集列表
-            // 渲染剧集列表
-            function renderEpisodes() {
-                const contentArea = document.getElementById('contentArea');
+        // 格式化时长（秒 -> HH:MM:SS）
+        function formatDuration(seconds) {
+            if (!seconds || seconds === 0) return '未知';
+            const hours = Math.floor(seconds / 3600);
+            const minutes = Math.floor((seconds % 3600) / 60);
+            const secs = seconds % 60;
 
-                if (filteredEpisodes.length === 0) {
-                    contentArea.innerHTML = `
+            if (hours > 0) {
+                return `${hours}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+            }
+            return `${minutes}:${String(secs).padStart(2, '0')}`;
+        }
+
+        // 过滤播客平台
+        function filterByPlatform(platform) {
+            currentFilter = platform;
+            trackEvent('podcast_filter_click', { platform: platform });
+            document.querySelectorAll('.filter-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            if (typeof event !== 'undefined' && event.target && event.target.closest('.filter-tab')) {
+                event.target.closest('.filter-tab').classList.add('active');
+            }
+
+            if (platform === 'all') {
+                filteredEpisodes = [...allEpisodes];
+            } else {
+                filteredEpisodes = allEpisodes.filter(ep => ep.platform === platform);
+            }
+            renderEpisodes();
+        }
+
+        // 搜索
+        function performSearch() {
+            const keyword = document.getElementById('searchInput').value.trim().toLowerCase();
+            if (keyword) {
+                filteredEpisodes = allEpisodes.filter(ep => {
+                    const matchFilter = currentFilter === 'all' || ep.platform === currentFilter;
+                    const matchKeyword = ep.title.toLowerCase().includes(keyword) ||
+                        ep.description.toLowerCase().includes(keyword);
+                    return matchFilter && matchKeyword;
+                });
+            } else {
+                if (currentFilter === 'all') {
+                    filteredEpisodes = [...allEpisodes];
+                } else {
+                    filteredEpisodes = allEpisodes.filter(ep => ep.platform === currentFilter);
+                }
+            }
+            renderEpisodes();
+            trackEvent('podcast_search', {
+                keyword: keyword || 'all',
+                filter: currentFilter,
+                result_count: filteredEpisodes.length
+            });
+        }
+
+        // 回车键搜索
+        window.addEventListener('DOMContentLoaded', function () {
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.addEventListener('keypress', function (e) {
+                    if (e.key === 'Enter') {
+                        performSearch();
+                    }
+                });
+            }
+        });
+
+        // 渲染剧集列表
+        // 渲染剧集列表
+        function renderEpisodes() {
+            const contentArea = document.getElementById('contentArea');
+
+            if (filteredEpisodes.length === 0) {
+                contentArea.innerHTML = `
                     <div class="empty-state">
                         <i class="fas fa-search"></i>
                         <h3>未找到匹配的节目</h3>
                         <p>请尝试其他搜索关键词或过滤条件</p>
                     </div>
                 `;
-                    return;
-                }
+                return;
+            }
 
-                const episodesHTML = filteredEpisodes.map((ep, index) => `
+            const episodesHTML = filteredEpisodes.map((ep, index) => `
                 <div class="episode-item" id="episode-${index}">
                     <img src="${ep.coverUrl}" class="episode-cover" alt="封面" onerror="this.src='images/article-placeholder.svg'">
                     <div class="episode-main">
@@ -1004,216 +1015,216 @@
                 </div>
             `).join('');
 
-                contentArea.innerHTML = `<div class="episodes-list">${episodesHTML}</div>`;
-            }
+            contentArea.innerHTML = `<div class="episodes-list">${episodesHTML}</div>`;
+        }
 
-            // 展开/收起摘要
-            function toggleShowNotes(index) {
-                const episodeElement = document.getElementById(`episode-${index}`);
-                const descElement = document.getElementById(`desc-${index}`);
-                const moreElement = document.getElementById(`more-${index}`);
-                const collapseElement = document.getElementById(`collapse-${index}`);
+        // 展开/收起摘要
+        function toggleShowNotes(index) {
+            const episodeElement = document.getElementById(`episode-${index}`);
+            const descElement = document.getElementById(`desc-${index}`);
+            const moreElement = document.getElementById(`more-${index}`);
+            const collapseElement = document.getElementById(`collapse-${index}`);
 
-                if (episodeElement) {
-                    episodeElement.classList.toggle('expanded');
+            if (episodeElement) {
+                episodeElement.classList.toggle('expanded');
 
-                    if (episodeElement.classList.contains('expanded')) {
-                        // 展开：显示完整内容，隐藏MORE，显示收起
-                        descElement.style.display = 'block';
-                        moreElement.style.display = 'none';
-                        collapseElement.style.display = 'inline-block';
-                    } else {
-                        // 收起：显示2行，显示MORE，隐藏收起
-                        descElement.style.display = '-webkit-box';
-                        moreElement.style.display = 'inline-block';
-                        collapseElement.style.display = 'none';
-                    }
-                }
-            }
-
-            // 播放剧集
-            // 播放剧集
-            // 播放剧集
-            function playEpisode(episodeIndex) {
-                const episode = filteredEpisodes[episodeIndex];
-                if (!episode) return;
-
-                trackEvent('podcast_play_click', {
-                    episode_id: episode.id,
-                    platform: episode.platform
-                });
-
-                currentPlayer = episode;
-
-                // 更新迷你播放器
-                document.getElementById('miniPlayerTitle').textContent = episode.title;
-                document.getElementById('miniPlayerPlatform').textContent = episode.platformName;
-
-                // 设置音频源
-                const audioPlayer = document.getElementById('audioPlayer');
-                if (episode.audioUrl) {
-                    audioPlayer.src = episode.audioUrl;
-                    audioPlayer.load();
-                    audioPlayer.play().catch(error => {
-                        console.warn('播放失败:', error);
-                        alert('无法播放此剧集，可能是音频链接失效或不支持跨域访问');
-                    });
+                if (episodeElement.classList.contains('expanded')) {
+                    // 展开：显示完整内容，隐藏MORE，显示收起
+                    descElement.style.display = 'block';
+                    moreElement.style.display = 'none';
+                    collapseElement.style.display = 'inline-block';
                 } else {
-                    console.warn('该剧集没有音频 URL:', episode.title);
-                    alert('该剧集暂无音频');
-                    return;
-                }
-
-                // 显示迷你播放器并更新样式
-                document.getElementById('miniPlayer').style.display = 'block';
-                document.body.classList.add('player-active');
-
-                // 更新播放按钮
-                updatePlayButton();
-
-                // 监听播放器事件
-                audioPlayer.addEventListener('play', updatePlayButton);
-                audioPlayer.addEventListener('pause', updatePlayButton);
-                audioPlayer.addEventListener('timeupdate', updateProgress);
-            }
-
-            // 更新播放按钮状态
-            function updatePlayButton() {
-                const audioPlayer = document.getElementById('audioPlayer');
-                const btn = document.getElementById('playToggleBtn');
-                if (audioPlayer.paused) {
-                    btn.innerHTML = '<i class="fas fa-play"></i>';
-                } else {
-                    btn.innerHTML = '<i class="fas fa-pause"></i>';
+                    // 收起：显示2行，显示MORE，隐藏收起
+                    descElement.style.display = '-webkit-box';
+                    moreElement.style.display = 'inline-block';
+                    collapseElement.style.display = 'none';
                 }
             }
+        }
 
-            // 更新进度条
-            function updateProgress() {
-                const audioPlayer = document.getElementById('audioPlayer');
-                const progressBar = document.getElementById('progressBar');
-                const timeDisplay = document.getElementById('miniPlayerTime');
+        // 播放剧集
+        // 播放剧集
+        // 播放剧集
+        function playEpisode(episodeIndex) {
+            const episode = filteredEpisodes[episodeIndex];
+            if (!episode) return;
 
-                if (audioPlayer.duration) {
-                    const percent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-                    progressBar.style.width = percent + '%';
-
-                    const current = formatTime(audioPlayer.currentTime);
-                    const total = formatTime(audioPlayer.duration);
-                    timeDisplay.textContent = current + ' / ' + total;
-                }
-            }
-
-            // 格式化时间显示
-            function formatTime(seconds) {
-                if (isNaN(seconds)) return '00:00';
-                const mins = Math.floor(seconds / 60);
-                const secs = Math.floor(seconds % 60);
-                return String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
-            }
-
-            // 关闭迷你播放器
-            function closeMiniPlayer() {
-                const audioPlayer = document.getElementById('audioPlayer');
-                audioPlayer.pause();
-                document.getElementById('miniPlayer').style.display = 'none';
-                document.body.classList.remove('player-active');
-            }
-
-            // 播放/暂停
-            document.addEventListener('DOMContentLoaded', function () {
-                const playToggleBtn = document.getElementById('playToggleBtn');
-                if (playToggleBtn) {
-                    playToggleBtn.addEventListener('click', function (e) {
-                        e.stopPropagation();
-                        const audioPlayer = document.getElementById('audioPlayer');
-                        if (audioPlayer.paused) {
-                            audioPlayer.play();
-                        } else {
-                            audioPlayer.pause();
-                        }
-                    });
-                }
-
-                // 速度控制菜单
-                const speedBtn = document.getElementById('speedBtn');
-                const speedMenu = document.getElementById('speedMenu');
-                if (speedBtn && speedMenu) {
-                    speedBtn.addEventListener('click', function (e) {
-                        e.stopPropagation();
-                        speedMenu.style.display = speedMenu.style.display === 'none' ? 'block' : 'none';
-                    });
-
-                    // 为每个速度选项添加点击处理
-                    const speedOptions = speedMenu.querySelectorAll('[data-speed]');
-                    speedOptions.forEach(option => {
-                        option.addEventListener('click', function (e) {
-                            e.stopPropagation();
-                            const speed = parseFloat(this.getAttribute('data-speed'));
-                            const audioPlayer = document.getElementById('audioPlayer');
-                            audioPlayer.playbackRate = speed;
-                            trackEvent('podcast_speed_change', { speed: speed });
-
-                            // 更新按钮显示
-                            speedBtn.textContent = speed === 1 ? '1x' : speed.toFixed(2) + 'x';
-
-                            // 更新菜单项的样式
-                            speedOptions.forEach(opt => {
-                                const optSpeed = parseFloat(opt.getAttribute('data-speed'));
-                                if (optSpeed === speed) {
-                                    opt.style.color = '#5D7B93';
-                                    opt.style.fontWeight = '600';
-                                    opt.style.background = '#f5f5f5';
-                                } else {
-                                    opt.style.color = '#666';
-                                    opt.style.fontWeight = '400';
-                                    opt.style.background = 'transparent';
-                                }
-                            });
-
-                            // 关闭菜单
-                            speedMenu.style.display = 'none';
-                        });
-
-                        // 悬停效果
-                        option.addEventListener('mouseenter', function () {
-                            this.style.background = '#fafafa';
-                        });
-                        option.addEventListener('mouseleave', function () {
-                            const speed = parseFloat(this.getAttribute('data-speed'));
-                            const currentSpeed = document.getElementById('audioPlayer').playbackRate;
-                            if (speed !== currentSpeed) {
-                                this.style.background = 'transparent';
-                            }
-                        });
-                    });
-
-                    // 点击其他地方关闭菜单
-                    document.addEventListener('click', function (e) {
-                        if (!speedBtn.contains(e.target) && !speedMenu.contains(e.target)) {
-                            speedMenu.style.display = 'none';
-                        }
-                    });
-                }
-
-                // 音量控制滑块
-                const volumeSlider = document.getElementById('volumeSlider');
-                const audioPlayer = document.getElementById('audioPlayer');
-                if (volumeSlider && audioPlayer) {
-                    volumeSlider.addEventListener('input', function (e) {
-                        audioPlayer.volume = this.value / 100;
-                    });
-                }
+            trackEvent('podcast_play_click', {
+                episode_id: episode.id,
+                platform: episode.platform
             });
 
+            currentPlayer = episode;
 
-            // 日期格式化
-            function formatDate(dateString) {
-                const date = new Date(dateString);
-                const options = { year: 'numeric', month: 'short', day: 'numeric' };
-                return date.toLocaleDateString('zh-CN', options);
+            // 更新迷你播放器
+            document.getElementById('miniPlayerTitle').textContent = episode.title;
+            document.getElementById('miniPlayerPlatform').textContent = episode.platformName;
+
+            // 设置音频源
+            const audioPlayer = document.getElementById('audioPlayer');
+            if (episode.audioUrl) {
+                audioPlayer.src = episode.audioUrl;
+                audioPlayer.load();
+                audioPlayer.play().catch(error => {
+                    console.warn('播放失败:', error);
+                    alert('无法播放此剧集，可能是音频链接失效或不支持跨域访问');
+                });
+            } else {
+                console.warn('该剧集没有音频 URL:', episode.title);
+                alert('该剧集暂无音频');
+                return;
             }
-        </script>
+
+            // 显示迷你播放器并更新样式
+            document.getElementById('miniPlayer').style.display = 'block';
+            document.body.classList.add('player-active');
+
+            // 更新播放按钮
+            updatePlayButton();
+
+            // 监听播放器事件
+            audioPlayer.addEventListener('play', updatePlayButton);
+            audioPlayer.addEventListener('pause', updatePlayButton);
+            audioPlayer.addEventListener('timeupdate', updateProgress);
+        }
+
+        // 更新播放按钮状态
+        function updatePlayButton() {
+            const audioPlayer = document.getElementById('audioPlayer');
+            const btn = document.getElementById('playToggleBtn');
+            if (audioPlayer.paused) {
+                btn.innerHTML = '<i class="fas fa-play"></i>';
+            } else {
+                btn.innerHTML = '<i class="fas fa-pause"></i>';
+            }
+        }
+
+        // 更新进度条
+        function updateProgress() {
+            const audioPlayer = document.getElementById('audioPlayer');
+            const progressBar = document.getElementById('progressBar');
+            const timeDisplay = document.getElementById('miniPlayerTime');
+
+            if (audioPlayer.duration) {
+                const percent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+                progressBar.style.width = percent + '%';
+
+                const current = formatTime(audioPlayer.currentTime);
+                const total = formatTime(audioPlayer.duration);
+                timeDisplay.textContent = current + ' / ' + total;
+            }
+        }
+
+        // 格式化时间显示
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return '00:00';
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
+        }
+
+        // 关闭迷你播放器
+        function closeMiniPlayer() {
+            const audioPlayer = document.getElementById('audioPlayer');
+            audioPlayer.pause();
+            document.getElementById('miniPlayer').style.display = 'none';
+            document.body.classList.remove('player-active');
+        }
+
+        // 播放/暂停
+        document.addEventListener('DOMContentLoaded', function () {
+            const playToggleBtn = document.getElementById('playToggleBtn');
+            if (playToggleBtn) {
+                playToggleBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    const audioPlayer = document.getElementById('audioPlayer');
+                    if (audioPlayer.paused) {
+                        audioPlayer.play();
+                    } else {
+                        audioPlayer.pause();
+                    }
+                });
+            }
+
+            // 速度控制菜单
+            const speedBtn = document.getElementById('speedBtn');
+            const speedMenu = document.getElementById('speedMenu');
+            if (speedBtn && speedMenu) {
+                speedBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    speedMenu.style.display = speedMenu.style.display === 'none' ? 'block' : 'none';
+                });
+
+                // 为每个速度选项添加点击处理
+                const speedOptions = speedMenu.querySelectorAll('[data-speed]');
+                speedOptions.forEach(option => {
+                    option.addEventListener('click', function (e) {
+                        e.stopPropagation();
+                        const speed = parseFloat(this.getAttribute('data-speed'));
+                        const audioPlayer = document.getElementById('audioPlayer');
+                        audioPlayer.playbackRate = speed;
+                        trackEvent('podcast_speed_change', { speed: speed });
+
+                        // 更新按钮显示
+                        speedBtn.textContent = speed === 1 ? '1x' : speed.toFixed(2) + 'x';
+
+                        // 更新菜单项的样式
+                        speedOptions.forEach(opt => {
+                            const optSpeed = parseFloat(opt.getAttribute('data-speed'));
+                            if (optSpeed === speed) {
+                                opt.style.color = '#5D7B93';
+                                opt.style.fontWeight = '600';
+                                opt.style.background = '#f5f5f5';
+                            } else {
+                                opt.style.color = '#666';
+                                opt.style.fontWeight = '400';
+                                opt.style.background = 'transparent';
+                            }
+                        });
+
+                        // 关闭菜单
+                        speedMenu.style.display = 'none';
+                    });
+
+                    // 悬停效果
+                    option.addEventListener('mouseenter', function () {
+                        this.style.background = '#fafafa';
+                    });
+                    option.addEventListener('mouseleave', function () {
+                        const speed = parseFloat(this.getAttribute('data-speed'));
+                        const currentSpeed = document.getElementById('audioPlayer').playbackRate;
+                        if (speed !== currentSpeed) {
+                            this.style.background = 'transparent';
+                        }
+                    });
+                });
+
+                // 点击其他地方关闭菜单
+                document.addEventListener('click', function (e) {
+                    if (!speedBtn.contains(e.target) && !speedMenu.contains(e.target)) {
+                        speedMenu.style.display = 'none';
+                    }
+                });
+            }
+
+            // 音量控制滑块
+            const volumeSlider = document.getElementById('volumeSlider');
+            const audioPlayer = document.getElementById('audioPlayer');
+            if (volumeSlider && audioPlayer) {
+                volumeSlider.addEventListener('input', function (e) {
+                    audioPlayer.volume = this.value / 100;
+                });
+            }
+        });
+
+
+        // 日期格式化
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const options = { year: 'numeric', month: 'short', day: 'numeric' };
+            return date.toLocaleDateString('zh-CN', options);
+        }
+    </script>
 </body>
 
 </html>

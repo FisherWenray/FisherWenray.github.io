@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap"
         rel="stylesheet">
     <style>
         :root {
@@ -33,6 +34,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            scrollbar-gutter: stable;
+        }
+
         body {
             font-family: 'Noto Sans SC', sans-serif;
             color: var(--ink);
@@ -41,6 +46,7 @@
                 radial-gradient(1200px 620px at 88% 6%, rgba(var(--primary-rgb), 0.22), transparent 62%),
                 radial-gradient(980px 560px at 8% 92%, rgba(42, 54, 69, 0.12), transparent 60%),
                 linear-gradient(180deg, #f8fafc 0%, var(--paper) 56%, #eef2f6 100%);
+            scrollbar-gutter: stable;
         }
 
         body::before {
@@ -72,7 +78,7 @@
         .top-nav {
             position: sticky;
             top: 0;
-            z-index: 140;
+            z-index: 120;
             background: rgba(244, 246, 248, 0.84);
             backdrop-filter: blur(14px);
             border-bottom: 1px solid var(--line);
@@ -98,7 +104,9 @@
             color: var(--ink-soft);
             font-weight: 600;
             font-size: 14px;
-            padding: 10px 18px;
+            padding: 10px 0;
+            width: 80px;
+            text-align: center;
             border-radius: 999px;
             border: 1px solid transparent;
             transition: all 0.25s ease;
@@ -376,13 +384,15 @@
                         一个收录 5000+ 标签和链接的导航页，精心整理各类优质网站资源，帮助你快速找到所需内容。支持分类浏览，欢迎大家一起补充和修订。
                     </p>
                     <div class="card-actions">
-                        <a href="https://nav.wenyaoyefei.com" target="_blank" rel="noopener" class="card-btn card-btn-primary"
-                            data-umami-event="software_link_click" data-umami-props='{"target":"bookmark_site"}'>
+                        <a href="https://nav.wenyaoyefei.com" target="_blank" rel="noopener"
+                            class="card-btn card-btn-primary" data-umami-event="software_link_click"
+                            data-umami-props='{"target":"bookmark_site"}'>
                             <i class="fas fa-external-link-alt"></i>
                             访问网站
                         </a>
-                        <a href="https://github.com/FisherWenray/bookmark" target="_blank" rel="noopener" class="card-btn card-btn-secondary"
-                            data-umami-event="software_link_click" data-umami-props='{"target":"bookmark_github"}'>
+                        <a href="https://github.com/FisherWenray/bookmark" target="_blank" rel="noopener"
+                            class="card-btn card-btn-secondary" data-umami-event="software_link_click"
+                            data-umami-props='{"target":"bookmark_github"}'>
                             <i class="fab fa-github"></i>
                             GitHub
                         </a>
@@ -395,7 +405,8 @@
     <div class="footer">
         <div class="footer-links">
             <span class="link-label">友情链接</span>
-            <a href="https://muimi.club" target="_blank" rel="noopener" data-umami-event="friend_link_click" data-umami-props='{"site":"muimi.club", "from":"footer"}'>
+            <a href="https://muimi.club" target="_blank" rel="noopener" data-umami-event="friend_link_click"
+                data-umami-props='{"site":"muimi.club", "from":"footer"}'>
                 <i class="fas fa-link"></i>
                 <span>Muimi Club</span>
             </a>

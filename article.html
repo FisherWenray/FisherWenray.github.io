@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
@@ -19,21 +20,24 @@
             --primary-rgb: 93, 123, 147;
             --deep: #2A3645;
             --gold: #c5b358;
-            --ink: #263038;
-            --ink-soft: #616c78;
+            --ink: #273039;
+            --ink-soft: #5f6a75;
             --paper: #f4f6f8;
-            --surface: rgba(255, 255, 255, 0.88);
-            --line: rgba(93, 123, 147, 0.2);
-            --radius-xl: 22px;
-            --radius-lg: 16px;
-            --radius-sm: 10px;
-            --shadow: 0 20px 46px rgba(28, 39, 50, 0.14);
+            --surface: rgba(255, 255, 255, 0.86);
+            --line: rgba(93, 123, 147, 0.22);
+            --radius-lg: 20px;
+            --radius-md: 14px;
+            --shadow: 0 20px 44px rgba(28, 39, 50, 0.13);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html {
+            scrollbar-gutter: stable;
         }
 
         body {
@@ -44,6 +48,7 @@
                 radial-gradient(1200px 620px at 88% 6%, rgba(var(--primary-rgb), 0.22), transparent 62%),
                 radial-gradient(980px 560px at 8% 92%, rgba(42, 54, 69, 0.12), transparent 60%),
                 linear-gradient(180deg, #f8fafc 0%, var(--paper) 56%, #eef2f6 100%);
+            scrollbar-gutter: stable;
         }
 
         body::before {
@@ -75,7 +80,7 @@
         .top-nav {
             position: sticky;
             top: 0;
-            z-index: 140;
+            z-index: 120;
             background: rgba(244, 246, 248, 0.84);
             backdrop-filter: blur(14px);
             border-bottom: 1px solid var(--line);
@@ -86,7 +91,7 @@
             margin: 0 auto;
         }
 
-        .top-nav .nav-links {
+        .nav-links {
             display: flex;
             justify-content: center;
             list-style: none;
@@ -95,19 +100,22 @@
             padding: 14px 0;
         }
 
-        .top-nav .nav-links a {
+        .nav-links a {
+            display: block;
             text-decoration: none;
             color: var(--ink-soft);
             font-weight: 600;
             font-size: 14px;
-            padding: 10px 18px;
+            padding: 10px 0;
+            width: 80px;
+            text-align: center;
             border-radius: 999px;
             border: 1px solid transparent;
             transition: all 0.25s ease;
         }
 
-        .top-nav .nav-links a:hover,
-        .top-nav .nav-links a.active {
+        .nav-links a:hover,
+        .nav-links a.active {
             color: var(--primary);
             border-color: rgba(var(--primary-rgb), 0.36);
             background: rgba(var(--primary-rgb), 0.08);
@@ -546,7 +554,8 @@
     <div class="footer">
         <div class="footer-links">
             <span class="link-label">友情链接</span>
-            <a href="https://muimi.club" target="_blank" rel="noopener" data-umami-event="friend_link_click" data-umami-props='{"site":"muimi.club", "from":"footer"}'>
+            <a href="https://muimi.club" target="_blank" rel="noopener" data-umami-event="friend_link_click"
+                data-umami-props='{"site":"muimi.club", "from":"footer"}'>
                 <i class="fas fa-link"></i>
                 <span>Muimi Club</span>
             </a>
