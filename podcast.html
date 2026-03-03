@@ -227,6 +227,57 @@
             background: linear-gradient(135deg, var(--primary), var(--deep));
         }
 
+        /* 友情链接样式 */
+        .friend-links-card {
+            margin-top: 24px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--line);
+            background: var(--surface);
+            box-shadow: var(--shadow);
+            padding: clamp(16px, 3vw, 24px);
+            text-align: center;
+        }
+
+        .friend-links-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .friend-links-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .friend-link {
+            text-decoration: none;
+            color: var(--ink-soft);
+            background: rgba(var(--primary-rgb), 0.08);
+            border: 1px solid rgba(var(--primary-rgb), 0.22);
+            padding: 8px 18px;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .friend-link:hover {
+            color: var(--primary);
+            background: rgba(var(--primary-rgb), 0.15);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
         .loading {
             text-align: center;
             padding: 42px 20px;
@@ -674,6 +725,20 @@
                     <i class="fas fa-spinner"></i>
                     <p>正在加载播客节目...</p>
                 </div>
+            </div>
+        </div>
+
+        <div class="friend-links-card">
+            <div class="friend-links-title">
+                <i class="fas fa-link"></i>
+                <span>友情链接</span>
+            </div>
+            <div class="friend-links-container">
+                <a href="https://muimi.club" target="_blank" rel="noopener" class="friend-link" title="Muimi Club"
+                    data-umami-event="friend_link_click" data-umami-props='{"site":"muimi.club", "from":"podcast"}'>
+                    <i class="fas fa-link"></i>
+                    <span>Muimi Club</span>
+                </a>
             </div>
         </div>
     </div>
