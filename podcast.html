@@ -9,6 +9,13 @@
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- 预连接 Apple API 和图片 CDN，减少 DNS/TLS 延迟 -->
+    <link rel="preconnect" href="https://itunes.apple.com">
+    <link rel="dns-prefetch" href="https://is1-ssl.mzstatic.com">
+    <link rel="dns-prefetch" href="https://is2-ssl.mzstatic.com">
+    <link rel="dns-prefetch" href="https://is3-ssl.mzstatic.com">
+    <link rel="dns-prefetch" href="https://is4-ssl.mzstatic.com">
+    <link rel="dns-prefetch" href="https://is5-ssl.mzstatic.com">
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap"
         rel="stylesheet">
@@ -294,6 +301,69 @@
 
             to {
                 transform: rotate(360deg);
+            }
+        }
+
+        /* 骨架屏样式 */
+        .episode-skeleton {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.86);
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(var(--primary-rgb), 0.2);
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .skel-cover {
+            width: 132px;
+            height: 100px;
+            background: linear-gradient(110deg, #e4e8ec 30%, #f0f2f4 50%, #e4e8ec 70%);
+            background-size: 200% 100%;
+            animation: skel-pulse 1.4s ease-in-out infinite;
+            flex-shrink: 0;
+        }
+
+        .skel-info {
+            flex: 1;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .skel-line {
+            height: 12px;
+            border-radius: 6px;
+            background: linear-gradient(110deg, #e4e8ec 30%, #f0f2f4 50%, #e4e8ec 70%);
+            background-size: 200% 100%;
+            animation: skel-pulse 1.4s ease-in-out infinite;
+        }
+
+        .skel-title {
+            width: 55%;
+            height: 16px;
+        }
+
+        .skel-meta {
+            width: 30%;
+        }
+
+        .skel-desc {
+            width: 90%;
+        }
+
+        .skel-desc2 {
+            width: 70%;
+        }
+
+        @keyframes skel-pulse {
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
             }
         }
 
@@ -719,9 +789,34 @@
             </div>
 
             <div id="contentArea">
-                <div class="loading">
-                    <i class="fas fa-spinner"></i>
-                    <p>正在加载播客节目...</p>
+                <div class="episodes-list">
+                    <div class="episode-skeleton" aria-hidden="true">
+                        <div class="skel-cover"></div>
+                        <div class="skel-info">
+                            <div class="skel-line skel-title"></div>
+                            <div class="skel-line skel-meta"></div>
+                            <div class="skel-line skel-desc"></div>
+                            <div class="skel-line skel-desc2"></div>
+                        </div>
+                    </div>
+                    <div class="episode-skeleton" aria-hidden="true">
+                        <div class="skel-cover"></div>
+                        <div class="skel-info">
+                            <div class="skel-line skel-title"></div>
+                            <div class="skel-line skel-meta"></div>
+                            <div class="skel-line skel-desc"></div>
+                            <div class="skel-line skel-desc2"></div>
+                        </div>
+                    </div>
+                    <div class="episode-skeleton" aria-hidden="true">
+                        <div class="skel-cover"></div>
+                        <div class="skel-info">
+                            <div class="skel-line skel-title"></div>
+                            <div class="skel-line skel-meta"></div>
+                            <div class="skel-line skel-desc"></div>
+                            <div class="skel-line skel-desc2"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -812,13 +907,7 @@
         // 加载所有播客数据
         async function loadPodcasts() {
             try {
-                // 显示加载状态
-                document.getElementById('contentArea').innerHTML = `
-                    <div class="loading">
-                        <i class="fas fa-spinner"></i>
-                        <p>正在加载播客节目...</p>
-                    </div>
-                `;
+                // 骨架屏已由 HTML 提供,直接开始加载数据
 
                 // 加载苹果播客数据
                 const appleEpisodes = await loadApplePodcasts();
@@ -859,8 +948,14 @@
                         const results = data.results || [];
                         // 第一个结果是播客本身，后面才是剧集
                         const collection = results[0];
-                        const collectionCover = collection ? (collection.artworkUrl600 || collection.artworkUrl100) : '';
+                        const collectionCover = collection ? (collection.artworkUrl100 || '') : '';
                         const episodes = results.slice(1);
+
+                        // 将 100px 封面替换为 200px 版本（比 600px 小很多，但对 132px 显示足够清晰）
+                        function optimizeCover(url) {
+                            if (!url) return collectionCover;
+                            return url.replace(/100x100/, '200x200');
+                        }
 
                         const mappedEpisodes = episodes.map((ep, index) => ({
                             id: `apple_${index}`,
@@ -871,7 +966,7 @@
                             date: new Date(ep.releaseDate).toISOString().split('T')[0],
                             duration: formatDuration(Math.round((ep.trackTimeMillis || 0) / 1000)),
                             audioUrl: ep.episodeUrl || '',
-                            coverUrl: ep.artworkUrl600 || ep.artworkUrl100 || collectionCover || '',
+                            coverUrl: optimizeCover(ep.artworkUrl100),
                             externalUrl: `https://podcasts.apple.com/cn/podcast/id${APPLE_PODCAST_ID}`
                         }));
 
@@ -995,7 +1090,7 @@
 
             const episodesHTML = filteredEpisodes.map((ep, index) => `
                 <div class="episode-item" id="episode-${index}">
-                    <img src="${ep.coverUrl}" class="episode-cover" alt="封面" onerror="this.src='images/article-placeholder.svg'">
+                    <img src="${ep.coverUrl}" class="episode-cover" alt="封面" loading="lazy" decoding="async" onerror="this.src='images/article-placeholder.svg'">
                     <div class="episode-main">
                         <div class="play-btn-icon" onclick="event.stopPropagation(); playEpisode(${index})">
                             <i class="fas fa-play"></i>
