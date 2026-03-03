@@ -13,10 +13,9 @@
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap"
         rel="stylesheet">
 
-    <!-- 引入 APlayer 和 MetingJS -->
+    <!-- 引入 APlayer -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
     <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script>
 
     <style>
         :root {
@@ -165,7 +164,7 @@
             gap: 24px;
         }
 
-        /* 自定义 MetingJS/APlayer 样式 */
+        /* 自定义 APlayer 样式 */
         .aplayer {
             border-radius: var(--radius-md) !important;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
@@ -175,6 +174,21 @@
 
         .aplayer .aplayer-info {
             padding: 14px 15px !important;
+        }
+
+        /* 修复播放/暂停按钮在封面上的定位 */
+        .aplayer .aplayer-pic {
+            position: relative !important;
+        }
+
+        .aplayer .aplayer-pic .aplayer-button {
+            position: absolute !important;
+            top: 50% !important;
+            left: 50% !important;
+            right: auto !important;
+            bottom: auto !important;
+            transform: translate(-50%, -50%) !important;
+            margin: 0 !important;
         }
 
         /* 歌词区域始终显示 */
@@ -200,6 +214,13 @@
             color: var(--primary) !important;
             font-weight: 700 !important;
             font-size: 15px !important;
+        }
+
+        .music-hint {
+            text-align: center;
+            font-size: 13px;
+            color: var(--ink-soft);
+            margin-top: 10px;
         }
 
         .footer {
@@ -272,12 +293,8 @@
         </div>
 
         <div class="music-card">
-            <!-- MetingJS 组件 - lrc-type="1" 使用网易云歌词API -->
-            <meting-js server="netease" type="song" id="3353644885" theme="#5D7B93" fixed="false" autoplay="false"
-                loop="all" order="list" preload="auto" list-folded="false" list-max-height="340px" lrc-type="1">
-            </meting-js>
-
-            <p style="text-align: center; font-size: 13px; color: var(--ink-soft); margin-top: 10px;">
+            <div id="aplayer"></div>
+            <p class="music-hint">
                 <i class="fas fa-music"></i> 点击播放即可查看实时滚动歌词
             </p>
         </div>
@@ -298,41 +315,51 @@
     <script src="js/umami-config.js"></script>
     <script src="js/analytics.js"></script>
     <script>
-        // 等待 MetingJS 初始化 APlayer 后强制展开歌词
-        (function () {
-            let attempts = 0;
-            const maxAttempts = 50;
+        // 手动初始化 APlayer，从 Meting API 获取歌曲信息和歌词
+        (async function () {
+            const METING_API = 'https://api.i-meto.com/meting/api';
+            const SONG_ID = '3353644885';
 
-            function ensureLyricsVisible() {
-                const lrcElements = document.querySelectorAll('.aplayer-lrc');
-                if (lrcElements.length > 0) {
-                    lrcElements.forEach(function (lrc) {
-                        lrc.style.display = 'block';
-                    });
-                    // 同时确保歌词切换按钮处于激活状态
-                    const lrcBtns = document.querySelectorAll('.aplayer-icon-lrc');
-                    lrcBtns.forEach(function (btn) {
-                        // 检查是否歌词已隐藏，如果隐藏则点击展开
-                        const lrcContainer = btn.closest('.aplayer').querySelector('.aplayer-lrc');
-                        if (lrcContainer && lrcContainer.classList.contains('aplayer-lrc-hide')) {
-                            btn.click();
-                        }
-                    });
+            try {
+                // 1. 获取歌曲基本信息
+                const infoRes = await fetch(`${METING_API}?server=netease&type=song&id=${SONG_ID}`);
+                const songList = await infoRes.json();
+                if (!songList || songList.length === 0) {
+                    document.getElementById('aplayer').innerHTML = '<p style="text-align:center;padding:20px;color:#999;">歌曲信息加载失败</p>';
                     return;
                 }
-                attempts++;
-                if (attempts < maxAttempts) {
-                    setTimeout(ensureLyricsVisible, 200);
-                }
-            }
+                const song = songList[0];
 
-            // DOM加载后开始检测
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', function () {
-                    setTimeout(ensureLyricsVisible, 500);
+                // 2. 获取歌词
+                let lrcText = '';
+                try {
+                    const lrcRes = await fetch(song.lrc);
+                    lrcText = await lrcRes.text();
+                } catch (e) {
+                    console.warn('歌词加载失败:', e);
+                    lrcText = '[00:00.00]暂无歌词';
+                }
+
+                // 3. 初始化 APlayer
+                const ap = new APlayer({
+                    container: document.getElementById('aplayer'),
+                    theme: '#5D7B93',
+                    autoplay: false,
+                    loop: 'all',
+                    preload: 'auto',
+                    lrcType: 1,
+                    audio: [{
+                        name: song.title,
+                        artist: song.author,
+                        url: song.url,
+                        cover: song.pic,
+                        lrc: lrcText
+                    }]
                 });
-            } else {
-                setTimeout(ensureLyricsVisible, 500);
+
+            } catch (err) {
+                console.error('播放器初始化失败:', err);
+                document.getElementById('aplayer').innerHTML = '<p style="text-align:center;padding:20px;color:#999;">播放器加载失败，请刷新重试</p>';
             }
         })();
     </script>
