@@ -311,7 +311,6 @@
             border: 1px solid rgba(var(--primary-rgb), 0.2);
             border-left: 3px solid var(--gold);
             overflow: hidden;
-            min-height: 132px;
             transition: all 0.3s ease;
         }
 
@@ -322,10 +321,12 @@
         }
 
         .episode-cover {
-            width: 138px;
-            height: 138px;
+            width: 132px;
+            height: auto;
+            min-height: 100%;
             object-fit: cover;
             flex-shrink: 0;
+            display: block;
         }
 
         .episode-main {
