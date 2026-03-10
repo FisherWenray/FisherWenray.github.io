@@ -16,6 +16,9 @@
     <link rel="dns-prefetch" href="https://is3-ssl.mzstatic.com">
     <link rel="dns-prefetch" href="https://is4-ssl.mzstatic.com">
     <link rel="dns-prefetch" href="https://is5-ssl.mzstatic.com">
+    <!-- 引入 APlayer -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap"
         rel="stylesheet">
@@ -53,12 +56,7 @@
                 radial-gradient(1200px 620px at 88% 6%, rgba(var(--primary-rgb), 0.22), transparent 62%),
                 radial-gradient(980px 560px at 8% 92%, rgba(42, 54, 69, 0.12), transparent 60%),
                 linear-gradient(180deg, #f8fafc 0%, var(--paper) 56%, #eef2f6 100%);
-            padding-bottom: 124px;
             scrollbar-gutter: stable;
-        }
-
-        body.player-active {
-            padding-bottom: 148px;
         }
 
         body::before {
@@ -520,191 +518,7 @@
             font-size: 14px;
             color: #8a96a2;
         }
-
-        .mini-player {
-            display: none;
-            position: fixed;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 190;
-            border-top: 1px solid rgba(var(--primary-rgb), 0.25);
-            background: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 -8px 24px rgba(18, 27, 36, 0.16);
-        }
-
-        .mini-player-inner {
-            width: min(1200px, 96vw);
-            margin: 0 auto;
-            padding: 10px 0 12px;
-        }
-
-        .mini-progress-track {
-            width: 100%;
-            height: 4px;
-            background: rgba(var(--primary-rgb), 0.15);
-            border-radius: 99px;
-            margin-bottom: 10px;
-            cursor: pointer;
-            overflow: hidden;
-        }
-
-        #progressBar {
-            height: 100%;
-            width: 0;
-            background: linear-gradient(135deg, var(--primary), var(--deep));
-            border-radius: 99px;
-        }
-
-        .mini-main {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .mini-info {
-            flex: 1;
-            min-width: 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .mini-icon {
-            width: 46px;
-            height: 46px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, var(--primary), var(--deep));
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            font-size: 20px;
-        }
-
-        .mini-text {
-            min-width: 0;
-        }
-
-        .mini-title {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--ink);
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        .mini-sub {
-            font-size: 12px;
-            color: #8a96a2;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        .mini-controls {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            flex-shrink: 0;
-        }
-
-        .icon-btn {
-            width: 38px;
-            height: 38px;
-            border: none;
-            background: transparent;
-            color: #8a96a2;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-size: 17px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .icon-btn:hover {
-            color: var(--primary);
-            background: rgba(var(--primary-rgb), 0.1);
-        }
-
-        .icon-btn.primary {
-            width: 42px;
-            height: 42px;
-            color: #fff;
-            background: linear-gradient(135deg, var(--primary), var(--deep));
-            box-shadow: 0 10px 16px rgba(var(--primary-rgb), 0.3);
-        }
-
-        .icon-btn.primary:hover {
-            color: #fff;
-            transform: scale(1.04);
-        }
-
-        .mini-actions {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-shrink: 0;
-        }
-
-        .speed-wrap {
-            position: relative;
-        }
-
-        #speedBtn {
-            border: none;
-            background: transparent;
-            color: #8a96a2;
-            font-size: 13px;
-            font-weight: 700;
-            cursor: pointer;
-            padding: 7px 10px;
-            border-radius: 999px;
-        }
-
-        #speedBtn:hover {
-            color: var(--primary);
-            background: rgba(var(--primary-rgb), 0.1);
-        }
-
-        #speedMenu {
-            display: none;
-            position: absolute;
-            bottom: calc(100% + 4px);
-            right: 0;
-            border-radius: 10px;
-            border: 1px solid rgba(var(--primary-rgb), 0.22);
-            background: #fff;
-            box-shadow: 0 10px 18px rgba(0, 0, 0, 0.15);
-            z-index: 10;
-            overflow: hidden;
-            min-width: 82px;
-        }
-
-        #speedMenu [data-speed] {
-            padding: 7px 12px;
-            cursor: pointer;
-            font-size: 13px;
-            color: #666;
-            white-space: nowrap;
-        }
-
-        #speedMenu [data-speed]:hover {
-            background: #f7f8f9;
-        }
-
-        #volumeSlider {
-            width: 78px;
-            accent-color: var(--primary);
-            cursor: pointer;
-        }
-
-        @media (max-width: 860px) {
+@media (max-width: 860px) {
             .episode-item {
                 flex-direction: column;
             }
@@ -713,22 +527,9 @@
                 width: 100%;
                 height: 180px;
             }
-
-            .mini-main {
-                flex-wrap: wrap;
-                gap: 10px;
-            }
-
-            .mini-actions {
-                margin-left: auto;
-            }
-        }
+}
 
         @media (max-width: 680px) {
-            body {
-                padding-bottom: 164px;
-            }
-
             .nav-links {
                 justify-content: flex-start;
             }
@@ -745,14 +546,40 @@
             .search-btn {
                 justify-content: center;
             }
+}
+            /* 自定义 APlayer 样式 */
+        .podcast-player-card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
 
-            .mini-player-inner {
-                width: 94vw;
-            }
+        .aplayer {
+            border-radius: var(--radius-md) !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+            border: 1px solid var(--line) !important;
+            background: rgba(255, 255, 255, 0.95) !important;
+        }
 
-            #volumeSlider {
-                width: 64px;
-            }
+        .aplayer .aplayer-info {
+            padding: 14px 15px !important;
+        }
+
+        .aplayer .aplayer-pic {
+            position: relative !important;
+        }
+
+        .aplayer .aplayer-pic .aplayer-button {
+            position: absolute !important;
+            top: 50% !important;
+            left: 50% !important;
+            right: auto !important;
+            bottom: auto !important;
+            transform: translate(-50%, -50%) !important;
+            margin: 0 !important;
         }
     </style>
 </head>
@@ -774,6 +601,11 @@
         <div class="header">
             <h1>🎙️ 播客节目</h1>
             <p>在线直播播客，精彩分享不间断</p>
+        </div>
+
+        
+        <div class="podcast-player-card" id="playerCard" style="display: none;">
+            <div id="aplayer"></div>
         </div>
 
         <div class="podcast-shell">
@@ -834,60 +666,7 @@
         <p>© 2026 文鳐夜飞 | Made with ❤️ | 全网同名</p>
     </div>
 
-    <div id="miniPlayer" class="mini-player">
-        <div class="mini-player-inner">
-            <div class="mini-progress-track">
-                <div id="progressBar"></div>
-            </div>
-
-            <div class="mini-main">
-                <div class="mini-info">
-                    <div class="mini-icon">
-                        <i class="fas fa-microphone"></i>
-                    </div>
-                    <div class="mini-text">
-                        <div class="mini-title"><span id="miniPlayerTitle">未选择</span></div>
-                        <div class="mini-sub"><span id="miniPlayerPlatform">-</span> • <span id="miniPlayerTime">00:00 /
-                                00:00</span></div>
-                    </div>
-                </div>
-
-                <div class="mini-controls">
-                    <button id="playPrevBtn" class="icon-btn" title="上一集">
-                        <i class="fas fa-step-backward"></i>
-                    </button>
-                    <button id="playToggleBtn" class="icon-btn primary" title="播放/暂停">
-                        <i class="fas fa-play"></i>
-                    </button>
-                    <button id="playNextBtn" class="icon-btn" title="下一集">
-                        <i class="fas fa-step-forward"></i>
-                    </button>
-                </div>
-
-                <div class="mini-actions">
-                    <div class="speed-wrap">
-                        <button id="speedBtn" title="播放速度">1x</button>
-                        <div id="speedMenu">
-                            <div data-speed="0.25">0.25x</div>
-                            <div data-speed="0.5">0.5x</div>
-                            <div data-speed="0.75">0.75x</div>
-                            <div data-speed="1" style="color: #5D7B93; font-weight: 600; background: #f5f5f5;">1.0x
-                            </div>
-                            <div data-speed="1.25">1.25x</div>
-                            <div data-speed="1.5">1.5x</div>
-                            <div data-speed="1.75">1.75x</div>
-                            <div data-speed="2">2x</div>
-                        </div>
-                    </div>
-                    <input type="range" id="volumeSlider" min="0" max="100" value="100" title="音量控制">
-                    <button onclick="closeMiniPlayer()" class="icon-btn" title="关闭">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <audio id="audioPlayer" style="display: none;">您的浏览器不支持音频播放</audio>
-    </div>
+    
     <script src="js/umami-config.js"></script>
     <script src="js/analytics.js"></script>
     <script>
@@ -954,7 +733,7 @@
                         // 将 100px 封面替换为 200px 版本（比 600px 小很多，但对 132px 显示足够清晰）
                         function optimizeCover(url) {
                             if (!url) return collectionCover;
-                            return url.replace(/100x100/, '200x200');
+                            return url.replace(/100x100/, '600x600');
                         }
 
                         const mappedEpisodes = episodes.map((ep, index) => ({
@@ -1153,167 +932,50 @@
 
             currentPlayer = episode;
 
-            // 更新迷你播放器
-            document.getElementById('miniPlayerTitle').textContent = episode.title;
-            document.getElementById('miniPlayerPlatform').textContent = episode.platformName;
-
-            // 设置音频源
-            const audioPlayer = document.getElementById('audioPlayer');
-            if (episode.audioUrl) {
-                audioPlayer.src = episode.audioUrl;
-                audioPlayer.load();
-                audioPlayer.play().catch(error => {
-                    console.warn('播放失败:', error);
-                    alert('无法播放此剧集，可能是音频链接失效或不支持跨域访问');
-                });
-            } else {
+            if (!episode.audioUrl) {
                 console.warn('该剧集没有音频 URL:', episode.title);
                 alert('该剧集暂无音频');
                 return;
             }
 
-            // 显示迷你播放器并更新样式
-            document.getElementById('miniPlayer').style.display = 'block';
-            document.body.classList.add('player-active');
-
-            // 更新播放按钮
-            updatePlayButton();
-
-            // 监听播放器事件
-            audioPlayer.addEventListener('play', updatePlayButton);
-            audioPlayer.addEventListener('pause', updatePlayButton);
-            audioPlayer.addEventListener('timeupdate', updateProgress);
+            if (!window.ap) {
+                document.getElementById('playerCard').style.display = 'block';
+                window.ap = new APlayer({
+                    container: document.getElementById('aplayer'),
+                    theme: '#5D7B93',
+                    audio: [{
+                        name: episode.title,
+                        artist: episode.platformName || '播客',
+                        url: episode.audioUrl,
+                        cover: episode.coverUrl
+                    }]
+                });
+                window.ap.play();
+            } else {
+                window.ap.pause();
+                window.ap.list.clear();
+                window.ap.list.add([{
+                    name: episode.title,
+                    artist: episode.platformName || '播客',
+                    url: episode.audioUrl,
+                    cover: episode.coverUrl
+                }]);
+                window.ap.list.switch(0);
+                setTimeout(() => window.ap.play(), 50);
+            }
         }
 
-        // 更新播放按钮状态
-        function updatePlayButton() {
-            const audioPlayer = document.getElementById('audioPlayer');
-            const btn = document.getElementById('playToggleBtn');
-            if (audioPlayer.paused) {
-                btn.innerHTML = '<i class="fas fa-play"></i>';
-            } else {
+         else {
                 btn.innerHTML = '<i class="fas fa-pause"></i>';
             }
         }
 
-        // 更新进度条
-        function updateProgress() {
-            const audioPlayer = document.getElementById('audioPlayer');
-            const progressBar = document.getElementById('progressBar');
-            const timeDisplay = document.getElementById('miniPlayerTime');
-
-            if (audioPlayer.duration) {
-                const percent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-                progressBar.style.width = percent + '%';
-
-                const current = formatTime(audioPlayer.currentTime);
-                const total = formatTime(audioPlayer.duration);
-                timeDisplay.textContent = current + ' / ' + total;
-            }
+        
         }
 
-        // 格式化时间显示
-        function formatTime(seconds) {
-            if (isNaN(seconds)) return '00:00';
-            const mins = Math.floor(seconds / 60);
-            const secs = Math.floor(seconds % 60);
-            return String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
-        }
+        
 
-        // 关闭迷你播放器
-        function closeMiniPlayer() {
-            const audioPlayer = document.getElementById('audioPlayer');
-            audioPlayer.pause();
-            document.getElementById('miniPlayer').style.display = 'none';
-            document.body.classList.remove('player-active');
-        }
-
-        // 播放/暂停
-        document.addEventListener('DOMContentLoaded', function () {
-            const playToggleBtn = document.getElementById('playToggleBtn');
-            if (playToggleBtn) {
-                playToggleBtn.addEventListener('click', function (e) {
-                    e.stopPropagation();
-                    const audioPlayer = document.getElementById('audioPlayer');
-                    if (audioPlayer.paused) {
-                        audioPlayer.play();
-                    } else {
-                        audioPlayer.pause();
-                    }
-                });
-            }
-
-            // 速度控制菜单
-            const speedBtn = document.getElementById('speedBtn');
-            const speedMenu = document.getElementById('speedMenu');
-            if (speedBtn && speedMenu) {
-                speedBtn.addEventListener('click', function (e) {
-                    e.stopPropagation();
-                    speedMenu.style.display = speedMenu.style.display === 'none' ? 'block' : 'none';
-                });
-
-                // 为每个速度选项添加点击处理
-                const speedOptions = speedMenu.querySelectorAll('[data-speed]');
-                speedOptions.forEach(option => {
-                    option.addEventListener('click', function (e) {
-                        e.stopPropagation();
-                        const speed = parseFloat(this.getAttribute('data-speed'));
-                        const audioPlayer = document.getElementById('audioPlayer');
-                        audioPlayer.playbackRate = speed;
-                        trackEvent('podcast_speed_change', { speed: speed });
-
-                        // 更新按钮显示
-                        speedBtn.textContent = speed === 1 ? '1x' : speed.toFixed(2) + 'x';
-
-                        // 更新菜单项的样式
-                        speedOptions.forEach(opt => {
-                            const optSpeed = parseFloat(opt.getAttribute('data-speed'));
-                            if (optSpeed === speed) {
-                                opt.style.color = '#5D7B93';
-                                opt.style.fontWeight = '600';
-                                opt.style.background = '#f5f5f5';
-                            } else {
-                                opt.style.color = '#666';
-                                opt.style.fontWeight = '400';
-                                opt.style.background = 'transparent';
-                            }
-                        });
-
-                        // 关闭菜单
-                        speedMenu.style.display = 'none';
-                    });
-
-                    // 悬停效果
-                    option.addEventListener('mouseenter', function () {
-                        this.style.background = '#fafafa';
-                    });
-                    option.addEventListener('mouseleave', function () {
-                        const speed = parseFloat(this.getAttribute('data-speed'));
-                        const currentSpeed = document.getElementById('audioPlayer').playbackRate;
-                        if (speed !== currentSpeed) {
-                            this.style.background = 'transparent';
-                        }
-                    });
-                });
-
-                // 点击其他地方关闭菜单
-                document.addEventListener('click', function (e) {
-                    if (!speedBtn.contains(e.target) && !speedMenu.contains(e.target)) {
-                        speedMenu.style.display = 'none';
-                    }
-                });
-            }
-
-            // 音量控制滑块
-            const volumeSlider = document.getElementById('volumeSlider');
-            const audioPlayer = document.getElementById('audioPlayer');
-            if (volumeSlider && audioPlayer) {
-                volumeSlider.addEventListener('input', function (e) {
-                    audioPlayer.volume = this.value / 100;
-                });
-            }
-        });
-
+        
 
         // 日期格式化
         function formatDate(dateString) {
