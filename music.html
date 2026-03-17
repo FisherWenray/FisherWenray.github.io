@@ -175,7 +175,7 @@
             align-items: center;
             gap: 18px;
             padding: 16px 20px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(244,246,248,0.7) 100%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(244, 246, 248, 0.7) 100%);
             border-radius: var(--radius-md);
             border: 1px solid rgba(93, 123, 147, 0.15);
             cursor: pointer;
@@ -248,7 +248,7 @@
             flex-direction: column;
             gap: 20px;
             padding: 20px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(244,246,248,0.7) 100%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(244, 246, 248, 0.7) 100%);
             border-radius: var(--radius-md);
             border: 1px solid rgba(93, 123, 147, 0.15);
             overflow: hidden;
@@ -453,7 +453,7 @@
             flex-direction: column;
             gap: 20px;
             padding: 20px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(244,246,248,0.7) 100%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(244, 246, 248, 0.7) 100%);
             border-radius: var(--radius-md);
             border: 1px solid rgba(93, 123, 147, 0.15);
         }
@@ -608,32 +608,40 @@
 
     <div class="container">
         <div class="header">
-            <h1 class="header-title">🎵 原创AI音乐</h1>
-            <p class="header-subtitle">Follow Heart，在旋律中寻找自由</p>
+            <h1 class="header-title">🎵 我的原创音乐</h1>
+            <p class="header-subtitle">Follow Heart，在旋律中寻找自由，已上架各大主流音乐平台</p>
         </div>
 
         <div class="music-card">
             <!-- 迷你播放器（默认显示） -->
             <div id="miniPlayer" class="mini-player">
                 <div style="display: flex; align-items: center; gap: 18px; width: 100%;">
-                    <div style="width: 72px; height: 72px; border-radius: 10px; background: linear-gradient(110deg, #e8ecf0 30%, #f4f6f8 50%, #e8ecf0 70%); background-size: 200% 100%; animation: skeleton-pulse 1.4s ease-in-out infinite; flex-shrink: 0;"></div>
+                    <div
+                        style="width: 72px; height: 72px; border-radius: 10px; background: linear-gradient(110deg, #e8ecf0 30%, #f4f6f8 50%, #e8ecf0 70%); background-size: 200% 100%; animation: skeleton-pulse 1.4s ease-in-out infinite; flex-shrink: 0;">
+                    </div>
                     <div style="flex: 1;">
-                        <div style="height: 17px; border-radius: 8px; background: linear-gradient(110deg, #e8ecf0 30%, #f4f6f8 50%, #e8ecf0 70%); background-size: 200% 100%; animation: skeleton-pulse 1.4s ease-in-out infinite; width: 70%; margin-bottom: 10px;"></div>
-                        <div style="height: 14px; border-radius: 7px; background: linear-gradient(110deg, #e8ecf0 30%, #f4f6f8 50%, #e8ecf0 70%); background-size: 200% 100%; animation: skeleton-pulse 1.4s ease-in-out infinite; width: 40%;"></div>
+                        <div
+                            style="height: 17px; border-radius: 8px; background: linear-gradient(110deg, #e8ecf0 30%, #f4f6f8 50%, #e8ecf0 70%); background-size: 200% 100%; animation: skeleton-pulse 1.4s ease-in-out infinite; width: 70%; margin-bottom: 10px;">
+                        </div>
+                        <div
+                            style="height: 14px; border-radius: 7px; background: linear-gradient(110deg, #e8ecf0 30%, #f4f6f8 50%, #e8ecf0 70%); background-size: 200% 100%; animation: skeleton-pulse 1.4s ease-in-out infinite; width: 40%;">
+                        </div>
                     </div>
                 </div>
                 <button class="mini-play-btn" style="flex-shrink: 0;">
-                    <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    <svg viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                    </svg>
                 </button>
             </div>
 
             <!-- 展开后的完整播放器 -->
             <div id="expandedPlayer" class="custom-player">
             </div>
-            
+
             <!-- 隐藏原始 APlayer -->
             <div id="aplayer" style="display: none;"></div>
-            
+
             <p class="music-hint" id="musicHint">
                 <i class="fas fa-spinner fa-spin"></i> 正在加载音乐...
             </p>
@@ -655,7 +663,7 @@
     <script src="js/umami-config.js"></script>
     <script src="js/analytics.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             initPlayer();
         });
 
@@ -671,7 +679,7 @@
                 const lines = lrcText.split('\n');
                 const result = [];
                 const timeRegex = /\[(\d{2}):(\d{2})\.(\d{2,3})\]/;
-                
+
                 for (const line of lines) {
                     const match = line.match(timeRegex);
                     if (match) {
@@ -707,9 +715,9 @@
                         <svg viewBox="0 0 24 24" id="miniPlayIcon"><path d="M8 5v14l11-7z"/></svg>
                     </button>
                 `;
-                
+
                 // 点击播放按钮：展开播放器并播放
-                document.getElementById('miniPlayBtn').addEventListener('click', function(e) {
+                document.getElementById('miniPlayBtn').addEventListener('click', function (e) {
                     e.stopPropagation();
                     if (!isExpanded) {
                         expandPlayer();
@@ -718,7 +726,7 @@
                 });
 
                 // 点击迷你播放器区域：切换展开/收起
-                miniPlayer.addEventListener('click', function() {
+                miniPlayer.addEventListener('click', function () {
                     if (!isExpanded) {
                         expandPlayer();
                     } else {
@@ -747,10 +755,10 @@
                     
                     <div class="player-lyrics">
                         <div class="lyrics-container" id="lyricsContainer">
-                            ${currentLrc.length > 0 
-                                ? currentLrc.map((line, index) => `<div class="lyrics-line" data-index="${index}">${line.text}</div>`).join('')
-                                : '<div class="lyrics-empty">暂无歌词</div>'
-                            }
+                            ${currentLrc.length > 0
+                        ? currentLrc.map((line, index) => `<div class="lyrics-line" data-index="${index}">${line.text}</div>`).join('')
+                        : '<div class="lyrics-empty">暂无歌词</div>'
+                    }
                         </div>
                     </div>
                 `;
@@ -758,19 +766,19 @@
                 if (ap) {
                     document.getElementById('totalTime').textContent = formatTime(ap.audio.duration || 0);
                     document.getElementById('progressBar').addEventListener('click', seekTo);
-                    
+
                     // 使用事件驱动更新播放状态
-                    ap.on('play', function() {
+                    ap.on('play', function () {
                         isPlaying = true;
                         updatePlayButton();
                     });
 
-                    ap.on('pause', function() {
+                    ap.on('pause', function () {
                         isPlaying = false;
                         updatePlayButton();
                     });
 
-                    ap.on('timeupdate', function() {
+                    ap.on('timeupdate', function () {
                         if (!isExpanded) return;
                         const progressFill = document.getElementById('progressFill');
                         const currentTimeEl = document.getElementById('currentTime');
@@ -781,8 +789,8 @@
                             updateLyrics(ap.audio.currentTime);
                         }
                     });
-                    
-                    ap.on('ended', function() {
+
+                    ap.on('ended', function () {
                         isPlaying = false;
                         updatePlayButton();
                     });
@@ -811,15 +819,15 @@
                 if (isExpanded) {
                     const icon = document.getElementById('playIcon');
                     if (icon) {
-                        icon.innerHTML = isPlaying 
+                        icon.innerHTML = isPlaying
                             ? '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>'
                             : '<path d="M8 5v14l11-7z"/>';
                     }
                 }
-                
+
                 const miniIcon = document.getElementById('miniPlayIcon');
                 if (miniIcon) {
-                    miniIcon.innerHTML = isPlaying 
+                    miniIcon.innerHTML = isPlaying
                         ? '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>'
                         : '<path d="M8 5v14l11-7z"/>';
                 }
@@ -836,22 +844,22 @@
 
             function updateLyrics(currentTime) {
                 if (currentLrc.length === 0 || !isExpanded) return;
-                
+
                 let activeIndex = 0;
                 for (let i = 0; i < currentLrc.length; i++) {
                     if (currentTime >= currentLrc[i].time) {
                         activeIndex = i;
                     }
                 }
-                
+
                 const container = document.getElementById('lyricsContainer');
                 if (!container) return;
-                
-                const lines = currentLrc.map((line, index) => 
+
+                const lines = currentLrc.map((line, index) =>
                     `<div class="lyrics-line ${index === activeIndex ? 'active' : ''}" data-index="${index}">${line.text}</div>`
                 ).join('');
                 container.innerHTML = lines;
-                
+
                 const activeLine = container.querySelector('.lyrics-line.active');
                 if (activeLine) {
                     const containerHeight = container.parentElement.offsetHeight;
@@ -874,14 +882,14 @@
             try {
                 const controller = new AbortController();
                 const timeoutId = setTimeout(() => controller.abort(), 8000);
-                
+
                 let songList;
                 try {
                     const infoResponse = await fetch(`https://api.i-meto.com/meting/api?server=netease&type=song&id=${SONG_ID}`, {
                         signal: controller.signal
                     });
                     clearTimeout(timeoutId);
-                    
+
                     if (!infoResponse.ok) {
                         throw new Error('Network response was not ok');
                     }
@@ -951,12 +959,12 @@
 
                 let audioReady = false;
 
-                ap.on('canplay', function() {
+                ap.on('canplay', function () {
                     audioReady = true;
                 });
 
                 // 音频加载失败时，尝试备用 URL
-                ap.on('error', function() {
+                ap.on('error', function () {
                     console.warn('音频加载失败，尝试备用地址...');
                     if (!audioReady && audioUrl !== directUrl) {
                         // 切换到直接链接重试
