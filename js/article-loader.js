@@ -4,11 +4,8 @@
 
 // 简单的 Markdown 解析器
 class MarkdownParser {
-    static parse(markdown) {
+    static parse(markdown, basePath = '') {
         let html = markdown;
-
-        // 转义 HTML
-        html = this.escapeHtml(html);
 
         // 标题
         html = html.replace(/^### (.*?)$/gm, '<h3>$1</h3>');
@@ -18,8 +15,8 @@ class MarkdownParser {
         // 粗体和斜体
         html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
         html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
-        html = html.replace(/__(.*?)__/g, '<strong>$1</strong>');
-        html = html.replace(/_(.*?)_/g, '<em>$1</em>');
+        html = html.replace(/\b__(.*?)__\b/g, '<strong>$1</strong>');
+        html = html.replace(/\b_(.*?)_\b/g, '<em>$1</em>');
 
         // 代码块
         html = html.replace(/```(.*?)\n([\s\S]*?)```/g, (match, lang, code) => {
@@ -29,11 +26,19 @@ class MarkdownParser {
         // 行内代码
         html = html.replace(/`([^`]*)`/g, '<code>$1</code>');
 
-        // 链接
-        html = html.replace(/\[([^\]]*)\]\(([^)]*)\)/g, '<a href="$2" target="_blank">$1</a>');
+        // 图片 - 处理相对路径
+        html = html.replace(/!\[([^\]]*)\]\(((?:[^()]+|\([^)]+\))*)\)/g, (match, alt, url) => {
+            let finalUrl = url;
+            if (basePath && !url.startsWith('http') && !url.startsWith('/') && !url.startsWith('data:')) {
+                finalUrl = basePath + '/' + url;
+            }
+            return `<img src="${finalUrl}" alt="${alt}" class="article-image">`;
+        });
 
-        // 图片
-        html = html.replace(/!\[([^\]]*)\]\(([^)]*)\)/g, '<img src="$2" alt="$1" class="article-image">');
+        // 链接
+        html = html.replace(/(^|[^!])\[([^\]]*)\]\(((?:[^()]+|\([^)]+\))*)\)/g, (match, prefix, text, url) => {
+            return `${prefix}<a href="${url}" target="_blank">${text}</a>`;
+        });
 
         // 列表
         html = this.parseList(html);
@@ -50,7 +55,8 @@ class MarkdownParser {
                 !para.startsWith('<ul') && 
                 !para.startsWith('<ol') && 
                 !para.startsWith('<blockquote') &&
-                !para.startsWith('<img')) {
+                !para.startsWith('<img') &&
+                !para.startsWith('<a')) {
                 return `<p>${para}</p>`;
             }
             return para;
@@ -63,20 +69,13 @@ class MarkdownParser {
     }
 
     static escapeHtml(text) {
-        const map = {
-            '&': '&amp;',
-            '<': '&lt;',
-            '>': '&gt;',
-            '"': '&quot;',
-            "'": '&#039;'
-        };
-        return text.replace(/[&<>"']/g, m => map[m]);
+        return text;
     }
 
     static parseList(html) {
         // 无序列表
         const ulRegex = /^\s*[-*+]\s+(.*)$/gm;
-        html = html.replace(/((?:^\s*[-*+]\s+.*$\n?)+)/gm, (match) => {
+        html = html.replace(/((?:^\s*[-*+]\s+.*\n?)+)/gm, (match) => {
             const items = match.trim().split('\n').map(line => 
                 line.replace(/^\s*[-*+]\s+/, '').trim()
             );
@@ -85,7 +84,7 @@ class MarkdownParser {
 
         // 有序列表
         const olRegex = /^\s*\d+\.\s+(.*)$/gm;
-        html = html.replace(/((?:^\s*\d+\.\s+.*$\n?)+)/gm, (match) => {
+        html = html.replace(/((?:^\s*\d+\.\s+.*\n?)+)/gm, (match) => {
             const items = match.trim().split('\n').map(line => 
                 line.replace(/^\s*\d+\.\s+/, '').trim()
             );
@@ -115,7 +114,8 @@ async function loadArticle(articleId) {
         const markdownContent = await markdownResponse.text();
 
         // 解析 Markdown 为 HTML
-        const htmlContent = MarkdownParser.parse(markdownContent);
+        const basePath = article.markdown.substring(0, article.markdown.lastIndexOf('/'));
+        const htmlContent = MarkdownParser.parse(markdownContent, basePath);
 
         return {
             ...article,
