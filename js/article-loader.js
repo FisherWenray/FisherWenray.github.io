@@ -43,11 +43,14 @@ class MarkdownParser {
         // 列表
         html = this.parseList(html);
 
-        // 引用块
-        html = html.replace(/^> (.*?)$/gm, '<blockquote>$1</blockquote>');
+        // 引用块 - 将连续的 > 行合并为一个 blockquote
+        html = html.replace(/(^>.*(?:\r?\n>.*)*)/gm, (match) => {
+            const content = match.split(/\r?\n/).map(line => line.replace(/^> ?/, '')).join('<br>');
+            return `<blockquote>${content}</blockquote>`;
+        });
 
         // 段落
-        html = html.split('\n\n').map(para => {
+        html = html.split(/\r?\n\r?\n/).map(para => {
             para = para.trim();
             if (para && 
                 !para.startsWith('<h') && 

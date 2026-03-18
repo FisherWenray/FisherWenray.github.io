@@ -2,28 +2,28 @@
   "articles": [
     {
       "id": "001",
-      "title": "通识教育_什么是通识教育",
+      "title": "什么是通识教育(一)",
       "description": "通识教育的英文是，liberal education，即自由教育",
       "author": "文鳐夜飞",
       "date": "2023-04-12",
-      "category": "教育",
+      "category": "自我成长",
       "tags": [
         "通识教育"
       ],
-      "markdown": "articles/通识教育_什么是通识教育(一).md",
+      "markdown": "articles/什么是通识教育(一).md",
       "image": "images/article-placeholder.svg"
     },
     {
       "id": "002",
-      "title": "通识教育_什么是通识教育（二）",
+      "title": "什么是通识教育（二）",
       "description": "通识教育就是对学习知识这一过程进行底层认知的方式，本质上是一种学习的方法论。",
       "author": "文鳐夜飞",
-      "date": "2023-04-19",
-      "category": "教育",
+      "date": "2023-06-23",
+      "category": "自我成长",
       "tags": [
         "通识教育"
       ],
-      "markdown": "articles/通识教育_什么是通识教育（二）.md",
+      "markdown": "articles/什么是通识教育（二）.md",
       "image": "images/article-placeholder.svg"
     },
     {
@@ -31,7 +31,7 @@
       "title": "AI时代，做一个野生知识分子",
       "description": "在AI时代，做一个不依赖传统学术体系、独立思考和具有自我表达愿望的“野生知识分子”。",
       "author": "文鳐夜飞",
-      "date": "2025-01-29",
+      "date": "2025-02-08",
       "category": "自我成长",
       "tags": [
         "自我成长",
@@ -47,7 +47,7 @@
       "title": "密码朋克的理想主义与WEB3",
       "description": "区块链的根源来自密码朋克精神，探讨密码朋克的理想主义与下一代互联网WEB3。",
       "author": "文鳐夜飞",
-      "date": "2018-09-15",
+      "date": "2024-06-29",
       "category": "投资悟道",
       "tags": [
         "区块链",
