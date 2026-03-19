@@ -8,6 +8,7 @@ class MarkdownParser {
         let html = markdown;
 
         // 标题
+        html = html.replace(/^#### (.*?)$/gm, '<h4>$1</h4>');
         html = html.replace(/^### (.*?)$/gm, '<h3>$1</h3>');
         html = html.replace(/^## (.*?)$/gm, '<h2>$1</h2>');
         html = html.replace(/^# (.*?)$/gm, '<h1>$1</h1>');
@@ -49,8 +50,8 @@ class MarkdownParser {
             return `<blockquote>${content}</blockquote>`;
         });
 
-        // 段落
-        html = html.split(/\r?\n\r?\n/).map(para => {
+        // 段落 - 改进：支持包含空格的空行分割，并更准确地识别需要包裹 p 标签的内容
+        html = html.split(/\r?\n\s*\r?\n/).map(para => {
             para = para.trim();
             if (para && 
                 !para.startsWith('<h') && 
@@ -59,8 +60,10 @@ class MarkdownParser {
                 !para.startsWith('<ol') && 
                 !para.startsWith('<blockquote') &&
                 !para.startsWith('<img') &&
+                !para.startsWith('<hr') &&
+                !para.startsWith('<table') &&
                 !para.startsWith('<a')) {
-                return `<p>${para}</p>`;
+                return `<p>${para.replace(/\r?\n/g, '<br>')}</p>`;
             }
             return para;
         }).join('\n');
