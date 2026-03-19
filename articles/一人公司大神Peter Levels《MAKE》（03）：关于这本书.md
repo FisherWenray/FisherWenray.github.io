@@ -1,3 +1,13 @@
+---
+id: "008"
+title: "一人公司大神Peter Levels《MAKE》（03）：关于这本书"
+description: "《MAKE》：关于这本书"
+author: "文鳐夜飞"
+date: "2026-01-22"
+category: "软件出海"
+tags: ["MAKE", "一人公司"]
+image: "images/article-placeholder.svg"
+---
 # 一人公司大神Peter Levels《MAKE》（03）：关于这本书
 
 为了避免写出一本充斥着未经证实的理论的书，我决定在元层面（meta level）上做一个尝试：**用书中所描述的理论来创作和销售这本书** 。

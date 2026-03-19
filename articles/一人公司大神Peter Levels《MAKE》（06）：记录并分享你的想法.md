@@ -1,3 +1,13 @@
+---
+id: "011"
+title: "一人公司大神Peter Levels《MAKE》（06）：记录并分享你的想法"
+description: "《MAKE》：想法"
+author: "文鳐夜飞"
+date: "2026-03-02"
+category: "软件出海"
+tags: ["MAKE", "一人公司"]
+image: "images/article-placeholder.svg"
+---
 # 一人公司大神Peter Levels《MAKE》（06）：记录并分享你的想法
 
 

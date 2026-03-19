@@ -1,3 +1,13 @@
+---
+id: "006"
+title: "一人公司大神Peter Levels《MAKE》（01）：序章"
+description: "《MAKE》：序章"
+author: "文鳐夜飞"
+date: "2025-07-30"
+category: "软件出海"
+tags: ["MAKE", "一人公司"]
+image: "images/article-placeholder.svg"
+---
 # 一人公司大神Peter Levels《MAKE》（01）：序章
 
 

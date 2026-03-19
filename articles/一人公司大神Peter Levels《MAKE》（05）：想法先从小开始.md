@@ -1,3 +1,13 @@
+---
+id: "010"
+title: "一人公司大神Peter Levels《MAKE》（05）：想法先从小开始"
+description: "《MAKE》：想法"
+author: "文鳐夜飞"
+date: "2026-02-08"
+category: "软件出海"
+tags: ["MAKE", "一人公司"]
+image: "images/article-placeholder.svg"
+---
 # 一人公司大神Peter Levels《MAKE》（05）：想法先从小开始
 
 ## 要做大，必须从小处着手
