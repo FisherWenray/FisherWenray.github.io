@@ -24,15 +24,15 @@
 
     <style>
         :root {
-            --primary: #5D7B93;
-            --primary-rgb: 93, 123, 147;
+            --primary: #004E8C;
+            --primary-rgb: 0, 78, 140;
             --deep: #2A3645;
             --gold: #c5b358;
             --ink: #273039;
             --ink-soft: #5f6a75;
             --paper: #f4f6f8;
             --surface: rgba(255, 255, 255, 0.86);
-            --line: rgba(93, 123, 147, 0.22);
+            --line: rgba(0, 78, 140, 0.22);
             --radius-lg: 20px;
             --radius-md: 14px;
             --shadow: 0 20px 44px rgba(28, 39, 50, 0.13);
@@ -177,14 +177,14 @@
             padding: 16px 20px;
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(244, 246, 248, 0.7) 100%);
             border-radius: var(--radius-md);
-            border: 1px solid rgba(93, 123, 147, 0.15);
+            border: 1px solid rgba(0, 78, 140, 0.15);
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         .mini-player:hover {
-            border-color: rgba(93, 123, 147, 0.3);
-            box-shadow: 0 4px 12px rgba(93, 123, 147, 0.1);
+            border-color: rgba(0, 78, 140, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 78, 140, 0.1);
         }
 
         .mini-cover {
@@ -227,7 +227,7 @@
             align-items: center;
             justify-content: center;
             color: #fff;
-            box-shadow: 0 4px 12px rgba(93, 123, 147, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 78, 140, 0.3);
             transition: all 0.25s ease;
             flex-shrink: 0;
         }
@@ -250,7 +250,7 @@
             padding: 20px;
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(244, 246, 248, 0.7) 100%);
             border-radius: var(--radius-md);
-            border: 1px solid rgba(93, 123, 147, 0.15);
+            border: 1px solid rgba(0, 78, 140, 0.15);
             overflow: hidden;
             max-height: 0;
             opacity: 0;
@@ -316,7 +316,7 @@
         .progress-bar-wrapper {
             position: relative;
             height: 6px;
-            background: rgba(93, 123, 147, 0.12);
+            background: rgba(0, 78, 140, 0.12);
             border-radius: 3px;
             cursor: pointer;
             overflow: visible;
@@ -348,7 +348,7 @@
             height: 14px;
             background: var(--primary);
             border-radius: 50%;
-            box-shadow: 0 2px 8px rgba(93, 123, 147, 0.4);
+            box-shadow: 0 2px 8px rgba(0, 78, 140, 0.4);
             opacity: 0;
             transition: all 0.2s ease;
         }
@@ -398,12 +398,12 @@
             background: linear-gradient(135deg, var(--primary), var(--deep));
             border-radius: 50%;
             color: #fff;
-            box-shadow: 0 8px 20px rgba(93, 123, 147, 0.35);
+            box-shadow: 0 8px 20px rgba(0, 78, 140, 0.35);
         }
 
         .control-btn.play-btn:hover {
             transform: scale(1.08);
-            box-shadow: 0 12px 28px rgba(93, 123, 147, 0.45);
+            box-shadow: 0 12px 28px rgba(0, 78, 140, 0.45);
         }
 
         .control-btn.play-btn svg {
@@ -455,7 +455,7 @@
             padding: 20px;
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(244, 246, 248, 0.7) 100%);
             border-radius: var(--radius-md);
-            border: 1px solid rgba(93, 123, 147, 0.15);
+            border: 1px solid rgba(0, 78, 140, 0.15);
         }
 
         .skeleton-info {
@@ -943,7 +943,7 @@
 
                 ap = new APlayer({
                     container: document.getElementById('aplayer'),
-                    theme: '#5D7B93',
+                    theme: '#004E8C',
                     autoplay: false,
                     loop: 'all',
                     preload: 'metadata',

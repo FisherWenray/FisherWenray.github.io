@@ -309,7 +309,7 @@ https://yourdomain.com/
 ┌─────────────────────────────────────────┐
 │         颜色系统                        │
 ├─────────────────────────────────────────┤
-│ 主色：#5D7B93        ████████        │
+│ 主色：#004E8C        ████████        │
 │ 蓝灰色，用于标题、按钮、链接           │
 │                                         │
 │ 辅助色：#c5b358      ████████        │
@@ -326,8 +326,8 @@ https://yourdomain.com/
 └─────────────────────────────────────────┘
 
 在 HTML 中应用：
-  背景：linear-gradient(135deg, #5D7B93 80%, #2A3645 100%)
-  按钮：background: #5D7B93; color: white;
+  背景：linear-gradient(135deg, #004E8C 80%, #2A3645 100%)
+  按钮：background: #004E8C; color: white;
   卡片：background: white; border-radius: 16px;
   强调：border-left: 4px solid #c5b358;
 ```

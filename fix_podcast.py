@@ -121,7 +121,7 @@ new_playEpisode = """function playEpisode(episodeIndex) {
                 document.getElementById('playerCard').style.display = 'block';
                 window.ap = new APlayer({
                     container: document.getElementById('aplayer'),
-                    theme: '#5D7B93',
+                    theme: '#004E8C',
                     audio: [{
                         name: episode.title,
                         artist: episode.platformName || '播客',

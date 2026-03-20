@@ -16,15 +16,15 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/base16/one-light.min.css">
     <style>
         :root {
-            --primary: #5D7B93;
-            --primary-rgb: 93, 123, 147;
+            --primary: #004E8C;
+            --primary-rgb: 0, 78, 140;
             --deep: #2A3645;
             --gold: #c5b358;
             --ink: #273039;
             --ink-soft: #5f6a75;
             --paper: #f4f6f8;
             --surface: rgba(255, 255, 255, 0.86);
-            --line: rgba(93, 123, 147, 0.22);
+            --line: rgba(0, 78, 140, 0.22);
             --radius-lg: 20px;
             --radius-md: 14px;
             --shadow: 0 20px 44px rgba(28, 39, 50, 0.13);
@@ -175,6 +175,7 @@
             line-height: 1.3;
             margin-bottom: 0;
             padding-bottom: 20px;
+            margin-top: 2.5em;
             letter-spacing: 1.5px;
         }
 
@@ -228,7 +229,7 @@
             font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
         }
 
-        /* 一级标题：隐藏 */
+        /* 一级标题：在正文中隐藏，因为页面顶部已经有了 article-title */
         .article-content h1 {
             display: none;
         }
@@ -316,7 +317,7 @@
             margin: 25px 0;
             overflow-x: auto;
             line-height: 1.6;
-            box-shadow: 0 4px 12px rgba(93, 123, 147, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 78, 140, 0.1);
             position: relative;
         }
 
@@ -368,11 +369,11 @@
 
         /* 分割线 */
         .article-content hr {
-            height: 2px;
+            height: 1px;
             padding: 0;
             margin: 24px 0;
-            background-color: #e1e4e8;
-            border: 0;
+            background-color: #eee;
+            border: none;
         }
 
         /* 图片样式 */

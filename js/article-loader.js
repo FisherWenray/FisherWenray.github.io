@@ -7,6 +7,9 @@ class MarkdownParser {
     static parse(markdown, basePath = '') {
         let html = markdown;
 
+        // 移除顶部的 YAML Front Matter
+        html = html.replace(/^---[\s\S]*?---\n*/, '');
+
         // 标题
         html = html.replace(/^#### (.*?)$/gm, '<h4>$1</h4>');
         html = html.replace(/^### (.*?)$/gm, '<h3>$1</h3>');
@@ -41,9 +44,6 @@ class MarkdownParser {
             return `${prefix}<a href="${url}" target="_blank">${text}</a>`;
         });
 
-        // 列表
-        html = this.parseList(html);
-
         // 引用块 - 将连续的 > 行合并为一个 blockquote
         html = html.replace(/(^>.*(?:\r?\n>.*)*)/gm, (match) => {
             const content = match.split(/\r?\n/).map(line => line.replace(/^> ?/, '')).join('<br>');
@@ -62,7 +62,9 @@ class MarkdownParser {
                 !para.startsWith('<img') &&
                 !para.startsWith('<hr') &&
                 !para.startsWith('<table') &&
-                !para.startsWith('<a')) {
+                !para.startsWith('<a') &&
+                !/^\s*[-*+]\s+/.test(para) &&
+                !/^\s*\d+\.\s+/.test(para)) {
                 return `<p>${para.replace(/\r?\n/g, '<br>')}</p>`;
             }
             return para;
@@ -70,6 +72,9 @@ class MarkdownParser {
 
         // 分隔线
         html = html.replace(/^---$/gm, '<hr>');
+
+        // 列表
+        html = this.parseList(html);
 
         return html;
     }
@@ -80,21 +85,19 @@ class MarkdownParser {
 
     static parseList(html) {
         // 无序列表
-        const ulRegex = /^\s*[-*+]\s+(.*)$/gm;
         html = html.replace(/((?:^\s*[-*+]\s+.*\n?)+)/gm, (match) => {
             const items = match.trim().split('\n').map(line => 
-                line.replace(/^\s*[-*+]\s+/, '').trim()
+                line.replace(/^\s*[-*+]\s+/, '').replace(/<br\s*\/?>/gi, '').trim()
             );
-            return '<ul>\n' + items.map(item => `<li>${item}</li>`).join('\n') + '\n</ul>\n';
+            return '<ul>' + items.map(item => `<li>${item}</li>`).join('') + '</ul>';
         });
 
         // 有序列表
-        const olRegex = /^\s*\d+\.\s+(.*)$/gm;
         html = html.replace(/((?:^\s*\d+\.\s+.*\n?)+)/gm, (match) => {
             const items = match.trim().split('\n').map(line => 
-                line.replace(/^\s*\d+\.\s+/, '').trim()
+                line.replace(/^\s*\d+\.\s+/, '').replace(/<br\s*\/?>/gi, '').trim()
             );
-            return '<ol>\n' + items.map(item => `<li>${item}</li>`).join('\n') + '\n</ol>\n';
+            return '<ol>' + items.map(item => `<li>${item}</li>`).join('') + '</ol>';
         });
 
         return html;
