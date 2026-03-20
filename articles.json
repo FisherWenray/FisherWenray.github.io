@@ -10,7 +10,7 @@
       "tags": [
         "通识教育"
       ],
-      "markdown": "articles/什么是通识教育(一).md",
+      "markdown": "articles/article-001.md",
       "image": "images/article-placeholder.svg"
     },
     {
@@ -23,7 +23,7 @@
       "tags": [
         "通识教育"
       ],
-      "markdown": "articles/什么是通识教育（二）.md",
+      "markdown": "articles/article-002.md",
       "image": "images/article-placeholder.svg"
     },
     {
@@ -38,7 +38,7 @@
         "知识分子",
         "AI"
       ],
-      "markdown": "articles/AI时代，做一个野生知识份子.md",
+      "markdown": "articles/article-003.md",
       "image": "images/article-placeholder.svg",
       "readTime": 5
     },
@@ -54,7 +54,7 @@
         "WEB3",
         "密码朋克"
       ],
-      "markdown": "articles/密码朋克的理想主义与下一代互联网_2018.09.15.md",
+      "markdown": "articles/article-004.md",
       "image": "images/article-placeholder.svg",
       "readTime": 10
     },
@@ -70,7 +70,7 @@
         "随笔",
         "黄家驹"
       ],
-      "markdown": "articles/怀念黄家驹：何日君再来.md",
+      "markdown": "articles/article-005.md",
       "image": "images/article-placeholder.svg",
       "readTime": 4
     },
@@ -85,7 +85,7 @@
         "MAKE",
         "一人公司"
       ],
-      "markdown": "articles/一人公司大神Peter Levels《MAKE》（01）：序章.md",
+      "markdown": "articles/article-006.md",
       "image": "images/article-placeholder.svg"
     },
     {
@@ -99,7 +99,7 @@
         "MAKE",
         "一人公司"
       ],
-      "markdown": "articles/一人公司大神Peter Levels《MAKE》（02）：序言.md",
+      "markdown": "articles/article-007.md",
       "image": "images/article-placeholder.svg"
     },
     {
@@ -113,7 +113,7 @@
         "MAKE",
         "一人公司"
       ],
-      "markdown": "articles/一人公司大神Peter Levels《MAKE》（03）：关于这本书.md",
+      "markdown": "articles/article-008.md",
       "image": "images/article-placeholder.svg"
     },
     {
@@ -127,7 +127,7 @@
         "MAKE",
         "一人公司"
       ],
-      "markdown": "articles/一人公司大神Peter Levels《MAKE》（04）：想法先解决自己的问题.md",
+      "markdown": "articles/article-009.md",
       "image": "images/article-placeholder.svg"
     },
     {
@@ -141,7 +141,7 @@
         "MAKE",
         "一人公司"
       ],
-      "markdown": "articles/一人公司大神Peter Levels《MAKE》（05）：想法先从小开始.md",
+      "markdown": "articles/article-010.md",
       "image": "images/article-placeholder.svg"
     },
     {
@@ -155,7 +155,7 @@
         "MAKE",
         "一人公司"
       ],
-      "markdown": "articles/一人公司大神Peter Levels《MAKE》（06）：记录并分享你的想法.md",
+      "markdown": "articles/article-011.md",
       "image": "images/article-placeholder.svg"
     }
   ]

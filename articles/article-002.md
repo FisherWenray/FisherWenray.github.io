@@ -42,7 +42,7 @@ image: "images/article-placeholder.svg"
 
 
 
-![绘图1](通识教育_什么是通识教育（二）.assets/绘图1.jpg)
+![绘图1](article-002.assets/绘图1.jpg)
 
 **道**：指的是终极真理，宇宙的本质、规则和天道。道是永恒不变的真理，无法用言语或描述来表达。
 

@@ -18,11 +18,11 @@ image: "images/article-placeholder.svg"
 
 在动笔写下第一行字之前，我就公开宣布了这本书并开启了预售 ：
 
-![图片](make-3.关注这本书.assets/640.png)
+![图片](article-008.assets/640.png)
 
 当时的登陆页面其实就是一个 Typeform 表单，告诉大家我想写一本书，但书还没写出来，如果想支持我，请预付 14.99 美元 。
 
-![图片](make-3.关注这本书.assets/640-20260128234850182.png)
+![图片](article-008.assets/640-20260128234850182.png)
 
   
 
@@ -30,7 +30,7 @@ image: "images/article-placeholder.svg"
 
   
 
-![图片](make-3.关注这本书.assets/640-20260128234856424.png)
+![图片](article-008.assets/640-20260128234856424.png)
 
   
 
@@ -42,7 +42,7 @@ image: "images/article-placeholder.svg"
 
   
 
-![图片](make-3.关注这本书.assets/640-20260128234901053.png)
+![图片](article-008.assets/640-20260128234901053.png)
 
   
 
@@ -52,7 +52,7 @@ image: "images/article-placeholder.svg"
 
   
 
-![图片](make-3.关注这本书.assets/640-20260128234905185.png)
+![图片](article-008.assets/640-20260128234905185.png)
 
 ###   
 
@@ -62,7 +62,7 @@ image: "images/article-placeholder.svg"
 
   
 
-![图片](make-3.关注这本书.assets/640-20260128234909221.png)
+![图片](article-008.assets/640-20260128234909221.png)
 
   
 
