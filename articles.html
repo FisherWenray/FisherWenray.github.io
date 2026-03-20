@@ -490,7 +490,6 @@
 
                 return `
                     <div class="article-card" style="--card-index: ${index}" onclick="goToArticle('${article.id}')">
-                        <img src="${article.image}" alt="${article.title}" class="article-image" loading="lazy" onerror="this.src='images/article-placeholder.svg'">
                         <div class="article-content">
                             <span class="article-category">${article.category}</span>
                             <h3 class="article-title">${article.title}</h3>
