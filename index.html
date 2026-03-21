@@ -154,8 +154,8 @@
         .page {
             width: min(1200px, 94vw);
             margin: 36px auto 34px;
-            display: grid;
-            grid-template-columns: minmax(300px, 0.95fr) minmax(520px, 1.25fr);
+            display: flex;
+            justify-content: center;
             gap: 20px;
         }
 
@@ -168,6 +168,8 @@
         }
 
         .panel {
+            width: 100%;
+            max-width: 600px;
             padding: clamp(22px, 3.2vw, 34px);
             display: grid;
             gap: 20px;
@@ -634,6 +636,7 @@
                 <li><a href="index.html" class="active">首页</a></li>
                 <li><a href="articles.html">Blog</a></li>
                 <li><a href="podcast.html">播客</a></li>
+                <li><a href="video.html">视频</a></li>
                 <li><a href="software.html">产品</a></li>
                 <li><a href="music.html">音乐</a></li>
             </ul>
@@ -653,23 +656,11 @@
             <div class="divider"></div>
             <div class="description">
                 这里主要分享<strong>"一人"公司(OPC)</strong>、<strong>投资悟道</strong>、<strong>自我成长</strong>三个主题。三者表面上看似分散，但在我看来，底层逻辑都是
-                Follow
-                Heart，跟随内心，追求自由之路。希望每一位关注者，都能找到属于自己的那条无限自由之路。
+                Follow Heart，跟随内心，追求自由之路。
             </div>
 
             <div>
-                <div class="section-title">微信</div>
-                <div class="wechat-section" onclick="openPersonalWechatQRModal()">
-                    <p>个人微信</p>
-                    <div class="wechat-id">wenyaoyefei2025</div>
-                    <p style="font-size: 12px; color: #9099a2; margin-top: 8px;">👆 点击查看二维码</p>
-                </div>
-            </div>
-        </section>
-
-        <div class="content">
-            <section class="section reveal" style="--delay: 0.08s;">
-                <div class="section-title">文章 & 日常想法</div>
+                <div class="section-title">社交媒体</div>
                 <div class="social-links">
                     <a href="https://www.zhihu.com/people/wenyaoyefei" target="_blank" rel="noopener"
                         class="social-link" title="知乎" data-umami-event="social_link_click"
@@ -706,59 +697,19 @@
                         <span>公众号</span>
                     </a>
                 </div>
-            </section>
+            </div>
 
-            <section class="section reveal" style="--delay: 0.16s;">
-                <div class="section-title">视频</div>
-                <div class="social-links">
-                    <a href="https://space.bilibili.com/1671224161?spm_id_from=333.788.upinfo.head.click"
-                        target="_blank" rel="noopener" class="social-link" title="哔哩哔哩"
-                        data-umami-event="social_link_click" data-umami-props='{"platform":"bilibili"}'>
-                        <i class="fab fa-bilibili"></i>
-                        <span>B站</span>
-                    </a>
-                    <a href="https://www.douyin.com/user/MS4wLjABAAAAW24kFta-WTJiM81SDJtCq4Tqh0p6HhB56X3e85ZB0DU?from_tab_name=main"
-                        target="_blank" rel="noopener" class="social-link" title="抖音"
-                        data-umami-event="social_link_click" data-umami-props='{"platform":"douyin"}'>
-                        <i class="fas fa-video"></i>
-                        <span>抖音</span>
-                    </a>
-                    <a href="https://www.youtube.com/@wenyaoyefei" target="_blank" rel="noopener" class="social-link"
-                        title="YouTube" data-umami-event="social_link_click" data-umami-props='{"platform":"youtube"}'>
-                        <i class="fab fa-youtube"></i>
-                        <span>YouTube</span>
-                    </a>
+            <div>
+                <div class="section-title">微信</div>
+                <div class="wechat-section" onclick="openPersonalWechatQRModal()">
+                    <p>个人微信</p>
+                    <div class="wechat-id">wenyaoyefei2025</div>
+                    <p style="font-size: 12px; color: #9099a2; margin-top: 8px;">👆 点击查看二维码</p>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section class="section reveal" style="--delay: 0.24s;">
-                <div class="section-title">播客</div>
-                <div class="social-links">
-                    <a href="https://www.xiaoyuzhoufm.com/podcast/686bb3edb21def6f47390305" target="_blank"
-                        rel="noopener" class="social-link" title="小宇宙" data-umami-event="social_link_click"
-                        data-umami-props='{"platform":"xiaoyuzhou"}'>
-                        <i class="fas fa-microphone"></i>
-                        <span>小宇宙</span>
-                    </a>
-                    <a href="https://www.ximalaya.com/zhubo/9369408" target="_blank" rel="noopener" class="social-link"
-                        title="喜马拉雅" data-umami-event="social_link_click" data-umami-props='{"platform":"ximalaya"}'>
-                        <i class="fas fa-podcast"></i>
-                        <span>喜马拉雅</span>
-                    </a>
-                    <a href="https://podcasts.apple.com/cn/podcast/%E6%96%87%E9%B3%90%E5%A4%9C%E9%A3%9E/id1825759955"
-                        target="_blank" rel="noopener" class="social-link" title="苹果播客"
-                        data-umami-event="social_link_click" data-umami-props='{"platform":"apple_podcast"}'>
-                        <i class="fab fa-apple"></i>
-                        <span>苹果播客</span>
-                    </a>
-                    <a href="https://www.spotify.com" target="_blank" rel="noopener" class="social-link" title="Spotify"
-                        data-umami-event="social_link_click" data-umami-props='{"platform":"spotify"}'>
-                        <i class="fab fa-spotify"></i>
-                        <span>Spotify</span>
-                    </a>
-                </div>
-            </section>
-        </div>
+        <!-- Content sections removed as per request -->
     </main>
 
     <div class="footer">
@@ -770,7 +721,7 @@
                 <span>Muimi Club</span>
             </a>
         </div>
-        <p>© 2026 文鳐夜飞 | Made with ❤️ | 全网同名</p>
+        <p>© All Rights Reserved.</p>
     </div>
 
     <div id="wechatQRModal" class="modal">

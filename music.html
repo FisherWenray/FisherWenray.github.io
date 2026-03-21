@@ -184,10 +184,43 @@
             letter-spacing: 0.8px;
         }
 
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 12px;
+            width: 100%;
+        }
+
         .header-subtitle {
             color: var(--ink-soft);
-            font-size: clamp(14px, 1.8vw, 18px);
-            line-height: 1.8;
+            font-size: clamp(14px, 1.8vw, 16px);
+            line-height: 1.6;
+            margin-bottom: 0;
+            text-align: center;
+        }
+
+        .music-platforms {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .platform-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: rgba(var(--primary-rgb), 0.05);
+            border: 1px solid rgba(var(--primary-rgb), 0.15);
+            border-radius: 999px;
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 14px;
+            font-weight: 600;
         }
 
         .music-card {
@@ -613,7 +646,63 @@
             margin-right: 4px;
         }
 
+        .music-platforms {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .platform-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            background: rgba(var(--primary-rgb), 0.05);
+            border: 1px solid rgba(var(--primary-rgb), 0.15);
+            border-radius: 999px;
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .platform-link i {
+            font-size: 16px;
+        }
+
+        .platform-link:hover {
+            transform: translateY(-2px);
+            background: var(--primary);
+            color: #fff !important;
+            border-color: transparent;
+            box-shadow: 0 8px 20px rgba(var(--primary-rgb), 0.25);
+        }
+
+        .platform-link.netease:hover {
+            background: #e60026 !important;
+            box-shadow: 0 8px 20px rgba(230, 0, 38, 0.3);
+        }
+
+        [data-theme='dark'] .platform-link {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(255, 255, 255, 0.1);
+            color: var(--ink-soft);
+        }
+
+        [data-theme='dark'] .platform-link:hover {
+            color: #fff !important;
+        }
+
         @media (max-width: 680px) {
+            .header-subtitle {
+                font-size: 13px;
+            }
+            .platform-link {
+                font-size: 12px;
+                padding: 4px 10px;
+            }
             .nav-links {
                 justify-content: flex-start;
             }
@@ -775,6 +864,7 @@
                 <li><a href="index.html">首页</a></li>
                 <li><a href="articles.html">Blog</a></li>
                 <li><a href="podcast.html">播客</a></li>
+                <li><a href="video.html">视频</a></li>
                 <li><a href="software.html">产品</a></li>
                 <li><a href="music.html" class="active">音乐</a></li>
             </ul>
@@ -787,7 +877,16 @@
     <div class="container">
         <div class="header">
             <h1 class="header-title">🎵 我的原创音乐</h1>
-            <p class="header-subtitle">Follow Heart，在旋律中寻找自由，已上架各大主流音乐平台</p>
+            <div class="header-content">
+                <p class="header-subtitle">Follow Heart，在旋律中寻找自由，已上架主流音乐平台</p>
+                <div class="music-platforms">
+                    <a href="https://music.163.com/#/song?id=3353644885" target="_blank" rel="noopener" 
+                       class="platform-link netease" title="在网易云音乐中收听">
+                        <i class="fab fa-netease"></i>
+                        <span>网易云音乐</span>
+                    </a>
+                </div>
+            </div>
         </div>
 
         <div class="music-card">
@@ -820,9 +919,11 @@
             <!-- 隐藏原始 APlayer -->
             <div id="aplayer" style="display: none;"></div>
 
-            <p class="music-hint" id="musicHint">
-                <i class="fas fa-spinner fa-spin"></i> 正在加载音乐...
-            </p>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 10px;">
+                <p class="music-hint" id="musicHint" style="margin-top: 0;">
+                    <i class="fas fa-spinner fa-spin"></i> 正在加载音乐...
+                </p>
+            </div>
         </div>
     </div>
 
@@ -835,7 +936,7 @@
                 <span>Muimi Club</span>
             </a>
         </div>
-        <p>© 2026 文鳐夜飞 | Made with ❤️ | 全网同名</p>
+        <p>© All Rights Reserved.</p>
     </div>
 
     <script src="js/umami-config.js"></script>

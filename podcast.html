@@ -171,22 +171,117 @@
             border: 1px solid var(--line);
             background: var(--surface);
             box-shadow: var(--shadow);
-            text-align: center;
-            padding: clamp(24px, 4vw, 40px);
+            padding: clamp(20px, 3vw, 32px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            width: 100%;
         }
 
         .header h1 {
             font-family: 'Noto Serif SC', serif;
-            font-size: clamp(32px, 4.4vw, 50px);
-            margin-bottom: 8px;
+            font-size: clamp(28px, 3.5vw, 42px);
+            margin-bottom: 0;
             color: var(--primary);
             letter-spacing: 0.8px;
+            white-space: nowrap;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            width: 100%;
+            border-top: 1px solid rgba(var(--primary-rgb), 0.1);
+            padding-top: 20px;
         }
 
         .header p {
             color: var(--ink-soft);
-            font-size: clamp(14px, 1.8vw, 18px);
-            line-height: 1.8;
+            font-size: 15px;
+            margin-bottom: 0;
+            white-space: nowrap;
+        }
+
+        .podcast-platforms {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .platform-link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            background: rgba(var(--primary-rgb), 0.04);
+            border: 1px solid rgba(var(--primary-rgb), 0.12);
+            border-radius: 999px;
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .platform-link i {
+            font-size: 16px;
+        }
+
+        .platform-link:hover {
+            transform: translateY(-2px);
+            background: var(--primary);
+            color: #fff !important;
+            border-color: transparent;
+            box-shadow: 0 8px 20px rgba(var(--primary-rgb), 0.25);
+        }
+
+        /* 悬停时的官方品牌色背景与发光感 */
+        .platform-link.xiaoyuzhou:hover { 
+            background: #00b2ff !important; 
+            border-color: #00b2ff;
+            color: #fff !important;
+            box-shadow: 0 8px 24px rgba(0, 178, 255, 0.4); 
+        }
+        .platform-link.ximalaya:hover { 
+            background: #fa2800 !important; 
+            border-color: #fa2800;
+            color: #fff !important;
+            box-shadow: 0 8px 24px rgba(250, 40, 0, 0.4); 
+        }
+        .platform-link.apple:hover { 
+            background: #a356de !important; 
+            border-color: #a356de;
+            color: #fff !important;
+            box-shadow: 0 8px 24px rgba(163, 86, 222, 0.4); 
+        }
+        .platform-link.spotify:hover { 
+            background: #1db954 !important; 
+            border-color: #1db954;
+            color: #fff !important;
+            box-shadow: 0 8px 24px rgba(29, 185, 84, 0.4); 
+        }
+
+        [data-theme='dark'] .platform-link {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(255, 255, 255, 0.1);
+            color: var(--ink-soft);
+        }
+        
+        [data-theme='dark'] .platform-link:hover {
+            color: #fff !important;
         }
 
         .podcast-shell {
@@ -807,6 +902,7 @@
                 <li><a href="index.html">首页</a></li>
                 <li><a href="articles.html">Blog</a></li>
                 <li><a href="podcast.html" class="active">播客</a></li>
+                <li><a href="video.html">视频</a></li>
                 <li><a href="software.html">产品</a></li>
                 <li><a href="music.html">音乐</a></li>
             </ul>
@@ -819,7 +915,30 @@
     <div class="container">
         <div class="header">
             <h1>🎙️ 我的播客</h1>
-            <p>在主流的平台搜索“文鳐夜飞”都能收听，比如小宇宙，网易云音乐，喜马拉雅、苹果播客等</p>
+            <div class="header-content">
+                <p>全网搜索<strong>“文鳐夜飞”</strong>即可订阅收听：</p>
+                <div class="podcast-platforms">
+                    <a href="https://www.xiaoyuzhoufm.com/podcast/686bb3edb21def6f47390305" target="_blank"
+                        rel="noopener" class="platform-link xiaoyuzhou" title="小宇宙">
+                        <i class="fas fa-microphone"></i>
+                        <span>小宇宙</span>
+                    </a>
+                    <a href="https://www.ximalaya.com/zhubo/9369408" target="_blank" rel="noopener" class="platform-link ximalaya"
+                        title="喜马拉雅">
+                        <i class="fas fa-podcast"></i>
+                        <span>喜马拉雅</span>
+                    </a>
+                    <a href="https://podcasts.apple.com/cn/podcast/%E6%96%87%E9%B3%90%E5%A4%9C%E9%A3%9E/id1825759955"
+                        target="_blank" rel="noopener" class="platform-link apple" title="苹果播客">
+                        <i class="fab fa-apple"></i>
+                        <span>苹果播客</span>
+                    </a>
+                    <a href="https://www.spotify.com" target="_blank" rel="noopener" class="platform-link spotify" title="Spotify">
+                        <i class="fab fa-spotify"></i>
+                        <span>Spotify</span>
+                    </a>
+                </div>
+            </div>
         </div>
 
 
@@ -891,7 +1010,7 @@
                 <span>Muimi Club</span>
             </a>
         </div>
-        <p>© 2026 文鳐夜飞 | Made with ❤️ | 全网同名</p>
+        <p>© All Rights Reserved.</p>
     </div>
 
 
