@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>文章列表 - 文鳐夜飞</title>
+    <script src="js/theme.js"></script>
     <link rel="icon" type="image/jpeg" href="微信图片_2026-01-23_124826_064.jpg">
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -85,8 +86,39 @@
         }
 
         .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             width: min(1200px, 94vw);
             margin: 0 auto;
+        }
+
+        .theme-toggle {
+            background: rgba(var(--primary-rgb), 0.08);
+            border: 1px solid var(--line);
+            color: var(--primary);
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 10px;
+        }
+
+        .theme-toggle:hover {
+            background: var(--primary);
+            color: #fff;
+            transform: rotate(30deg);
+        }
+
+        [data-theme='dark'] .theme-toggle {
+            color: var(--gold);
+            border-color: var(--line);
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .nav-links {
@@ -358,6 +390,122 @@
                 margin-bottom: 16px;
             }
         }
+
+        [data-theme='dark'] {
+            --primary: #004E8C;
+            --primary-rgb: 0, 78, 140;
+            --deep: #020406;
+            --gold: #d4c36d;
+            --ink: #f1f5f9;
+            --ink-soft: #CBD5E1;
+            --paper: #05080a;
+            --surface: #0d131f;
+            --line: rgba(0, 78, 140, 0.3);
+            --shadow: 0 20px 44px rgba(0, 0, 0, 0.6);
+        }
+
+        [data-theme='dark'] body {
+            background:
+                radial-gradient(1200px 620px at 88% 6%, rgba(0, 78, 140, 0.15), transparent 62%),
+                var(--paper) !important;
+            color: var(--ink) !important;
+        }
+
+        [data-theme='dark'] .top-nav {
+            background: rgba(5, 8, 10, 0.85) !important;
+            border-bottom: 1px solid var(--line);
+        }
+
+        [data-theme='dark'] .header,
+        [data-theme='dark'] .content-card,
+        [data-theme='dark'] .panel,
+        [data-theme='dark'] .section,
+        [data-theme='dark'] .article-card,
+        [data-theme='dark'] .tool-card,
+        [data-theme='dark'] .episode-card,
+        [data-theme='dark'] .music-card,
+        [data-theme='dark'] .music-player,
+        [data-theme='dark'] .modal-content,
+        [data-theme='dark'] .description {
+            background: var(--surface) !important;
+            border-color: var(--line) !important;
+            box-shadow: var(--shadow) !important;
+        }
+
+        [data-theme='dark'] .tag,
+        [data-theme='dark'] .filter-btn,
+        [data-theme='dark'] .article-tag,
+        [data-theme='dark'] .category-tag,
+        [data-theme='dark'] .article-category {
+            color: #CBD5E1 !important;
+            border-color: rgba(255, 255, 255, 0.15) !important;
+        }
+
+        [data-theme='dark'] .tag:hover,
+        [data-theme='dark'] .filter-btn:hover,
+        [data-theme='dark'] .filter-btn.active,
+        [data-theme='dark'] .article-tag:hover,
+        [data-theme='dark'] .category-tag:hover,
+        [data-theme='dark'] .article-category:hover {
+            background: var(--primary) !important;
+            color: #FFFFFF !important;
+            border-color: transparent !important;
+        }
+
+        [data-theme='dark'] .article-title {
+            color: var(--ink) !important;
+        }
+
+        [data-theme='dark'] .nav-links a {
+            color: var(--ink-soft);
+        }
+
+        [data-theme='dark'] .nav-links a:hover,
+        [data-theme='dark'] .nav-links a.active {
+            color: #ffffff !important;
+            background: rgba(0, 78, 140, 0.2) !important;
+            border-color: var(--primary) !important;
+        }
+
+        [data-theme='dark'] .section-title,
+        [data-theme='dark'] .name,
+        [data-theme='dark'] .article-title,
+        [data-theme='dark'] .header-title,
+        [data-theme='dark'] .modal-content h2,
+        [data-theme='dark'] .footer-links .link-label {
+            color: #FFFFFF !important;
+            font-weight: 700 !important;
+        }
+
+        [data-theme='dark'] .wechat-id {
+            color: #FFFFFF !important;
+            font-weight: 800 !important;
+        }
+
+        [data-theme='dark'] .article-card h3 {
+            color: #FFFFFF !important;
+        }
+
+        [data-theme='dark'] .footer {
+            color: var(--ink-soft) !important;
+            border-top: 1px solid var(--line) !important;
+        }
+
+        [data-theme='dark'] blockquote,
+        [data-theme='dark'] .article-content blockquote {
+            color: var(--ink-soft) !important;
+            border-left: 4px solid #c5b358 !important;
+            background: rgba(197, 179, 88, 0.08) !important;
+            padding: 12px 20px !important;
+            font-style: italic !important;
+        }
+
+        [data-theme='dark'] strong,
+        [data-theme='dark'] .article-content strong,
+        [data-theme='dark'] .description strong {
+            color: #FFFFFF !important;
+            font-weight: 700 !important;
+        }
     </style>
 </head>
 
@@ -371,6 +519,9 @@
                 <li><a href="software.html">产品</a></li>
                 <li><a href="music.html">音乐</a></li>
             </ul>
+            <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
+                <i class="fas fa-moon"></i>
+            </button>
         </div>
     </nav>
 
