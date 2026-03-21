@@ -616,32 +616,45 @@
             }
         }
 
+        /* --- Deep Sea Glass Dark Theme --- */
         [data-theme='dark'] {
             --primary: #004E8C;
             --primary-rgb: 0, 78, 140;
-            --deep: #020406;
-            --gold: #d4c36d;
-            --ink: #f1f5f9;
-            --ink-soft: #CBD5E1;
-            --paper: #05080a;
-            --surface: #0d131f;
-            --line: rgba(0, 78, 140, 0.3);
-            --shadow: 0 20px 44px rgba(0, 0, 0, 0.6);
+            --deep: #000814;
+            --gold: #c5b358;
+            --ink: #FFFFFF;
+            --ink-soft: #A0B3C6;
+            --paper: #000814;
+            --surface: rgba(0, 78, 140, 0.08);
+            --line: rgba(0, 78, 140, 0.4);
+            --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
         }
 
         [data-theme='dark'] body {
-            background:
-                radial-gradient(1200px 620px at 88% 6%, rgba(0, 78, 140, 0.15), transparent 62%),
+            background: 
+                radial-gradient(circle at 50% -20%, rgba(0, 78, 140, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(0, 78, 140, 0.1) 0%, transparent 50%),
                 var(--paper) !important;
             color: var(--ink) !important;
+            position: relative;
+        }
+
+        [data-theme='dark'] body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: 1000;
         }
 
         [data-theme='dark'] .top-nav {
-            background: rgba(5, 8, 10, 0.85) !important;
+            background: rgba(0, 8, 20, 0.8) !important;
+            backdrop-filter: blur(20px) !important;
             border-bottom: 1px solid var(--line);
         }
 
-        [data-theme='dark'] .container,
         [data-theme='dark'] .panel,
         [data-theme='dark'] .section,
         [data-theme='dark'] .article-card,
@@ -650,44 +663,19 @@
         [data-theme='dark'] .music-card,
         [data-theme='dark'] .music-player,
         [data-theme='dark'] .modal-content,
-        [data-theme='dark'] .description {
+        [data-theme='dark'] .description,
+        [data-theme='dark'] .episode-item,
+        [data-theme='dark'] .software-card,
+        [data-theme='dark'] .container {
             background: var(--surface) !important;
-            border-color: var(--line) !important;
+            backdrop-filter: blur(16px) !important;
+            border: 1px solid var(--line) !important;
             box-shadow: var(--shadow) !important;
         }
 
-        [data-theme='dark'] .tag,
-        [data-theme='dark'] .filter-btn,
-        [data-theme='dark'] .article-tag,
-        [data-theme='dark'] .category-tag,
-        [data-theme='dark'] .article-category-badge {
-            color: #CBD5E1 !important;
-            border-color: rgba(255, 255, 255, 0.15) !important;
-        }
-
-        [data-theme='dark'] .tag:hover,
-        [data-theme='dark'] .filter-btn:hover,
-        [data-theme='dark'] .filter-btn.active,
-        [data-theme='dark'] .article-category-badge:hover {
-            background: var(--primary) !important;
-            color: #FFFFFF !important;
-            border-color: transparent !important;
-        }
-
         [data-theme='dark'] .article-header {
-            background: linear-gradient(155deg, rgba(0, 78, 140, 0.2), var(--surface)) !important;
-            border-bottom-color: var(--line) !important;
-        }
-
-        [data-theme='dark'] .social-link {
-            background: rgba(0, 78, 140, 0.1) !important;
-            border-color: var(--line) !important;
-            color: var(--ink) !important;
-        }
-
-        [data-theme='dark'] .social-link:hover {
-            background: var(--primary) !important;
-            color: #ffffff !important;
+            background: rgba(0, 78, 140, 0.05) !important;
+            border-bottom: 1px solid var(--line) !important;
         }
 
         [data-theme='dark'] .nav-links a {
@@ -696,39 +684,60 @@
 
         [data-theme='dark'] .nav-links a:hover,
         [data-theme='dark'] .nav-links a.active {
-            color: #ffffff !important;
-            background: rgba(0, 78, 140, 0.2) !important;
-            border-color: var(--primary) !important;
+            color: #FFFFFF !important;
+            background: var(--primary) !important;
+            box-shadow: 0 0 20px rgba(0, 78, 140, 0.5) !important;
+            border-color: rgba(255, 255, 255, 0.3) !important;
         }
 
-        [data-theme='dark'] .article-title,
         [data-theme='dark'] .section-title,
         [data-theme='dark'] .name,
+        [data-theme='dark'] .article-title,
+        [data-theme='dark'] .header-title,
+        [data-theme='dark'] .episode-title,
+        [data-theme='dark'] .card-title,
         [data-theme='dark'] .wechat-id,
-        [data-theme='dark'] .footer-links .link-label {
-            color: #ffffff !important;
+        [data-theme='dark'] .modal-content h2 {
+            color: #FFFFFF !important;
             font-weight: 700 !important;
+            text-shadow: 0 0 10px rgba(0, 78, 140, 0.3);
         }
 
-        [data-theme='dark'] .article-content,
-        [data-theme='dark'] .article-content p,
-        [data-theme='dark'] .article-content h1,
-        [data-theme='dark'] .article-content h2,
+        [data-theme='dark'] .tag,
+        [data-theme='dark'] .filter-btn,
+        [data-theme='dark'] .article-tag,
+        [data-theme='dark'] .article-category-badge {
+            color: var(--ink-soft) !important;
+            border: 1px solid var(--line) !important;
+            background: rgba(0, 78, 140, 0.1) !important;
+        }
+
+        [data-theme='dark'] .tag:hover,
+        [data-theme='dark'] .filter-btn:hover,
+        [data-theme='dark'] .filter-btn.active,
+        [data-theme='dark'] .article-category-badge:hover {
+            background: var(--primary) !important;
+            color: #FFFFFF !important;
+            box-shadow: 0 0 15px rgba(0, 78, 140, 0.4) !important;
+        }
+
+        [data-theme='dark'] blockquote {
+            color: var(--ink-soft) !important;
+            border-left: 4px solid var(--gold) !important;
+            background: rgba(0, 78, 140, 0.1) !important;
+            padding: 12px 20px !important;
+        }
+
+        [data-theme='dark'] .article-content, 
+        [data-theme='dark'] .article-content p, 
+        [data-theme='dark'] .article-content h1, 
+        [data-theme='dark'] .article-content h2, 
         [data-theme='dark'] .article-content h3 {
-            color: var(--ink) !important;
+            color: #FFFFFF !important;
         }
 
         [data-theme='dark'] .article-content h2 {
-            border-bottom: 2px solid #c5b358 !important;
-        }
-
-        [data-theme='dark'] blockquote,
-        [data-theme='dark'] .article-content blockquote {
-            color: var(--ink-soft) !important;
-            border-left: 4px solid #c5b358 !important;
-            background: rgba(197, 179, 88, 0.08) !important;
-            padding: 12px 20px !important;
-            font-style: italic !important;
+            border-bottom: 2px solid var(--gold) !important;
         }
 
         [data-theme='dark'] .article-content code {
@@ -743,25 +752,17 @@
             box-shadow: none !important;
         }
 
-        [data-theme='dark'] .article-content tr:nth-child(2n) {
-            background-color: rgba(0, 78, 140, 0.05) !important;
-        }
-
-        [data-theme='dark'] .article-content td,
-        [data-theme='dark'] .article-content th {
-            border-color: var(--line) !important;
+        [data-theme='dark'] strong,
+        [data-theme='dark'] .article-content strong,
+        [data-theme='dark'] .description strong {
+            color: #c5b358 !important;
+            text-shadow: 0 0 5px rgba(197, 179, 88, 0.2) !important;
+            font-weight: 700 !important;
         }
 
         [data-theme='dark'] .footer {
             border-top: 1px solid var(--line) !important;
             color: var(--ink-soft) !important;
-        }
-
-        [data-theme='dark'] strong,
-        [data-theme='dark'] .article-content strong,
-        [data-theme='dark'] .description strong {
-            color: #FFFFFF !important;
-            font-weight: 700 !important;
         }
     </style>
 </head>
