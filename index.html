@@ -155,8 +155,8 @@
             width: min(1200px, 94vw);
             margin: 36px auto 34px;
             display: flex;
-            justify-content: center;
-            gap: 20px;
+            flex-direction: column;
+            gap: 32px;
         }
 
         .panel,
@@ -169,24 +169,40 @@
 
         .panel {
             width: 100%;
-            max-width: 600px;
-            padding: clamp(22px, 3.2vw, 34px);
+            max-width: 100%;
+            padding: clamp(32px, 5vw, 48px);
             display: grid;
-            gap: 20px;
-            align-content: start;
+            grid-template-columns: 1fr minmax(280px, 320px);
+            gap: 40px;
+            align-items: center;
             position: relative;
             overflow: hidden;
+        }
+
+        .panel-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            z-index: 1;
+        }
+
+        .panel-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
         }
 
         .panel::before {
             content: '';
             position: absolute;
-            width: 260px;
-            height: 260px;
+            width: 400px;
+            height: 400px;
             border-radius: 50%;
-            right: -128px;
-            top: -138px;
-            background: radial-gradient(circle, rgba(var(--primary-rgb), 0.24), transparent 70%);
+            right: -150px;
+            top: -150px;
+            background: radial-gradient(circle, rgba(var(--primary-rgb), 0.15), transparent 70%);
+            pointer-events: none;
         }
 
         .avatar-wrap {
@@ -213,133 +229,205 @@
 
         .name {
             font-family: 'Noto Serif SC', serif;
-            font-size: clamp(34px, 4.4vw, 54px);
+            font-size: clamp(42px, 5vw, 64px);
             line-height: 1.15;
-            text-align: center;
+            text-align: left;
             color: var(--primary);
             letter-spacing: 0.8px;
         }
 
         .tagline {
-            text-align: center;
-            font-size: clamp(15px, 1.55vw, 18px);
+            text-align: left;
+            font-size: clamp(16px, 1.8vw, 20px);
             color: var(--ink-soft);
             font-family: 'JetBrains Mono', monospace;
+            margin-top: 8px;
+            margin-bottom: 24px;
         }
 
         .divider {
-            width: 88px;
-            height: 3px;
-            margin: 0 auto;
+            width: 64px;
+            height: 4px;
             background: linear-gradient(120deg, var(--primary), var(--deep));
             border-radius: 99px;
+            margin-bottom: 24px;
         }
 
         .description {
-            font-size: 15px;
+            font-size: 16px;
             line-height: 1.88;
             color: var(--ink);
-            padding: 18px 20px;
+            padding: 18px 24px;
             border-radius: var(--radius-md);
-            background: rgba(255, 255, 255, 0.86);
-            border: 1px solid rgba(var(--primary-rgb), 0.2);
+            background: rgba(var(--primary-rgb), 0.03);
+            border: 1px solid rgba(var(--primary-rgb), 0.1);
             border-left: 4px solid var(--gold);
+            margin-bottom: 32px;
+            max-width: 680px;
         }
 
         .section-title {
-            color: var(--primary);
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 14px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            letter-spacing: 0.3px;
-        }
-
-        .section-title::before {
-            content: '';
-            width: 3px;
-            height: 20px;
-            border-radius: 99px;
-            background: var(--gold);
+            display: none; /* Hide the old section titles for a cleaner look */
         }
 
         .wechat-section {
-            border-radius: var(--radius-lg);
-            padding: 18px;
-            background: linear-gradient(160deg, rgba(var(--primary-rgb), 0.13), rgba(255, 255, 255, 0.92));
-            border: 1px solid rgba(var(--primary-rgb), 0.25);
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: none; /* We will integrate personal wechat into a social link */
         }
 
-        .wechat-section:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 14px 26px rgba(var(--primary-rgb), 0.25);
-        }
-
-        .wechat-section p {
-            color: var(--ink-soft);
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-
-        .wechat-id {
-            color: var(--primary);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: clamp(18px, 2.2vw, 24px);
-            letter-spacing: 0.8px;
-        }
-
-        .content {
-            display: grid;
-            gap: 16px;
-            align-content: start;
-        }
-
-        .section {
-            padding: 22px 20px;
-        }
-
-        .social-links {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 10px;
+        .social-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
         }
 
         .social-link {
-            text-decoration: none;
-            color: var(--ink);
-            border-radius: var(--radius-md);
-            border: 1px solid rgba(var(--primary-rgb), 0.2);
-            background: rgba(var(--primary-rgb), 0.07);
-            min-height: 68px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 12px 14px;
-            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(var(--primary-rgb), 0.05);
+            border: 1px solid rgba(var(--primary-rgb), 0.15);
+            border-radius: 999px;
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 14px;
+            font-weight: 600;
         }
 
         .social-link i {
-            width: 26px;
-            text-align: center;
-            font-size: 20px;
-        }
-
-        .social-link span {
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: 0.2px;
+            font-size: 16px;
         }
 
         .social-link:hover {
-            transform: translateY(-3px);
+            transform: translateY(-2px);
+            background: var(--primary);
+            color: #fff !important;
+            border-color: transparent;
+            box-shadow: 0 8px 20px rgba(var(--primary-rgb), 0.25);
+        }
+
+        .social-link:hover i {
+            color: #fff !important;
+        }
+
+        /* 品牌悬停色 */
+        .social-link.zhihu:hover { background: #0084FF !important; border-color: #0084FF; box-shadow: 0 8px 24px rgba(0, 132, 255, 0.35); }
+        .social-link.toutiao:hover { background: #F85959 !important; border-color: #F85959; box-shadow: 0 8px 24px rgba(248, 89, 89, 0.35); }
+        .social-link.xhs:hover { background: #FF2442 !important; border-color: #FF2442; box-shadow: 0 8px 24px rgba(255, 36, 66, 0.35); }
+        .social-link.x:hover { background: #000000 !important; border-color: #000000; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35); }
+        .social-link.weibo:hover { background: #E6162D !important; border-color: #E6162D; box-shadow: 0 8px 24px rgba(230, 22, 45, 0.35); }
+        .social-link.wechat:hover { background: #07C160 !important; border-color: #07C160; box-shadow: 0 8px 24px rgba(7, 193, 96, 0.35); }
+        
+        .social-link.special {
             background: linear-gradient(135deg, var(--primary), var(--deep));
             color: #fff;
-            box-shadow: 0 14px 24px rgba(var(--primary-rgb), 0.32);
-            border-color: transparent;
+            border: none;
+            box-shadow: 0 8px 20px rgba(var(--primary-rgb), 0.2);
+        }
+        
+        .social-link.special i {
+            color: #fff;
+        }
+
+        .social-link.special:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 12px 28px rgba(var(--primary-rgb), 0.35);
+        }
+
+        .channels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            width: 100%;
+        }
+
+        .channel-card {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-xl);
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+            box-shadow: var(--shadow);
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .channel-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(var(--primary-rgb), 0.4);
+            box-shadow: 0 20px 40px rgba(28, 39, 50, 0.15);
+        }
+
+        .channel-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            background: rgba(var(--primary-rgb), 0.08);
+            border: 1px solid rgba(var(--primary-rgb), 0.15);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 24px;
+            transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .channel-card:hover .channel-icon {
+            background: var(--primary);
+            color: #fff;
+            transform: scale(1.1) rotate(-5deg);
+        }
+
+        .channel-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .channel-desc {
+            color: var(--ink-soft);
+            font-size: 14px;
+            line-height: 1.6;
+            flex: 1;
+            margin-bottom: 24px;
+        }
+
+        .channel-action {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--gold);
+            transition: gap 0.3s ease;
+        }
+
+        .channel-card:hover .channel-action {
+            gap: 12px;
+        }
+
+        @media (max-width: 980px) {
+            .panel {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .panel-content {
+                align-items: center;
+            }
+            .name, .tagline {
+                text-align: center;
+            }
+            .social-row {
+                justify-content: center;
+            }
         }
 
         .footer {
@@ -540,6 +628,7 @@
 
         [data-theme='dark'] .panel,
         [data-theme='dark'] .section,
+        [data-theme='dark'] .channel-card,
         [data-theme='dark'] .article-card,
         [data-theme='dark'] .tool-card,
         [data-theme='dark'] .episode-card,
@@ -570,13 +659,15 @@
             border-color: rgba(255, 255, 255, 0.3) !important;
         }
 
-        [data-theme='dark'] .social-link {
+        [data-theme='dark'] .social-link,
+        [data-theme='dark'] .social-pill {
             background: rgba(0, 78, 140, 0.1) !important;
             border: 1px solid var(--line) !important;
             color: var(--ink) !important;
         }
 
-        [data-theme='dark'] .social-link:hover {
+        [data-theme='dark'] .social-link:hover,
+        [data-theme='dark'] .social-pill:hover {
             background: var(--primary) !important;
             box-shadow: 0 0 20px rgba(0, 78, 140, 0.6) !important;
             color: #FFFFFF !important;
@@ -586,7 +677,8 @@
         [data-theme='dark'] .section-title,
         [data-theme='dark'] .name,
         [data-theme='dark'] .wechat-id,
-        [data-theme='dark'] .modal-content h2 {
+        [data-theme='dark'] .modal-content h2,
+        [data-theme='dark'] .channel-title {
             color: #FFFFFF !important;
             font-weight: 700 !important;
             text-shadow: 0 0 10px rgba(0, 78, 140, 0.3);
@@ -647,69 +739,97 @@
     </nav>
 
     <main class="page">
-        <section class="panel reveal" style="--delay: 0s;">
-            <div class="avatar-wrap">
-                <img src="微信图片_2026-01-23_124826_064.jpg" alt="头像" class="avatar">
-            </div>
-            <h1 class="name">文鳐夜飞</h1>
-            <p class="tagline">Follow Heart, 自由之路</p>
-            <div class="divider"></div>
-            <div class="description">
-                这里主要分享<strong>"一人"公司(OPC)</strong>、<strong>投资悟道</strong>、<strong>自我成长</strong>三个主题。三者表面上看似分散，但在我看来，底层逻辑都是
-                Follow Heart，跟随内心，追求自由之路。
-            </div>
+        <section class="panel hero reveal" style="--delay: 0s;">
+            <div class="panel-content">
+                <h1 class="name">文鳐夜飞</h1>
+                <p class="tagline">Follow Heart, 自由之路</p>
+                <div class="divider"></div>
+                <div class="description">
+                    这里主要分享<strong>"一人"公司(OPC)</strong>、<strong>投资悟道</strong>、<strong>自我成长</strong>三个主题。三者表面上看似分散，但在我看来，底层逻辑都是
+                    Follow Heart，跟随内心，追求自由之路。
+                </div>
 
-            <div>
-                <div class="section-title">社交媒体</div>
-                <div class="social-links">
+                <div class="social-row">
                     <a href="https://www.zhihu.com/people/wenyaoyefei" target="_blank" rel="noopener"
-                        class="social-link" title="知乎" data-umami-event="social_link_click"
+                        class="social-link zhihu" title="知乎" data-umami-event="social_link_click"
                         data-umami-props='{"platform":"zhihu"}'>
                         <i class="fas fa-circle-notch"></i>
                         <span>知乎</span>
                     </a>
                     <a href="https://www.toutiao.com/c/user/token/CibyD1cyR2lQbyWSS6yBDCR8wtOfUjuh_iMBSvRuCWeM46eTG_jwxhpJCjwAAAAAAAAAAAAAUARWllQ7lyZwO7F0qy5NsjQoFYtqS9cy7kH5NDcZj5U92FZghd4weQ5EjX9G_Az3Xj0Q4bCIDhjDxYPqBCIBA-keqSI=/?source=list&log_from=ca2a8ff7febc48_1769870047363"
-                        target="_blank" rel="noopener" class="social-link" title="今日头条"
+                        target="_blank" rel="noopener" class="social-link toutiao" title="今日头条"
                         data-umami-event="social_link_click" data-umami-props='{"platform":"toutiao"}'>
                         <i class="fas fa-newspaper"></i>
                         <span>头条</span>
                     </a>
                     <a href="https://www.xiaohongshu.com/user/profile/607660630000000001000f0e?xsec_token=AB5oTA9fKb08iEqS2QoXQpd8BbmyYVkdDZBbguTb4CXhU%3D&xsec_source=pc_search"
-                        target="_blank" rel="noopener" class="social-link" title="小红书"
+                        target="_blank" rel="noopener" class="social-link xhs" title="小红书"
                         data-umami-event="social_link_click" data-umami-props='{"platform":"xiaohongshu"}'>
                         <i class="fas fa-book"></i>
                         <span>小红书</span>
                     </a>
-                    <a href="https://x.com/wenyaoyefei" target="_blank" rel="noopener" class="social-link"
+                    <a href="https://x.com/wenyaoyefei" target="_blank" rel="noopener" class="social-link x"
                         title="X (Twitter)" data-umami-event="social_link_click" data-umami-props='{"platform":"x"}'>
                         <i class="fab fa-twitter"></i>
                         <span>X</span>
                     </a>
-                    <a href="https://weibo.com/u/7527763202" target="_blank" rel="noopener" class="social-link"
+                    <a href="https://weibo.com/u/7527763202" target="_blank" rel="noopener" class="social-link weibo"
                         title="微博" data-umami-event="social_link_click" data-umami-props='{"platform":"weibo"}'>
                         <i class="fab fa-weibo"></i>
                         <span>微博</span>
                     </a>
-                    <a href="javascript:void(0);" onclick="openWechatQRModal()" class="social-link wechat-qr-btn"
+                    <a href="javascript:void(0);" onclick="openWechatQRModal()" class="social-link wechat"
                         title="微信公众号" data-umami-event="social_link_click"
                         data-umami-props='{"platform":"wechat_public_account"}'>
                         <i class="fab fa-weixin"></i>
                         <span>公众号</span>
                     </a>
+                    <a href="javascript:void(0);" onclick="openPersonalWechatQRModal()" class="social-link special"
+                        title="个人微信" data-umami-event="social_link_click"
+                        data-umami-props='{"platform":"personal_wechat"}'>
+                        <i class="fas fa-user-plus"></i>
+                        <span>个人微信</span>
+                    </a>
                 </div>
             </div>
-
-            <div>
-                <div class="section-title">微信</div>
-                <div class="wechat-section" onclick="openPersonalWechatQRModal()">
-                    <p>个人微信</p>
-                    <div class="wechat-id">wenyaoyefei2025</div>
-                    <p style="font-size: 12px; color: #9099a2; margin-top: 8px;">👆 点击查看二维码</p>
-                </div>
+            <div class="panel-visual">
+                <img src="微信图片_2026-01-23_124826_064.jpg" alt="头像" class="avatar">
             </div>
         </section>
 
-        <!-- Content sections removed as per request -->
+        <div class="channels-grid reveal" style="--delay: 0.1s;">
+            <!-- Blog -->
+            <a href="articles.html" class="channel-card">
+                <div class="channel-icon"><i class="fas fa-pen-nib"></i></div>
+                <h3 class="channel-title">Blog 文章</h3>
+                <p class="channel-desc">关于“一人”公司、投资悟道与自我成长的深度文字沉淀。</p>
+                <div class="channel-action">阅读文章 <i class="fas fa-arrow-right"></i></div>
+            </a>
+            
+            <!-- Podcast -->
+            <a href="podcast.html" class="channel-card">
+                <div class="channel-icon"><i class="fas fa-microphone-alt"></i></div>
+                <h3 class="channel-title">播客频道</h3>
+                <p class="channel-desc">全网搜索“文鳐夜飞”即可订阅收听的深度声音记录。</p>
+                <div class="channel-action">聆听播客 <i class="fas fa-arrow-right"></i></div>
+            </a>
+
+            <!-- Video -->
+            <a href="video.html" class="channel-card">
+                <div class="channel-icon"><i class="fas fa-play"></i></div>
+                <h3 class="channel-title">视频创作</h3>
+                <p class="channel-desc">在 B站、抖音、YouTube 通过视频记录探索与灵感。</p>
+                <div class="channel-action">观看视频 <i class="fas fa-arrow-right"></i></div>
+            </a>
+
+            <!-- Music -->
+            <a href="music.html" class="channel-card">
+                <div class="channel-icon"><i class="fas fa-music"></i></div>
+                <h3 class="channel-title">原创音乐</h3>
+                <p class="channel-desc">Follow Heart，在旋律中寻找自由，已上架主流平台。</p>
+                <div class="channel-action">探索音乐 <i class="fas fa-arrow-right"></i></div>
+            </a>
+        </div>
     </main>
 
     <div class="footer">
