@@ -59,5 +59,4 @@ readTime: 4
 
 2019年6.30号那天我来到香港黄家驹的墓碑，每年的这一天，都有各地的粉丝来到这里纪念黄家驹，纪念一个逝去的时代
 
-![ab7bca8a7a41be0479fdfec0d68c94f](article-005.assets/ab7bca8a7a41be0479fdfec0d68c94f.jpg)
-
+![ab7bca8a7a41be0479fdfec0d68c94f](article-005.assets/ab7bca8a7a41be0479fdfec0d68c94f.jpg.opt.jpg)

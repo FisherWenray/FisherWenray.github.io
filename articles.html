@@ -1,17 +1,49 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>文章列表 - 文鳐夜飞</title>
+    <title>鏂囩珷鍒楄〃 - 鏂囬硱澶滈</title>
+    <meta name="description" content="文鳐夜飞的文章列表，涵盖一人公司、投资悟道、自我成长与随笔内容。">
+    <link rel="canonical" href="https://wenyaoyefei.com/articles.html">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "CollectionPage",
+          "name": "文鳐夜飞文章列表",
+          "url": "https://wenyaoyefei.com/articles.html",
+          "inLanguage": "zh-CN"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "首页",
+              "item": "https://wenyaoyefei.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "文章列表",
+              "item": "https://wenyaoyefei.com/articles.html"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
     <script src="js/theme.js"></script>
-    <link rel="icon" type="image/jpeg" href="微信图片_2026-01-23_124826_064.jpg">
+    <link rel="icon" type="image/jpeg" href="寰俊鍥剧墖_2026-01-23_124826_064.jpg">
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap"
         rel="stylesheet">
     <style>
         :root {
@@ -518,14 +550,14 @@
     <nav class="top-nav">
         <div class="nav-container">
             <ul class="nav-links">
-                <li><a href="index.html">首页</a></li>
+                <li><a href="index.html">棣栭〉</a></li>
                 <li><a href="articles.html" class="active">Blog</a></li>
-                <li><a href="podcast.html">播客</a></li>
-                <li><a href="video.html">视频</a></li>
-                <li><a href="software.html">产品</a></li>
-                <li><a href="music.html">音乐</a></li>
+                <li><a href="podcast.html">鎾</a></li>
+                <li><a href="video.html">瑙嗛</a></li>
+                <li><a href="software.html">浜у搧</a></li>
+                <li><a href="music.html">闊充箰</a></li>
             </ul>
-            <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
+            <button class="theme-toggle" onclick="toggleTheme()" aria-label="鍒囨崲涓婚">
                 <i class="fas fa-moon"></i>
             </button>
         </div>
@@ -533,13 +565,13 @@
 
     <div class="container">
         <div class="header">
-            <h1 class="header-title">文章</h1>
-            <p class="header-subtitle">分享关于"一人"公司(OPC)、投资悟道、自我成长</p>
+            <h1 class="header-title">鏂囩珷</h1>
+            <p class="header-subtitle">鍒嗕韩鍏充簬"涓€浜?鍏徃(OPC)銆佹姇璧勬偀閬撱€佽嚜鎴戞垚闀?/p>
         </div>
 
         <div class="content-card">
             <div class="filter-section" id="filterSection">
-                <button class="filter-btn active" data-filter="all">全部</button>
+                <button class="filter-btn active" data-filter="all">鍏ㄩ儴</button>
             </div>
 
             <div class="articles-grid" id="articlesGrid"></div>
@@ -548,21 +580,21 @@
                 <div class="empty-state-icon">
                     <i class="fas fa-inbox"></i>
                 </div>
-                <div class="empty-state-text">暂无文章</div>
+                <div class="empty-state-text">鏆傛棤鏂囩珷</div>
             </div>
         </div>
     </div>
 
     <div class="footer">
         <div class="footer-links">
-            <span class="link-label">友情链接</span>
+            <span class="link-label">鍙嬫儏閾炬帴</span>
             <a href="https://muimi.club" target="_blank" rel="noopener" data-umami-event="friend_link_click"
                 data-umami-props='{"site":"muimi.club", "from":"footer"}'>
                 <i class="fas fa-link"></i>
                 <span>Muimi Club</span>
             </a>
         </div>
-        <p>© All Rights Reserved.</p>
+        <p>漏 All Rights Reserved.</p>
     </div>
 
     <script src="js/umami-config.js"></script>
@@ -582,7 +614,7 @@
                 initializeFilters();
                 renderArticles(allArticles);
             } catch (error) {
-                console.error('加载文章失败:', error);
+                console.error('鍔犺浇鏂囩珷澶辫触:', error);
                 document.getElementById('emptyState').style.display = 'block';
             }
         }
@@ -646,7 +678,7 @@
                 });
 
                 return `
-                    <div class="article-card" style="--card-index: ${index}" onclick="goToArticle('${article.id}')">
+                    <a class="article-card" style="--card-index: ${index}" href="posts/${article.id}.html" data-article-id="${article.id}" onclick="trackArticleClick(event)">
                         <div class="article-content">
                             <span class="article-category">${article.category}</span>
                             <h3 class="article-title">${article.title}</h3>
@@ -658,17 +690,17 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 `;
             }).join('');
         }
 
-        function goToArticle(articleId) {
+        function trackArticleClick(event) {
+            const articleId = event.currentTarget.getAttribute('data-article-id');
             trackEvent('article_card_click', {
                 article_id: articleId,
                 from_filter: currentFilter
             });
-            window.location.href = `article.html?id=${articleId}`;
         }
 
         document.addEventListener('DOMContentLoaded', loadArticles);
@@ -676,3 +708,5 @@
 </body>
 
 </html>
+
+

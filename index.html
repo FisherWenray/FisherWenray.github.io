@@ -5,13 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>文鳐夜飞 - Follow Heart, 追求自由之路</title>
+    <meta name="description" content="文鳐夜飞的个人网站，分享一人公司、投资悟道、自我成长，以及播客、视频、产品与原创音乐内容。">
+    <link rel="canonical" href="https://wenyaoyefei.com/">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "name": "文鳐夜飞",
+          "url": "https://wenyaoyefei.com/",
+          "inLanguage": "zh-CN"
+        },
+        {
+          "@type": "Person",
+          "name": "文鳐夜飞",
+          "url": "https://wenyaoyefei.com/"
+        }
+      ]
+    }
+    </script>
     <script src="js/theme.js"></script>
     <link rel="icon" type="image/jpeg" href="微信图片_2026-01-23_124826_064.jpg">
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap"
         rel="stylesheet">
     <style>
         :root {
@@ -805,7 +825,7 @@
                 </div>
             </div>
             <div class="panel-visual">
-                <img src="微信图片_2026-01-23_124826_064.jpg" alt="头像" class="avatar">
+                <img src="微信图片_2026-01-23_124826_064.jpg" alt="头像" class="avatar" decoding="async">
             </div>
         </section>
 
@@ -859,7 +879,7 @@
     <div id="wechatQRModal" class="modal">
         <div class="modal-content">
             <h2>微信公众号</h2>
-            <img src="qrcode_for_gh_9012d0f14829_258.jpg" alt="微信公众号二维码">
+            <img data-src="qrcode_for_gh_9012d0f14829_258.jpg" alt="微信公众号二维码" loading="lazy" decoding="async">
             <p>扫码关注我的微信公众号<br>获取更多精彩内容</p>
             <button class="close-btn" onclick="closeWechatQRModal()">关闭</button>
         </div>
@@ -868,7 +888,7 @@
     <div id="personalWechatQRModal" class="modal">
         <div class="modal-content">
             <h2>个人微信</h2>
-            <img src="微信图片_20260131232900_90_91.jpg" alt="个人微信二维码">
+            <img data-src="微信图片_20260131232900_90_91.jpg" alt="个人微信二维码" loading="lazy" decoding="async">
             <p>扫码添加我的个人微信<br>一起交流分享</p>
             <button class="close-btn" onclick="closePersonalWechatQRModal()">关闭</button>
         </div>
@@ -880,6 +900,10 @@
         function openWechatQRModal() {
             trackEvent('wechat_qr_open', { type: 'public_account' });
             const modal = document.getElementById('wechatQRModal');
+            const img = modal.querySelector('img[data-src]');
+            if (img && !img.getAttribute('src')) {
+                img.setAttribute('src', img.getAttribute('data-src'));
+            }
             modal.classList.add('show');
             document.body.style.overflow = 'hidden';
         }
@@ -893,6 +917,10 @@
         function openPersonalWechatQRModal() {
             trackEvent('wechat_qr_open', { type: 'personal_wechat' });
             const modal = document.getElementById('personalWechatQRModal');
+            const img = modal.querySelector('img[data-src]');
+            if (img && !img.getAttribute('src')) {
+                img.setAttribute('src', img.getAttribute('data-src'));
+            }
             modal.classList.add('show');
             document.body.style.overflow = 'hidden';
         }
@@ -939,3 +967,4 @@
 </body>
 
 </html>
+

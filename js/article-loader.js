@@ -36,7 +36,7 @@ class MarkdownParser {
             if (basePath && !url.startsWith('http') && !url.startsWith('/') && !url.startsWith('data:')) {
                 finalUrl = basePath + '/' + url;
             }
-            return `<img src="${finalUrl}" alt="${alt}" class="article-image">`;
+            return `<img src="${finalUrl}" alt="${alt}" class="article-image" loading="lazy" decoding="async">`;
         });
 
         // 链接

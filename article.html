@@ -11,10 +11,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/base16/one-light.min.css">
     <style>
         :root {
             --primary: #004E8C;
@@ -820,8 +818,37 @@
     <script src="js/umami-config.js"></script>
     <script src="js/analytics.js"></script>
     <script src="js/article-loader.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
     <script>
+        async function loadHighlightAssets() {
+            if (window.hljs && typeof window.hljs.highlightElement === 'function') {
+                return;
+            }
+
+            if (!document.getElementById('hljs-theme')) {
+                const cssLink = document.createElement('link');
+                cssLink.id = 'hljs-theme';
+                cssLink.rel = 'stylesheet';
+                cssLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/base16/one-light.min.css';
+                document.head.appendChild(cssLink);
+            }
+
+            await new Promise((resolve, reject) => {
+                const existing = document.getElementById('hljs-script');
+                if (existing) {
+                    existing.addEventListener('load', resolve, { once: true });
+                    existing.addEventListener('error', reject, { once: true });
+                    return;
+                }
+
+                const script = document.createElement('script');
+                script.id = 'hljs-script';
+                script.src = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js';
+                script.onload = resolve;
+                script.onerror = reject;
+                document.body.appendChild(script);
+            });
+        }
+
         async function initPage() {
             const articleId = ArticleLoader.getUrlParam('id');
 
@@ -869,9 +896,17 @@
             const contentDiv = document.getElementById('articleContent');
             contentDiv.innerHTML = article.htmlContent;
 
-            contentDiv.querySelectorAll('pre code').forEach(block => {
-                hljs.highlightElement(block);
-            });
+            const codeBlocks = contentDiv.querySelectorAll('pre code');
+            if (codeBlocks.length > 0) {
+                try {
+                    await loadHighlightAssets();
+                    codeBlocks.forEach(block => {
+                        hljs.highlightElement(block);
+                    });
+                } catch (error) {
+                    console.warn('highlight.js failed to load:', error);
+                }
+            }
 
             contentDiv.querySelectorAll('a[target="_blank"]').forEach(link => {
                 link.style.marginRight = '4px';
@@ -906,3 +941,4 @@
 </body>
 
 </html>
+
