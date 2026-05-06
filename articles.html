@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>鏂囩珷鍒楄〃 - 鏂囬硱澶滈</title>
+    <title>文章列表 - 文鳐夜飞</title>
     <meta name="description" content="文鳐夜飞的文章列表，涵盖一人公司、投资悟道、自我成长与随笔内容。">
     <link rel="canonical" href="https://wenyaoyefei.com/articles.html">
     <script type="application/ld+json">
@@ -266,6 +266,7 @@
             animation: fadeInUp 0.5s ease forwards;
             animation-delay: calc(var(--card-index, 0) * 0.06s);
             opacity: 0;
+            text-decoration: none;
         }
 
         .article-card:hover {
@@ -324,6 +325,7 @@
             -webkit-box-orient: vertical;
             overflow: hidden;
             min-height: 54px;
+            text-decoration: none;
         }
 
         .article-description {
@@ -336,6 +338,7 @@
             -webkit-box-orient: vertical;
             overflow: hidden;
             flex: 1;
+            text-decoration: none;
         }
 
         .article-meta {
@@ -550,14 +553,14 @@
     <nav class="top-nav">
         <div class="nav-container">
             <ul class="nav-links">
-                <li><a href="index.html">棣栭〉</a></li>
+                <li><a href="index.html">首页</a></li>
                 <li><a href="articles.html" class="active">Blog</a></li>
-                <li><a href="podcast.html">鎾</a></li>
-                <li><a href="video.html">瑙嗛</a></li>
-                <li><a href="software.html">浜у搧</a></li>
-                <li><a href="music.html">闊充箰</a></li>
+                <li><a href="podcast.html">播客</a></li>
+                <li><a href="video.html">视频</a></li>
+                <li><a href="software.html">产品</a></li>
+                <li><a href="music.html">音乐</a></li>
             </ul>
-            <button class="theme-toggle" onclick="toggleTheme()" aria-label="鍒囨崲涓婚">
+            <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
                 <i class="fas fa-moon"></i>
             </button>
         </div>
@@ -565,13 +568,13 @@
 
     <div class="container">
         <div class="header">
-            <h1 class="header-title">鏂囩珷</h1>
-            <p class="header-subtitle">鍒嗕韩鍏充簬"涓€浜?鍏徃(OPC)銆佹姇璧勬偀閬撱€佽嚜鎴戞垚闀?/p>
+            <h1 class="header-title">文章</h1>
+            <p class="header-subtitle">分享关于"一人"公司(OPC)、投资悟道、自我成长</p>
         </div>
 
         <div class="content-card">
             <div class="filter-section" id="filterSection">
-                <button class="filter-btn active" data-filter="all">鍏ㄩ儴</button>
+                <button class="filter-btn active" data-filter="all">全部</button>
             </div>
 
             <div class="articles-grid" id="articlesGrid"></div>
@@ -580,21 +583,21 @@
                 <div class="empty-state-icon">
                     <i class="fas fa-inbox"></i>
                 </div>
-                <div class="empty-state-text">鏆傛棤鏂囩珷</div>
+                <div class="empty-state-text">暂无文章</div>
             </div>
         </div>
     </div>
 
     <div class="footer">
         <div class="footer-links">
-            <span class="link-label">鍙嬫儏閾炬帴</span>
+            <span class="link-label">友情链接</span>
             <a href="https://muimi.club" target="_blank" rel="noopener" data-umami-event="friend_link_click"
                 data-umami-props='{"site":"muimi.club", "from":"footer"}'>
                 <i class="fas fa-link"></i>
                 <span>Muimi Club</span>
             </a>
         </div>
-        <p>漏 All Rights Reserved.</p>
+        <p>© All Rights Reserved.</p>
     </div>
 
     <script src="js/umami-config.js"></script>
@@ -614,7 +617,7 @@
                 initializeFilters();
                 renderArticles(allArticles);
             } catch (error) {
-                console.error('鍔犺浇鏂囩珷澶辫触:', error);
+                console.error('加载文章失败:', error);
                 document.getElementById('emptyState').style.display = 'block';
             }
         }
