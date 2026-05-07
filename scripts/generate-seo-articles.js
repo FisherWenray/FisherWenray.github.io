@@ -154,10 +154,15 @@ function articleTemplate(article, htmlContent) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${escapeHtml(title)} - 文鳐夜飞</title>
   <meta name="description" content="${escapeHtml(desc)}">
+  <meta property="og:title" content="${escapeHtml(title)} - 文鳐夜飞">
+  <meta property="og:description" content="${escapeHtml(desc)}">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="${canonical}">
+  <meta property="og:image" content="https://wenyaoyefei.com/avatar.jpg">
   <link rel="canonical" href="${canonical}">
   <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
   <script src="../js/theme.js"></script>
-  <link rel="icon" type="image/jpeg" href="../微信图片_2026-01-23_124826_064.jpg">
+  <link rel="icon" type="image/jpeg" href="../avatar.jpg">
   <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -255,6 +260,53 @@ function articleTemplate(article, htmlContent) {
 </html>`;
 }
 
+function generateSitemap(articles) {
+  const domain = 'https://wenyaoyefei.com';
+  const today = new Date().toISOString().split('T')[0];
+  
+  let urls = `  <url>
+    <loc>${domain}/</loc>
+    <lastmod>${today}</lastmod>
+  </url>
+  <url>
+    <loc>${domain}/articles.html</loc>
+    <lastmod>${today}</lastmod>
+  </url>
+  <url>
+    <loc>${domain}/podcast.html</loc>
+    <lastmod>${today}</lastmod>
+  </url>
+  <url>
+    <loc>${domain}/video.html</loc>
+    <lastmod>${today}</lastmod>
+  </url>
+  <url>
+    <loc>${domain}/software.html</loc>
+    <lastmod>${today}</lastmod>
+  </url>
+  <url>
+    <loc>${domain}/music.html</loc>
+    <lastmod>${today}</lastmod>
+  </url>\n`;
+
+  for (const article of articles) {
+    if (!article.id) continue;
+    const loc = `${domain}/posts/${article.id}.html`;
+    const lastmod = article.date || today;
+    urls += `  <url>
+    <loc>${loc}</loc>
+    <lastmod>${lastmod}</lastmod>
+  </url>\n`;
+  }
+
+  const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls}</urlset>`;
+
+  fs.writeFileSync(path.join(repoRoot, 'sitemap.xml'), sitemapContent, 'utf8');
+  console.log('Successfully generated sitemap.xml');
+}
+
 function main() {
   const raw = fs.readFileSync(articlesJsonPath, 'utf8');
   const data = JSON.parse(raw);
@@ -282,6 +334,8 @@ function main() {
     const out = articleTemplate(safeArticle, htmlContent);
     fs.writeFileSync(path.join(outputDir, `${article.id}.html`), out, 'utf8');
   }
+  
+  generateSitemap(articles);
 }
 
 main();

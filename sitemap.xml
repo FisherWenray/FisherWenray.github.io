@@ -1,55 +1,71 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://wenyaoyefei.com/</loc>
+    <lastmod>2026-05-07</lastmod>
   </url>
   <url>
     <loc>https://wenyaoyefei.com/articles.html</loc>
-  </url>
-  <url>
-    <loc>https://wenyaoyefei.com/posts/001.html</loc>
-  </url>
-  <url>
-    <loc>https://wenyaoyefei.com/posts/002.html</loc>
-  </url>
-  <url>
-    <loc>https://wenyaoyefei.com/posts/003.html</loc>
-  </url>
-  <url>
-    <loc>https://wenyaoyefei.com/posts/004.html</loc>
-  </url>
-  <url>
-    <loc>https://wenyaoyefei.com/posts/005.html</loc>
-  </url>
-  <url>
-    <loc>https://wenyaoyefei.com/posts/006.html</loc>
-  </url>
-  <url>
-    <loc>https://wenyaoyefei.com/posts/007.html</loc>
-  </url>
-  <url>
-    <loc>https://wenyaoyefei.com/posts/008.html</loc>
-  </url>
-  <url>
-    <loc>https://wenyaoyefei.com/posts/009.html</loc>
-  </url>
-  <url>
-    <loc>https://wenyaoyefei.com/posts/010.html</loc>
-  </url>
-  <url>
-    <loc>https://wenyaoyefei.com/posts/011.html</loc>
+    <lastmod>2026-05-07</lastmod>
   </url>
   <url>
     <loc>https://wenyaoyefei.com/podcast.html</loc>
+    <lastmod>2026-05-07</lastmod>
   </url>
   <url>
     <loc>https://wenyaoyefei.com/video.html</loc>
+    <lastmod>2026-05-07</lastmod>
   </url>
   <url>
     <loc>https://wenyaoyefei.com/software.html</loc>
+    <lastmod>2026-05-07</lastmod>
   </url>
   <url>
     <loc>https://wenyaoyefei.com/music.html</loc>
+    <lastmod>2026-05-07</lastmod>
+  </url>
+  <url>
+    <loc>https://wenyaoyefei.com/posts/001.html</loc>
+    <lastmod>2023-04-12</lastmod>
+  </url>
+  <url>
+    <loc>https://wenyaoyefei.com/posts/002.html</loc>
+    <lastmod>2023-06-23</lastmod>
+  </url>
+  <url>
+    <loc>https://wenyaoyefei.com/posts/003.html</loc>
+    <lastmod>2025-02-08</lastmod>
+  </url>
+  <url>
+    <loc>https://wenyaoyefei.com/posts/004.html</loc>
+    <lastmod>2024-06-29</lastmod>
+  </url>
+  <url>
+    <loc>https://wenyaoyefei.com/posts/005.html</loc>
+    <lastmod>2024-06-30</lastmod>
+  </url>
+  <url>
+    <loc>https://wenyaoyefei.com/posts/006.html</loc>
+    <lastmod>2025-07-30</lastmod>
+  </url>
+  <url>
+    <loc>https://wenyaoyefei.com/posts/007.html</loc>
+    <lastmod>2025-08-31</lastmod>
+  </url>
+  <url>
+    <loc>https://wenyaoyefei.com/posts/008.html</loc>
+    <lastmod>2026-01-22</lastmod>
+  </url>
+  <url>
+    <loc>https://wenyaoyefei.com/posts/009.html</loc>
+    <lastmod>2026-01-30</lastmod>
+  </url>
+  <url>
+    <loc>https://wenyaoyefei.com/posts/010.html</loc>
+    <lastmod>2026-02-08</lastmod>
+  </url>
+  <url>
+    <loc>https://wenyaoyefei.com/posts/011.html</loc>
+    <lastmod>2026-03-02</lastmod>
   </url>
 </urlset>
-
