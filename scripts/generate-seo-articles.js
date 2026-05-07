@@ -218,7 +218,7 @@ function articleTemplate(article, htmlContent) {
     [data-theme='dark'] .article-content p,[data-theme='dark'] .article-content li{color:#dbe9f8!important}
     [data-theme='dark'] .article-content h2{border-bottom:2px solid var(--gold)!important}
     [data-theme='dark'] .article-content blockquote{color:var(--ink-soft)!important;border-left:4px solid var(--gold)!important;background:rgba(0,78,140,.1)!important}
-    [data-theme='dark'] .article-content strong{color:#c5b358!important;text-shadow:0 0 5px rgba(197,179,88,.2)!important}
+    [data-theme='dark'] .article-content strong{color:#fff!important;text-shadow:none!important}
     [data-theme='dark'] .article-content code{background:rgba(0,78,140,.2)!important;color:#60a5fa!important}
     [data-theme='dark'] .article-content pre{background:#05080a!important;border-color:var(--line)!important}
     @media (max-width:760px){.nav-links{justify-content:flex-start}.article-meta{justify-content:flex-start}.article-header{padding:28px 20px 22px}}
