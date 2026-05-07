@@ -229,10 +229,10 @@ function articleTemplate(article, htmlContent) {
     <div class="nav-container">
       <ul class="nav-links">
         <li><a href="../index.html">首页</a></li>
-        <li><a href="../articles.html" class="active">Blog</a></li>
-        <li><a href="../podcast.html">播客</a></li>
-        <li><a href="../video.html">视频</a></li>
         <li><a href="../software.html">产品</a></li>
+        <li><a href="../articles.html" class="active">Blog</a></li>
+        <li><a href="../video.html">视频</a></li>
+        <li><a href="../podcast.html">播客</a></li>
         <li><a href="../music.html">音乐</a></li>
       </ul>
       <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题"><i class="fas fa-moon"></i></button>
@@ -269,11 +269,11 @@ function generateSitemap(articles) {
     <lastmod>${today}</lastmod>
   </url>
   <url>
-    <loc>${domain}/articles.html</loc>
+    <loc>${domain}/software.html</loc>
     <lastmod>${today}</lastmod>
   </url>
   <url>
-    <loc>${domain}/podcast.html</loc>
+    <loc>${domain}/articles.html</loc>
     <lastmod>${today}</lastmod>
   </url>
   <url>
@@ -281,7 +281,7 @@ function generateSitemap(articles) {
     <lastmod>${today}</lastmod>
   </url>
   <url>
-    <loc>${domain}/software.html</loc>
+    <loc>${domain}/podcast.html</loc>
     <lastmod>${today}</lastmod>
   </url>
   <url>
