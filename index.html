@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>文鳐夜飞 - Follow Heart, 追求自由之路</title>
-    <meta name="description" content="文鳐夜飞的个人网站，分享一人公司、投资悟道、自我成长，以及播客、视频、产品与原创音乐内容。">
+    <meta name="description" content="文鳐夜飞的个人网站，分享“一人”公司（OPC）、投资悟道、自我成长，以及播客、视频、产品与原创音乐内容。">
     <meta name="keywords" content="一人公司, 投资悟道, 个人成长, 文鳐夜飞">
     <meta property="og:title" content="文鳐夜飞 - Follow Heart, 追求自由之路">
-    <meta property="og:description" content="文鳐夜飞的个人网站，分享一人公司、投资悟道、自我成长，以及播客、视频、产品与原创音乐内容。">
+    <meta property="og:description" content="文鳐夜飞的个人网站，分享“一人”公司（OPC）、投资悟道、自我成长，以及播客、视频、产品与原创音乐内容。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://wenyaoyefei.com/">
     <meta property="og:image" content="https://wenyaoyefei.com/avatar.jpg">
@@ -288,35 +288,50 @@
         .hero-points {
             list-style: none;
             display: grid;
-            gap: 12px;
+            gap: 14px;
             width: min(100%, 640px);
             margin: 0;
-            padding: 22px 24px;
-            border-radius: 18px;
-            background: rgba(var(--primary-rgb), 0.05);
-            border: 1px solid rgba(var(--primary-rgb), 0.14);
-            box-shadow: 0 18px 36px rgba(var(--primary-rgb), 0.08);
+            padding: 24px;
+            border-radius: 16px;
+            background:
+                linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(var(--primary-rgb), 0.07));
+            border: 1px solid rgba(var(--primary-rgb), 0.18);
+            box-shadow: 0 18px 36px rgba(var(--primary-rgb), 0.1);
         }
 
         .hero-points li {
             display: grid;
-            grid-template-columns: 28px 1fr;
-            gap: 12px;
-            align-items: start;
+            grid-template-columns: 44px minmax(0, 1fr);
+            gap: 16px;
+            align-items: center;
+            min-height: 38px;
         }
 
         .hero-point-index {
-            color: var(--primary);
+            display: inline-grid;
+            place-items: center;
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            color: #ffffff;
+            background: var(--primary);
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            box-shadow: 0 10px 24px rgba(var(--primary-rgb), 0.24);
             font-family: 'JetBrains Mono', monospace;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 700;
-            line-height: 1.8;
+            line-height: 1;
+            letter-spacing: 0;
         }
 
         .hero-point-text {
             color: var(--ink);
-            font-size: 16px;
-            line-height: 1.8;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0 6px;
+            font-size: 17px;
+            line-height: 1.55;
         }
 
         .hero-point-text strong {
@@ -336,56 +351,60 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            gap: 14px;
-            width: min(100%, 720px);
+            gap: 16px;
+            width: min(100%, 680px);
+            padding-top: 2px;
         }
 
         .social-group {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            gap: 10px;
+            gap: 9px;
             width: 100%;
         }
 
         .social-row {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 10px;
             align-items: flex-start;
         }
 
         .social-label {
-            color: var(--ink-soft);
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 0.08em;
+            color: rgba(95, 106, 117, 0.86);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            line-height: 1.2;
             white-space: nowrap;
-            text-transform: uppercase;
         }
 
         .social-link {
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: rgba(var(--primary-rgb), 0.05);
-            border: 1px solid rgba(var(--primary-rgb), 0.15);
+            justify-content: center;
+            gap: 7px;
+            min-height: 36px;
+            padding: 7px 13px;
+            background: rgba(var(--primary-rgb), 0.035);
+            border: 1px solid rgba(var(--primary-rgb), 0.12);
             border-radius: 999px;
-            color: var(--primary);
+            color: color-mix(in srgb, var(--primary) 76%, var(--ink) 24%);
             text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            font-size: 14px;
+            transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            font-size: 13px;
             font-weight: 600;
+            line-height: 1;
         }
 
         .social-link i {
-            font-size: 16px;
+            font-size: 15px;
         }
 
         .social-logo {
-            width: 18px;
-            height: 18px;
+            width: 17px;
+            height: 17px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -408,11 +427,11 @@
         }
 
         .social-link:hover {
-            transform: translateY(-2px);
+            transform: translateY(-1px);
             background: var(--primary);
             color: #fff !important;
             border-color: transparent;
-            box-shadow: 0 8px 20px rgba(var(--primary-rgb), 0.25);
+            box-shadow: 0 8px 18px rgba(var(--primary-rgb), 0.22);
         }
 
         .social-link:hover i {
@@ -430,19 +449,21 @@
         .social-link.wechat:hover { background: #07C160 !important; border-color: #07C160; box-shadow: 0 8px 24px rgba(7, 193, 96, 0.35); }
         
         .social-link.special {
-            background: linear-gradient(135deg, var(--primary), var(--deep));
-            color: #fff;
-            border: none;
-            box-shadow: 0 8px 20px rgba(var(--primary-rgb), 0.2);
+            background: rgba(var(--primary-rgb), 0.07);
+            color: color-mix(in srgb, var(--primary) 82%, var(--ink) 18%);
+            border-color: rgba(var(--primary-rgb), 0.18);
+            box-shadow: none;
         }
         
         .social-link.special i {
-            color: #fff;
+            color: currentColor;
         }
 
         .social-link.special:hover {
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 12px 28px rgba(var(--primary-rgb), 0.35);
+            transform: translateY(-1px);
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 8px 18px rgba(var(--primary-rgb), 0.24);
         }
 
         .channels-grid {
@@ -547,6 +568,10 @@
             .hero-points {
                 width: 100%;
                 padding: 18px;
+            }
+            .hero-points li {
+                grid-template-columns: 40px minmax(0, 1fr);
+                gap: 12px;
             }
             .social-stack {
                 align-items: center;
@@ -791,17 +816,22 @@
 
         [data-theme='dark'] .social-link,
         [data-theme='dark'] .social-pill {
-            background: rgba(0, 78, 140, 0.1) !important;
-            border: 1px solid var(--line) !important;
-            color: var(--ink) !important;
+            background: rgba(255, 255, 255, 0.035) !important;
+            border: 1px solid rgba(160, 179, 198, 0.18) !important;
+            color: rgba(230, 240, 250, 0.9) !important;
+            box-shadow: none !important;
+        }
+
+        [data-theme='dark'] .social-label {
+            color: rgba(160, 179, 198, 0.72) !important;
         }
 
         [data-theme='dark'] .social-link:hover,
         [data-theme='dark'] .social-pill:hover {
             background: var(--primary) !important;
-            box-shadow: 0 0 20px rgba(0, 78, 140, 0.6) !important;
+            box-shadow: 0 8px 18px rgba(0, 78, 140, 0.34) !important;
             color: #FFFFFF !important;
-            border-color: rgba(255, 255, 255, 0.3) !important;
+            border-color: rgba(255, 255, 255, 0.24) !important;
         }
 
         [data-theme='dark'] .section-title,
@@ -934,19 +964,19 @@
         <section class="panel hero reveal" style="--delay: 0s;">
             <div class="panel-content">
                 <h1 class="name">文鳐夜飞</h1>
-<p class="hero-summary">这里持续分享一人公司的实践、投资悟道的思考，以及和自我成长有关的长期修炼。</p>
+<p class="hero-summary">这里分享“一人”公司（OPC）、投资悟道、自我成长</p>
 
                 <ul class="hero-points">
                     <li>
-                        <span class="hero-point-index">01</span>
+                        <span class="hero-point-index">1</span>
                         <div class="hero-point-text"><strong>一人公司</strong>，追求工作自由</div>
                     </li>
                     <li>
-                        <span class="hero-point-index">02</span>
+                        <span class="hero-point-index">2</span>
                         <div class="hero-point-text"><strong>投资悟道</strong>，追求财富自由</div>
                     </li>
                     <li>
-                        <span class="hero-point-index">03</span>
+                        <span class="hero-point-index">3</span>
                         <div class="hero-point-text"><strong>自我成长</strong>，追求心灵自由</div>
                     </li>
                 </ul>
@@ -1064,7 +1094,7 @@
             <a href="music.html" class="channel-card">
                 <div class="channel-icon"><i class="fas fa-music"></i></div>
                 <h3 class="channel-title">原创音乐</h3>
-                <p class="channel-desc">Follow Heart，在旋律中寻找自由，已上架主流平台。</p>
+                <p class="channel-desc">主流音乐平台搜索歌手“文鳐夜飞”即可收听</p>
                 <div class="channel-action">探索音乐 <i class="fas fa-arrow-right"></i></div>
             </a>
         </div>

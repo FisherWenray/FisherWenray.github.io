@@ -221,8 +221,11 @@
             font-family: 'Noto Serif SC', serif;
             font-size: clamp(32px, 4.4vw, 52px);
             color: var(--primary);
-            margin-bottom: 10px;
+            margin-bottom: 0;
             letter-spacing: 0.8px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
         }
 
         .header-mark {
@@ -660,11 +663,11 @@
 
     <div class="container">
         <div class="header">
-            <div class="header-top">
+            <h1 class="header-title">
                 <span class="header-mark" aria-hidden="true">✍️</span>
-                <h1 class="header-title">Blog文章</h1>
-                </div>
-            <p class="header-subtitle">分享关于"一人"公司(OPC)、投资悟道、自我成长</p>
+                Blog文章
+            </h1>
+            <p class="header-subtitle">这里分享“一人”公司（OPC）、投资悟道、自我成长</p>
         </div>
 
         <div class="content-card">
