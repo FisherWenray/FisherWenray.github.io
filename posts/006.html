@@ -73,12 +73,70 @@
     [data-theme='dark'] .article-content code{background:rgba(0,78,140,.2)!important;color:#60a5fa!important}
     [data-theme='dark'] .article-content pre{background:#05080a!important;border-color:var(--line)!important}
     @media (max-width:760px){.nav-links{justify-content:flex-start}.article-meta{justify-content:flex-start}.article-header{padding:28px 20px 22px}}
-  </style>
+  
+                        /* --- Mobile Menu --- */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--ink);
+            font-size: 20px;
+            cursor: pointer;
+            padding: 8px;
+            margin-left: 10px;
+        }
+        @media (max-width: 680px) {
+            .mobile-menu-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background: rgba(var(--primary-rgb), 0.08);
+                border: 1px solid var(--line);
+                color: var(--primary);
+                transition: all 0.3s ease;
+            }
+            [data-theme='dark'] .mobile-menu-btn {
+                color: var(--gold);
+                border-color: var(--line);
+                background: rgba(255, 255, 255, 0.05);
+            }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(244, 246, 248, 0.95);
+                backdrop-filter: blur(14px);
+                flex-direction: column;
+                padding: 10px 0;
+                border-bottom: 1px solid var(--line);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+            [data-theme='dark'] .nav-links {
+                background: rgba(0, 8, 20, 0.95);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links a {
+                width: 100%;
+                border-radius: 0;
+                padding: 15px 0;
+            }
+            .nav-container {
+                position: relative;
+            }
+        }
+    </style>
 </head>
 <body>
   <nav class="top-nav">
-    <div class="nav-container">
-      <ul class="nav-links">
+        <div class="nav-container">
+            <ul class="nav-links" id="navLinks">
         <li><a href="../index.html">首页</a></li>
         <li><a href="../software.html">产品</a></li>
         <li><a href="../articles.html" class="active">Blog</a></li>
@@ -86,9 +144,16 @@
         <li><a href="../podcast.html">播客</a></li>
         <li><a href="../music.html">音乐</a></li>
       </ul>
-      <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题"><i class="fas fa-moon"></i></button>
-    </div>
-  </nav>
+            <div style="display: flex; align-items: center;">
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="菜单">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
 
   <main class="page">
     <div class="container">
@@ -116,5 +181,14 @@
   </main>
 
   <div class="footer"><p>© All Rights Reserved.</p></div>
+
+    <script>
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            if (navLinks) {
+                navLinks.classList.toggle('active');
+            }
+        }
+    </script>
 </body>
 </html>

@@ -22,4 +22,11 @@
     }
 
     document.addEventListener('DOMContentLoaded', updateToggleIcon);
+
+    window.toggleMobileMenu = function() {
+        const navLinks = document.getElementById('navLinks');
+        if (navLinks) {
+            navLinks.classList.toggle('active');
+        }
+    };
 })();
