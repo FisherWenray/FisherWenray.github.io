@@ -447,14 +447,14 @@
         .social-link.jike:hover { background: #FFD100 !important; border-color: #FFD100; box-shadow: 0 8px 24px rgba(255, 209, 0, 0.35); }
         .social-link.baijia:hover { background: #2932E1 !important; border-color: #2932E1; box-shadow: 0 8px 24px rgba(41, 50, 225, 0.35); }
         .social-link.wechat:hover { background: #07C160 !important; border-color: #07C160; box-shadow: 0 8px 24px rgba(7, 193, 96, 0.35); }
-        
+
         .social-link.special {
             background: rgba(var(--primary-rgb), 0.07);
             color: color-mix(in srgb, var(--primary) 82%, var(--ink) 18%);
             border-color: rgba(var(--primary-rgb), 0.18);
             box-shadow: none;
         }
-        
+
         .social-link.special i {
             color: currentColor;
         }
@@ -545,6 +545,149 @@
             gap: 12px;
         }
 
+        .teaser-section {
+            width: 100%;
+            display: grid;
+            gap: 18px;
+            padding-top: 4px;
+        }
+
+        .teaser-header {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .teaser-kicker {
+            color: var(--gold);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+        }
+
+        .teaser-title {
+            margin-top: 6px;
+            color: var(--ink);
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(24px, 3vw, 34px);
+            line-height: 1.2;
+        }
+
+        .teaser-link {
+            color: var(--primary);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .teaser-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.95fr);
+            gap: 20px;
+            align-items: stretch;
+        }
+
+        .latest-panel,
+        .featured-panel {
+            border: 1px solid var(--line);
+            background: rgba(var(--primary-rgb), 0.045);
+            border-radius: var(--radius-lg);
+            padding: 22px;
+        }
+
+        .teaser-panel-title {
+            color: var(--ink);
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        .latest-list,
+        .featured-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .latest-item,
+        .featured-item {
+            display: grid;
+            gap: 7px;
+            padding: 14px;
+            border-radius: 14px;
+            color: inherit;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.55);
+            border: 1px solid rgba(var(--primary-rgb), 0.1);
+            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+        }
+
+        .latest-item:hover,
+        .featured-item:hover {
+            transform: translateY(-2px);
+            border-color: rgba(var(--primary-rgb), 0.28);
+            background: rgba(255, 255, 255, 0.82);
+        }
+
+        .teaser-meta {
+            color: var(--ink-soft);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            line-height: 1.2;
+        }
+
+        .teaser-meta i {
+            color: var(--primary);
+            font-size: 13px;
+        }
+
+        .teaser-item-title {
+            color: var(--ink);
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.45;
+        }
+
+        .teaser-desc {
+            color: var(--ink-soft);
+            font-size: 13px;
+            line-height: 1.65;
+        }
+
+        .featured-item {
+            grid-template-columns: 38px minmax(0, 1fr);
+            align-items: center;
+            gap: 12px;
+        }
+
+        .featured-item .teaser-meta,
+        .featured-item .teaser-item-title,
+        .featured-item .teaser-desc {
+            display: block;
+        }
+
+        .featured-item .teaser-desc {
+            margin-top: 3px;
+        }
+
+        .featured-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            background: rgba(var(--primary-rgb), 0.08);
+            border: 1px solid rgba(var(--primary-rgb), 0.12);
+            font-size: 17px;
+        }
+
         @media (max-width: 980px) {
             .panel {
                 grid-template-columns: 1fr;
@@ -582,6 +725,13 @@
             }
             .social-row {
                 justify-content: center;
+            }
+            .teaser-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+            .teaser-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -757,7 +907,7 @@
         }
 
         [data-theme='dark'] body {
-            background: 
+            background:
                 radial-gradient(circle at 50% -20%, rgba(0, 78, 140, 0.3) 0%, transparent 50%),
                 radial-gradient(circle at 100% 100%, rgba(0, 78, 140, 0.1) 0%, transparent 50%),
                 var(--paper) !important;
@@ -795,6 +945,33 @@
             backdrop-filter: blur(16px) !important;
             border: 1px solid var(--line) !important;
             box-shadow: var(--shadow) !important;
+        }
+
+        [data-theme='dark'] .latest-panel,
+        [data-theme='dark'] .featured-panel {
+            background: rgba(0, 78, 140, 0.06) !important;
+            border: 1px solid rgba(0, 78, 140, 0.32) !important;
+        }
+
+        [data-theme='dark'] .latest-item,
+        [data-theme='dark'] .featured-item {
+            background: rgba(255, 255, 255, 0.035) !important;
+            border-color: rgba(160, 179, 198, 0.16) !important;
+        }
+
+        [data-theme='dark'] .latest-item:hover,
+        [data-theme='dark'] .featured-item:hover {
+            background: rgba(0, 78, 140, 0.14) !important;
+            border-color: rgba(160, 179, 198, 0.28) !important;
+        }
+
+        [data-theme='dark'] .teaser-link,
+        [data-theme='dark'] .featured-icon {
+            color: #75B8EE !important;
+        }
+
+        [data-theme='dark'] .teaser-meta i {
+            color: #75B8EE !important;
         }
 
         [data-theme='dark'] .wechat-section {
@@ -1065,39 +1242,68 @@
             </div>
         </section>
 
-        <div class="channels-grid reveal" style="--delay: 0.1s;">
-            <!-- Blog -->
-            <a href="articles.html" class="channel-card">
-                <div class="channel-icon"><i class="fas fa-pen-nib"></i></div>
-                <h3 class="channel-title">Blog 文章</h3>
-                <p class="channel-desc">关于“一人”公司、投资悟道与自我成长的深度文字沉淀。</p>
-                <div class="channel-action">阅读文章 <i class="fas fa-arrow-right"></i></div>
-            </a>
-            
-<!-- Video -->
-            <a href="video.html" class="channel-card">
-                <div class="channel-icon"><i class="fas fa-play"></i></div>
-                <h3 class="channel-title">视频创作</h3>
-                <p class="channel-desc">在 B站、抖音、YouTube 通过视频记录探索与灵感。</p>
-                <div class="channel-action">观看视频 <i class="fas fa-arrow-right"></i></div>
-            </a>
 
-            <!-- Podcast -->
-            <a href="podcast.html" class="channel-card">
-                <div class="channel-icon"><i class="fas fa-microphone-alt"></i></div>
-                <h3 class="channel-title">播客频道</h3>
-                <p class="channel-desc">全网搜索"文鳐夜飞"即可订阅收听的深度声音记录。</p>
-                <div class="channel-action">聆听播客 <i class="fas fa-arrow-right"></i></div>
-</a>
 
-            <!-- Music -->
-            <a href="music.html" class="channel-card">
-                <div class="channel-icon"><i class="fas fa-music"></i></div>
-                <h3 class="channel-title">原创音乐</h3>
-                <p class="channel-desc">主流音乐平台搜索歌手“文鳐夜飞”即可收听</p>
-                <div class="channel-action">探索音乐 <i class="fas fa-arrow-right"></i></div>
-            </a>
-        </div>
+        <section class="teaser-section reveal" style="--delay: 0.18s;" aria-labelledby="teaserTitle">
+            <div class="teaser-header">
+                <div>
+                    <h2 class="teaser-title" id="teaserTitle">最新文章与精选入口</h2>
+                </div>
+            </div>
+
+            <div class="teaser-grid">
+                <div class="latest-panel">
+                    <div class="teaser-panel-title">最新文章</div>
+                    <div class="latest-list" id="latestArticleList">
+                        <a class="latest-item" href="posts/011.html">
+                            <div class="teaser-meta"><span>2026-03-02</span><span>一人公司</span></div>
+                            <div class="teaser-item-title">一人公司大神Peter Levels《MAKE》（06）：记录并分享你的想法</div>
+                            <div class="teaser-desc">从记录想法开始，把灵感逐步推向可执行的产品实践。</div>
+                        </a>
+                        <a class="latest-item" href="posts/010.html">
+                            <div class="teaser-meta"><span>2026-02-08</span><span>一人公司</span></div>
+                            <div class="teaser-item-title">一人公司大神Peter Levels《MAKE》（05）：想法先从小开始</div>
+                            <div class="teaser-desc">从更小的切口开始验证，让想法更快进入真实世界。</div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="featured-panel">
+                    <div class="teaser-panel-title">精选入口</div>
+                    <div class="featured-list">
+                        <a class="featured-item" href="https://www.oneopc.ai/" target="_blank" rel="noopener"
+                            data-umami-event="homepage_latest_click" data-umami-props='{"target":"oneopc"}'>
+                            <span class="featured-icon"><i class="fas fa-robot"></i></span>
+                            <span>
+                                <span class="teaser-meta">最新产品</span>
+                                <span class="teaser-item-title">OneOPC.ai</span>
+                                <span class="teaser-desc">面向“一人公司”工作流的 AI 工具，点击直接访问官网。</span>
+                            </span>
+                        </a>
+                        <a class="featured-item" href="https://www.xiaoyuzhoufm.com/podcast/686bb3edb21def6f47390305"
+                            target="_blank" rel="noopener" data-umami-event="homepage_latest_click"
+                            data-umami-props='{"target":"podcast_xiaoyuzhou"}'>
+                            <span class="featured-icon"><i class="fas fa-microphone-alt"></i></span>
+                            <span>
+                                <span class="teaser-meta">最新播客</span>
+                                <span class="teaser-item-title">文鳐夜飞播客</span>
+                                <span class="teaser-desc">点击直接到小宇宙收听最新一期。</span>
+                            </span>
+                        </a>
+                        <a class="featured-item" href="https://music.163.com/#/song?id=3353644885" target="_blank"
+                            rel="noopener" data-umami-event="homepage_latest_click"
+                            data-umami-props='{"target":"music_netease_3353644885"}'>
+                            <span class="featured-icon"><i class="fas fa-music"></i></span>
+                            <span>
+                                <span class="teaser-meta">最新音乐</span>
+                                <span class="teaser-item-title">《何日君再来》</span>
+                                <span class="teaser-desc">点击直接到网易云音乐收听。</span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <div class="footer">
@@ -1133,6 +1339,47 @@
     <script src="js/umami-config.js"></script>
     <script src="js/analytics.js"></script>
     <script>
+        function escapeHTML(value) {
+            return String(value ?? '').replace(/[&<>"']/g, (char) => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#39;'
+            }[char]));
+        }
+
+        async function renderLatestArticles() {
+            const list = document.getElementById('latestArticleList');
+            if (!list) return;
+
+            try {
+                const response = await fetch('articles.json');
+                if (!response.ok) return;
+
+                const data = await response.json();
+                const articles = (data.articles || [])
+                    .slice()
+                    .sort((a, b) => new Date(b.date) - new Date(a.date))
+                    .slice(0, 2);
+
+                if (!articles.length) return;
+
+                list.innerHTML = articles.map((article) => `
+                    <a class="latest-item" href="posts/${encodeURIComponent(article.id)}.html">
+                        <div class="teaser-meta">
+                            <span>${escapeHTML(article.date || '')}</span>
+                            <span>${escapeHTML(article.category || '文章')}</span>
+                        </div>
+                        <div class="teaser-item-title">${escapeHTML(article.title)}</div>
+                        <div class="teaser-desc">${escapeHTML(article.description || '继续阅读这篇最新内容。')}</div>
+                    </a>
+                `).join('');
+            } catch (error) {
+                console.warn('最新文章加载失败:', error);
+            }
+        }
+
         function openWechatQRModal() {
             trackEvent('wechat_qr_open', { type: 'public_account' });
             const modal = document.getElementById('wechatQRModal');
@@ -1185,6 +1432,8 @@
             }
         });
 
+        renderLatestArticles();
+
         const revealItems = document.querySelectorAll('.reveal');
         const observer = new IntersectionObserver(
             (entries) => {
@@ -1203,4 +1452,3 @@
 </body>
 
 </html>
-
