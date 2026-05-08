@@ -163,12 +163,26 @@
 
         .header {
             padding: clamp(26px, 4vw, 44px);
+            height: 220px;
             border-radius: var(--radius-lg);
             border: 1px solid var(--line);
             background: var(--surface);
             box-shadow: var(--shadow);
             margin-bottom: 20px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            width: 100%;
         }
 
         .header-title {
@@ -177,6 +191,12 @@
             color: var(--primary);
             margin-bottom: 10px;
             letter-spacing: 0.8px;
+        }
+
+        .header-mark {
+            flex-shrink: 0;
+            font-size: clamp(42px, 4.2vw, 58px);
+            line-height: 1;
         }
 
         .header-subtitle {
@@ -250,6 +270,24 @@
             transition: transform 0.35s ease;
             position: relative;
             z-index: 1;
+        }
+
+        .card-cover-label {
+            position: relative;
+            z-index: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 20px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid rgba(var(--primary-rgb), 0.18);
+            color: var(--primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            box-shadow: 0 16px 32px rgba(var(--primary-rgb), 0.12);
         }
 
         .software-card:hover .card-cover img {
@@ -376,6 +414,11 @@
         }
 
         @media (max-width: 760px) {
+            .header {
+                height: auto;
+                min-height: 220px;
+            }
+
             .nav-links {
                 justify-content: flex-start;
             }
@@ -448,6 +491,13 @@
 
         [data-theme='dark'] .card-cover {
             background: linear-gradient(145deg, rgba(0, 78, 140, 0.2), rgba(0, 78, 140, 0.1)) !important;
+        }
+
+        [data-theme='dark'] .card-cover-label {
+            background: rgba(0, 8, 20, 0.52);
+            border-color: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.28);
         }
 
         [data-theme='dark'] .nav-links a {
@@ -535,7 +585,10 @@
 
     <div class="container">
         <div class="header">
-            <h1 class="header-title">我开发的产品</h1>
+            <div class="header-top">
+                <span class="header-mark" aria-hidden="true">🛠️</span>
+                <h1 class="header-title">我开发的产品</h1>
+            </div>
             <p class="header-subtitle">个人开发的工具与应用，助力高效生活</p>
         </div>
 
@@ -562,6 +615,27 @@
                             data-umami-props='{"target":"bookmark_github"}'>
                             <i class="fab fa-github"></i>
                             GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="software-card" style="--card-index: 1">
+                <div class="card-cover">
+                    <div class="card-cover-label">ONEOPC.AI</div>
+                </div>
+                <div class="card-body">
+                    <span class="card-tag"><i class="fas fa-robot"></i> AI 工具</span>
+                    <h2 class="card-title">OneOPC.ai</h2>
+                    <p class="card-description">
+                        面向“一人公司”工作流的 AI 产品，聚焦效率放大、流程协同与个人创作者/创业者的日常执行支持。
+                    </p>
+                    <div class="card-actions">
+                        <a href="https://www.oneopc.ai/" target="_blank" rel="noopener"
+                            class="card-btn card-btn-primary" data-umami-event="software_link_click"
+                            data-umami-props='{"target":"oneopc_site"}'>
+                            <i class="fas fa-external-link-alt"></i>
+                            访问网站
                         </a>
                     </div>
                 </div>

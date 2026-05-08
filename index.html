@@ -189,17 +189,17 @@
         .section {
             background: var(--surface);
             border: 1px solid var(--line);
-            border-radius: var(--radius-xl);
+            border-radius: var(--radius-lg);
             box-shadow: var(--shadow);
         }
 
         .panel {
             width: 100%;
             max-width: 100%;
-            padding: clamp(32px, 5vw, 48px);
+            padding: clamp(34px, 5vw, 52px);
             display: grid;
-            grid-template-columns: 1fr minmax(280px, 320px);
-            gap: 40px;
+            grid-template-columns: minmax(0, 1.15fr) minmax(280px, 340px);
+            gap: clamp(28px, 4vw, 56px);
             align-items: center;
             position: relative;
             overflow: hidden;
@@ -209,7 +209,9 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+            gap: 22px;
             z-index: 1;
+            max-width: 760px;
         }
 
         .panel-visual {
@@ -261,40 +263,65 @@
         .name {
             font-family: 'Noto Serif SC', serif;
             font-size: clamp(42px, 5vw, 64px);
-            line-height: 1.15;
+            line-height: 1.05;
             text-align: left;
             color: var(--primary);
-            letter-spacing: 0.8px;
+            letter-spacing: 0.4px;
         }
 
-        .tagline {
+        .hero-tagline {
             text-align: left;
-            font-size: clamp(16px, 1.8vw, 20px);
-            color: var(--ink-soft);
+            font-size: 15px;
+            color: var(--gold);
             font-family: 'JetBrains Mono', monospace;
-            margin-top: 8px;
-            margin-bottom: 24px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
         }
 
-        .divider {
-            width: 64px;
-            height: 4px;
-            background: linear-gradient(120deg, var(--primary), var(--deep));
-            border-radius: 99px;
-            margin-bottom: 24px;
+        .hero-summary {
+            max-width: 620px;
+            color: var(--ink-soft);
+            font-size: clamp(16px, 1.9vw, 19px);
+            line-height: 1.8;
         }
 
-        .description {
-            font-size: 16px;
-            line-height: 1.88;
+        .hero-points {
+            list-style: none;
+            display: grid;
+            gap: 12px;
+            width: min(100%, 640px);
+            margin: 0;
+            padding: 22px 24px;
+            border-radius: 18px;
+            background: rgba(var(--primary-rgb), 0.05);
+            border: 1px solid rgba(var(--primary-rgb), 0.14);
+            box-shadow: 0 18px 36px rgba(var(--primary-rgb), 0.08);
+        }
+
+        .hero-points li {
+            display: grid;
+            grid-template-columns: 28px 1fr;
+            gap: 12px;
+            align-items: start;
+        }
+
+        .hero-point-index {
+            color: var(--primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 1.8;
+        }
+
+        .hero-point-text {
             color: var(--ink);
-            padding: 18px 24px;
-            border-radius: var(--radius-md);
-            background: rgba(var(--primary-rgb), 0.03);
-            border: 1px solid rgba(var(--primary-rgb), 0.1);
-            border-left: 4px solid var(--gold);
-            margin-bottom: 32px;
-            max-width: 680px;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .hero-point-text strong {
+            color: var(--ink);
+            font-weight: 700;
         }
 
         .section-title {
@@ -305,10 +332,36 @@
             display: none; /* We will integrate personal wechat into a social link */
         }
 
+        .social-stack {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 14px;
+            width: min(100%, 720px);
+        }
+
+        .social-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            width: 100%;
+        }
+
         .social-row {
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
+            align-items: flex-start;
+        }
+
+        .social-label {
+            color: var(--ink-soft);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            white-space: nowrap;
+            text-transform: uppercase;
         }
 
         .social-link {
@@ -330,6 +383,30 @@
             font-size: 16px;
         }
 
+        .social-logo {
+            width: 18px;
+            height: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .social-logo svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+            fill: currentColor;
+        }
+
+        .social-logo img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border-radius: 4px;
+            object-fit: cover;
+        }
+
         .social-link:hover {
             transform: translateY(-2px);
             background: var(--primary);
@@ -348,6 +425,8 @@
         .social-link.xhs:hover { background: #FF2442 !important; border-color: #FF2442; box-shadow: 0 8px 24px rgba(255, 36, 66, 0.35); }
         .social-link.x:hover { background: #000000 !important; border-color: #000000; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35); }
         .social-link.weibo:hover { background: #E6162D !important; border-color: #E6162D; box-shadow: 0 8px 24px rgba(230, 22, 45, 0.35); }
+        .social-link.jike:hover { background: #FFD100 !important; border-color: #FFD100; box-shadow: 0 8px 24px rgba(255, 209, 0, 0.35); }
+        .social-link.baijia:hover { background: #2932E1 !important; border-color: #2932E1; box-shadow: 0 8px 24px rgba(41, 50, 225, 0.35); }
         .social-link.wechat:hover { background: #07C160 !important; border-color: #07C160; box-shadow: 0 8px 24px rgba(7, 193, 96, 0.35); }
         
         .social-link.special {
@@ -376,7 +455,7 @@
         .channel-card {
             background: var(--surface);
             border: 1px solid var(--line);
-            border-radius: var(--radius-xl);
+            border-radius: var(--radius-lg);
             padding: 32px 24px;
             display: flex;
             flex-direction: column;
@@ -449,9 +528,11 @@
             .panel {
                 grid-template-columns: 1fr;
                 text-align: center;
+                padding: 24px 18px;
             }
             .panel-content {
                 align-items: center;
+                max-width: none;
             }
             .panel-visual {
                 order: -1; /* Move avatar to top on mobile */
@@ -460,8 +541,19 @@
                 max-width: 240px;
                 aspect-ratio: 1 / 1; /* Make it square on mobile to save vertical space */
             }
-            .name, .tagline {
+            .name, .hero-tagline, .hero-summary {
                 text-align: center;
+            }
+            .hero-points {
+                width: 100%;
+                padding: 18px;
+            }
+            .social-stack {
+                align-items: center;
+                width: 100%;
+            }
+            .social-group {
+                align-items: center;
             }
             .social-row {
                 justify-content: center;
@@ -673,7 +765,7 @@
         [data-theme='dark'] .music-card,
         [data-theme='dark'] .music-player,
         [data-theme='dark'] .modal-content,
-        [data-theme='dark'] .description {
+        [data-theme='dark'] .hero-points {
             background: var(--surface) !important;
             backdrop-filter: blur(16px) !important;
             border: 1px solid var(--line) !important;
@@ -746,7 +838,7 @@
 
         [data-theme='dark'] strong,
         [data-theme='dark'] .article-content strong,
-        [data-theme='dark'] .description strong {
+        [data-theme='dark'] .hero-point-text strong {
             color: #FFFFFF !important;
             text-shadow: none !important;
             font-weight: 700 !important;
@@ -780,54 +872,100 @@
         <section class="panel hero reveal" style="--delay: 0s;">
             <div class="panel-content">
                 <h1 class="name">文鳐夜飞</h1>
-                <p class="tagline">Follow Heart, 自由之路</p>
-                <div class="divider"></div>
-                <div class="description">
-                    这里主要分享<strong>"一人"公司(OPC)</strong>、<strong>投资悟道</strong>、<strong>自我成长</strong>三个主题。三者表面上看似分散，但在我看来，底层逻辑都是
-                    Follow Heart，跟随内心，追求自由之路。
-                </div>
+<p class="hero-summary">这里持续分享一人公司的实践、投资悟道的思考，以及和自我成长有关的长期修炼。</p>
 
-                <div class="social-row">
-                    <a href="https://www.zhihu.com/people/wenyaoyefei" target="_blank" rel="noopener"
-                        class="social-link zhihu" title="知乎" data-umami-event="social_link_click"
-                        data-umami-props='{"platform":"zhihu"}'>
-                        <i class="fas fa-circle-notch"></i>
-                        <span>知乎</span>
-                    </a>
-                    <a href="https://www.toutiao.com/c/user/token/CibyD1cyR2lQbyWSS6yBDCR8wtOfUjuh_iMBSvRuCWeM46eTG_jwxhpJCjwAAAAAAAAAAAAAUARWllQ7lyZwO7F0qy5NsjQoFYtqS9cy7kH5NDcZj5U92FZghd4weQ5EjX9G_Az3Xj0Q4bCIDhjDxYPqBCIBA-keqSI=/?source=list&log_from=ca2a8ff7febc48_1769870047363"
-                        target="_blank" rel="noopener" class="social-link toutiao" title="今日头条"
-                        data-umami-event="social_link_click" data-umami-props='{"platform":"toutiao"}'>
-                        <i class="fas fa-newspaper"></i>
-                        <span>头条</span>
-                    </a>
-                    <a href="https://www.xiaohongshu.com/user/profile/607660630000000001000f0e?xsec_token=AB5oTA9fKb08iEqS2QoXQpd8BbmyYVkdDZBbguTb4CXhU%3D&xsec_source=pc_search"
-                        target="_blank" rel="noopener" class="social-link xhs" title="小红书"
-                        data-umami-event="social_link_click" data-umami-props='{"platform":"xiaohongshu"}'>
-                        <i class="fas fa-book"></i>
-                        <span>小红书</span>
-                    </a>
-                    <a href="https://x.com/wenyaoyefei" target="_blank" rel="noopener" class="social-link x"
-                        title="X (Twitter)" data-umami-event="social_link_click" data-umami-props='{"platform":"x"}'>
-                        <i class="fab fa-twitter"></i>
-                        <span>X</span>
-                    </a>
-                    <a href="https://weibo.com/u/7527763202" target="_blank" rel="noopener" class="social-link weibo"
-                        title="微博" data-umami-event="social_link_click" data-umami-props='{"platform":"weibo"}'>
-                        <i class="fab fa-weibo"></i>
-                        <span>微博</span>
-                    </a>
-                    <a href="javascript:void(0);" onclick="openWechatQRModal()" class="social-link wechat"
-                        title="微信公众号" data-umami-event="social_link_click"
-                        data-umami-props='{"platform":"wechat_public_account"}'>
-                        <i class="fab fa-weixin"></i>
-                        <span>公众号</span>
-                    </a>
-                    <a href="javascript:void(0);" onclick="openPersonalWechatQRModal()" class="social-link special"
-                        title="个人微信" data-umami-event="social_link_click"
-                        data-umami-props='{"platform":"personal_wechat"}'>
-                        <i class="fas fa-user-plus"></i>
-                        <span>个人微信</span>
-                    </a>
+                <ul class="hero-points">
+                    <li>
+                        <span class="hero-point-index">01</span>
+                        <div class="hero-point-text"><strong>一人公司</strong>，追求工作自由</div>
+                    </li>
+                    <li>
+                        <span class="hero-point-index">02</span>
+                        <div class="hero-point-text"><strong>投资悟道</strong>，追求财富自由</div>
+                    </li>
+                    <li>
+                        <span class="hero-point-index">03</span>
+                        <div class="hero-point-text"><strong>自我成长</strong>，追求心灵自由</div>
+                    </li>
+                </ul>
+
+                <div class="social-stack">
+                    <div class="social-group">
+                        <span class="social-label">主流社交媒体</span>
+                        <div class="social-row">
+                            <a href="https://www.zhihu.com/people/wenyaoyefei" target="_blank" rel="noopener"
+                                class="social-link zhihu" title="知乎" data-umami-event="social_link_click"
+                                data-umami-props='{"platform":"zhihu"}'>
+                                <span class="social-logo" aria-hidden="true">
+                                    <img src="images/social-zhihu.jpg" alt="" decoding="async">
+                                </span>
+                                <span>知乎</span>
+                            </a>
+                            <a href="https://www.toutiao.com/c/user/token/CibyD1cyR2lQbyWSS6yBDCR8wtOfUjuh_iMBSvRuCWeM46eTG_jwxhpJCjwAAAAAAAAAAAAAUARWllQ7lyZwO7F0qy5NsjQoFYtqS9cy7kH5NDcZj5U92FZghd4weQ5EjX9G_Az3Xj0Q4bCIDhjDxYPqBCIBA-keqSI=/?source=list&log_from=ca2a8ff7febc48_1769870047363"
+                                target="_blank" rel="noopener" class="social-link toutiao" title="今日头条"
+                                data-umami-event="social_link_click" data-umami-props='{"platform":"toutiao"}'>
+                                <span class="social-logo" aria-hidden="true">
+                                    <img src="images/social-toutiao.jpg" alt="" decoding="async">
+                                </span>
+                                <span>头条</span>
+                            </a>
+                            <a href="https://author.baidu.com/home?context=%7B%22uk%22%3A%22irqf6e2aOib6uzrlSglpJw%22%7D" target="_blank" rel="noopener" class="social-link baijia"
+                                title="百度百家" data-umami-event="social_link_click" data-umami-props='{"platform":"baijiahao"}'>
+                                <span class="social-logo" aria-hidden="true">
+                                    <img src="images/social-baijiahao.jpg" alt="" decoding="async">
+                                </span>
+                                <span>百度百家</span>
+                            </a>
+                            <a href="https://www.xiaohongshu.com/user/profile/607660630000000001000f0e?xsec_token=AB5oTA9fKb08iEqS2QoXQpd8BbmyYVkdDZBbguTb4CXhU%3D&xsec_source=pc_search"
+                                target="_blank" rel="noopener" class="social-link xhs" title="小红书"
+                                data-umami-event="social_link_click" data-umami-props='{"platform":"xiaohongshu"}'>
+                                <span class="social-logo" aria-hidden="true">
+                                    <img src="images/social-xhs.jpg" alt="" decoding="async">
+                                </span>
+                                <span>小红书</span>
+                            </a>
+                            <a href="https://x.com/wenyaoyefei" target="_blank" rel="noopener" class="social-link x"
+                                title="X (Twitter)" data-umami-event="social_link_click" data-umami-props='{"platform":"x"}'>
+                                <span class="social-logo" aria-hidden="true">
+                                    <img src="images/social-x.jpg" alt="" decoding="async">
+                                </span>
+                                <span>X</span>
+                            </a>
+                            <a href="https://weibo.com/u/7527763202" target="_blank" rel="noopener" class="social-link weibo"
+                                title="微博" data-umami-event="social_link_click" data-umami-props='{"platform":"weibo"}'>
+                                <span class="social-logo" aria-hidden="true">
+                                    <img src="images/social-weibo.jpg" alt="" decoding="async">
+                                </span>
+                                <span>微博</span>
+                            </a>
+                            <a href="javascript:void(0);" onclick="openWechatQRModal()" class="social-link wechat"
+                                title="微信公众号" data-umami-event="social_link_click"
+                                data-umami-props='{"platform":"wechat_public_account"}'>
+                                <span class="social-logo" aria-hidden="true">
+                                    <img src="images/social-wechat.jpg" alt="" decoding="async">
+                                </span>
+                                <span>公众号</span>
+                            </a>
+                            <a href="https://web.okjike.com/u/a19b7684-014c-4bb7-a3c1-f43e5d7d3aca" target="_blank" rel="noopener" class="social-link jike"
+                                title="即刻" data-umami-event="social_link_click" data-umami-props='{"platform":"jike"}'>
+                                <span class="social-logo" aria-hidden="true">
+                                    <img src="images/social-jike.jpg" alt="" decoding="async">
+                                </span>
+                                <span>即刻</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="social-group">
+                        <span class="social-label">联系我</span>
+                        <div class="social-row">
+                            <a href="javascript:void(0);" onclick="openPersonalWechatQRModal()" class="social-link special"
+                                title="个人微信" data-umami-event="social_link_click"
+                                data-umami-props='{"platform":"personal_wechat"}'>
+                                <i class="fas fa-user-plus"></i>
+                                <span>个人微信</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="panel-visual">
@@ -844,21 +982,21 @@
                 <div class="channel-action">阅读文章 <i class="fas fa-arrow-right"></i></div>
             </a>
             
-            <!-- Podcast -->
-            <a href="podcast.html" class="channel-card">
-                <div class="channel-icon"><i class="fas fa-microphone-alt"></i></div>
-                <h3 class="channel-title">播客频道</h3>
-                <p class="channel-desc">全网搜索“文鳐夜飞”即可订阅收听的深度声音记录。</p>
-                <div class="channel-action">聆听播客 <i class="fas fa-arrow-right"></i></div>
-            </a>
-
-            <!-- Video -->
+<!-- Video -->
             <a href="video.html" class="channel-card">
                 <div class="channel-icon"><i class="fas fa-play"></i></div>
                 <h3 class="channel-title">视频创作</h3>
                 <p class="channel-desc">在 B站、抖音、YouTube 通过视频记录探索与灵感。</p>
                 <div class="channel-action">观看视频 <i class="fas fa-arrow-right"></i></div>
             </a>
+
+            <!-- Podcast -->
+            <a href="podcast.html" class="channel-card">
+                <div class="channel-icon"><i class="fas fa-microphone-alt"></i></div>
+                <h3 class="channel-title">播客频道</h3>
+                <p class="channel-desc">全网搜索"文鳐夜飞"即可订阅收听的深度声音记录。</p>
+                <div class="channel-action">聆听播客 <i class="fas fa-arrow-right"></i></div>
+</a>
 
             <!-- Music -->
             <a href="music.html" class="channel-card">

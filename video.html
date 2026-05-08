@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>视频频道 - 文鳐夜飞</title>
-    <meta name="description" content="文鳐夜飞的视频内容频道，呈现更丰富的视觉表达与记录。">
-    <meta property="og:title" content="视频频道 - 文鳐夜飞">
+    <title>视频创作 - 文鳐夜飞</title>
+    <meta name="description" content="文鳐夜飞的视频创作频道，呈现更丰富的视觉表达与记录。">
+    <meta property="og:title" content="视频创作 - 文鳐夜飞">
     <meta property="og:description" content="文鳐夜飞的视频内容频道，呈现更丰富的视觉表达与记录。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://wenyaoyefei.com/video.html">
@@ -171,9 +171,11 @@
             box-shadow: var(--shadow);
             text-align: center;
             padding: clamp(24px, 4vw, 40px);
+            height: 220px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             gap: 12px;
         }
 
@@ -304,6 +306,17 @@
             color: var(--primary);
         }
 
+        @media (max-width: 760px) {
+            .header {
+                height: auto;
+                min-height: 220px;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* --- Dark Theme --- */
         [data-theme='dark'] {
             --primary: #004E8C;
@@ -378,7 +391,7 @@
 
     <div class="container">
         <div class="header">
-            <h1>🎬 视频频道</h1>
+            <h1>🎬 视频创作</h1>
             <p>在这里，我通过视频形式分享关于“一人”公司、投资心得以及自我成长的深度思考与日常实践。</p>
         </div>
 

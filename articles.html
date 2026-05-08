@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>文章列表 - 文鳐夜飞</title>
+    <title>Blog文章 - 文鳐夜飞</title>
     <meta name="description" content="文鳐夜飞的文章列表，涵盖一人公司、投资悟道、自我成长与随笔内容。">
-    <meta property="og:title" content="文章列表 - 文鳐夜飞">
+    <meta property="og:title" content="Blog文章 - 文鳐夜飞">
     <meta property="og:description" content="文鳐夜飞的文章列表，涵盖一人公司、投资悟道、自我成长与随笔内容。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://wenyaoyefei.com/articles.html">
@@ -195,12 +195,26 @@
 
         .header {
             padding: clamp(26px, 4vw, 44px);
+            height: 220px;
             border-radius: var(--radius-lg);
             border: 1px solid var(--line);
             background: var(--surface);
             box-shadow: var(--shadow);
             margin-bottom: 20px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            width: 100%;
         }
 
         .header-title {
@@ -209,6 +223,12 @@
             color: var(--primary);
             margin-bottom: 10px;
             letter-spacing: 0.8px;
+        }
+
+        .header-mark {
+            flex-shrink: 0;
+            font-size: clamp(42px, 4.2vw, 58px);
+            line-height: 1;
         }
 
         .header-subtitle {
@@ -414,6 +434,11 @@
         }
 
         @media (max-width: 760px) {
+            .header {
+                height: auto;
+                min-height: 220px;
+            }
+
             .nav-links {
                 justify-content: flex-start;
             }
@@ -573,7 +598,10 @@
 
     <div class="container">
         <div class="header">
-            <h1 class="header-title">文章</h1>
+            <div class="header-top">
+                <span class="header-mark" aria-hidden="true">✍️</span>
+                <h1 class="header-title">Blog文章</h1>
+                </div>
             <p class="header-subtitle">分享关于"一人"公司(OPC)、投资悟道、自我成长</p>
         </div>
 

@@ -173,59 +173,80 @@
         }
 
         .header {
-            padding: clamp(26px, 4vw, 44px);
+            padding: clamp(24px, 4vw, 40px);
+            height: 220px;
             border-radius: var(--radius-lg);
             border: 1px solid var(--line);
             background: var(--surface);
             box-shadow: var(--shadow);
             margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .header-title {
-            font-family: 'Noto Serif SC', serif;
-            font-size: clamp(32px, 4.4vw, 52px);
-            color: var(--primary);
-            margin-bottom: 10px;
-            letter-spacing: 0.8px;
-        }
-
-        .header-content {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            gap: 12px;
+            text-align: center;
+        }
+
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             gap: 16px;
-            margin-top: 12px;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .header-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(32px, 4.4vw, 50px);
+            color: var(--primary);
+            margin-bottom: 0;
+            letter-spacing: 0.8px;
+            white-space: nowrap;
+        }
+
+        .header-mark {
+            flex-shrink: 0;
+            font-size: clamp(42px, 4.2vw, 58px);
+            line-height: 1;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
             width: 100%;
         }
 
         .header-subtitle {
             color: var(--ink-soft);
-            font-size: clamp(14px, 1.8vw, 16px);
-            line-height: 1.6;
+            font-size: 15px;
             margin-bottom: 0;
-            text-align: center;
+            white-space: nowrap;
         }
 
         .music-platforms {
             display: flex;
             align-items: center;
-            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
         .platform-link {
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 8px 20px;
+            gap: 6px;
+            padding: 6px 14px;
             background: rgba(var(--primary-rgb), 0.05);
             border: 1px solid rgba(var(--primary-rgb), 0.15);
             border-radius: 999px;
             color: var(--primary);
             text-decoration: none;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
         }
 
@@ -702,8 +723,18 @@
         }
 
         @media (max-width: 680px) {
+            .header {
+                height: auto;
+                min-height: 220px;
+            }
+
+            .header-content {
+                flex-direction: column;
+            }
+
             .header-subtitle {
                 font-size: 13px;
+                white-space: normal;
             }
             .platform-link {
                 font-size: 12px;
@@ -882,7 +913,10 @@
 
     <div class="container">
         <div class="header">
-            <h1 class="header-title">🎵 我的原创音乐</h1>
+            <div class="header-top">
+                <span class="header-mark">🎵</span>
+                <h1 class="header-title">原创音乐</h1>
+            </div>
             <div class="header-content">
                 <p class="header-subtitle">Follow Heart，在旋律中寻找自由，已上架主流音乐平台</p>
                 <div class="music-platforms">
