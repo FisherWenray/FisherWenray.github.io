@@ -161,7 +161,7 @@ function articleTemplate(article, htmlContent) {
   <meta property="og:image" content="https://wenyaoyefei.com/avatar.jpg">
   <link rel="canonical" href="${canonical}">
   <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
-  <script src="../js/theme.js"></script>
+  <script src="../js/theme.js?v=2"></script>
   <link rel="icon" type="image/jpeg" href="../avatar.jpg">
   <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
