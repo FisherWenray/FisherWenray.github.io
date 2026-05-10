@@ -11,14 +11,10 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://wenyaoyefei.com/video.html">
     <meta property="og:image" content="https://wenyaoyefei.com/avatar.jpg">
-    <script src="js/theme.js?v=2"></script>
+    <script src="js/theme.js?v=2" defer></script>
+    <link rel="stylesheet" href="css/site.css">
     <link rel="icon" type="image/jpeg" href="avatar.jpg">
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap"
-        rel="stylesheet">
     <style>
         :root {
             --primary: #004E8C;
@@ -46,7 +42,7 @@
         }
 
         body {
-            font-family: 'Noto Sans SC', sans-serif;
+            font-family: var(--font-sans);
             color: var(--ink);
             min-height: 100vh;
             background:
@@ -180,7 +176,7 @@
         }
 
         .header h1 {
-            font-family: 'Noto Serif SC', serif;
+            font-family: var(--font-serif);
             font-size: clamp(32px, 4.4vw, 50px);
             margin-bottom: 0;
             color: var(--primary);

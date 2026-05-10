@@ -31,14 +31,10 @@
       ]
     }
     </script>
-    <script src="js/theme.js?v=2"></script>
+    <script src="js/theme.js?v=2" defer></script>
+    <link rel="stylesheet" href="css/site.css">
     <link rel="icon" type="image/jpeg" href="avatar.jpg">
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap"
-        rel="stylesheet">
     <style>
         :root {
             --primary: #004E8C;
@@ -66,7 +62,7 @@
         }
 
         body {
-            font-family: 'Noto Sans SC', sans-serif;
+            font-family: var(--font-sans);
             color: var(--ink);
             min-height: 100vh;
             background:
@@ -261,7 +257,7 @@
         }
 
         .name {
-            font-family: 'Noto Serif SC', serif;
+            font-family: var(--font-serif);
             font-size: clamp(42px, 5vw, 64px);
             line-height: 1.05;
             text-align: left;
@@ -273,7 +269,7 @@
             text-align: left;
             font-size: 15px;
             color: var(--gold);
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--font-mono);
             letter-spacing: 0.08em;
             text-transform: uppercase;
         }
@@ -317,7 +313,7 @@
             background: var(--primary);
             border: 1px solid rgba(255, 255, 255, 0.28);
             box-shadow: 0 10px 24px rgba(var(--primary-rgb), 0.24);
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--font-mono);
             font-size: 15px;
             font-weight: 700;
             line-height: 1;
@@ -516,7 +512,7 @@
         }
 
         .channel-title {
-            font-family: 'Noto Serif SC', serif;
+            font-family: var(--font-serif);
             font-size: 22px;
             font-weight: 700;
             color: var(--primary);
@@ -569,7 +565,7 @@
         .teaser-title {
             margin-top: 6px;
             color: var(--ink);
-            font-family: 'Noto Serif SC', serif;
+            font-family: var(--font-serif);
             font-size: clamp(24px, 3vw, 34px);
             line-height: 1.2;
         }
@@ -813,7 +809,7 @@
 
         .modal-content h2 {
             color: var(--primary);
-            font-family: 'Noto Serif SC', serif;
+            font-family: var(--font-serif);
             font-size: 25px;
             margin-bottom: 12px;
         }

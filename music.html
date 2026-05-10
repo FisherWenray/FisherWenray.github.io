@@ -11,20 +11,15 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://wenyaoyefei.com/music.html">
     <meta property="og:image" content="https://wenyaoyefei.com/avatar.jpg">
-    <script src="js/theme.js?v=2"></script>
+    <script src="js/theme.js?v=2" defer></script>
+    <link rel="stylesheet" href="css/site.css">
     <link rel="icon" type="image/jpeg" href="avatar.jpg">
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- 预连接 API 和 CDN 域名，减少 DNS/TLS 延迟 -->
     <link rel="preconnect" href="https://api.i-meto.com">
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="dns-prefetch" href="https://p3.music.126.net">
     <link rel="dns-prefetch" href="https://m801.music.126.net">
-    <link
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap"
-        rel="stylesheet">
-
     <!-- 引入 APlayer -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
     <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
@@ -56,7 +51,7 @@
         }
 
         body {
-            font-family: 'Noto Sans SC', sans-serif;
+            font-family: var(--font-sans);
             color: var(--ink);
             min-height: 100vh;
             background:
@@ -198,7 +193,7 @@
         }
 
         .header-title {
-            font-family: 'Noto Serif SC', serif;
+            font-family: var(--font-serif);
             font-size: clamp(32px, 4.4vw, 50px);
             color: var(--primary);
             margin-bottom: 0;
@@ -383,7 +378,7 @@
         }
 
         .player-title {
-            font-family: 'Noto Serif SC', serif;
+            font-family: var(--font-serif);
             font-size: 18px;
             font-weight: 700;
             color: var(--ink);
@@ -450,7 +445,7 @@
             justify-content: space-between;
             font-size: 12px;
             color: var(--ink-soft);
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--font-mono);
         }
 
         /* 控制按钮区域 */
