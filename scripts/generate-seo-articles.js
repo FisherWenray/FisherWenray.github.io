@@ -288,11 +288,11 @@ function articleTemplate(article, htmlContent) {
             <ul class="nav-links" id="navLinks">
         <li><a href="../index.html">首页</a></li>
         <li><a href="../software.html">产品</a></li>
-        <li><a href="../articles.html" class="active">Blog</a></li>
+        <li><a href="../articles.html">Blog</a></li>
         <li><a href="../video.html">视频</a></li>
         <li><a href="../podcast.html">播客</a></li>
         <li><a href="../music.html">音乐</a></li>
-      </ul>
+        <li><a href="../books.html">书籍</a></li>      </ul>
             <div style="display: flex; align-items: center;">
                 <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
                     <i class="fas fa-moon"></i>

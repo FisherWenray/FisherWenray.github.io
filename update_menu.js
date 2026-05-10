@@ -8,6 +8,7 @@ const files = [
     'video.html',
     'podcast.html',
     'music.html',
+    'books.html',
     'scripts/generate-seo-articles.js'
 ];
 
