@@ -2,7 +2,7 @@
 id: "007"
 title: "一人公司大神Peter Levels《MAKE》（02）：序言"
 description: "《MAKE》：序言"
-author: "文夜飞"
+author: "文鳐夜飞"
 date: "2025-08-31"
 category: "软件出海"
 tags: ["MAKE", "一人公司"]

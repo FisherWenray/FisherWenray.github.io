@@ -291,3 +291,109 @@ body::after {
     border-top: 1px solid var(--line) !important;
     color: var(--ink-soft) !important;
 }
+
+/* --- 最新文章模块样式 --- */
+.latest-section {
+    padding: clamp(24px, 4vw, 34px);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.latest-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.latest-title {
+    font-family: var(--font-serif);
+    font-size: clamp(24px, 3vw, 32px);
+    color: var(--primary);
+    line-height: 1.2;
+}
+
+.latest-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.latest-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.latest-card {
+    min-height: 190px;
+    padding: 20px;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(var(--primary-rgb), 0.18);
+    background: rgba(var(--primary-rgb), 0.05);
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.latest-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(var(--primary-rgb), 0.4);
+    box-shadow: 0 16px 32px rgba(var(--primary-rgb), 0.12);
+}
+
+.latest-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    color: var(--ink-soft);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.latest-card-title {
+    color: var(--primary);
+    font-size: 18px;
+    line-height: 1.45;
+    font-weight: 700;
+}
+
+.latest-card-desc {
+    color: var(--ink-soft);
+    font-size: 14px;
+    line-height: 1.7;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+@media (max-width: 980px) {
+    .latest-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- 深色主题适配 --- */
+[data-theme='dark'] .latest-card {
+    background: var(--surface) !important;
+    backdrop-filter: blur(16px) !important;
+    border: 1px solid var(--line) !important;
+    box-shadow: var(--shadow) !important;
+}
+
+[data-theme='dark'] .latest-title,
+[data-theme='dark'] .latest-card-title {
+    color: #FFFFFF !important;
+    text-shadow: 0 0 10px rgba(0, 78, 140, 0.3);
+}
+
