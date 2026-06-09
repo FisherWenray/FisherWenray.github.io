@@ -915,8 +915,8 @@
         }
 
         .product-cover img {
-            max-width: 55%;
-            max-height: 55%;
+            max-width: 80%;
+            max-height: 80%;
             object-fit: contain;
             transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1), filter 0.6s ease;
             z-index: 1;
@@ -941,7 +941,6 @@
             position: absolute;
             inset: -50%;
             background: conic-gradient(from 0deg at 50% 50%, #3b82f6, #8b5cf6, #ec4899, #3b82f6);
-            animation: spin 6s linear infinite;
             filter: blur(30px);
             opacity: 0.7;
             transition: opacity 0.5s ease;
@@ -949,10 +948,6 @@
         }
         .product-card:hover .oneopc-cover .animated-bg {
             opacity: 1;
-            animation: spin 3s linear infinite;
-        }
-        @keyframes spin {
-            100% { transform: rotate(360deg); }
         }
 
         .product-cover-label {
@@ -1544,7 +1539,7 @@
                                 <i class="fas fa-external-link-alt"></i> 访问网站
                             </a>
                             <a href="https://github.com/FisherWenray/stock-market-cloud" target="_blank" rel="noopener" class="product-btn btn-secondary" data-umami-event="homepage_product_click" data-umami-props='{"target":"stock_github"}'>
-                                <i class="fab fa-github"></i>
+                                <i class="fab fa-github"></i> GitHub 源码
                             </a>
                         </div>
                     </div>
