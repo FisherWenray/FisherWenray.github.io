@@ -6,7 +6,7 @@ author: "文鳐夜飞"
 date: "2023-04-12"
 category: "自我成长"
 tags: ["通识教育"]
-image: "images/article-placeholder.svg"
+image: "images/article-cover-001.png"
 ---
 # 通识教育——什么是通识教育（一）
 

@@ -6,7 +6,7 @@ author: "文鳐夜飞"
 date: "2024-06-30"
 category: "随笔"
 tags: ["音乐", "随笔", "黄家驹"]
-image: "images/article-placeholder.svg"
+image: "images/article-cover-005.png"
 readTime: 4
 ---
 # 怀念黄家驹：何日君再来

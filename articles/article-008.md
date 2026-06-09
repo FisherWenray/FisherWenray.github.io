@@ -6,7 +6,7 @@ author: "文鳐夜飞"
 date: "2026-01-22"
 category: "软件出海"
 tags: ["MAKE", "一人公司"]
-image: "images/article-placeholder.svg"
+image: "images/article-cover-008.png"
 ---
 # 一人公司大神Peter Levels《MAKE》（03）：关于这本书
 

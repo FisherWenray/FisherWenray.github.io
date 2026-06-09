@@ -11,7 +11,7 @@
         "通识教育"
       ],
       "markdown": "articles/article-001.md",
-      "image": "images/article-placeholder.svg"
+      "image": "images/article-cover-001.png"
     },
     {
       "id": "002",
@@ -24,7 +24,7 @@
         "通识教育"
       ],
       "markdown": "articles/article-002.md",
-      "image": "images/article-placeholder.svg"
+      "image": "images/article-cover-002.png"
     },
     {
       "id": "003",
@@ -39,7 +39,7 @@
         "AI"
       ],
       "markdown": "articles/article-003.md",
-      "image": "images/article-placeholder.svg",
+      "image": "images/article-cover-003.png",
       "readTime": 5
     },
     {
@@ -55,7 +55,7 @@
         "密码朋克"
       ],
       "markdown": "articles/article-004.md",
-      "image": "images/article-placeholder.svg",
+      "image": "images/article-cover-004.png",
       "readTime": 10
     },
     {
@@ -71,7 +71,7 @@
         "黄家驹"
       ],
       "markdown": "articles/article-005.md",
-      "image": "images/article-placeholder.svg",
+      "image": "images/article-cover-005.png",
       "readTime": 4
     },
     {
@@ -86,7 +86,7 @@
         "一人公司"
       ],
       "markdown": "articles/article-006.md",
-      "image": "images/article-placeholder.svg"
+      "image": "images/article-cover-006.png"
     },
     {
       "id": "007",
@@ -100,7 +100,7 @@
         "一人公司"
       ],
       "markdown": "articles/article-007.md",
-      "image": "images/article-placeholder.svg"
+      "image": "images/article-cover-007.png"
     },
     {
       "id": "008",
@@ -114,7 +114,7 @@
         "一人公司"
       ],
       "markdown": "articles/article-008.md",
-      "image": "images/article-placeholder.svg"
+      "image": "images/article-cover-008.png"
     },
     {
       "id": "009",
@@ -128,7 +128,7 @@
         "一人公司"
       ],
       "markdown": "articles/article-009.md",
-      "image": "images/article-placeholder.svg"
+      "image": "images/article-cover-009.png"
     },
     {
       "id": "010",
@@ -142,7 +142,7 @@
         "一人公司"
       ],
       "markdown": "articles/article-010.md",
-      "image": "images/article-placeholder.svg"
+      "image": "images/article-cover-010.png"
     },
     {
       "id": "011",
