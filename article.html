@@ -181,14 +181,14 @@
         .article-header {
             padding: clamp(28px, 5vw, 52px) clamp(18px, 5vw, 56px) clamp(20px, 4vw, 34px);
             text-align: center;
-            border-bottom: 1px solid rgba(var(--primary-rgb), 0.16);
-            background: linear-gradient(155deg, rgba(var(--primary-rgb), 0.1), rgba(255, 255, 255, 0.96));
+            border-bottom: 1px solid rgba(197, 179, 88, 0.24);
+            background: linear-gradient(155deg, rgba(197, 179, 88, 0.12), rgba(255, 255, 255, 0.96));
         }
 
         .article-category-badge {
             display: inline-block;
-            background: rgba(var(--primary-rgb), 0.12);
-            color: var(--primary);
+            background: rgba(197, 179, 88, 0.12);
+            color: var(--gold);
             padding: 6px 14px;
             border-radius: 999px;
             font-size: 12px;
@@ -267,7 +267,7 @@
 
         /* 二级标题保留线条以区分层级 */
         .article-content h2 {
-            border-bottom: 1px solid #eef2f5;
+            border-bottom: 1px solid rgba(197, 179, 88, 0.45);
             padding-bottom: 5px;
             font-size: clamp(22px, 2.8vw, 30px);
         }
@@ -296,16 +296,16 @@
         }
 
         .article-content strong {
-            color: #000000;
+            color: var(--gold);
             padding: 0 2px;
             font-weight: bold;
         }
 
         /* 引用块 */
         .article-content blockquote {
-            border-left: 4px solid var(--primary);
+            border-left: 4px solid var(--gold);
             padding: 10px 20px;
-            background-color: #f0f4f7;
+            background-color: rgba(197, 179, 88, 0.08);
             color: #555;
             font-style: italic;
             margin: 20px 0;
@@ -342,7 +342,7 @@
         .article-content pre {
             background-color: #e2e9ef;
             color: #2c3e50;
-            border: 1px solid #d4c36d;
+            border: 1px solid var(--gold);
             border-radius: 8px;
             padding: 20px;
             margin: 25px 0;
@@ -673,8 +673,8 @@
         }
 
         [data-theme='dark'] .article-header {
-            background: rgba(0, 78, 140, 0.05) !important;
-            border-bottom: 1px solid var(--line) !important;
+            background: rgba(197, 179, 88, 0.08) !important;
+            border-bottom: 1px solid rgba(197, 179, 88, 0.32) !important;
         }
 
         [data-theme='dark'] .nav-links a {
@@ -706,18 +706,18 @@
         [data-theme='dark'] .filter-btn,
         [data-theme='dark'] .article-tag,
         [data-theme='dark'] .article-category-badge {
-            color: var(--ink-soft) !important;
-            border: 1px solid var(--line) !important;
-            background: rgba(0, 78, 140, 0.1) !important;
+            color: var(--gold) !important;
+            border: 1px solid rgba(197, 179, 88, 0.3) !important;
+            background: rgba(197, 179, 88, 0.1) !important;
         }
 
         [data-theme='dark'] .tag:hover,
         [data-theme='dark'] .filter-btn:hover,
         [data-theme='dark'] .filter-btn.active,
         [data-theme='dark'] .article-category-badge:hover {
-            background: var(--primary) !important;
-            color: #FFFFFF !important;
-            box-shadow: 0 0 15px rgba(0, 78, 140, 0.4) !important;
+            background: rgba(197, 179, 88, 0.18) !important;
+            color: var(--gold) !important;
+            box-shadow: 0 0 15px rgba(197, 179, 88, 0.24) !important;
         }
 
         [data-theme='dark'] blockquote {
@@ -1016,4 +1016,3 @@
 </body>
 
 </html>
-
