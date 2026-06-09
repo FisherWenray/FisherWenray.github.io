@@ -6,7 +6,7 @@ author: "文鳐夜飞"
 date: "2026-03-02"
 category: "软件出海"
 tags: ["MAKE", "一人公司"]
-image: "images/article-placeholder.svg"
+image: "images/article-cover-011.png"
 ---
 # 一人公司大神Peter Levels《MAKE》（06）：记录并分享你的想法
 
@@ -79,4 +79,3 @@ image: "images/article-placeholder.svg"
 ## 你的作业
 
 在接下来的7天里，列出你日常生活中遇到的问题，它们可以是大是小，试着每天找到3个想法，这样在本周末你至少有21个想法。
-
