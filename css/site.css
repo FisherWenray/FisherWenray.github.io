@@ -8,7 +8,7 @@
     --primary: #004E8C;
     --primary-rgb: 0, 78, 140;
     --deep: #2A3645;
-    --gold: #004E8C;
+    --gold: #c5b358;
     --ink: #273039;
     --ink-soft: #5f6a75;
     --paper: #f4f6f8;
@@ -94,7 +94,7 @@ body::after {
 .theme-toggle {
     background: rgba(var(--primary-rgb), 0.08);
     border: 1px solid var(--line);
-    color: var(--primary);
+    color: #c5b358;
     cursor: pointer;
     width: 40px;
     height: 40px;
@@ -144,7 +144,7 @@ body::after {
 
 .nav-links a:hover,
 .nav-links a.active {
-    color: var(--primary);
+    color: #c5b358;
     border-color: rgba(var(--primary-rgb), 0.36);
     background: rgba(var(--primary-rgb), 0.08);
 }
@@ -179,11 +179,11 @@ body::after {
 }
 
 .footer-links a:hover {
-    color: var(--primary);
+    color: #c5b358;
 }
 
 .footer-links .link-label {
-    color: var(--primary);
+    color: #c5b358;
     font-weight: 700;
     margin-right: 4px;
 }
@@ -210,7 +210,7 @@ body::after {
         border-radius: 50%;
         background: rgba(var(--primary-rgb), 0.08);
         border: 1px solid var(--line);
-        color: var(--primary);
+        color: #c5b358;
         transition: all 0.3s ease;
     }
     [data-theme='dark'] .mobile-menu-btn {
@@ -252,7 +252,7 @@ body::after {
     --primary: #004E8C;
     --primary-rgb: 0, 78, 140;
     --deep: #000000;
-    --gold: #004E8C;
+    --gold: #c5b358;
     --ink: #FFFFFF;
     --ink-soft: #A0B3C6;
     --paper: #000000;
@@ -311,7 +311,7 @@ body::after {
 .latest-title {
     font-family: var(--font-serif);
     font-size: clamp(24px, 3vw, 32px);
-    color: var(--primary);
+    color: #c5b358;
     line-height: 1.2;
 }
 
@@ -361,7 +361,7 @@ body::after {
 }
 
 .latest-card-title {
-    color: var(--primary);
+    color: #c5b358;
     font-size: 18px;
     line-height: 1.45;
     font-weight: 700;

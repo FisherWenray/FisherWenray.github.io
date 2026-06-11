@@ -33,7 +33,7 @@ const newCSS = `        /* --- Mobile Menu --- */
                 border-radius: 50%;
                 background: rgba(var(--primary-rgb), 0.08);
                 border: 1px solid var(--line);
-                color: var(--primary);
+                color: #c5b358;
                 transition: all 0.3s ease;
             }
             [data-theme='dark'] .mobile-menu-btn {
