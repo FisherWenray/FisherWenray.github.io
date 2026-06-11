@@ -6,7 +6,7 @@ author: "文鳐夜飞"
 date: "2025-07-30"
 category: "软件出海"
 tags: ["MAKE", "一人公司"]
-image: "images/article-placeholder.svg"
+image: "images/article-cover-006.png"
 ---
 # 一人公司大神Peter Levels《MAKE》（01）：序章
 
@@ -61,4 +61,3 @@ image: "images/article-placeholder.svg"
 - **📝 作业 (Homework)**
 
   **作业：**每章结尾设有配套实践练习。请不要仅停留在阅读层面，而要将本书作为实战手册，边学边打造并发布产品。失败无关紧要。但你不能只是阅读，你需要做点什么！这不是一场创业秀场！这是真实的创业生活。
-

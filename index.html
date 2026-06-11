@@ -915,8 +915,8 @@
         }
 
         .product-cover img {
-            max-width: 55%;
-            max-height: 55%;
+            max-width: 80%;
+            max-height: 80%;
             object-fit: contain;
             transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1), filter 0.6s ease;
             z-index: 1;
@@ -941,7 +941,6 @@
             position: absolute;
             inset: -50%;
             background: conic-gradient(from 0deg at 50% 50%, #3b82f6, #8b5cf6, #ec4899, #3b82f6);
-            animation: spin 6s linear infinite;
             filter: blur(30px);
             opacity: 0.7;
             transition: opacity 0.5s ease;
@@ -949,10 +948,6 @@
         }
         .product-card:hover .oneopc-cover .animated-bg {
             opacity: 1;
-            animation: spin 3s linear infinite;
-        }
-        @keyframes spin {
-            100% { transform: rotate(360deg); }
         }
 
         .product-cover-label {
@@ -1395,20 +1390,7 @@
                 <h1 class="name">文鳐夜飞</h1>
 <p class="hero-summary">一个有着嬉皮精神的科技爱好者，聚焦 <strong>OPC 创业</strong>、<strong>投资</strong>、<strong>自我成长</strong></p>
 
-                <ul class="hero-points">
-                    <li>
-                        <span class="hero-point-index">1</span>
-                        <div class="hero-point-text"><strong>一人公司</strong>，追求工作自由</div>
-                    </li>
-                    <li>
-                        <span class="hero-point-index">2</span>
-                        <div class="hero-point-text"><strong>投资悟道</strong>，追求财富自由</div>
-                    </li>
-                    <li>
-                        <span class="hero-point-index">3</span>
-                        <div class="hero-point-text"><strong>自我成长</strong>，追求心灵自由</div>
-                    </li>
-                </ul>
+
 
                 <div class="social-stack">
                     <div class="social-group">
@@ -1544,7 +1526,7 @@
                                 <i class="fas fa-external-link-alt"></i> 访问网站
                             </a>
                             <a href="https://github.com/FisherWenray/stock-market-cloud" target="_blank" rel="noopener" class="product-btn btn-secondary" data-umami-event="homepage_product_click" data-umami-props='{"target":"stock_github"}'>
-                                <i class="fab fa-github"></i>
+                                <i class="fab fa-github"></i> GitHub 源码
                             </a>
                         </div>
                     </div>

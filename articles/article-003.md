@@ -6,7 +6,7 @@ author: "文鳐夜飞"
 date: "2025-02-08"
 category: "自我成长"
 tags: ["自我成长", "知识分子", "AI"]
-image: "images/article-placeholder.svg"
+image: "images/article-cover-003.png"
 readTime: 5
 ---
 # 野生知识分子

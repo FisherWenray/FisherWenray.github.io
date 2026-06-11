@@ -6,7 +6,7 @@ author: "文鳐夜飞"
 date: "2024-06-29"
 category: "投资悟道"
 tags: ["区块链", "WEB3", "密码朋克"]
-image: "images/article-placeholder.svg"
+image: "images/article-cover-004.png"
 readTime: 10
 ---
 # 密码朋克的理想主义与WEB3
