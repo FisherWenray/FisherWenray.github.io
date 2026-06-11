@@ -44,13 +44,13 @@
         .article-header {
             padding: clamp(28px, 5vw, 52px) clamp(18px, 5vw, 56px) clamp(20px, 4vw, 34px);
             text-align: center;
-            border-bottom: 1px solid rgba(197, 179, 88, 0.24);
-            background: linear-gradient(155deg, rgba(197, 179, 88, 0.12), rgba(255, 255, 255, 0.96));
+            border-bottom: 1px solid rgba(var(--primary-rgb), 0.24);
+            background: linear-gradient(155deg, rgba(var(--primary-rgb), 0.12), rgba(255, 255, 255, 0.96));
         }
 
         .article-category-badge {
             display: inline-block;
-            background: rgba(197, 179, 88, 0.12);
+            background: rgba(var(--primary-rgb), 0.12);
             color: var(--gold);
             padding: 6px 14px;
             border-radius: 999px;
@@ -130,7 +130,7 @@
 
         /* 二级标题保留线条以区分层级 */
         .article-content h2 {
-            border-bottom: 1px solid rgba(197, 179, 88, 0.45);
+            border-bottom: 1px solid rgba(var(--primary-rgb), 0.45);
             padding-bottom: 5px;
             font-size: clamp(22px, 2.8vw, 30px);
         }
@@ -154,8 +154,8 @@
         }
 
         .article-content a:hover {
-            color: #b3a24d;
-            border-bottom: 1px solid #b3a24d;
+            color: #004E8C;
+            border-bottom: 1px solid #004E8C;
         }
 
         .article-content strong {
@@ -168,7 +168,7 @@
         .article-content blockquote {
             border-left: 4px solid var(--gold);
             padding: 10px 20px;
-            background-color: rgba(197, 179, 88, 0.08);
+            background-color: rgba(var(--primary-rgb), 0.08);
             color: #555;
             font-style: italic;
             margin: 20px 0;
@@ -477,8 +477,8 @@
         }
 
         [data-theme='dark'] .article-header {
-            background: rgba(197, 179, 88, 0.08) !important;
-            border-bottom: 1px solid rgba(197, 179, 88, 0.32) !important;
+            background: rgba(var(--primary-rgb), 0.08) !important;
+            border-bottom: 1px solid rgba(var(--primary-rgb), 0.32) !important;
         }
 
         [data-theme='dark'] .section-title,
@@ -499,17 +499,17 @@
         [data-theme='dark'] .article-tag,
         [data-theme='dark'] .article-category-badge {
             color: var(--gold) !important;
-            border: 1px solid rgba(197, 179, 88, 0.3) !important;
-            background: rgba(197, 179, 88, 0.1) !important;
+            border: 1px solid rgba(var(--primary-rgb), 0.3) !important;
+            background: rgba(var(--primary-rgb), 0.1) !important;
         }
 
         [data-theme='dark'] .tag:hover,
         [data-theme='dark'] .filter-btn:hover,
         [data-theme='dark'] .filter-btn.active,
         [data-theme='dark'] .article-category-badge:hover {
-            background: rgba(197, 179, 88, 0.18) !important;
+            background: rgba(var(--primary-rgb), 0.18) !important;
             color: var(--gold) !important;
-            box-shadow: 0 0 15px rgba(197, 179, 88, 0.24) !important;
+            box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.24) !important;
         }
 
         [data-theme='dark'] blockquote {
@@ -547,7 +547,7 @@
         [data-theme='dark'] .article-content strong,
         [data-theme='dark'] .description strong {
             color: var(--gold) !important;
-            text-shadow: 0 0 10px rgba(197, 179, 88, 0.3) !important;
+            text-shadow: 0 0 10px rgba(var(--primary-rgb), 0.3) !important;
             font-weight: 700 !important;
         }
   </style>
