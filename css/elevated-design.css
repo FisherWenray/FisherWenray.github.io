@@ -23,6 +23,10 @@ html {
     background: #eef2f6;
 }
 
+html[data-theme='dark'] {
+    background: #00050c;
+}
+
 body {
     color: var(--ink);
     background:
