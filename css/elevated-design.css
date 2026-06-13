@@ -172,17 +172,36 @@ body::after {
 }
 
 .header-mark {
-    width: 36px !important;
-    height: 36px !important;
+    width: auto !important;
+    height: auto !important;
+    min-width: 1.18em;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
     flex: 0 0 auto !important;
-    border-radius: 999px !important;
-    background: rgba(var(--primary-rgb), 0.08) !important;
-    border: 1px solid rgba(var(--primary-rgb), 0.16) !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
     color: var(--gold) !important;
-    font-size: 18px !important;
+    font-size: 1em !important;
+    line-height: 1 !important;
+    opacity: 0.98;
+    transform: translateY(0.01em);
+}
+
+.header-mark svg {
+    width: 1.18em;
+    height: 1.18em;
+    display: block;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.75;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.header-mark i {
+    font-size: 1em !important;
     line-height: 1 !important;
 }
 
@@ -208,6 +227,31 @@ body::after {
     color: var(--ink) !important;
     font-size: clamp(30px, 4.2vw, 50px) !important;
     line-height: 1.12 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.22em !important;
+    flex-wrap: wrap;
+    white-space: nowrap;
+}
+
+.header-top {
+    display: inline-flex !important;
+    gap: 10px !important;
+    width: auto !important;
+    max-width: 100%;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+}
+
+/* When the mark sits beside the heading instead of inside it, match the heading scale explicitly. */
+.header-top .header-mark {
+    font-size: clamp(30px, 4.2vw, 50px) !important;
+    min-width: 1em !important;
+}
+
+.header-top .header-mark svg {
+    width: 1em;
+    height: 1em;
 }
 
 .header-subtitle,
@@ -806,6 +850,17 @@ body::after {
     .panel.hero,
     .products-section {
         padding: 26px 20px !important;
+    }
+
+    .header-top {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+    }
+
+    .header-title,
+    .header h1 {
+        white-space: normal;
     }
 
     .name {
