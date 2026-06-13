@@ -472,35 +472,6 @@ body::after {
     padding: 26px !important;
 }
 
-.products-section .product-card::after {
-    content: "\f061";
-    position: absolute;
-    top: 22px;
-    right: 22px;
-    display: inline-flex !important;
-    align-items: center;
-    justify-content: center;
-    width: 38px;
-    height: 38px;
-    border-radius: 999px;
-    background: rgba(var(--primary-rgb), 0.08);
-    border: 1px solid rgba(var(--primary-rgb), 0.14);
-    color: var(--primary);
-    font-family: "Font Awesome 6 Free";
-    font-size: 14px;
-    font-weight: 900;
-    opacity: 0.78;
-    transform: translateX(0);
-    transition: transform 0.25s ease, opacity 0.25s ease, background 0.25s ease, color 0.25s ease;
-}
-
-.products-section .product-card:hover::after {
-    opacity: 1;
-    transform: translateX(3px);
-    background: var(--primary);
-    color: #fff;
-}
-
 .products-section .product-cover,
 .products-section .product-card.featured .product-cover {
     width: 100% !important;
