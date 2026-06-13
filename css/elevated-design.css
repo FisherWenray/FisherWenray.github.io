@@ -472,9 +472,9 @@ body::after {
     margin-bottom: 18px !important;
     border-radius: var(--radius-lg) !important;
     background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(var(--primary-rgb), 0.08)),
-        linear-gradient(90deg, rgba(var(--primary-rgb), 0.04) 1px, transparent 1px) !important;
-    background-size: auto, 24px 24px !important;
+        radial-gradient(circle at 18% 22%, rgba(255, 255, 255, 0.08), transparent 20%),
+        radial-gradient(circle at 82% 18%, rgba(var(--primary-rgb), 0.16), transparent 24%),
+        linear-gradient(135deg, rgba(5, 32, 54, 0.98), rgba(4, 28, 48, 0.96)) !important;
     border: 1px solid rgba(var(--primary-rgb), 0.1) !important;
     box-shadow: none !important;
 }
@@ -772,17 +772,47 @@ body::after {
 [data-theme='dark'] .card-cover,
 [data-theme='dark'] .bilibili-banner,
 [data-theme='dark'] .douyin-banner,
-[data-theme='dark'] .youtube-banner,
+[data-theme='dark'] .youtube-banner {
+    background:
+        radial-gradient(circle at 18% 22%, rgba(197, 179, 88, 0.04), transparent 20%),
+        radial-gradient(circle at 82% 18%, rgba(var(--primary-rgb), 0.16), transparent 24%),
+        linear-gradient(135deg, rgba(5, 32, 54, 0.98), rgba(4, 28, 48, 0.96)) !important;
+    border-color: rgba(124, 164, 199, 0.16) !important;
+}
+
 [data-theme='dark'] .article-image-wrap,
-[data-theme='dark'] .latest-item,
-[data-theme='dark'] .featured-item,
-[data-theme='dark'] .mini-player,
-[data-theme='dark'] .custom-player,
 [data-theme='dark'] .episode-skeleton {
     background:
         linear-gradient(135deg, rgba(255, 255, 255, 0.035), rgba(var(--primary-rgb), 0.16)),
         linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px) !important;
     background-size: auto, 24px 24px !important;
+    border-color: rgba(124, 164, 199, 0.16) !important;
+}
+
+[data-theme='dark'] .latest-item,
+[data-theme='dark'] .featured-item {
+    background:
+        radial-gradient(circle at 16% 22%, rgba(197, 179, 88, 0.04), transparent 18%),
+        radial-gradient(circle at 84% 18%, rgba(var(--primary-rgb), 0.16), transparent 24%),
+        linear-gradient(135deg, rgba(5, 32, 54, 0.98), rgba(4, 28, 48, 0.96)) !important;
+    border-color: rgba(124, 164, 199, 0.16) !important;
+}
+
+[data-theme='dark'] .latest-item:hover,
+[data-theme='dark'] .featured-item:hover {
+    background:
+        radial-gradient(circle at 16% 22%, rgba(197, 179, 88, 0.05), transparent 18%),
+        radial-gradient(circle at 84% 18%, rgba(var(--primary-rgb), 0.22), transparent 24%),
+        linear-gradient(135deg, rgba(7, 38, 62, 0.99), rgba(5, 32, 54, 0.98)) !important;
+    border-color: rgba(124, 164, 199, 0.26) !important;
+}
+
+[data-theme='dark'] .mini-player,
+[data-theme='dark'] .custom-player {
+    background:
+        radial-gradient(circle at 16% 22%, rgba(197, 179, 88, 0.04), transparent 18%),
+        radial-gradient(circle at 84% 18%, rgba(var(--primary-rgb), 0.16), transparent 24%),
+        linear-gradient(135deg, rgba(5, 32, 54, 0.98), rgba(4, 28, 48, 0.96)) !important;
     border-color: rgba(124, 164, 199, 0.16) !important;
 }
 
