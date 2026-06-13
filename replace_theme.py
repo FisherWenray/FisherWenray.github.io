@@ -106,7 +106,7 @@ content = content.replace(old_icons, new_icons)
 
 # Replace hero summary HTML to add strong tags
 old_hero = '<p class="hero-summary">一个有着嬉皮精神的科技爱好者，聚焦 OPC 创业、投资、自我成长</p>'
-new_hero = '<p class="hero-summary">一个有着嬉皮精神的科技爱好者，聚焦 <strong>OPC 创业</strong>、<strong>投资</strong>、<strong>自我成长</strong></p>'
+new_hero = '<p class="hero-summary">一个有着嬉皮精神的科技爱好者，分享<strong>OPC 创业</strong>、<strong>投资</strong>、<strong>自我成长</strong></p>'
 content = content.replace(old_hero, new_hero)
 
 # Change [data-theme='dark'] product icons to gold
