@@ -1,5 +1,5 @@
 (function() {
-    const LIGHT_THEME_ICON = 'fas fa-circle-half-stroke';
+    const LIGHT_THEME_ICON = 'theme-icon theme-icon-sun';
     const DARK_THEME_ICON = 'fas fa-moon';
 
     const savedTheme = localStorage.getItem('theme') || 'dark';

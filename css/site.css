@@ -113,6 +113,28 @@ body::after {
     transform: rotate(30deg);
 }
 
+.theme-toggle .theme-icon {
+    width: 18px;
+    height: 18px;
+    display: block;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.theme-icon-sun {
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 0 2px rgba(197, 179, 88, 0.18);
+}
+
+.theme-icon-sun::before {
+    content: none;
+}
+
+.theme-icon-sun::after {
+    content: none;
+}
+
 [data-theme='dark'] .theme-toggle {
     color: var(--gold);
     border-color: var(--line);
