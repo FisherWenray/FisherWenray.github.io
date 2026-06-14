@@ -186,7 +186,7 @@ body::after {
     border-radius: 0 !important;
     background: transparent !important;
     border: 0 !important;
-    color: var(--gold) !important;
+    color: var(--primary) !important;
     font-size: 1em !important;
     line-height: 1 !important;
     opacity: 0.98;
@@ -948,7 +948,7 @@ body::after {
     color: #fff !important;
 }
 
-/* Label color system: tags use the gold brand accent consistently. */
+/* Light theme labels use the primary blue; dark theme keeps the gold accent. */
 .tag,
 .article-category,
 .article-tag,
@@ -960,6 +960,16 @@ body::after {
 .filter-btn.active,
 .filter-tab.active,
 .product-card.featured .product-tag,
+.products-more-link,
+.product-btn.btn-secondary,
+.card-btn-secondary,
+.card-action,
+.card-cover-label,
+.footer-links .link-label {
+    color: var(--primary) !important;
+}
+
+[data-theme='dark'] .header-mark,
 [data-theme='dark'] .tag,
 [data-theme='dark'] .article-category,
 [data-theme='dark'] .article-tag,
@@ -970,6 +980,12 @@ body::after {
 [data-theme='dark'] .filter-tab,
 [data-theme='dark'] .filter-btn.active,
 [data-theme='dark'] .filter-tab.active,
-[data-theme='dark'] .product-card.featured .product-tag {
+[data-theme='dark'] .product-card.featured .product-tag,
+[data-theme='dark'] .products-more-link,
+[data-theme='dark'] .product-btn.btn-secondary,
+[data-theme='dark'] .card-btn-secondary,
+[data-theme='dark'] .card-action,
+[data-theme='dark'] .card-cover-label,
+[data-theme='dark'] .footer-links .link-label {
     color: var(--gold) !important;
 }
