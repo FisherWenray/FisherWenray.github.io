@@ -456,6 +456,13 @@
             align-items: stretch;
         }
 
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+            align-items: stretch;
+        }
+
         .latest-panel,
         .featured-panel {
             border: 1px solid var(--line);
@@ -525,9 +532,17 @@
         }
 
         .featured-item {
-            grid-template-columns: 38px minmax(0, 1fr);
-            align-items: center;
-            gap: 12px;
+            height: 100%;
+            grid-template-columns: 42px minmax(0, 1fr);
+            align-items: start;
+            gap: 14px;
+            padding: 18px;
+        }
+
+        .featured-item > span:last-child {
+            display: grid;
+            gap: 4px;
+            align-content: start;
         }
 
         .featured-item .teaser-meta,
@@ -537,7 +552,7 @@
         }
 
         .featured-item .teaser-desc {
-            margin-top: 3px;
+            margin-top: 2px;
         }
 
         .featured-icon {
@@ -551,8 +566,16 @@
             background: rgba(var(--primary-rgb), 0.08);
             border: 1px solid rgba(var(--primary-rgb), 0.12);
             font-size: 17px;
-        }@media (max-width: 980px) {
-.panel {
+        }
+
+        @media (max-width: 1240px) {
+            .media-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 980px) {
+            .panel {
                 grid-template-columns: 1fr;
                 text-align: center;
                 padding: 24px 18px;
@@ -594,6 +617,9 @@
                 flex-direction: column;
             }
             .teaser-grid {
+                grid-template-columns: 1fr;
+            }
+            .media-grid {
                 grid-template-columns: 1fr;
             }
 }
@@ -1555,63 +1581,65 @@
 
 
 
-        <section class="teaser-section reveal" style="--delay: 0.18s;" aria-labelledby="teaserTitle">
+        <section class="teaser-section reveal" style="--delay: 0.18s;" aria-labelledby="latestArticlesTitle">
             <div class="teaser-header">
                 <div>
-                    <h2 class="teaser-title" id="teaserTitle">最新文章与精选入口</h2>
+                    <h2 class="teaser-title" id="latestArticlesTitle">最新文章</h2>
                 </div>
             </div>
 
-            <div class="teaser-grid">
-                <div class="latest-panel">
-                    <div class="teaser-panel-title">最新文章</div>
-                    <div class="latest-list" id="latestArticleList">
-                        <a class="latest-item" href="posts/011.html">
-                            <div class="teaser-meta"><span>2026-03-02</span><span>一人公司</span></div>
-                            <div class="teaser-item-title">一人公司大神Peter Levels《MAKE》（06）：记录并分享你的想法</div>
-                            <div class="teaser-desc">从记录想法开始，把灵感逐步推向可执行的产品实践。</div>
-                        </a>
-                        <a class="latest-item" href="posts/010.html">
-                            <div class="teaser-meta"><span>2026-02-08</span><span>一人公司</span></div>
-                            <div class="teaser-item-title">一人公司大神Peter Levels《MAKE》（05）：想法先从小开始</div>
-                            <div class="teaser-desc">从更小的切口开始验证，让想法更快进入真实世界。</div>
-                        </a>
-                    </div>
+            <div class="latest-panel">
+                <div class="latest-list" id="latestArticleList">
+                    <a class="latest-item" href="posts/011.html">
+                        <div class="teaser-meta"><span>2026-03-02</span><span>一人公司</span></div>
+                        <div class="teaser-item-title">一人公司大神Peter Levels《MAKE》（06）：记录并分享你的想法</div>
+                        <div class="teaser-desc">从记录想法开始，把灵感逐步推向可执行的产品实践。</div>
+                    </a>
+                    <a class="latest-item" href="posts/010.html">
+                        <div class="teaser-meta"><span>2026-02-08</span><span>一人公司</span></div>
+                        <div class="teaser-item-title">一人公司大神Peter Levels《MAKE》（05）：想法先从小开始</div>
+                        <div class="teaser-desc">从更小的切口开始验证，让想法更快进入真实世界。</div>
+                    </a>
                 </div>
+            </div>
+        </section>
 
-                <div class="featured-panel">
-                    <div class="teaser-panel-title">精选入口</div>
-                    <div class="featured-list">
-                        <a class="featured-item" href="video.html" data-umami-event="homepage_latest_click" data-umami-props='{"target":"video_page"}'>
-                            <span class="featured-icon"><i class="fas fa-video"></i></span>
-                            <span>
-                                <span class="teaser-meta">最新视频</span>
-                                <span class="teaser-item-title">视频专区</span>
-                                <span class="teaser-desc">独立开发日常、效率干货分享与随心Vlog，点击进入视频列表。</span>
-                            </span>
-                        </a>
-                        <a class="featured-item" href="https://www.xiaoyuzhoufm.com/podcast/686bb3edb21def6f47390305"
-                            target="_blank" rel="noopener" data-umami-event="homepage_latest_click"
-                            data-umami-props='{"target":"podcast_xiaoyuzhou"}'>
-                            <span class="featured-icon"><i class="fas fa-microphone-alt"></i></span>
-                            <span>
-                                <span class="teaser-meta">最新播客</span>
-                                <span class="teaser-item-title">文鳐夜飞播客</span>
-                                <span class="teaser-desc">点击直接到小宇宙收听最新一期。</span>
-                            </span>
-                        </a>
-                        <a class="featured-item" href="https://music.163.com/#/song?id=3353644885" target="_blank"
-                            rel="noopener" data-umami-event="homepage_latest_click"
-                            data-umami-props='{"target":"music_netease_3353644885"}'>
-                            <span class="featured-icon"><i class="fas fa-music"></i></span>
-                            <span>
-                                <span class="teaser-meta">最新音乐</span>
-                                <span class="teaser-item-title">《海阔余响》</span>
-                                <span class="teaser-desc">点击直接到网易云音乐收听。</span>
-                            </span>
-                        </a>
-                    </div>
+        <section class="teaser-section reveal" style="--delay: 0.2s;" aria-labelledby="mediaTitle">
+            <div class="teaser-header">
+                <div>
+                    <h2 class="teaser-title" id="mediaTitle">我的影音</h2>
                 </div>
+            </div>
+
+            <div class="media-grid">
+                <a class="featured-item" href="video.html" data-umami-event="homepage_latest_click" data-umami-props='{"target":"video_page"}'>
+                    <span class="featured-icon"><i class="fas fa-video"></i></span>
+                    <span>
+                        <span class="teaser-meta">最新视频</span>
+                        <span class="teaser-item-title">视频专区</span>
+                        <span class="teaser-desc">独立开发日常、效率干货分享与随心 Vlog，点击进入视频列表。</span>
+                    </span>
+                </a>
+                <a class="featured-item" href="https://www.xiaoyuzhoufm.com/podcast/686bb3edb21def6f47390305"
+                    target="_blank" rel="noopener" data-umami-event="homepage_latest_click"
+                    data-umami-props='{"target":"podcast_xiaoyuzhou"}'>
+                    <span class="featured-icon"><i class="fas fa-microphone-alt"></i></span>
+                    <span>
+                        <span class="teaser-meta">最新播客</span>
+                        <span class="teaser-item-title">文鳐夜飞播客</span>
+                        <span class="teaser-desc">点击直接到小宇宙收听最新一期。</span>
+                    </span>
+                </a>
+                <a class="featured-item" href="https://music.163.com/#/song?id=3353644885" target="_blank"
+                    rel="noopener" data-umami-event="homepage_latest_click"
+                    data-umami-props='{"target":"music_netease_3353644885"}'>
+                    <span class="featured-icon"><i class="fas fa-music"></i></span>
+                    <span>
+                        <span class="teaser-meta">最新音乐</span>
+                        <span class="teaser-item-title">《海阔余响》</span>
+                        <span class="teaser-desc">点击直接到网易云音乐收听。</span>
+                    </span>
+                </a>
             </div>
         </section>
     </main>
