@@ -142,7 +142,9 @@ body::after {
 .podcast-shell:hover,
 .episode-item:hover,
 .article-card:hover,
-.product-card:hover {
+.product-card:hover,
+.latest-item:hover,
+.featured-item:hover {
     border-color: var(--line-strong) !important;
     box-shadow: var(--shadow-hover) !important;
 }
@@ -799,24 +801,6 @@ body::after {
         linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px) !important;
     background-size: auto, 24px 24px !important;
     border-color: rgba(124, 164, 199, 0.16) !important;
-}
-
-[data-theme='dark'] .latest-item,
-[data-theme='dark'] .featured-item {
-    background:
-        radial-gradient(circle at 16% 22%, rgba(197, 179, 88, 0.04), transparent 18%),
-        radial-gradient(circle at 84% 18%, rgba(var(--primary-rgb), 0.16), transparent 24%),
-        linear-gradient(135deg, rgba(5, 32, 54, 0.98), rgba(4, 28, 48, 0.96)) !important;
-    border-color: rgba(124, 164, 199, 0.16) !important;
-}
-
-[data-theme='dark'] .latest-item:hover,
-[data-theme='dark'] .featured-item:hover {
-    background:
-        radial-gradient(circle at 16% 22%, rgba(197, 179, 88, 0.05), transparent 18%),
-        radial-gradient(circle at 84% 18%, rgba(var(--primary-rgb), 0.22), transparent 24%),
-        linear-gradient(135deg, rgba(7, 38, 62, 0.99), rgba(5, 32, 54, 0.98)) !important;
-    border-color: rgba(124, 164, 199, 0.26) !important;
 }
 
 [data-theme='dark'] .mini-player,
