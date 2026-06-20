@@ -521,6 +521,11 @@
 
         .platform-link i {
             font-size: 16px;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .platform-link.netease i {
+            color: #e60026;
         }
 
         .platform-link:hover {
@@ -529,6 +534,10 @@
             color: #fff !important;
             border-color: transparent;
             box-shadow: 0 8px 20px rgba(var(--primary-rgb), 0.25);
+        }
+
+        .platform-link:hover i {
+            color: #ffffff !important;
         }
 
         .platform-link.netease:hover {

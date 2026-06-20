@@ -109,6 +109,23 @@
 
         .platform-link i {
             font-size: 16px;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .platform-link.xiaoyuzhou i {
+            color: #00b2ff;
+        }
+
+        .platform-link.ximalaya i {
+            color: #fa2800;
+        }
+
+        .platform-link.apple i {
+            color: #a356de;
+        }
+
+        .platform-link.spotify i {
+            color: #1db954;
         }
 
         .platform-link:hover {
@@ -117,6 +134,10 @@
             color: #fff !important;
             border-color: transparent;
             box-shadow: 0 8px 20px rgba(var(--primary-rgb), 0.25);
+        }
+
+        .platform-link:hover i {
+            color: #ffffff !important;
         }
 
         /* 悬停时的官方品牌色背景与发光感 */

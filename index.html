@@ -410,166 +410,96 @@
             gap: 12px;
         }
 
-        .teaser-section {
+        .showcase-section {
+            padding: 30px clamp(20px, 4vw, 40px) 36px;
+        }
+
+        .showcase-grid {
+            display: grid;
+            gap: 28px;
             width: 100%;
-            display: grid;
-            gap: 18px;
-            padding-top: 4px;
         }
 
-        .teaser-header {
-            display: flex;
-            align-items: end;
-            justify-content: space-between;
-            gap: 20px;
+        .showcase-grid-articles {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
-        .teaser-kicker {
-            color: var(--gold);
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-        }
-
-        .teaser-title {
-            margin-top: 6px;
-            color: var(--ink);
-            font-family: var(--font-serif);
-            font-size: clamp(24px, 3vw, 34px);
-            line-height: 1.2;
-        }
-
-        .teaser-link {
-            color: #c5b358;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            font-weight: 700;
-            text-decoration: none;
-        }
-
-        .teaser-grid {
-            display: grid;
-            grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.95fr);
-            gap: 20px;
-            align-items: stretch;
-        }
-
-        .media-grid {
-            display: grid;
+        .showcase-grid-media {
             grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 20px;
-            align-items: stretch;
         }
 
-        .latest-panel,
-        .featured-panel {
-            border: 1px solid var(--line);
-            background: rgba(var(--primary-rgb), 0.045);
-            border-radius: var(--radius-lg);
-            padding: 22px;
+        .showcase-card {
+            min-height: 100%;
         }
 
-        .teaser-panel-title {
-            color: var(--ink);
-            font-size: 15px;
-            font-weight: 700;
-            margin-bottom: 14px;
-        }
-
-        .latest-list,
-        .featured-list {
-            display: grid;
-            gap: 12px;
-        }
-
-        .latest-item,
-        .featured-item {
-            display: grid;
-            gap: 7px;
-            padding: 14px;
-            border-radius: 14px;
-            color: inherit;
-            text-decoration: none;
-            background: rgba(255, 255, 255, 0.55);
-            border: 1px solid rgba(var(--primary-rgb), 0.1);
-            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
-        }
-
-        .latest-item:hover,
-        .featured-item:hover {
-            transform: translateY(-2px);
-            border-color: rgba(var(--primary-rgb), 0.28);
-            background: rgba(255, 255, 255, 0.82);
-        }
-
-        .teaser-meta {
-            color: var(--ink-soft);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 12px;
-            line-height: 1.2;
-        }
-
-        .teaser-meta i {
-            color: #c5b358;
-            font-size: 13px;
-        }
-
-        .teaser-item-title {
-            color: var(--ink);
-            font-size: 16px;
-            font-weight: 700;
-            line-height: 1.45;
-        }
-
-        .teaser-desc {
-            color: var(--ink-soft);
-            font-size: 13px;
-            line-height: 1.65;
-        }
-
-        .featured-item {
-            height: 100%;
-            grid-template-columns: 42px minmax(0, 1fr);
-            align-items: start;
-            gap: 14px;
+        .showcase-card .product-cover {
+            height: 132px;
+            align-items: flex-start;
+            justify-content: space-between;
             padding: 18px;
         }
 
-        .featured-item > span:last-child {
-            display: grid;
-            gap: 4px;
-            align-content: start;
+        .showcase-card .product-info {
+            justify-content: flex-start;
         }
 
-        .featured-item .teaser-meta,
-        .featured-item .teaser-item-title,
-        .featured-item .teaser-desc {
-            display: block;
-        }
-
-        .featured-item .teaser-desc {
-            margin-top: 2px;
-        }
-
-        .featured-icon {
-            width: 38px;
-            height: 38px;
-            border-radius: 12px;
+        .showcase-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 18px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            color: #c5b358;
-            background: rgba(var(--primary-rgb), 0.08);
-            border: 1px solid rgba(var(--primary-rgb), 0.12);
-            font-size: 17px;
+            background: rgba(255, 255, 255, 0.88);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            color: var(--primary);
+            font-size: 22px;
+            box-shadow: 0 10px 24px rgba(var(--primary-rgb), 0.15);
+        }
+
+        .showcase-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .showcase-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            color: var(--ink-soft);
+            font-size: 12px;
+            line-height: 1.3;
+            margin-bottom: 10px;
+        }
+
+        .showcase-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .showcase-meta i {
+            color: var(--primary);
+            font-size: 12px;
+        }
+
+        .showcase-card .product-name {
+            margin-bottom: 12px;
+        }
+
+        .showcase-card .product-desc {
+            margin-bottom: 0;
         }
 
         @media (max-width: 1240px) {
-            .media-grid {
+            .showcase-grid-media {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
         }
@@ -612,14 +542,8 @@
             .social-row {
                 justify-content: center;
             }
-            .teaser-header {
-                align-items: flex-start;
-                flex-direction: column;
-            }
-            .teaser-grid {
-                grid-template-columns: 1fr;
-            }
-            .media-grid {
+            .showcase-grid-articles,
+            .showcase-grid-media {
                 grid-template-columns: 1fr;
             }
 }
@@ -793,7 +717,7 @@
             width: 100%;
         }
 
-        .latest-item, .featured-item {
+        .showcase-card {
             position: relative;
             overflow: hidden;
             z-index: 1;
@@ -834,7 +758,7 @@
             background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.1) 0%, transparent 100%);
         }
 
-        .product-card::before, .latest-item::before, .featured-item::before {
+        .product-card::before, .showcase-card::before {
             content: '';
             position: absolute;
             inset: 0;
@@ -846,7 +770,7 @@
         }
 
         /* Shine effect */
-        .product-card::after, .latest-item::after, .featured-item::after {
+        .product-card::after, .showcase-card::after {
             content: '';
             position: absolute;
             top: 0;
@@ -878,11 +802,11 @@
             border-color: rgba(var(--primary-rgb), 0.4);
         }
 
-        .product-card:hover::before, .latest-item:hover::before, .featured-item:hover::before {
+        .product-card:hover::before, .showcase-card:hover::before {
             opacity: 1;
         }
 
-        .product-card:hover::after, .latest-item:hover::after, .featured-item:hover::after {
+        .product-card:hover::after, .showcase-card:hover::after {
             animation: shine 1.2s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
@@ -1195,27 +1119,12 @@
             box-shadow: var(--shadow) !important;
         }
 
-        [data-theme='dark'] .latest-panel,
-        [data-theme='dark'] .featured-panel {
-            background: rgba(0, 78, 140, 0.06) !important;
-            border: 1px solid rgba(0, 78, 140, 0.32) !important;
-        }
-
-        [data-theme='dark'] .latest-item,
-        [data-theme='dark'] .featured-item {
-            background: rgba(255, 255, 255, 0.035) !important;
-            border-color: rgba(160, 179, 198, 0.16) !important;
-        }
-
-        /* Removed latest-item hover */
-
-        [data-theme='dark'] .teaser-link,
-        [data-theme='dark'] .featured-icon,
+        [data-theme='dark'] .showcase-icon,
         [data-theme='dark'] .channel-icon {
             color: var(--gold) !important;
         }
 
-        [data-theme='dark'] .teaser-meta i {
+        [data-theme='dark'] .showcase-meta i {
             color: var(--gold) !important;
         }
 
@@ -1249,8 +1158,7 @@
         [data-theme='dark'] .wechat-id,
         [data-theme='dark'] .modal-content h2,
         [data-theme='dark'] .channel-title,
-        [data-theme='dark'] .products-title,
-        [data-theme='dark'] .teaser-title {
+        [data-theme='dark'] .products-title {
             color: #FFFFFF !important;
             font-weight: 700 !important;
             text-shadow: 0 0 10px rgba(0, 78, 140, 0.3);
@@ -1287,8 +1195,7 @@
         }
 
         [data-theme='dark'] .product-card,
-        [data-theme='dark'] .latest-item,
-        [data-theme='dark'] .featured-item {
+        [data-theme='dark'] .showcase-card {
             background: rgba(0, 8, 20, 0.6) !important;
             backdrop-filter: blur(20px) !important;
             border: 1px solid rgba(255, 255, 255, 0.1) !important;
@@ -1303,20 +1210,17 @@
         }
 
         [data-theme='dark'] .product-card::before,
-        [data-theme='dark'] .latest-item::before,
-        [data-theme='dark'] .featured-item::before {
+        [data-theme='dark'] .showcase-card::before {
             background: linear-gradient(135deg, rgba(0, 78, 140, 0.2) 0%, transparent 100%) !important;
         }
 
         [data-theme='dark'] .product-card::after,
-        [data-theme='dark'] .latest-item::after,
-        [data-theme='dark'] .featured-item::after {
+        [data-theme='dark'] .showcase-card::after {
             background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent) !important;
         }
 
         [data-theme='dark'] .product-card:hover,
-        [data-theme='dark'] .latest-item:hover,
-        [data-theme='dark'] .featured-item:hover {
+        [data-theme='dark'] .showcase-card:hover {
             background: rgba(0, 20, 40, 0.8) !important;
             border-color: rgba(255, 255, 255, 0.25) !important;
             box-shadow: 
@@ -1356,6 +1260,16 @@
 
         [data-theme='dark'] .product-desc {
             color: var(--ink-soft) !important;
+        }
+
+        [data-theme='dark'] .showcase-icon {
+            background: rgba(0, 0, 0, 0.32) !important;
+            border-color: rgba(255, 255, 255, 0.12) !important;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.36) !important;
+        }
+
+        [data-theme='dark'] .showcase-eyebrow {
+            color: var(--gold) !important;
         }
 
         [data-theme='dark'] .product-tag {
@@ -1592,64 +1506,113 @@
 
 
 
-        <section class="teaser-section reveal" style="--delay: 0.18s;" aria-labelledby="latestArticlesTitle">
-            <div class="teaser-header">
-                <div>
-                    <h2 class="teaser-title" id="latestArticlesTitle">最新文章</h2>
-                </div>
+        <section class="section showcase-section reveal" style="--delay: 0.18s;" aria-labelledby="latestArticlesTitle">
+            <div class="products-header">
+                <h2 class="products-title" id="latestArticlesTitle">
+                    <span class="header-mark" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" focusable="false">
+                            <path d="M5 5.5h14"/>
+                            <path d="M5 11.5h14"/>
+                            <path d="M5 17.5h9"/>
+                            <circle cx="17.5" cy="17.5" r="1.5" fill="currentColor" stroke="none"/>
+                        </svg>
+                    </span>
+                    最新文章
+                </h2>
+                <a href="articles.html" class="products-more-link" data-umami-event="homepage_articles_more">
+                    <span>全部文章</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
 
-            <div class="latest-panel">
-                <div class="latest-list" id="latestArticleList">
-                    <a class="latest-item" href="posts/011.html">
-                        <div class="teaser-meta"><span>2026-03-02</span><span>一人公司</span></div>
-                        <div class="teaser-item-title">一人公司大神Peter Levels《MAKE》（06）：记录并分享你的想法</div>
-                        <div class="teaser-desc">从记录想法开始，把灵感逐步推向可执行的产品实践。</div>
-                    </a>
-                    <a class="latest-item" href="posts/010.html">
-                        <div class="teaser-meta"><span>2026-02-08</span><span>一人公司</span></div>
-                        <div class="teaser-item-title">一人公司大神Peter Levels《MAKE》（05）：想法先从小开始</div>
-                        <div class="teaser-desc">从更小的切口开始验证，让想法更快进入真实世界。</div>
-                    </a>
-                </div>
+            <div class="showcase-grid showcase-grid-articles" id="latestArticleList">
+                <a class="product-card showcase-card" href="posts/011.html">
+                    <div class="product-cover">
+                        <span class="showcase-icon"><i class="fas fa-feather-alt"></i></span>
+                        <span class="showcase-eyebrow">Latest Note</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="showcase-meta">
+                            <span><i class="far fa-calendar"></i>2026-03-02</span>
+                            <span><i class="fas fa-tag"></i>一人公司</span>
+                        </div>
+                        <h3 class="product-name">一人公司大神Peter Levels《MAKE》（06）：记录并分享你的想法</h3>
+                        <p class="product-desc">从记录想法开始，把灵感逐步推向可执行的产品实践。</p>
+                    </div>
+                </a>
+                <a class="product-card showcase-card" href="posts/010.html">
+                    <div class="product-cover">
+                        <span class="showcase-icon"><i class="fas fa-book-open"></i></span>
+                        <span class="showcase-eyebrow">Latest Note</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="showcase-meta">
+                            <span><i class="far fa-calendar"></i>2026-02-08</span>
+                            <span><i class="fas fa-tag"></i>一人公司</span>
+                        </div>
+                        <h3 class="product-name">一人公司大神Peter Levels《MAKE》（05）：想法先从小开始</h3>
+                        <p class="product-desc">从更小的切口开始验证，让想法更快进入真实世界。</p>
+                    </div>
+                </a>
             </div>
         </section>
 
-        <section class="teaser-section reveal" style="--delay: 0.2s;" aria-labelledby="mediaTitle">
-            <div class="teaser-header">
-                <div>
-                    <h2 class="teaser-title" id="mediaTitle">我的影音</h2>
-                </div>
+        <section class="section showcase-section reveal" style="--delay: 0.2s;" aria-labelledby="mediaTitle">
+            <div class="products-header">
+                <h2 class="products-title" id="mediaTitle">
+                    <span class="header-mark" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" focusable="false">
+                            <rect x="4" y="5" width="10" height="14" rx="2"/>
+                            <path d="M16 9.5l4-2.5v10l-4-2.5z"/>
+                        </svg>
+                    </span>
+                    我的影音
+                </h2>
             </div>
 
-            <div class="media-grid">
-                <a class="featured-item" href="video.html" data-umami-event="homepage_latest_click" data-umami-props='{"target":"video_page"}'>
-                    <span class="featured-icon"><i class="fas fa-video"></i></span>
-                    <span>
-                        <span class="teaser-meta">最新视频</span>
-                        <span class="teaser-item-title">视频专区</span>
-                        <span class="teaser-desc">独立开发日常、效率干货分享与随心 Vlog，点击进入视频列表。</span>
-                    </span>
+            <div class="showcase-grid showcase-grid-media">
+                <a class="product-card showcase-card" href="video.html" data-umami-event="homepage_latest_click" data-umami-props='{"target":"video_page"}'>
+                    <div class="product-cover">
+                        <span class="showcase-icon"><i class="fas fa-video"></i></span>
+                        <span class="showcase-eyebrow">Latest Video</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="showcase-meta">
+                            <span><i class="fas fa-clapperboard"></i>视频专区</span>
+                        </div>
+                        <h3 class="product-name">我的视频</h3>
+                        <p class="product-desc">独立开发日常、效率干货分享与随心 Vlog，点击进入视频列表。</p>
+                    </div>
                 </a>
-                <a class="featured-item" href="https://www.xiaoyuzhoufm.com/podcast/686bb3edb21def6f47390305"
+                <a class="product-card showcase-card" href="https://www.xiaoyuzhoufm.com/podcast/686bb3edb21def6f47390305"
                     target="_blank" rel="noopener" data-umami-event="homepage_latest_click"
                     data-umami-props='{"target":"podcast_xiaoyuzhou"}'>
-                    <span class="featured-icon"><i class="fas fa-microphone-alt"></i></span>
-                    <span>
-                        <span class="teaser-meta">最新播客</span>
-                        <span class="teaser-item-title">文鳐夜飞播客</span>
-                        <span class="teaser-desc">点击直接到小宇宙收听最新一期。</span>
-                    </span>
+                    <div class="product-cover">
+                        <span class="showcase-icon"><i class="fas fa-microphone-alt"></i></span>
+                        <span class="showcase-eyebrow">Latest Podcast</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="showcase-meta">
+                            <span><i class="fas fa-podcast"></i>小宇宙</span>
+                        </div>
+                        <h3 class="product-name">文鳐夜飞播客</h3>
+                        <p class="product-desc">点击直接到小宇宙收听最新一期，听我聊独立创作、生活观察和个人成长。</p>
+                    </div>
                 </a>
-                <a class="featured-item" href="https://music.163.com/#/song?id=3353644885" target="_blank"
+                <a class="product-card showcase-card" href="https://music.163.com/#/song?id=3353644885" target="_blank"
                     rel="noopener" data-umami-event="homepage_latest_click"
                     data-umami-props='{"target":"music_netease_3353644885"}'>
-                    <span class="featured-icon"><i class="fas fa-music"></i></span>
-                    <span>
-                        <span class="teaser-meta">最新音乐</span>
-                        <span class="teaser-item-title">《海阔余响》</span>
-                        <span class="teaser-desc">点击直接到网易云音乐收听。</span>
-                    </span>
+                    <div class="product-cover">
+                        <span class="showcase-icon"><i class="fas fa-music"></i></span>
+                        <span class="showcase-eyebrow">Latest Music</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="showcase-meta">
+                            <span><i class="fas fa-headphones"></i>网易云音乐</span>
+                        </div>
+                        <h3 class="product-name">《海阔余响》</h3>
+                        <p class="product-desc">点击直接到网易云音乐收听，保留这首作品当下的情绪、空间感和回响。</p>
+                    </div>
                 </a>
             </div>
         </section>
@@ -1715,13 +1678,19 @@
                 if (!articles.length) return;
 
                 list.innerHTML = articles.map((article) => `
-                    <a class="latest-item" href="posts/${encodeURIComponent(article.id)}.html">
-                        <div class="teaser-meta">
-                            <span>${escapeHTML(article.date || '')}</span>
-                            <span>${escapeHTML(article.category || '文章')}</span>
+                    <a class="product-card showcase-card" href="posts/${encodeURIComponent(article.id)}.html">
+                        <div class="product-cover">
+                            <span class="showcase-icon"><i class="fas fa-feather-alt"></i></span>
+                            <span class="showcase-eyebrow">Latest Note</span>
                         </div>
-                        <div class="teaser-item-title">${escapeHTML(article.title)}</div>
-                        <div class="teaser-desc">${escapeHTML(article.description || '继续阅读这篇最新内容。')}</div>
+                        <div class="product-info">
+                            <div class="showcase-meta">
+                                <span><i class="far fa-calendar"></i>${escapeHTML(article.date || '')}</span>
+                                <span><i class="fas fa-tag"></i>${escapeHTML(article.category || '文章')}</span>
+                            </div>
+                            <h3 class="product-name">${escapeHTML(article.title)}</h3>
+                            <p class="product-desc">${escapeHTML(article.description || '继续阅读这篇最新内容。')}</p>
+                        </div>
                     </a>
                 `).join('');
             } catch (error) {
