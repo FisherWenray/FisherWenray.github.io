@@ -853,15 +853,16 @@
 
         .showcase-card::before,
         .showcase-card::after {
-            display: none;
+            display: block;
         }
 
         .showcase-card:hover {
-            transform: translateY(-4px);
-            background: rgba(255, 255, 255, 0.76);
-            border-color: rgba(var(--primary-rgb), 0.16);
+            transform: translateY(-6px) scale(1.01);
+            background: rgba(255, 255, 255, 0.82);
+            border-color: rgba(var(--primary-rgb), 0.26);
             box-shadow:
-                0 18px 36px rgba(var(--primary-rgb), 0.08),
+                0 24px 48px rgba(var(--primary-rgb), 0.14),
+                0 0 22px rgba(var(--primary-rgb), 0.12),
                 inset 0 1px 0 rgba(255, 255, 255, 1);
         }
 
@@ -1247,11 +1248,12 @@
         }
 
         [data-theme='dark'] .showcase-card:hover {
-            background: rgba(0, 14, 28, 0.74) !important;
-            border-color: rgba(var(--primary-rgb), 0.22) !important;
+            background: rgba(0, 20, 40, 0.82) !important;
+            border-color: rgba(var(--primary-rgb), 0.34) !important;
             box-shadow:
-                0 22px 46px rgba(0, 0, 0, 0.62),
-                0 0 18px rgba(var(--primary-rgb), 0.14) !important;
+                0 24px 60px rgba(0, 78, 140, 0.3),
+                0 0 20px rgba(0, 78, 140, 0.22),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
         }
 
         [data-theme='dark'] .oneopc-cover {
