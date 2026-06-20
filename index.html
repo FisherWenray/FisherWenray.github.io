@@ -432,40 +432,8 @@
             min-height: 100%;
         }
 
-        .showcase-card .product-cover {
-            height: 132px;
-            align-items: flex-start;
-            justify-content: space-between;
-            padding: 18px;
-        }
-
         .showcase-card .product-info {
             justify-content: flex-start;
-        }
-
-        .showcase-icon {
-            width: 56px;
-            height: 56px;
-            border-radius: 18px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.88);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            color: var(--primary);
-            font-size: 22px;
-            box-shadow: 0 10px 24px rgba(var(--primary-rgb), 0.15);
-        }
-
-        .showcase-eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--primary);
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
         }
 
         .showcase-meta {
@@ -869,6 +837,34 @@
             transform: scale(1.3);
         }
 
+        /* Simplified homepage showcase cards */
+        .showcase-card {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            padding: 22px;
+            background: rgba(255, 255, 255, 0.56);
+            border: 1px solid rgba(255, 255, 255, 0.82);
+            box-shadow:
+                0 10px 28px rgba(var(--primary-rgb), 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(18px);
+        }
+
+        .showcase-card::before,
+        .showcase-card::after {
+            display: none;
+        }
+
+        .showcase-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.76);
+            border-color: rgba(var(--primary-rgb), 0.16);
+            box-shadow:
+                0 18px 36px rgba(var(--primary-rgb), 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 1);
+        }
+
         .product-cover picture {
             display: contents;
         }
@@ -1119,7 +1115,6 @@
             box-shadow: var(--shadow) !important;
         }
 
-        [data-theme='dark'] .showcase-icon,
         [data-theme='dark'] .channel-icon {
             color: var(--gold) !important;
         }
@@ -1242,6 +1237,23 @@
             border-color: rgba(255, 255, 255, 0.08) !important;
         }
 
+        [data-theme='dark'] .showcase-card {
+            background: rgba(0, 8, 20, 0.5) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            box-shadow:
+                0 16px 36px rgba(0, 0, 0, 0.55),
+                inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
+            backdrop-filter: blur(18px) !important;
+        }
+
+        [data-theme='dark'] .showcase-card:hover {
+            background: rgba(0, 14, 28, 0.74) !important;
+            border-color: rgba(var(--primary-rgb), 0.22) !important;
+            box-shadow:
+                0 22px 46px rgba(0, 0, 0, 0.62),
+                0 0 18px rgba(var(--primary-rgb), 0.14) !important;
+        }
+
         [data-theme='dark'] .oneopc-cover {
             background: #000000 !important;
         }
@@ -1260,16 +1272,6 @@
 
         [data-theme='dark'] .product-desc {
             color: var(--ink-soft) !important;
-        }
-
-        [data-theme='dark'] .showcase-icon {
-            background: rgba(0, 0, 0, 0.32) !important;
-            border-color: rgba(255, 255, 255, 0.12) !important;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.36) !important;
-        }
-
-        [data-theme='dark'] .showcase-eyebrow {
-            color: var(--gold) !important;
         }
 
         [data-theme='dark'] .product-tag {
@@ -1527,10 +1529,6 @@
 
             <div class="showcase-grid showcase-grid-articles" id="latestArticleList">
                 <a class="product-card showcase-card" href="posts/011.html">
-                    <div class="product-cover">
-                        <span class="showcase-icon"><i class="fas fa-feather-alt"></i></span>
-                        <span class="showcase-eyebrow">Latest Note</span>
-                    </div>
                     <div class="product-info">
                         <div class="showcase-meta">
                             <span><i class="far fa-calendar"></i>2026-03-02</span>
@@ -1541,10 +1539,6 @@
                     </div>
                 </a>
                 <a class="product-card showcase-card" href="posts/010.html">
-                    <div class="product-cover">
-                        <span class="showcase-icon"><i class="fas fa-book-open"></i></span>
-                        <span class="showcase-eyebrow">Latest Note</span>
-                    </div>
                     <div class="product-info">
                         <div class="showcase-meta">
                             <span><i class="far fa-calendar"></i>2026-02-08</span>
@@ -1572,10 +1566,6 @@
 
             <div class="showcase-grid showcase-grid-media">
                 <a class="product-card showcase-card" href="video.html" data-umami-event="homepage_latest_click" data-umami-props='{"target":"video_page"}'>
-                    <div class="product-cover">
-                        <span class="showcase-icon"><i class="fas fa-video"></i></span>
-                        <span class="showcase-eyebrow">Latest Video</span>
-                    </div>
                     <div class="product-info">
                         <div class="showcase-meta">
                             <span><i class="fas fa-clapperboard"></i>视频专区</span>
@@ -1587,10 +1577,6 @@
                 <a class="product-card showcase-card" href="https://www.xiaoyuzhoufm.com/podcast/686bb3edb21def6f47390305"
                     target="_blank" rel="noopener" data-umami-event="homepage_latest_click"
                     data-umami-props='{"target":"podcast_xiaoyuzhou"}'>
-                    <div class="product-cover">
-                        <span class="showcase-icon"><i class="fas fa-microphone-alt"></i></span>
-                        <span class="showcase-eyebrow">Latest Podcast</span>
-                    </div>
                     <div class="product-info">
                         <div class="showcase-meta">
                             <span><i class="fas fa-podcast"></i>小宇宙</span>
@@ -1602,10 +1588,6 @@
                 <a class="product-card showcase-card" href="https://music.163.com/#/song?id=3353644885" target="_blank"
                     rel="noopener" data-umami-event="homepage_latest_click"
                     data-umami-props='{"target":"music_netease_3353644885"}'>
-                    <div class="product-cover">
-                        <span class="showcase-icon"><i class="fas fa-music"></i></span>
-                        <span class="showcase-eyebrow">Latest Music</span>
-                    </div>
                     <div class="product-info">
                         <div class="showcase-meta">
                             <span><i class="fas fa-headphones"></i>网易云音乐</span>
@@ -1679,10 +1661,6 @@
 
                 list.innerHTML = articles.map((article) => `
                     <a class="product-card showcase-card" href="posts/${encodeURIComponent(article.id)}.html">
-                        <div class="product-cover">
-                            <span class="showcase-icon"><i class="fas fa-feather-alt"></i></span>
-                            <span class="showcase-eyebrow">Latest Note</span>
-                        </div>
                         <div class="product-info">
                             <div class="showcase-meta">
                                 <span><i class="far fa-calendar"></i>${escapeHTML(article.date || '')}</span>

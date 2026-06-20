@@ -755,7 +755,7 @@ body::after {
 }
 
 [data-theme='dark'] .hero-summary {
-    color: rgba(216, 229, 242, 0.82) !important;
+    color: #ffffff !important;
 }
 
 [data-theme='dark'] .hero-summary strong,
@@ -930,6 +930,30 @@ body::after {
 
 [data-theme='dark'] .social-logo img {
     color: #fff !important;
+}
+
+[data-theme='dark'] .platform-link.xiaoyuzhou i {
+    color: #00b2ff !important;
+}
+
+[data-theme='dark'] .platform-link.ximalaya i {
+    color: #fa2800 !important;
+}
+
+[data-theme='dark'] .platform-link.apple i {
+    color: #a356de !important;
+}
+
+[data-theme='dark'] .platform-link.spotify i {
+    color: #1db954 !important;
+}
+
+[data-theme='dark'] .platform-link.netease i {
+    color: #e60026 !important;
+}
+
+[data-theme='dark'] .platform-link:hover i {
+    color: #ffffff !important;
 }
 
 [data-theme='dark'] .article-card .article-title,
