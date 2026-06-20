@@ -162,6 +162,7 @@ body::after {
     border-radius: 999px;
     border: 1px solid transparent;
     transition: all 0.25s ease;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .nav-links a:hover,
@@ -169,6 +170,14 @@ body::after {
     color: #c5b358;
     border-color: rgba(var(--primary-rgb), 0.36);
     background: rgba(var(--primary-rgb), 0.08);
+}
+
+.nav-links a:active,
+.nav-links a:focus-visible {
+    color: #c5b358;
+    border-color: rgba(var(--primary-rgb), 0.36);
+    background: rgba(var(--primary-rgb), 0.08);
+    outline: none;
 }
 
 /* 全站页脚 */
@@ -307,6 +316,15 @@ body::after {
     background: rgba(var(--primary-rgb), 0.1) !important;
     box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.2) !important;
     border-color: rgba(var(--primary-rgb), 0.4) !important;
+}
+
+[data-theme='dark'] .nav-links a:active,
+[data-theme='dark'] .nav-links a:focus-visible {
+    color: var(--gold) !important;
+    background: rgba(var(--primary-rgb), 0.1) !important;
+    box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.2) !important;
+    border-color: rgba(var(--primary-rgb), 0.4) !important;
+    outline: none;
 }
 
 [data-theme='dark'] .footer {
