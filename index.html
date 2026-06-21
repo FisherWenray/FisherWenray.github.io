@@ -585,10 +585,20 @@
 
         .modal-content img {
             width: min(300px, 100%);
+            max-width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
             border-radius: 12px;
-            margin-bottom: 14px;
+            margin: 0 auto 14px;
             border: 1px solid rgba(var(--primary-rgb), 0.2);
             box-shadow: 0 12px 24px rgba(var(--primary-rgb), 0.24);
+        }
+
+        .modal-content img.personal-wechat-qr {
+            width: min(320px, 100%);
+            height: auto;
+            aspect-ratio: auto;
         }
 
         .modal-content p {
@@ -1648,7 +1658,7 @@
     <div id="personalWechatQRModal" class="modal">
         <div class="modal-content">
             <h2>个人微信</h2>
-            <img data-src="wechat-qr-personal.webp" alt="个人微信二维码" width="600" height="813" loading="lazy" decoding="async">
+            <img class="personal-wechat-qr" data-src="wechat-qr-personal.jpg" alt="&#20010;&#20154;&#24494;&#20449;&#20108;&#32500;&#30721;" width="600" height="813" loading="lazy" decoding="async">
             <p>扫码添加我的个人微信<br>一起交流分享</p>
             <button class="close-btn" onclick="closePersonalWechatQRModal()">关闭</button>
         </div>
