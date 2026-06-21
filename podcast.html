@@ -124,13 +124,31 @@
             font-weight: 600;
         }
 
-        .platform-link i {
+        .platform-link i,
+        .platform-link .platform-logo {
             font-size: 16px;
             transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .platform-link.xiaoyuzhou i {
-            color: #00b2ff;
+        .platform-link .platform-logo {
+            width: 16px;
+            height: 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 16px;
+        }
+
+        .platform-link .platform-logo-image {
+            width: 16px;
+            height: 16px;
+            display: block;
+            object-fit: contain;
+        }
+
+        .platform-link.xiaoyuzhou .platform-logo-image {
+            width: 16px;
+            height: 16px;
         }
 
         .platform-link.ximalaya i {
@@ -764,14 +782,14 @@
                         <path d="M9 21.5h6"/>
                     </svg>
                 </span>
-                <h1 class="header-title">播客频道</h1>
+                <h1 class="header-title">&#25105;&#30340;&#25773;&#23458;</h1>
             </div>
             <div class="header-content">
                 <p>主流播客平台搜索<strong>“文鳐夜飞”</strong>即可订阅收听：</p>
                 <div class="podcast-platforms">
                     <a href="https://www.xiaoyuzhoufm.com/podcast/686bb3edb21def6f47390305" target="_blank"
                         rel="noopener" class="platform-link xiaoyuzhou" title="小宇宙">
-                        <i class="fas fa-microphone"></i>
+                        <span class="platform-logo xiaoyuzhou-logo" aria-hidden="true"><img src="images/xiaoyuzhou-apple-touch-icon.png" alt="" class="platform-logo-image"></span>
                         <span>小宇宙</span>
                     </a>
                     <a href="https://www.ximalaya.com/zhubo/9369408" target="_blank" rel="noopener" class="platform-link ximalaya"

@@ -56,8 +56,15 @@
         .brand-icon.douyin svg .dy-cyan { fill: #25F4EE; }
         .brand-icon.douyin svg .dy-pink { fill: #FE2C55; }
         .platform-link:hover, .video-btn:hover, .modal-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(var(--primary-rgb), .18); }
-        .platform-link:hover { background: rgba(var(--primary-rgb), 0.08); color: #fff !important; border-color: rgba(var(--primary-rgb), 0.22); }
+        .platform-link:hover { color: #fff !important; }
         .platform-link:hover .brand-icon { transform: translateY(-0.5px); }
+        .video-platforms .platform-link.bilibili:hover { background: #00AEEC !important; border-color: #00AEEC !important; box-shadow: 0 10px 24px rgba(0, 174, 236, 0.34) !important; }
+        .video-platforms .platform-link.youtube:hover { background: #FF0033 !important; border-color: #FF0033 !important; box-shadow: 0 10px 24px rgba(255, 0, 51, 0.34) !important; }
+        .video-platforms .platform-link.douyin:hover { background: #111111 !important; border-color: #111111 !important; box-shadow: 0 10px 24px rgba(17, 17, 17, 0.34) !important; }
+        .video-platforms .platform-link.bilibili:hover .brand-icon.bilibili svg { stroke: #FFFFFF !important; }
+        .video-platforms .platform-link.youtube:hover .brand-icon.youtube svg .yt-shell { fill: #FFFFFF !important; }
+        .video-platforms .platform-link.youtube:hover .brand-icon.youtube svg .yt-play { fill: #FF0033 !important; }
+        .video-platforms .platform-link.douyin:hover .brand-icon.douyin svg path { fill: #FFFFFF !important; }
         .video-shell { padding: clamp(16px, 2.6vw, 28px); display: grid; gap: 18px; }
         .section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; padding-bottom: 18px; border-bottom: 1px solid rgba(var(--primary-rgb), .12); }
         .section-head h2 { margin: 0; font-size: clamp(26px, 3vw, 34px); color: var(--ink); }
@@ -102,7 +109,10 @@
         body.modal-open { overflow: hidden; }
         [data-theme='dark'] .panel, [data-theme='dark'] .header, [data-theme='dark'] .video-card { background: var(--surface); }
         [data-theme='dark'] .platform-link, [data-theme='dark'] .video-btn:not(.primary) { background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.1); }
-        [data-theme='dark'] .platform-link:hover { color: #fff !important; background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.16); }
+        [data-theme='dark'] .platform-link:hover { color: #fff !important; }
+        [data-theme='dark'] .video-platforms .platform-link.bilibili:hover { background: #00AEEC !important; border-color: #00AEEC !important; }
+        [data-theme='dark'] .video-platforms .platform-link.youtube:hover { background: #FF0033 !important; border-color: #FF0033 !important; }
+        [data-theme='dark'] .video-platforms .platform-link.douyin:hover { background: #111111 !important; border-color: #111111 !important; }
         [data-theme='light'] .video-card { background: linear-gradient(180deg, rgba(255,255,255,.98), rgba(244,248,252,.94)); box-shadow: 0 18px 42px rgba(24, 56, 92, .1); }
         @media (max-width: 1120px) { .video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
         @media (max-width: 760px) {
@@ -165,7 +175,6 @@
             <div class="section-head">
                 <div>
                     <h2 id="videoSectionTitle">视频列表</h2>
-                    <p>每一条都用大卡片展示，既能原地展开，也能放大观看。</p>
                 </div>
                 <div class="video-count" id="videoCount">加载中...</div>
             </div>

@@ -567,6 +567,12 @@
         .platform-link.netease .platform-logo {
             color: #e60026;
         }
+        .platform-link.netease .platform-logo-image {
+            width: 16px;
+            height: 16px;
+            display: block;
+            object-fit: contain;
+        }
 
         .platform-link:hover {
             transform: translateY(-2px);
@@ -760,13 +766,8 @@
                 <div class="music-platforms">
                     <a href="https://music.163.com/#/artist?id=123109920" target="_blank" rel="noopener" 
                        class="platform-link netease" title="在网易云音乐中收听">
-                        <span class="platform-logo" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" focusable="false">
-                                <circle cx="12" cy="12" r="8.5"></circle>
-                                <circle cx="12" cy="12" r="2.2"></circle>
-                                <path d="M12 9.8c2.65 0 4.8 1.77 4.8 3.95 0 1.28-.76 2.42-1.94 3.14"></path>
-                                <path d="M13.35 7.05A6.8 6.8 0 0 1 19 13.7"></path>
-                            </svg>
+                        <span class="platform-logo netease-logo" aria-hidden="true">
+                            <img src="images/netease-cloud-music-favicon.ico" alt="" class="platform-logo-image">
                         </span>
                         <span>网易云音乐</span>
                     </a>
