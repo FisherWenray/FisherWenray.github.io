@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 
 <head>
@@ -31,178 +31,91 @@
     <script src="js/theme.js?v=3" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap"
-        media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="css/site.css">
     <link rel="icon" type="image/jpeg" href="avatar.jpg">
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-.container {
-            width: min(1200px, 94vw);
-            margin: 28px auto 34px;
-            display: grid;
-            gap: 24px;
-        }
-
-        .header {
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--line);
-            background: var(--surface);
-            box-shadow: var(--shadow);
-            text-align: center;
-            padding: clamp(24px, 4vw, 40px);
-            height: 220px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-        }
-
-        .header h1 {
-            font-family: var(--font-serif);
-            font-size: clamp(32px, 4.4vw, 50px);
-            margin-bottom: 0;
-            color: #c5b358;
-            letter-spacing: 0.8px;
-        }
-
-        .header p {
-            color: var(--ink-soft);
-            font-size: clamp(14px, 1.8vw, 18px);
-            line-height: 1.8;
-            max-width: 800px;
-        }
-
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 24px;
-        }
-
-        .video-card {
-            background: var(--surface);
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--line);
-            box-shadow: var(--shadow);
-            overflow: hidden;
-            transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .video-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(var(--primary-rgb), 0.4);
-            box-shadow: 0 30px 60px rgba(28, 39, 50, 0.18);
-        }
-
-        .card-banner {
-            height: 160px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 48px;
-            color: #fff;
-            position: relative;
-        }
-
-        .bilibili-banner {
-            background: linear-gradient(135deg, #00aeec, #0076a3);
-        }
-
-        .douyin-banner {
-            background: linear-gradient(135deg, #1c0b1b, #000000);
-        }
-
-        .youtube-banner {
-            background: linear-gradient(135deg, #ff0000, #b91d1d);
-        }
-
-        .card-content {
-            padding: 24px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .card-title {
-            font-size: 22px;
-            font-weight: 700;
-            color: #c5b358;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .card-desc {
-            font-size: 15px;
-            color: var(--ink-soft);
-            line-height: 1.6;
-        }
-
-        .card-action {
-            margin-top: auto;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-weight: 700;
-            color: #c5b358;
-            font-size: 14px;
-        }@media (max-width: 760px) {
-.header {
-                height: auto;
-                min-height: 220px;
-            }
-
-            .video-grid {
-                grid-template-columns: 1fr;
-            }
-}
-
-        /* --- Dark Theme --- */
-        [data-theme='dark'] {
-            --primary: #004E8C;
-            --primary-rgb: 0, 78, 140;
-            --deep: #000000;
-            --gold: #c5b358;
-            --ink: #FFFFFF;
-            --ink-soft: #A0B3C6;
-            --paper: #000000;
-            --surface: rgba(0, 78, 140, 0.08);
-            --line: rgba(0, 78, 140, 0.4);
-            --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
-        }
-
-        [data-theme='dark'] body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-            opacity: 0.04;
-            pointer-events: none;
-            z-index: 1000;
-        }
-
-        [data-theme='dark'] .header,
-        [data-theme='dark'] .video-card {
-            background: var(--surface) !important;
-            backdrop-filter: blur(16px) !important;
-            border: 1px solid var(--line) !important;
-            box-shadow: var(--shadow) !important;
-        }
-
-        [data-theme='dark'] .card-title,
-        [data-theme='dark'] .header h1 {
-            color: #FFFFFF !important;
-            text-shadow: 0 0 10px rgba(0, 78, 140, 0.3);
-        }
-  </style>
     <link rel="stylesheet" href="css/elevated-design.css?v=11">
+    <style>
+        .container { width: min(1200px, 94vw); margin: 28px auto 34px; display: grid; gap: 20px; }
+        .panel { border: 1px solid var(--line); background: var(--surface); box-shadow: var(--shadow); border-radius: var(--radius-lg); }
+        .header { border-radius: var(--radius-lg); border: 1px solid var(--line); background: var(--surface); box-shadow: var(--shadow); padding: clamp(24px, 4vw, 40px); height: 220px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; text-align: center; }
+        .header-top { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; width: 100%; }
+        .header-title { margin: 0; font-family: var(--font-serif); font-size: clamp(32px, 4.4vw, 50px); line-height: 1.12; color: var(--ink); white-space: nowrap; }
+        .header-content { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; width: 100%; }
+        .header p { color: var(--ink-soft); font-size: 15px; margin-bottom: 0; white-space: nowrap; }
+        .video-platforms { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .platform-link, .video-btn, .modal-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 18px; border-radius: 999px; text-decoration: none; font-size: 14px; font-weight: 700; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease; }
+        .platform-link { display: flex; align-items: center; gap: 8px; padding: 6px 14px; min-height: auto; background: rgba(var(--primary-rgb), 0.04); border: 1px solid rgba(var(--primary-rgb), 0.12); color: var(--ink-soft); font-size: 13px; font-weight: 600; }
+        .brand-icon { width: 18px; height: 18px; display: inline-flex; align-items: center; justify-content: center; flex: 0 0 18px; }
+        .brand-icon svg { width: 18px; height: 18px; display: block; }
+        .brand-icon.bilibili svg { stroke: #00AEEC; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+        .brand-icon.youtube svg .yt-shell { fill: #FF0033; }
+        .brand-icon.youtube svg .yt-play { fill: #FFFFFF; }
+        .brand-icon.douyin svg .dy-main { fill: #FFFFFF; }
+        .brand-icon.douyin svg .dy-cyan { fill: #25F4EE; }
+        .brand-icon.douyin svg .dy-pink { fill: #FE2C55; }
+        .platform-link:hover, .video-btn:hover, .modal-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(var(--primary-rgb), .18); }
+        .platform-link:hover { background: rgba(var(--primary-rgb), 0.08); color: #fff !important; border-color: rgba(var(--primary-rgb), 0.22); }
+        .platform-link:hover .brand-icon { transform: translateY(-0.5px); }
+        .video-shell { padding: clamp(16px, 2.6vw, 28px); display: grid; gap: 18px; }
+        .section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; padding-bottom: 18px; border-bottom: 1px solid rgba(var(--primary-rgb), .12); }
+        .section-head h2 { margin: 0; font-size: clamp(26px, 3vw, 34px); color: var(--ink); }
+        .section-head p, .video-count { margin: 0; color: var(--ink-soft); font-size: 14px; }
+        .video-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+        .video-card { display: flex; flex-direction: column; border-radius: 22px; overflow: hidden; border: 1px solid rgba(var(--primary-rgb), .18); background: linear-gradient(180deg, rgba(var(--primary-rgb), .08), rgba(var(--primary-rgb), .04)); box-shadow: 0 18px 42px rgba(15, 30, 52, .12); transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease; }
+        .video-card:hover { transform: translateY(-6px); border-color: rgba(var(--primary-rgb), .34); box-shadow: 0 24px 52px rgba(15, 30, 52, .16); }
+        .video-cover { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #08111c; cursor: pointer; }
+        .video-cover img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .35s ease; }
+        .video-card:hover .video-cover img { transform: scale(1.04); }
+        .video-overlay { position: absolute; inset: 0; display: flex; align-items: flex-end; justify-content: space-between; padding: 16px; background: linear-gradient(180deg, rgba(6,10,18,.08), rgba(6,10,18,.76)); }
+        .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: rgba(3, 9, 19, .62); color: #fff; border: 1px solid rgba(255,255,255,.14); backdrop-filter: blur(10px); font-size: 13px; font-weight: 700; }
+        .pill i { color: #00AEEC; }
+        .video-body { padding: 22px 22px 24px; display: grid; gap: 16px; flex: 1; align-content: start; }
+        .video-meta { display: flex; justify-content: space-between; gap: 12px; color: var(--ink-soft); font-size: 13px; }
+        .video-meta span { display: inline-flex; align-items: center; gap: 6px; }
+        .video-meta .platform-mark { width: 34px; height: 34px; border-radius: 999px; justify-content: center; background: rgba(var(--primary-rgb), .08); border: 1px solid rgba(var(--primary-rgb), .16); }
+        .video-meta .platform-mark i { color: #00AEEC; font-size: 16px; }
+        .video-meta .video-date { margin-left: auto; }
+        .video-title { margin: 0; font-size: clamp(22px, 1.9vw, 28px); line-height: 1.38; color: var(--ink); }
+        .video-summary { margin: 0; color: var(--ink-soft); font-size: 15px; line-height: 1.85; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+        .video-btn { border: 1px solid rgba(var(--primary-rgb), .18); background: rgba(var(--primary-rgb), .06); color: var(--ink); cursor: pointer; }
+        button.video-btn, button.modal-btn { font-family: inherit; }
+        .video-btn.primary { background: linear-gradient(135deg, var(--primary), var(--deep)); color: #fff; border-color: transparent; }
+        .inline-player { display: grid; gap: 12px; padding: 0 20px 20px; }
+        .frame { aspect-ratio: 16 / 9; border-radius: 16px; overflow: hidden; background: #050b14; border: 1px solid rgba(var(--primary-rgb), .2); }
+        .frame iframe, .modal-stage iframe { width: 100%; height: 100%; border: 0; display: block; }
+        .player-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+        .player-toolbar p { margin: 0; color: var(--ink-soft); font-size: 13px; }
+        .toolbar-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+        .empty-state { padding: 42px 24px; border-radius: 20px; text-align: center; border: 1px dashed rgba(var(--primary-rgb), .22); background: rgba(var(--primary-rgb), .03); color: var(--ink-soft); }
+        .video-modal[hidden] { display: none; }
+        .video-modal { position: fixed; inset: 0; z-index: 1200; display: flex; align-items: center; justify-content: center; padding: 28px; background: rgba(3, 8, 15, .86); }
+        .video-modal-backdrop { position: absolute; inset: 0; }
+        .video-modal-dialog { position: relative; width: min(1200px, 100%); display: grid; gap: 16px; padding: 18px; border-radius: 24px; border: 1px solid rgba(var(--primary-rgb), .24); background: rgba(5, 14, 24, .96); box-shadow: 0 40px 80px rgba(0, 0, 0, .42); }
+        .video-modal-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; color: #fff; }
+        .video-modal-header h3 { margin: 0; font-size: clamp(18px, 2vw, 24px); line-height: 1.4; }
+        .video-modal-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+        .modal-btn { border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.06); color: #fff; cursor: pointer; }
+        .modal-btn.primary { background: #00AEEC; border-color: transparent; }
+        .modal-stage { width: 100%; aspect-ratio: 16 / 9; border-radius: 18px; overflow: hidden; background: #050b14; }
+        body.modal-open { overflow: hidden; }
+        [data-theme='dark'] .panel, [data-theme='dark'] .header, [data-theme='dark'] .video-card { background: var(--surface); }
+        [data-theme='dark'] .platform-link, [data-theme='dark'] .video-btn:not(.primary) { background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.1); }
+        [data-theme='dark'] .platform-link:hover { color: #fff !important; background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.16); }
+        [data-theme='light'] .video-card { background: linear-gradient(180deg, rgba(255,255,255,.98), rgba(244,248,252,.94)); box-shadow: 0 18px 42px rgba(24, 56, 92, .1); }
+        @media (max-width: 1120px) { .video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        @media (max-width: 760px) {
+            .container { gap: 18px; }
+            .header, .video-shell { padding-left: 18px; padding-right: 18px; }
+            .header { height: auto; min-height: 220px; }
+            .video-grid { grid-template-columns: 1fr; }
+            .video-summary { min-height: auto; }
+            .video-modal { padding: 14px; }
+            .video-modal-dialog { padding: 14px; }
+            .section-head, .player-toolbar, .video-modal-header { align-items: flex-start; }
+        }
+    </style>
 </head>
 
 <body>
@@ -218,12 +131,8 @@
                 <li><a href="books.html">书籍</a></li>
             </ul>
             <div style="display: flex; align-items: center;">
-                <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="菜单">
-                    <i class="fas fa-bars"></i>
-                </button>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题"><i class="fas fa-moon"></i></button>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="菜单"><i class="fas fa-bars"></i></button>
             </div>
         </div>
     </nav>
@@ -233,65 +142,208 @@
             <div class="header-top">
                 <span class="header-mark" aria-hidden="true">
                     <svg viewBox="0 0 24 24" focusable="false">
-                        <rect x="3.5" y="8.5" width="17" height="11" rx="1.8"/>
-                        <path d="M3.5 8.5h17"/>
-                        <path d="m7 8.5 2.6-4"/>
-                        <path d="m12 8.5 2.6-4"/>
-                        <path d="m17 8.5 2.6-4"/>
+                        <rect x="3.5" y="8.5" width="17" height="11" rx="1.8"></rect>
+                        <path d="M3.5 8.5h17"></path>
+                        <path d="m7 8.5 2.6-4"></path>
+                        <path d="m12 8.5 2.6-4"></path>
+                        <path d="m17 8.5 2.6-4"></path>
                     </svg>
                 </span>
-                <h1 class="header-title">视频创作</h1>
+                <h1 class="header-title">我的视频</h1>
             </div>
-            <p>通过视频分享“一人”公司（OPC）、投资悟道、自我成长</p>
+            <div class="header-content">
+                <p>主流视频平台搜索 <strong>“文鳐夜飞 fisher”</strong> 即可观看：</p>
+                <div class="video-platforms">
+                    <a href="https://space.bilibili.com/1671224161?spm_id_from=333.788.upinfo.head.click" target="_blank" rel="noopener" class="platform-link bilibili" title="B&#31449;"><span class="brand-icon bilibili" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="4.5" y="7.5" width="15" height="11" rx="2.4"></rect><path d="M9 4.8 7.1 7"></path><path d="M15 4.8 16.9 7"></path><path d="M9.1 11.9v1.2"></path><path d="M14.9 11.9v1.2"></path></svg></span><span>B&#31449;</span></a>
+                    <a href="https://www.youtube.com/@wenyaoyefei" target="_blank" rel="noopener" class="platform-link youtube" title="YouTube"><span class="brand-icon youtube" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect class="yt-shell" x="2.5" y="5.5" width="19" height="13" rx="4.2"></rect><path class="yt-play" d="M10 9.1 15.9 12 10 14.9Z"></path></svg></span><span>YouTube</span></a>
+                    <a href="https://www.douyin.com/user/MS4wLjABAAAAW24kFta-WTJiM81SDJtCq4Tqh0p6HhB56X3e85ZB0DU?from_tab_name=main" target="_blank" rel="noopener" class="platform-link douyin" title="&#25238;&#38899;"><span class="brand-icon douyin" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path class="dy-cyan" d="M14.2 4.3c1.1 1.6 2.6 2.7 4.6 3v3a8 8 0 0 1-2.7-.6v4.8a5.8 5.8 0 1 1-5-5.7v3a2.8 2.8 0 1 0 2 2.7V4.3Z"></path><path class="dy-pink" d="M13.1 3.4c1.1 1.6 2.6 2.7 4.6 3v3a8 8 0 0 1-2.7-.6v4.8a5.8 5.8 0 1 1-5-5.7v3a2.8 2.8 0 1 0 2 2.7V3.4Z"></path><path class="dy-main" d="M13.6 3.8c1.1 1.6 2.6 2.7 4.6 3v3a8 8 0 0 1-2.7-.6v4.8a5.8 5.8 0 1 1-5-5.7v3a2.8 2.8 0 1 0 2 2.7V3.8Z"></path></svg></span><span>&#25238;&#38899;</span></a>
+                </div>
+            </div>
         </div>
 
-        <div class="video-grid">
-            <a href="https://space.bilibili.com/1671224161?spm_id_from=333.788.upinfo.head.click" target="_blank" rel="noopener" class="video-card">
-                <div class="card-banner bilibili-banner" style="background: rgba(0, 174, 236, 0.1); border-color: rgba(0, 174, 236, 0.2);">
-                    <i class="fab fa-bilibili" style="color: #00AEEC; font-size: 3.5rem;"></i>
+        <section class="panel video-shell" aria-labelledby="videoSectionTitle">
+            <div class="section-head">
+                <div>
+                    <h2 id="videoSectionTitle">视频列表</h2>
+                    <p>每一条都用大卡片展示，既能原地展开，也能放大观看。</p>
                 </div>
-                <div class="card-content">
-                    <div class="card-title">哔哩哔哩</div>
-                    <p class="card-desc">分享深度长视频，涵盖投资逻辑、产品复盘与成长的底层思考。</p>
-                    <div class="card-action">前往频道 <i class="fas fa-arrow-right"></i></div>
-                </div>
-            </a>
-
-            <a href="https://www.douyin.com/user/MS4wLjABAAAAW24kFta-WTJiM81SDJtCq4Tqh0p6HhB56X3e85ZB0DU?from_tab_name=main" target="_blank" rel="noopener" class="video-card">
-                <div class="card-banner douyin-banner" style="background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.1);">
-                    <i class="fab fa-tiktok" style="color: #ffffff; font-size: 3.5rem; filter: drop-shadow(2px 0px 0px #ff0050) drop-shadow(-2px 0px 0px #00f2fe);"></i>
-                </div>
-                <div class="card-content">
-                    <div class="card-title">抖音</div>
-                    <p class="card-desc">碎片化感悟与日常灵感，记录 Follow Heart 的每一个瞬间。</p>
-                    <div class="card-action">前往频道 <i class="fas fa-arrow-right"></i></div>
-                </div>
-            </a>
-
-            <a href="https://www.youtube.com/@wenyaoyefei" target="_blank" rel="noopener" class="video-card">
-                <div class="card-banner youtube-banner" style="background: rgba(255, 0, 0, 0.1); border-color: rgba(255, 0, 0, 0.2);">
-                    <i class="fab fa-youtube" style="color: #FF0000; font-size: 3.5rem;"></i>
-                </div>
-                <div class="card-content">
-                    <div class="card-title">YouTube</div>
-                    <p class="card-desc">面向全球读者的同步更新，连接更广阔的自由探索者社区。</p>
-                    <div class="card-action">前往频道 <i class="fas fa-arrow-right"></i></div>
-                </div>
-            </a>
-        </div>
+                <div class="video-count" id="videoCount">加载中...</div>
+            </div>
+            <div class="video-grid" id="videoGrid"></div>
+        </section>
     </div>
 
+    <div class="video-modal" id="videoModal" hidden>
+        <div class="video-modal-backdrop" id="videoModalBackdrop"></div>
+        <div class="video-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle">
+            <div class="video-modal-header">
+                <h3 id="videoModalTitle">视频播放</h3>
+                <div class="video-modal-actions">
+                    <button type="button" class="modal-btn" id="videoModalFullscreen"><i class="fas fa-expand"></i><span>全屏</span></button>
+                    <a class="modal-btn primary" id="videoModalLink" href="#" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square"></i><span>打开原视频</span></a>
+                    <button type="button" class="modal-btn" id="videoModalClose"><i class="fas fa-xmark"></i><span>关闭</span></button>
+                </div>
+            </div>
+            <div class="modal-stage" id="videoModalStage">
+                <iframe id="videoModalFrame" src="about:blank" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+        </div>
+    </div>
     <div class="footer">
         <div class="footer-links">
             <span class="link-label">友情链接</span>
-            <a href="https://muimi.club" target="_blank" rel="noopener">
-                <i class="fas fa-link"></i>
-                <span>Muimi Club</span>
-            </a>
+            <a href="https://muimi.club" target="_blank" rel="noopener"><i class="fas fa-link"></i><span>Muimi Club</span></a>
         </div>
         <p>© All Rights Reserved.</p>
     </div>
 
+    <script src="js/bilibili-videos-data.js"></script>
+    <script>
+        (function () {
+            var state = { videos: [] };
+            var refs = {
+                grid: document.getElementById('videoGrid'),
+                count: document.getElementById('videoCount'),
+                modal: document.getElementById('videoModal'),
+                backdrop: document.getElementById('videoModalBackdrop'),
+                modalTitle: document.getElementById('videoModalTitle'),
+                modalLink: document.getElementById('videoModalLink'),
+                modalFrame: document.getElementById('videoModalFrame'),
+                modalStage: document.getElementById('videoModalStage'),
+                close: document.getElementById('videoModalClose'),
+                fullscreen: document.getElementById('videoModalFullscreen')
+            };
+
+            function escapeHtml(value) {
+                return String(value || '')
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#39;');
+            }
+
+            function truncate(text, maxLength) {
+                var value = String(text || '');
+                return value.length > maxLength ? value.slice(0, maxLength - 1) + '…' : value;
+            }
+
+            function watchUrl(video) {
+                return video.watchUrl || ('https://www.bilibili.com/video/' + video.bvid);
+            }
+
+            function embedUrl(video) {
+                return 'https://player.bilibili.com/player.html?bvid=' + encodeURIComponent(video.bvid) + '&cid=' + encodeURIComponent(video.cid) + '&page=1&as_wide=1&high_quality=1&danmaku=0';
+            }
+
+            function findVideo(bvid) {
+                return state.videos.find(function (video) { return video.bvid === bvid; }) || null;
+            }
+
+            function cardHtml(video) {
+                return '<article class="video-card" data-bvid="' + escapeHtml(video.bvid) + '">'
+                    + '<div class="video-cover js-open-modal" data-bvid="' + escapeHtml(video.bvid) + '">'
+                    + '<img src="' + escapeHtml(video.cover) + '" alt="' + escapeHtml(video.title) + '" loading="lazy">'
+                    + '<div class="video-overlay">'
+                    + '<span class="pill">' + escapeHtml(video.duration || '') + '</span>'
+                    + '</div>'
+                    + '</div>'
+                    + '<div class="video-body">'
+                    + '<div class="video-meta">'
+                    + '<span class="platform-mark" aria-label="B&#31449;"><i class="fa-brands fa-bilibili"></i></span>'
+                    + '<span class="video-date"><i class="fas fa-calendar-days"></i><span>' + escapeHtml(video.publishedAt || '') + '</span></span>'
+                    + '</div>'
+                    + '<h3 class="video-title">' + escapeHtml(video.title) + '</h3>'
+                    + '<p class="video-summary">' + escapeHtml(truncate(video.summary || '', 120)) + '</p>'
+                    + '</div>'
+                    + '</article>';
+            }
+
+            function bindEvents() {
+                document.querySelectorAll('.js-open-modal').forEach(function (node) {
+                    node.addEventListener('click', function () {
+                        var video = findVideo(node.getAttribute('data-bvid'));
+                        if (video) openModal(video);
+                    });
+                });
+            }
+            function render() {
+                if (!state.videos.length) {
+                    refs.grid.innerHTML = '<div class="empty-state">暂时还没有可展示的视频数据。页面会优先读取 bilibili-videos.json，打不开时再回退到内置数据。</div>';
+                    refs.count.textContent = '0 条视频';
+                    return;
+                }
+
+                refs.grid.innerHTML = state.videos.map(function (video) { return cardHtml(video); }).join('');
+                refs.count.textContent = state.videos.length + ' 条视频';
+                bindEvents();
+            }
+
+            function openModal(video) {
+                refs.modalTitle.textContent = video.title;
+                refs.modalLink.href = watchUrl(video);
+                refs.modalFrame.src = embedUrl(video);
+                refs.modal.hidden = false;
+                document.body.classList.add('modal-open');
+            }
+
+            function closeModal() {
+                refs.modal.hidden = true;
+                refs.modalFrame.src = 'about:blank';
+                document.body.classList.remove('modal-open');
+                if (document.fullscreenElement) {
+                    document.exitFullscreen().catch(function () {});
+                }
+            }
+
+            async function loadVideos() {
+                var fallback = window.BILIBILI_VIDEOS_DATA && Array.isArray(window.BILIBILI_VIDEOS_DATA.videos)
+                    ? window.BILIBILI_VIDEOS_DATA.videos
+                    : [];
+
+                if (window.location.protocol === 'file:') {
+                    return fallback;
+                }
+
+                try {
+                    var response = await fetch('bilibili-videos.json', { cache: 'no-store' });
+                    if (!response.ok) throw new Error('json load failed');
+                    var payload = await response.json();
+                    if (payload && Array.isArray(payload.videos) && payload.videos.length) {
+                        return payload.videos;
+                    }
+                } catch (error) {
+                    console.warn('视频 JSON 读取失败，改用内置数据。', error);
+                }
+
+                return fallback;
+            }
+
+            refs.close.addEventListener('click', closeModal);
+            refs.backdrop.addEventListener('click', closeModal);
+            refs.fullscreen.addEventListener('click', function () {
+                if (!document.fullscreenElement) {
+                    refs.modalStage.requestFullscreen().catch(function () {});
+                } else {
+                    document.exitFullscreen().catch(function () {});
+                }
+            });
+
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape' && !refs.modal.hidden) {
+                    closeModal();
+                }
+            });
+
+            loadVideos().then(function (videos) {
+                state.videos = videos || [];
+                render();
+            }).catch(function () {
+                state.videos = [];
+                render();
+            });
+        }());
+    </script>
     <script src="js/umami-config.js"></script>
     <script src="js/analytics.js"></script>
 </body>
