@@ -24,25 +24,25 @@
   <style>
 .page{width:min(1200px,94vw);margin:28px auto 34px}
     .container{border-radius:var(--radius-lg);border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow);overflow:hidden}
-    .article-header{padding:36px 38px 26px;text-align:center;border-bottom:1px solid rgba(var(--primary-rgb),.24);background:linear-gradient(155deg, rgba(var(--primary-rgb),.12), rgba(255,255,255,.96))}
+    .article-header{padding:36px 38px 26px;text-align:center;border-bottom:1px solid rgba(197,179,88,.24);background:linear-gradient(155deg, rgba(197,179,88,.12), rgba(255,255,255,.96))}
     .article-title{font-family:'Noto Serif SC',serif;font-size:clamp(28px,4.5vw,42px);color: #c5b358;line-height:1.3;margin-bottom:12px}
     .article-meta{display:flex;justify-content:center;gap:12px 22px;flex-wrap:wrap;font-size:13px;color:#86929f}
     .meta-item{display:inline-flex;align-items:center;gap:7px}
     .article-body{padding:clamp(20px,4vw,44px) clamp(18px,5vw,56px) clamp(28px,5vw,48px)}
-    .article-content{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;color:#000;line-height:1.6;font-size:16px}
+    .article-content{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;color:#000;line-height:1.82;font-size:17px;max-width:780px;margin:0 auto}
     .article-content h1,.article-content h2,.article-content h3,.article-content h4,.article-content h5,.article-content h6{color: #c5b358;font-weight:700;margin-top:1.5em;margin-bottom:1em;font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif}
     .article-content h1{display:none}
-    .article-content h2{border-bottom:1px solid rgba(var(--primary-rgb),.45);padding-bottom:5px;font-size:clamp(22px,2.8vw,30px)}
+    .article-content h2{border-bottom:1px solid rgba(197,179,88,.45);padding-bottom:5px;font-size:clamp(22px,2.8vw,30px)}
     .article-content h3{font-size:clamp(19px,2.4vw,24px)}
-    .article-content p{margin-bottom:1.2em;text-align:justify}
+    .article-content p{margin-bottom:1.28em;text-align:justify}
     .article-content a{color:var(--gold);text-decoration:none;border-bottom:1px dashed var(--gold)}
     .article-content strong{color:var(--gold);padding:0 2px;font-weight:700}
-    .article-content blockquote{border-left:4px solid var(--gold);padding:10px 20px;background:rgba(var(--primary-rgb),.08);color:#555;font-style:italic;margin:20px 0;border-radius:0 4px 4px 0}
+    .article-content blockquote{border-left:4px solid var(--gold);padding:10px 20px;background:rgba(197,179,88,.08);color:#555;font-style:italic;margin:20px 0;border-radius:0 var(--radius-md) var(--radius-md) 0}
     .article-content ul,.article-content ol{margin:18px 0 18px 28px}
     .article-content li{margin-bottom:10px}
     .article-content li::marker{color:var(--gold);font-weight:700}
     .article-content code{background:#f1f4f6;color:#4a6376;padding:2px 5px;border-radius:4px;font-family:'Cascadia Code','JetBrains Mono','Consolas',monospace;font-size:.9em;border:1px solid #e2e8ee}
-    .article-content pre{background:#e2e9ef;color:#2c3e50;border:1px solid var(--gold);border-radius:8px;padding:20px;margin:25px 0;overflow-x:auto}
+    .article-content pre{background:#e2e9ef;color:#2c3e50;border:1px solid var(--gold);border-radius:var(--radius-md);padding:20px;margin:25px 0;overflow-x:auto}
     .article-content pre::before{content:'CODE';display:block;font-size:10px;color: #c5b358;margin-bottom:12px;opacity:.5;letter-spacing:2px;font-weight:700;font-family:'JetBrains Mono',monospace}
     .article-content pre code{background:transparent;color:inherit;padding:0;border:none;font-size:14px;font-family:'JetBrains Mono','Cascadia Code','Consolas',monospace}
     .article-content table{width:100%;margin-bottom:20px;border-collapse:collapse}
@@ -50,20 +50,19 @@
     .article-content td,.article-content th{border:1px solid #dfe2e5;padding:8px 12px}
     .article-content tr:nth-child(2n){background:#f6f8fa}
     .article-content hr{height:1px;padding:0;margin:24px 0;background:#eee;border:none}
-    .article-content img{max-width:100%;height:auto;border-radius:8px;margin:20px auto;display:block}
+    .article-content img{max-width:100%;height:auto;border-radius:var(--radius-md);margin:20px auto;display:block}
     [data-theme='dark'] .container{background:var(--surface)!important;backdrop-filter:blur(16px)!important;border:1px solid var(--line)!important;box-shadow:var(--shadow)!important}
-    [data-theme='dark'] .article-header{background:rgba(var(--primary-rgb),.08)!important;border-bottom:1px solid rgba(var(--primary-rgb),.32)!important}
+    [data-theme='dark'] .article-header{background:rgba(197,179,88,.08)!important;border-bottom:1px solid rgba(197,179,88,.32)!important}
     [data-theme='dark'] .article-title,[data-theme='dark'] .article-content h1,[data-theme='dark'] .article-content h2,[data-theme='dark'] .article-content h3,[data-theme='dark'] .article-content h4{color:#fff!important}
     [data-theme='dark'] .article-content p,[data-theme='dark'] .article-content li{color:#dbe9f8!important}
     [data-theme='dark'] .article-content h2{border-bottom:2px solid var(--gold)!important}
     [data-theme='dark'] .article-content blockquote{color:var(--ink-soft)!important;border-left:4px solid var(--gold)!important;background:rgba(0,78,140,.1)!important}
-    [data-theme='dark'] .article-content strong{color:var(--gold)!important;text-shadow:0 0 10px rgba(var(--primary-rgb), .3)!important}
+    [data-theme='dark'] .article-content strong{color:var(--gold)!important;text-shadow:0 0 10px rgba(197, 179, 88, .3)!important}
     [data-theme='dark'] .article-content code{background:rgba(0,78,140,.2)!important;color:#60a5fa!important}
-    [data-theme='dark'] .article-content pre{background:#05080a!important;border-color:var(--line)!important}@media (max-width:760px) {
-.nav-links{justify-content:flex-start}.article-meta{justify-content:flex-start}.article-header{padding:28px 20px 22px}
-}
-  </style>
-  <link rel="stylesheet" href="../css/elevated-design.css?v=7">
+    [data-theme='dark'] .article-content pre{background:#05080a!important;border-color:var(--line)!important}
+    @media (max-width:760px){.nav-links{justify-content:flex-start}.article-meta{justify-content:flex-start}.article-header{padding:28px 20px 22px}}
+    </style>
+  <link rel="stylesheet" href="../css/elevated-design.css?v=12">
 </head>
 <body>
   <nav class="top-nav">
@@ -98,7 +97,8 @@
         </div>
       </div>
       <div class="article-body">
-        <div class="article-content"><h2>创建想法清单并持续追踪</h2>
+        <div class="article-content">
+<h2>创建想法清单并持续追踪</h2>
 <p>如果你在寻找想法，一个好的开始是记录下你产生的任何想法。你如何记录你的想法取决于你自己。我现在用 Workflowy，以前用 Trello。我有几个不同的列表。第一个是"概念"，那是粗略的想法。然后，如果某个想法看起来不错，我就把它移到"有潜力"列表。如果我真正开始执行它们，就把它们放进"建设中"列表。完成后，我有一个"成功"或"失败"列表。当它失败时，我通常会在卡片里用一句话写个事后分析，说明失败的原因。</p>
 <img src="../articles/article-011.assets/image-20260228224017646.png" alt="image-20260228224017646" loading="lazy" decoding="async">
 <p>第一个基础想法的清单对想法可以有多奇怪或多疯狂没有任何限制。这是故意为之。对于你的第一个基础创意前提不应该有任何评判。它以后可以演变成更实用的东西。</p>
@@ -111,15 +111,14 @@
 <h2>不要害怕分享你的想法</h2>
 <p>人们仍然犯的最基本的错误是不分享他们的想法。不，如果人们喜欢你的想法，他们不会偷走它。即使他们偷了，他们也可能执行得没你好。即使他们执行得好，你也不是什么稀世珍宝！有成千上万甚至数百万的人和你有同样的想法。别再以为你有多特别了！想法多得不值钱。一切都关乎你如何执行。</p>
 <blockquote>想法 × 执行力 = 生意</blockquote>
-<ul><li>坏想法 = 0</li><li>好想法 = 10</li><li>绝妙想法 = 20</li><li>零执行力 = $0</li><li>良好执行力 = $100,000</li><li>卓越执行力 = $1,000,000</li></ul><blockquote>"对我来说，想法本身毫无价值，除非被执行。它们只是一个乘数。执行力价值数百万。 要创造一门生意，你需要将两者相乘。 绝妙的想法，没有执行力，价值 $20。 绝妙想法需要卓越的执行力才能价值 $20,000,000。" </blockquote>
+<ul><li>坏想法 = 0</li></ul><ul><li>好想法 = 10</li></ul><ul><li>绝妙想法 = 20</li><li>零执行力 = $0</li></ul><ul><li>良好执行力 = $100,000</li></ul><ul><li>卓越执行力 = $1,000,000</li></ul><blockquote>"对我来说，想法本身毫无价值，除非被执行。它们只是一个乘数。执行力价值数百万。 要创造一门生意，你需要将两者相乘。 绝妙的想法，没有执行力，价值 $20。 绝妙想法需要卓越的执行力才能价值 $20,000,000。" </blockquote>
 <p>— Derek Sivers 在他著名的文章《想法只是执行力的乘数》（2005）中写道</p>
 <p>你不应该害怕分享你的想法，因为执行力赋予想法细节和具体性。这意味着10个有相同想法的人会以10种完全不同的方式执行它。</p>
 <p>能够分享你的想法的好处是你会与所有人讨论它们。潜在客户、供应商、无论谁。每个人都会提出一些意见，你可以选择采纳与否作为反馈。再次强调，市场仍然是最重要的反馈。 不分享你的想法是愚蠢的，因为它只会停留在你的脑海里。你肯定不会客观地判断它，因为你有一种叫做"乐观偏见"的东西，即"个人低估他们经历不利事件可能性的倾向"，例如你认为它肯定会非常成功。 人们说"那个想法永远行不通"并不重要，因为他们不是验证标准。用户付费/使用它才是验证，而不是别人评判你的想法！因此，分享你的想法的重点不在于让人们喜欢或讨厌它。重点在于让你的大脑在其舒适区（自言自语）之外工作，从而发展你的想法。通过讨论，你会想出想法的改进版，或者全新的想法。</p>
 <h2>结论</h2>
 <p>要获得想法，试着在日常生活中发现问题。你对你自己遇到的问题是最专业的，比任何没有这些问题的人都要专业。如果你总是想出和别人一样的想法：试着通过积极体验不同的事物来让自己成为一个更独特的人。不要回避禁忌和边缘想法，那只是意味着你领先于潮流，它们可能成为下一个大事件。不要想得太大，先从小处着想，然后一步一个脚印，你会通过从小处着手而做大。为避免群体思维和戏剧性事件：独自工作，尤其是在早期。自由分享你的想法以获得他人的反馈。记录你的每一个想法，过滤它们，看看哪些可以执行。</p>
 <h2>你的作业</h2>
-<p>在接下来的7天里，列出你日常生活中遇到的问题，它们可以是大是小，试着每天找到3个想法，这样在本周末你至少有21个想法。</p>
-</div>
+<p>在接下来的7天里，列出你日常生活中遇到的问题，它们可以是大是小，试着每天找到3个想法，这样在本周末你至少有21个想法。</p></div>
       </div>
     </div>
   </main>

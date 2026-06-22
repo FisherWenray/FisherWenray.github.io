@@ -22,7 +22,7 @@
         }
 
         .container {
-            border-radius: var(--radius-xl);
+            border-radius: var(--radius-lg);
             border: 1px solid var(--line);
             background: var(--surface);
             box-shadow: var(--shadow);
@@ -106,8 +106,10 @@
         .article-content {
             font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
             color: #000000;
-            line-height: 1.6;
-            font-size: 16px;
+            line-height: 1.82;
+            font-size: 17px;
+            max-width: 780px;
+            margin: 0 auto;
         }
 
         /* 标题基础样式 - 对齐 fisher.css */
@@ -142,7 +144,7 @@
 
         /* 段落样式 */
         .article-content p {
-            margin-bottom: 1.2em;
+            margin-bottom: 1.28em;
             text-align: justify;
         }
 
@@ -173,7 +175,7 @@
             color: #555;
             font-style: italic;
             margin: 20px 0;
-            border-radius: 0 4px 4px 0;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
         }
 
         /* 列表符号 */
@@ -207,7 +209,7 @@
             background-color: #e2e9ef;
             color: #2c3e50;
             border: 1px solid var(--gold);
-            border-radius: 8px;
+            border-radius: var(--radius-md);
             padding: 20px;
             margin: 25px 0;
             overflow-x: auto;
@@ -275,7 +277,7 @@
         .article-content img {
             max-width: 100%;
             height: auto;
-            border-radius: 8px;
+            border-radius: var(--radius-md);
             margin: 20px 0;
             display: block;
         }
@@ -552,7 +554,7 @@
             font-weight: 700 !important;
         }
   </style>
-    <link rel="stylesheet" href="css/elevated-design.css?v=11">
+    <link rel="stylesheet" href="css/elevated-design.css?v=12">
 </head>
 
 <body>

@@ -14,8 +14,9 @@
     --paper: #f4f6f8;
     --surface: rgba(255, 255, 255, 0.86);
     --line: rgba(0, 78, 140, 0.22);
-    --radius-lg: 20px;
-    --radius-md: 14px;
+    --radius-xl: 18px;
+    --radius-lg: 14px;
+    --radius-md: 12px;
     --shadow: 0 20px 44px rgba(28, 39, 50, 0.13);
 
     /* 字体栈：Google Fonts 首选 + 系统字体 fallback */
