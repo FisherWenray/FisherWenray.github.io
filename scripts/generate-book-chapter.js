@@ -2,6 +2,8 @@ const fs = require('fs');
 const path = require('path');
 
 const repoRoot = path.resolve(__dirname, '..');
+const bookTitle = '行思无界：从见天地到见自己';
+const bookTitleWrapped = `《${bookTitle}》`;
 
 function escapeHtml(value) {
   return String(value)
@@ -281,10 +283,10 @@ function renderPage({ chapter, chapters, chapterIndex, description, contentHtml 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${escapeHtml(chapter.title)} - 《行思无界》 | 文鳐夜飞</title>
+  <title>${escapeHtml(chapter.title)} - ${escapeHtml(bookTitleWrapped)} | 文鳐夜飞</title>
   <meta name="description" content="${escapeAttr(description)}">
   <meta name="robots" content="noarchive">
-  <meta property="og:title" content="${escapeHtml(chapter.title)} - 《行思无界》">
+  <meta property="og:title" content="${escapeHtml(chapter.title)} - ${escapeHtml(bookTitleWrapped)}">
   <meta property="og:description" content="${escapeAttr(description)}">
   <meta property="og:type" content="article">
   <meta property="og:url" content="${canonical}">
@@ -332,7 +334,7 @@ function renderPage({ chapter, chapters, chapterIndex, description, contentHtml 
       <a class="book-sidebar-back" href="../../books.html"><i class="fas fa-arrow-left"></i> 返回书籍</a>
       <div class="book-sidebar-brand">
         <p>文鳐夜飞</p>
-        <h2>《行思无界》</h2>
+        <h2>${escapeHtml(bookTitleWrapped)}</h2>
         <span>在线阅读 · EPUB 内容</span>
       </div>
       ${tocHtml}
@@ -341,7 +343,7 @@ function renderPage({ chapter, chapters, chapterIndex, description, contentHtml 
     <article class="book-main">
       <header class="book-reader-header">
         <h1 class="book-reader-title">${escapeHtml(chapter.title)}</h1>
-        <p class="book-reader-subtitle">《行思无界》 · 第 ${chapterIndex + 1} / ${chapters.length} 节 · 在线阅读版</p>
+        <p class="book-reader-subtitle">${escapeHtml(bookTitleWrapped)} · 第 ${chapterIndex + 1} / ${chapters.length} 节 · 在线阅读版</p>
       </header>
       <div class="book-reader-layout">
         <div class="article-content book-content" data-book-content>
@@ -445,7 +447,7 @@ function main() {
   fs.mkdirSync(outputDir, { recursive: true });
 
   chapters.forEach((chapter, chapterIndex) => {
-    const description = extractDescription(chapter.markdown) || `${chapter.title}，文鳐夜飞《行思无界》在线阅读章节。`;
+    const description = extractDescription(chapter.markdown) || `${chapter.title}，文鳐夜飞${bookTitleWrapped}在线阅读章节。`;
     const { html } = parseMarkdown(chapter.markdown);
     const outputPath = path.join(outputDir, chapter.file);
     fs.writeFileSync(outputPath, renderPage({ chapter, chapters, chapterIndex, description, contentHtml: html }), 'utf8');
