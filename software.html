@@ -12,7 +12,7 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap"
         media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="css/site.css">
+    <link rel="stylesheet" href="css/site.css?v=2">
     <meta name="description" content="查看文鳐夜飞的产品与工具集，包括独立开发作品、AI 工具、投资工具与效率应用。">
     <meta property="og:title" content="产品 | 文鳐夜飞的独立开发作品、AI 工具与效率应用">
     <meta property="og:description" content="查看文鳐夜飞的产品与工具集，包括独立开发作品、AI 工具、投资工具与效率应用。">
@@ -38,53 +38,8 @@
     <link rel="icon" type="image/jpeg" href="avatar.jpg">
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-.container {
-            width: min(1200px, 94vw);
-            margin: 28px auto 34px;
-        }
-
-        .header {
-            padding: clamp(26px, 4vw, 44px);
+.header {
             height: 220px;
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--line);
-            background: var(--surface);
-            box-shadow: var(--shadow);
-            margin-bottom: 20px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .header-top {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-            width: 100%;
-        }
-
-        .header-title {
-            font-family: var(--font-serif);
-            font-size: clamp(32px, 4.4vw, 52px);
-            color: #c5b358;
-            margin-bottom: 10px;
-            letter-spacing: 0.8px;
-        }
-
-        .header-mark {
-            flex-shrink: 0;
-            font-size: clamp(42px, 4.2vw, 58px);
-            line-height: 1;
-        }
-
-        .header-subtitle {
-            color: var(--ink-soft);
-            font-size: clamp(14px, 1.8vw, 18px);
-            line-height: 1.8;
         }
 
         .software-grid {
@@ -218,47 +173,8 @@
         }
 
         .card-actions {
-            display: flex;
-            gap: 10px;
             padding-top: 14px;
             border-top: 1px solid rgba(var(--primary-rgb), 0.14);
-            flex-wrap: wrap;
-        }
-
-        .card-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 9px 16px;
-            border-radius: 999px;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 700;
-            transition: all 0.25s ease;
-            border: 1px solid transparent;
-        }
-
-        .card-btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--deep));
-            color: #fff;
-            box-shadow: 0 8px 16px rgba(var(--primary-rgb), 0.28);
-        }
-
-        .card-btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 20px rgba(var(--primary-rgb), 0.34);
-        }
-
-        .card-btn-secondary {
-            background: rgba(var(--primary-rgb), 0.1);
-            color: #c5b358;
-            border-color: rgba(var(--primary-rgb), 0.3);
-        }
-
-        .card-btn-secondary:hover {
-            background: rgba(var(--primary-rgb), 0.16);
-            transform: translateY(-2px);
         }@media (max-width: 760px) {
 .header {
                 height: auto;

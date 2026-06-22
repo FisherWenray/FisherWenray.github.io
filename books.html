@@ -12,7 +12,8 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap"
         media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="css/site.css">
+    <link rel="stylesheet" href="css/site.css?v=2">
+    <link rel="stylesheet" href="css/book.css?v=11">
     <meta name="description" content="了解文鳐夜飞的书籍《行思无界》，围绕一人公司、投资悟道、自我成长与自由生活展开系统思考。">
     <meta property="og:title" content="书籍 | 文鳐夜飞《行思无界》与一人公司、投资悟道思考">
     <meta property="og:description" content="了解文鳐夜飞的书籍《行思无界》，围绕一人公司、投资悟道、自我成长与自由生活展开系统思考。">
@@ -38,69 +39,20 @@
     <link rel="icon" type="image/jpeg" href="avatar.jpg">
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-.container {
-            width: min(1200px, 94vw);
-            margin: 28px auto 34px;
-        }
-
-        .header {
-            padding: clamp(26px, 4vw, 44px);
-            min-height: 400px;
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--line);
-            background: var(--surface);
-            box-shadow: var(--shadow);
-            margin-bottom: 20px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .header-top {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-            width: 100%;
-        }
-
-        .header-title {
-            font-family: var(--font-serif);
-            font-size: clamp(32px, 4.4vw, 52px);
-            color: #c5b358;
-            margin: 0;
-            letter-spacing: 0.8px;
-        }
-
-        .header-mark {
-            flex-shrink: 0;
-            font-size: clamp(42px, 4.2vw, 58px);
-            line-height: 1;
+.header {
+            min-height: 240px;
         }
 
         .header-subtitle {
-            color: var(--ink-soft);
             font-size: clamp(18px, 2.2vw, 24px);
-            line-height: 1.8;
             font-weight: 600;
         }
 
-        .coming-soon {
-            margin-top: 30px;
-            padding: 12px 30px;
-            border-radius: 999px;
-            background: rgba(var(--primary-rgb), 0.08);
-            border: 1px solid var(--line);
-            color: #c5b358;
-            font-weight: 700;
-            font-size: 16px;
-            letter-spacing: 0.1em;
+        .book-library {
+            margin-bottom: 44px;
         }@media (max-width: 760px) {
 .header {
-                min-height: 300px;
+                min-height: 210px;
             }
 }
 
@@ -129,11 +81,6 @@
             text-shadow: 0 0 10px rgba(0, 78, 140, 0.3);
         }
 
-        [data-theme='dark'] .coming-soon {
-            background: rgba(var(--primary-rgb), 0.1) !important;
-            color: var(--gold) !important;
-            border-color: rgba(var(--primary-rgb), 0.3) !important;
-        }
   </style>
     <link rel="stylesheet" href="css/elevated-design.css?v=12">
 </head>
@@ -172,9 +119,35 @@
                 </span>
                 <h1 class="header-title">我的书籍</h1>
             </div>
-            <p class="header-subtitle">渡人渡己专题书籍《行思无界》</p>
-            <div class="coming-soon">敬请期待</div>
         </div>
+        <section class="book-library" aria-label="书籍目录">
+            <article class="book-card">
+                <a class="book-cover-link" href="books/xingsi-wujie/chapter-01.html" aria-label="阅读《行思无界》第一章 间隔年" data-umami-event="book_cover_read" data-umami-props='{"book":"xingsi_wujie","chapter":"01"}'>
+                    <div class="book-cover" aria-hidden="true">
+                        <div class="book-cover-spine"></div>
+                        <div class="book-cover-moon"></div>
+                        <div class="book-cover-lines">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="book-cover-content">
+                            <p>WENYAOYEFEI</p>
+                            <h2>行思无界</h2>
+                            <span>渡人渡己专题书籍《行思无界》</span>
+                        </div>
+                    </div>
+                </a>
+                <div class="book-card-body">
+                    <span class="book-format">EPUB</span>
+                    <h2 class="book-title">《行思无界》</h2>
+                    <p class="book-desc">围绕间隔年、通识教育、一人一文明与全球生活方式展开的系统思考。</p>
+                    <a class="book-read-btn" href="books/xingsi-wujie/chapter-01.html" data-umami-event="book_chapter_read" data-umami-props='{"book":"xingsi_wujie","chapter":"01"}'>
+                        立即阅读
+                    </a>
+                </div>
+            </article>
+        </section>
     </div>
 
     <div class="footer">
