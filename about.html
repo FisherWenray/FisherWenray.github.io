@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我 | 文鳐夜飞</title>
+    <meta name="description" content="认识文鳐夜飞：一位兼具嬉皮人文情怀与 geek 理性思维的独立创造者，在 AI 时代探索一人公司的生活方式。">
+    <meta property="og:title" content="关于我 | 文鳐夜飞">
+    <meta property="og:description" content="我的经历、兴趣、擅长领域，以及我在 AI 与一人公司方向上的实践。">
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="https://wenyaoyefei.com/about.html">
+    <meta property="og:image" content="https://wenyaoyefei.com/avatar.jpg">
+    <link rel="canonical" href="https://wenyaoyefei.com/about.html">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "name": "关于文鳐夜飞",
+      "url": "https://wenyaoyefei.com/about.html",
+      "inLanguage": "zh-CN",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "文鳐夜飞",
+        "url": "https://wenyaoyefei.com/"
+      }
+    }
+    </script>
+    <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
+    <script src="js/theme.js?v=3" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&amp;family=Noto+Sans+SC:wght@400;500;700&amp;family=Noto+Serif+SC:wght@500;700&amp;display=swap" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/site.css?v=2">
+    <link rel="stylesheet" href="css/elevated-design.css?v=12">
+    <link rel="icon" type="image/jpeg" href="avatar.jpg">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .about-page { width: min(1080px, 94vw); margin: 34px auto 54px; }
+        .about-hero { position: relative; overflow: hidden; display: grid; grid-template-columns: 1fr 260px; gap: clamp(30px, 6vw, 72px); align-items: center; padding: clamp(36px, 7vw, 76px); border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--surface); box-shadow: var(--shadow); }
+        .about-hero::before { content: ""; position: absolute; width: 420px; height: 420px; right: -180px; top: -190px; border-radius: 50%; background: radial-gradient(circle, rgba(var(--primary-rgb), .24), transparent 68%); }
+        .about-kicker { margin-bottom: 18px; color: var(--gold); font: 600 13px/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; }
+        .about-title { max-width: 650px; color: var(--gold); font: 700 clamp(38px, 6vw, 68px)/1.12 var(--font-serif); }
+        .about-lead { max-width: 680px; margin-top: 22px; color: var(--ink); font-size: clamp(17px, 2vw, 21px); line-height: 1.85; }
+        .about-avatar { position: relative; z-index: 1; width: 100%; aspect-ratio: 4/5; object-fit: cover; border: 1px solid var(--line); border-radius: var(--radius-xl); box-shadow: 0 24px 50px rgba(var(--primary-rgb), .22); filter: saturate(.85); }
+        .about-content { margin-top: 24px; display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 24px; align-items: start; }
+        .about-index { position: sticky; top: 92px; padding: 24px; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--surface); box-shadow: var(--shadow); }
+        .about-index-label { margin-bottom: 14px; color: var(--ink-soft); font: 600 12px/1 var(--font-mono); letter-spacing: .12em; }
+        .about-index a { display: block; padding: 10px 0; color: var(--ink-soft); text-decoration: none; border-bottom: 1px solid var(--line); transition: color .2s, transform .2s; }
+        .about-index a:last-child { border: 0; }
+        .about-index a:hover { color: var(--gold); transform: translateX(4px); }
+        .about-sections { display: grid; gap: 24px; }
+        .about-section { scroll-margin-top: 96px; padding: clamp(28px, 5vw, 50px); border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--surface); box-shadow: var(--shadow); }
+        .section-number { color: var(--gold); font: 600 12px/1 var(--font-mono); letter-spacing: .14em; }
+        .about-section h2 { margin: 12px 0 22px; color: var(--gold); font: 700 clamp(27px, 4vw, 38px)/1.25 var(--font-serif); }
+        .about-section h3 { margin: 30px 0 14px; color: var(--ink); font-size: 19px; }
+        .about-section p, .about-section li { color: var(--ink-soft); font-size: 16px; line-height: 1.9; }
+        .about-section p + p { margin-top: 14px; }
+        .about-section ul { padding-left: 1.25em; display: grid; gap: 12px; }
+        .quote-list { list-style: none; padding: 0 !important; counter-reset: quote; }
+        .quote-list li { position: relative; padding: 16px 18px 16px 52px; border-left: 2px solid var(--gold); background: rgba(var(--primary-rgb), .055); border-radius: 0 var(--radius-md) var(--radius-md) 0; }
+        .quote-list li::before { counter-increment: quote; content: "0" counter(quote); position: absolute; left: 17px; top: 18px; color: var(--gold); font: 600 12px/1.9 var(--font-mono); }
+        .milestones, .service-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+        .milestone, .service-card { padding: 20px; border: 1px solid rgba(var(--primary-rgb), .2); border-radius: var(--radius-md); background: rgba(var(--primary-rgb), .045); }
+        .milestone strong, .service-card strong { display: block; margin-bottom: 7px; color: var(--ink); font-size: 17px; }
+        .milestone span, .service-card p { color: var(--ink-soft); font-size: 14px; line-height: 1.75; }
+        .service-card { position: relative; padding-top: 52px; }
+        .service-card::before { content: attr(data-number); position: absolute; left: 20px; top: 18px; color: var(--gold); font: 600 12px/1 var(--font-mono); letter-spacing: .08em; }
+        .book-link { color: var(--gold); text-underline-offset: 4px; }
+        [data-theme='dark'] .about-title, [data-theme='dark'] .about-section h2 { color: #fff; text-shadow: 0 0 12px rgba(0, 78, 140, .35); }
+        @media (max-width: 820px) { .about-hero { grid-template-columns: 1fr; } .about-avatar { width: min(240px, 70vw); } .about-content { grid-template-columns: 1fr; } .about-index { position: static; display: flex; gap: 16px; overflow-x: auto; } .about-index-label { display: none; } .about-index a { flex: 0 0 auto; border: 0; } }
+        @media (max-width: 620px) { .milestones, .service-grid { grid-template-columns: 1fr; } .about-page { margin-top: 18px; } .about-hero { padding: 30px 24px; } }
+        @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-container">
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">首页</a></li><li><a href="software.html">产品</a></li><li><a href="articles.html">Blog</a></li><li><a href="video.html">视频</a></li><li><a href="podcast.html">播客</a></li><li><a href="music.html">音乐</a></li><li><a href="books.html">书籍</a></li><li><a href="about.html" class="active">关于我</a></li>
+            </ul>
+            <div style="display:flex;align-items:center"><button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题"><i class="fas fa-moon"></i></button><button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="菜单"><i class="fas fa-bars"></i></button></div>
+        </div>
+    </nav>
+    <main class="about-page">
+        <header class="about-hero">
+            <div>
+                <p class="about-kicker">Personal Manual · 文鳐夜飞</p>
+                <h1 class="about-title">在技术与人文之间，探索自由生活的可能</h1>
+                <p class="about-lead">Hi，新朋友 👋 欢迎来到我的个人说明书。我是一个有着嬉皮精神的 geek，在 AI 时代探索“一人公司”的生活方式。</p>
+            </div>
+            <img class="about-avatar" src="avatar.webp" alt="文鳐夜飞的个人照片" width="800" height="1000">
+        </header>
+        <div class="about-content">
+            <aside class="about-index" aria-label="页面目录"><p class="about-index-label">CONTENTS</p><a href="#who">我是谁</a><a href="#career">职业经历</a><a href="#interests">兴趣爱好</a><a href="#business">我的业务</a></aside>
+            <div class="about-sections">
+                <section class="about-section" id="who"><span class="section-number">01 / WHO I AM</span><h2>嬉皮与 geek</h2><p>我有着嬉皮的人文艺术情怀，又具备 geek 的理性思维。对我而言，技术不只是效率工具，也可以成为个人解放、自由创造和建立理想生活的媒介。</p><h3>他们这样理解这两种精神的交汇</h3><ol class="quote-list"><li>乔布斯曾在访谈中说，自己显然是一个嬉皮士，而与他一同在硅谷工作的许多人也曾是嬉皮士。</li><li>弗雷德·特纳在《数字乌托邦：从反主流文化到赛博文化》中梳理了嬉皮士文化与硅谷早期计算机技术的融合：人们把冰冷的机构计算机重新想象为个人解放与数字乌托邦的工具。</li><li>吴晓波曾用一句生动的话概括这种关系：硅谷就是嬉皮士下的蛋。</li></ol></section>
+                <section class="about-section" id="career"><span class="section-number">02 / EXPERIENCE</span><h2>我的职业经历</h2><ul><li>毕业于苏州大学数学系。</li><li>曾就职于多家知名 IT 公司，担任程序员、产品经理及相关管理岗位，主要面向 B 端企业交付软件及硬件。</li><li>拥有 PMP、信息系统项目管理师证书。</li><li>《投资悟道、渡人渡己》栏目专题书籍主编，已出品<a class="book-link" href="books.html">《行思无界：从见天地到见自己》</a>。</li></ul></section>
+                <section class="about-section" id="interests"><span class="section-number">03 / LIFE</span><h2>我的兴趣爱好</h2><h3>旅行</h3><p>我曾是一名背包客，利用工作之外的时间走遍中国，并游历了大半个东南亚。旅行对我而言，不只是抵达不同的地方，更是一种认识世界、理解他人和重新发现自己的方式。</p><h3>自行车、摩托车与耐力运动</h3><div class="milestones"><div class="milestone"><strong>2012 · 骑行越南</strong><span>从广西东兴出发，历时 15 天抵达胡志明市。</span></div><div class="milestone"><strong>2014 · 骑行拉萨</strong><span>从兰州出发，沿途骑行 28 天，最终抵达拉萨。</span></div><div class="milestone"><strong>2024 · 铁人三项</strong><span>完成人生中的第一场铁人三项。</span></div></div><h3>民谣摇滚</h3><p>我是民谣与摇滚乐的重度爱好者。从中国城市民谣，到美国 20 世纪 60 年代的民谣摇滚，我着迷于音乐背后的自由精神与人文关怀。</p><h3>终身学习</h3><p>我长期关注通识教育与自我成长，并保持无目的、跨领域的广泛阅读，在历史、哲学、社会、科技、商业与艺术之间不断寻找底层关系。</p></section>
+                <section class="about-section" id="business"><span class="section-number">04 / WORK</span><h2>我的业务</h2><h3>我擅长</h3><div class="service-grid"><article class="service-card" data-number="01"><strong>复杂问题拆解与方案设计</strong><p>把模糊想法、业务需求和技术问题，梳理成清晰的产品方案、业务流程与执行步骤。</p></article><article class="service-card" data-number="02"><strong>AI 工具与 AI Agent 应用</strong><p>研究 AI Agent、Vibe Coding、知识库与自动化工作流，并根据实际场景选择工具和实现方式。</p></article><article class="service-card" data-number="03"><strong>个人知识系统搭建</strong><p>长期使用 Obsidian 管理知识、项目和思考，帮助个人建立可长期积累的知识管理系统。</p></article><article class="service-card" data-number="04"><strong>AI 产品原型与独立开发</strong><p>借助 AI 编程工具，将想法快速转化为网页、工具或 MVP 原型。</p></article><article class="service-card" data-number="05"><strong>技术、产品与商业的连接</strong><p>关注 AI 产品如何解决真实问题、形成服务并实现商业化。</p></article></div><h3>我能提供</h3><div class="service-grid"><article class="service-card" data-number="01"><strong>Obsidian 个人知识系统培训与搭建</strong><p>知识库结构设计、笔记方法、项目管理、信息整理与个人工作台搭建。</p></article><article class="service-card" data-number="02"><strong>飞书多维表格培训与业务系统搭建</strong><p>帮助个人和小团队管理客户、项目、内容、任务与业务数据。</p></article><article class="service-card" data-number="03"><strong>AI 工具应用培训</strong><p>面向个人、小团队和企业，讲解大模型、AI 搜索、写作、编程及常用 AI 工具。</p></article><article class="service-card" data-number="04"><strong>AI Agent 场景梳理与落地方案</strong><p>分析适合使用 AI 的业务环节，梳理需求、流程、工具选型与初步实施方案。</p></article><article class="service-card" data-number="05"><strong>一人公司数字化工作流搭建</strong><p>整合知识、项目、内容与客户管理，连接 AI 自动化工具。</p></article></div></section>
+            </div>
+        </div>
+    </main>
+    <div class="footer"><p>© All Rights Reserved.</p></div>
+    <script src="js/umami-config.js"></script><script src="js/analytics.js"></script><script>function toggleMobileMenu(){const n=document.getElementById('navLinks');if(n)n.classList.toggle('active')}</script>
+</body>
+</html>
