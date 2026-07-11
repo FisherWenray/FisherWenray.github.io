@@ -192,10 +192,9 @@ function articleTemplate(article, htmlContent) {
         <li><a href="../index.html">首页</a></li>
         <li><a href="../software.html">产品</a></li>
         <li><a href="../articles.html">Blog</a></li>
-        <li><a href="../video.html">视频</a></li>
-        <li><a href="../podcast.html">播客</a></li>
-        <li><a href="../music.html">音乐</a></li>
-        <li><a href="../books.html">书籍</a></li>      </ul>
+        <li><a href="../media.html">影音</a></li>
+        <li><a href="../books.html">书籍</a></li>
+        <li><a href="../about.html">关于我</a></li>      </ul>
             <div style="display: flex; align-items: center;">
                 <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
                     <i class="fas fa-moon"></i>
@@ -251,6 +250,10 @@ function generateSitemap(articles) {
   </url>
   <url>
     <loc>${domain}/articles.html</loc>
+    <lastmod>${today}</lastmod>
+  </url>
+  <url>
+    <loc>${domain}/media.html</loc>
     <lastmod>${today}</lastmod>
   </url>
   <url>
