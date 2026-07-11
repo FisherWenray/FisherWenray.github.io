@@ -36,12 +36,17 @@
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .about-page { width: min(1080px, 94vw); margin: 34px auto 54px; }
-        .about-hero { position: relative; overflow: hidden; display: grid; grid-template-columns: 1fr 260px; gap: clamp(30px, 6vw, 72px); align-items: center; padding: clamp(36px, 7vw, 76px); border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--surface); box-shadow: var(--shadow); }
-        .about-hero::before { content: ""; position: absolute; width: 420px; height: 420px; right: -180px; top: -190px; border-radius: 50%; background: radial-gradient(circle, rgba(var(--primary-rgb), .24), transparent 68%); }
-        .about-kicker { margin-bottom: 18px; color: var(--gold); font: 600 13px/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; }
-        .about-title { max-width: 650px; color: var(--gold); font: 700 clamp(38px, 6vw, 68px)/1.12 var(--font-serif); }
-        .about-lead { max-width: 680px; margin-top: 22px; color: var(--ink); font-size: clamp(17px, 2vw, 21px); line-height: 1.85; }
-        .about-avatar { position: relative; z-index: 1; width: 100%; aspect-ratio: 4/5; object-fit: cover; border: 1px solid var(--line); border-radius: var(--radius-xl); box-shadow: 0 24px 50px rgba(var(--primary-rgb), .22); filter: saturate(.85); }
+        .about-hero { position: relative; overflow: hidden; min-height: 510px; padding: clamp(42px, 7vw, 76px); border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--surface); box-shadow: var(--shadow); }
+        .about-hero::before { content: "01"; position: absolute; right: clamp(22px, 5vw, 62px); top: 24px; color: rgba(var(--primary-rgb), .13); font: 700 clamp(100px, 18vw, 200px)/1 var(--font-serif); letter-spacing: -.08em; pointer-events: none; }
+        .about-hero::after { content: ""; position: absolute; left: clamp(42px, 7vw, 76px); right: clamp(42px, 7vw, 76px); bottom: 76px; height: 1px; background: linear-gradient(90deg, var(--gold), rgba(var(--primary-rgb), .2) 42%, transparent); }
+        .about-hero-main { position: relative; z-index: 1; max-width: 900px; }
+        .about-kicker { display: flex; align-items: center; gap: 14px; margin-bottom: 30px; color: var(--gold); font: 600 13px/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; }
+        .about-kicker::before { content: ""; width: 42px; height: 1px; background: currentColor; }
+        .about-title { max-width: 900px; color: var(--gold); font: 700 clamp(44px, 7.1vw, 82px)/1.14 var(--font-serif); letter-spacing: -.035em; text-wrap: balance; }
+        .about-lead { max-width: 780px; margin-top: 32px; color: var(--ink); font-size: clamp(17px, 2vw, 21px); line-height: 1.85; }
+        .about-signals { position: absolute; z-index: 1; left: clamp(42px, 7vw, 76px); right: clamp(42px, 7vw, 76px); bottom: 28px; display: flex; justify-content: space-between; gap: 20px; color: var(--ink-soft); font: 600 11px/1 var(--font-mono); letter-spacing: .11em; text-transform: uppercase; }
+        .about-signals span { display: inline-flex; align-items: center; gap: 8px; }
+        .about-signals span::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); }
         .about-content { margin-top: 24px; display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 24px; align-items: start; }
         .about-index { position: sticky; top: 92px; padding: 24px; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--surface); box-shadow: var(--shadow); }
         .about-index-label { margin-bottom: 14px; color: var(--ink-soft); font: 600 12px/1 var(--font-mono); letter-spacing: .12em; }
@@ -67,8 +72,8 @@
         .service-card::before { content: attr(data-number); position: absolute; left: 20px; top: 18px; color: var(--gold); font: 600 12px/1 var(--font-mono); letter-spacing: .08em; }
         .book-link { color: var(--gold); text-underline-offset: 4px; }
         [data-theme='dark'] .about-title, [data-theme='dark'] .about-section h2 { color: #fff; text-shadow: 0 0 12px rgba(0, 78, 140, .35); }
-        @media (max-width: 820px) { .about-hero { grid-template-columns: 1fr; } .about-avatar { width: min(240px, 70vw); } .about-content { grid-template-columns: 1fr; } .about-index { position: static; display: flex; gap: 16px; overflow-x: auto; } .about-index-label { display: none; } .about-index a { flex: 0 0 auto; border: 0; } }
-        @media (max-width: 620px) { .milestones, .service-grid { grid-template-columns: 1fr; } .about-page { margin-top: 18px; } .about-hero { padding: 30px 24px; } }
+        @media (max-width: 820px) { .about-content { grid-template-columns: 1fr; } .about-index { position: static; display: flex; gap: 16px; overflow-x: auto; } .about-index-label { display: none; } .about-index a { flex: 0 0 auto; border: 0; } }
+        @media (max-width: 620px) { .milestones, .service-grid { grid-template-columns: 1fr; } .about-page { margin-top: 18px; } .about-hero { min-height: 480px; padding: 34px 24px 92px; } .about-hero::before { right: 18px; top: 20px; font-size: 92px; } .about-hero::after { left: 24px; right: 24px; bottom: 72px; } .about-kicker { margin-bottom: 26px; font-size: 11px; } .about-kicker::before { width: 24px; } .about-title { font-size: clamp(40px, 12vw, 52px); line-height: 1.18; } .about-lead { margin-top: 26px; font-size: 17px; line-height: 1.8; } .about-signals { left: 24px; right: 24px; bottom: 27px; } .about-signals span:nth-child(2) { display: none; } }
         @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
     </style>
 </head>
@@ -83,12 +88,12 @@
     </nav>
     <main class="about-page">
         <header class="about-hero">
-            <div>
+            <div class="about-hero-main">
                 <p class="about-kicker">Personal Manual · 文鳐夜飞</p>
                 <h1 class="about-title">在技术与人文之间，探索自由生活的可能</h1>
                 <p class="about-lead">Hi，新朋友 👋 欢迎来到我的个人说明书。我是一个有着嬉皮精神的 geek，在 AI 时代探索“一人公司”的生活方式。</p>
             </div>
-            <img class="about-avatar" src="avatar.webp" alt="文鳐夜飞的个人照片" width="800" height="1000">
+            <div class="about-signals" aria-hidden="true"><span>Hippie spirit</span><span>Geek mind</span><span>One-person company</span></div>
         </header>
         <div class="about-content">
             <aside class="about-index" aria-label="页面目录"><p class="about-index-label">CONTENTS</p><a href="#who">我是谁</a><a href="#career">职业经历</a><a href="#interests">兴趣爱好</a><a href="#business">我的业务</a></aside>
