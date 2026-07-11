@@ -26,19 +26,23 @@
         .media-section-kicker { display: block; margin-bottom: 8px; color: var(--gold); font: 600 11px/1 var(--font-mono); letter-spacing: .14em; }
         .media-section h2 { margin: 0; color: var(--ink); font: 700 clamp(28px, 3.8vw, 42px)/1.16 var(--font-serif); }
         .media-section-desc { max-width: 520px; margin: 0; color: var(--ink-soft); font-size: 14px; line-height: 1.75; text-align: right; }
-        .media-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
-        .media-card { overflow: hidden; display: flex; flex-direction: column; min-height: 100%; color: inherit; text-decoration: none; border: 1px solid rgba(var(--primary-rgb), .18); border-radius: var(--radius-md); background: rgba(var(--primary-rgb), .045); transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease; }
-        .media-card:hover { transform: translateY(-5px); border-color: rgba(var(--primary-rgb), .36); box-shadow: 0 18px 34px rgba(var(--primary-rgb), .13); }
-        .media-cover { position: relative; aspect-ratio: 16/9; overflow: hidden; background: linear-gradient(135deg, rgba(var(--primary-rgb), .22), rgba(var(--primary-rgb), .06)); }
-        .media-cover img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .45s ease; }
-        .media-card:hover .media-cover img { transform: scale(1.04); }
-        .media-cover.no-image { display: grid; place-items: center; color: var(--gold); font-size: 34px; }
-        .media-play { position: absolute; left: 14px; bottom: 12px; display: grid; place-items: center; width: 38px; height: 38px; border-radius: 999px; color: #fff; background: rgba(0, 78, 140, .9); box-shadow: 0 8px 18px rgba(0,0,0,.26); }
-        .media-body { display: flex; flex: 1; flex-direction: column; padding: 18px; }
-        .media-meta { color: var(--gold); font: 600 11px/1.45 var(--font-mono); letter-spacing: .06em; }
-        .media-card h3 { margin: 10px 0 0; color: var(--ink); font-size: 17px; line-height: 1.52; }
-        .media-summary { margin: 12px 0 0; color: var(--ink-soft); font-size: 14px; line-height: 1.72; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-        .media-card-action { display: inline-flex; align-items: center; gap: 8px; margin-top: auto; padding-top: 18px; color: var(--gold); font-size: 13px; font-weight: 700; }
+        .video-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+        .video-card { text-decoration: none; display: flex; flex-direction: column; border-radius: 22px; overflow: hidden; border: 1px solid rgba(var(--primary-rgb), .18); background: linear-gradient(180deg, rgba(var(--primary-rgb), .08), rgba(var(--primary-rgb), .04)); box-shadow: 0 18px 42px rgba(15, 30, 52, .12); transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease; }
+        .video-card:hover { transform: translateY(-6px); border-color: rgba(var(--primary-rgb), .34); box-shadow: 0 24px 52px rgba(15, 30, 52, .16); }
+        .video-cover { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #08111c; cursor: pointer; }
+        .video-cover img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .35s ease; }
+        .video-card:hover .video-cover img { transform: scale(1.04); }
+        .video-overlay { position: absolute; inset: 0; display: flex; align-items: flex-end; justify-content: space-between; padding: 16px; background: linear-gradient(180deg, rgba(6,10,18,.08), rgba(6,10,18,.76)); }
+        .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: rgba(3, 9, 19, .62); color: #fff; border: 1px solid rgba(255,255,255,.14); backdrop-filter: blur(10px); font-size: 13px; font-weight: 700; }
+        .pill i { color: #00AEEC; }
+        .video-body { padding: 22px 22px 24px; display: grid; gap: 16px; flex: 1; align-content: start; }
+        .video-meta { display: flex; justify-content: space-between; gap: 12px; color: var(--ink-soft); font-size: 13px; }
+        .video-meta span { display: inline-flex; align-items: center; gap: 6px; }
+        .video-meta .platform-mark { width: 34px; height: 34px; border-radius: 999px; justify-content: center; background: rgba(var(--primary-rgb), .08); border: 1px solid rgba(var(--primary-rgb), .16); }
+        .video-meta .platform-mark i { color: #00AEEC; font-size: 16px; }
+        .video-meta .video-date { margin-left: auto; }
+        .video-title { margin: 0; font-size: clamp(22px, 1.9vw, 28px); line-height: 1.38; color: var(--ink); }
+        .video-summary { margin: 0; color: var(--ink-soft); font-size: 15px; line-height: 1.85; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
         .episodes-list { display: flex; flex-direction: column; gap: 12px; }
         .episode-item { display: block; color: inherit; text-decoration: none; background: rgba(255,255,255,.86); border-radius: var(--radius-md); border: 1px solid rgba(var(--primary-rgb), .2); overflow: hidden; transition: border-color .3s ease, box-shadow .3s ease, transform .3s ease; }
         .episode-item:hover { transform: translateY(-2px); border-color: rgba(var(--primary-rgb), .35); box-shadow: 0 8px 20px rgba(var(--primary-rgb), .14); }
@@ -86,15 +90,19 @@
         .lyrics-line.active { color: var(--gold); font-size: 16px; font-weight: 600; transform: scale(1.04); }
         .lyrics-empty { padding: 38px 0; color: var(--ink-soft); font-size: 13px; font-style: italic; }
         .music-hint { margin: 0; color: var(--ink-soft); font-size: 14px; text-align: center; }
-        .archive-link { flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 38px; padding: 0 16px; border: 1px solid rgba(var(--primary-rgb), .16); border-radius: 999px; color: var(--primary); background: rgba(var(--primary-rgb), .06); text-decoration: none; font-size: 14px; font-weight: 700; transition: .25s ease; }
+        .archive-link { flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 38px; padding: 0 16px; border: 1px solid rgba(var(--primary-rgb), .16); border-radius: 999px; color: var(--ink-soft); background: rgba(var(--primary-rgb), .06); text-decoration: none; font-size: 14px; font-weight: 700; transition: .25s ease; }
         .archive-link:hover { color: #fff; background: var(--primary); border-color: var(--primary); transform: translateY(-2px); box-shadow: 0 12px 24px rgba(var(--primary-rgb), .16); }
         .empty-media { grid-column: 1/-1; padding: 28px; color: var(--ink-soft); text-align: center; border: 1px dashed rgba(var(--primary-rgb), .18); border-radius: var(--radius-md); background: rgba(var(--primary-rgb), .035); }
         [data-theme='dark'] .media-section h2 { color: #fff; text-shadow: 0 0 12px rgba(var(--primary-rgb), .28); }
-        [data-theme='dark'] .archive-link { color: var(--gold); }
+        [data-theme='dark'] .archive-link { color: var(--ink-soft); }
         [data-theme='dark'] .episode-item, [data-theme='dark'] .mini-player, [data-theme='dark'] .custom-player { background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.1); }
         [data-theme='dark'] .episode-title, [data-theme='dark'] .mini-title { color: #fff; }
-        @media (max-width: 980px) { .media-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-        @media (max-width: 680px) { .media-section-head { align-items: flex-start; flex-direction: column; } .media-section-desc { text-align: left; } .archive-link { width: 100%; } .media-grid { grid-template-columns: 1fr; } .episode-mini, .mini-player { gap: 14px; padding: 14px; } .episode-cover, .mini-cover { width: 62px; height: 62px; } .play-btn-icon, .mini-play-btn { width: 42px; height: 42px; } .episode-inline-player { padding: 0 14px 14px; } .inline-progress { flex-wrap: wrap; } .inline-progress-bar { order: 1; flex-basis: 100%; } .inline-time { margin-left: auto; } .custom-player.expanded { padding: 16px; } }
+        [data-theme='dark'] .video-card { background: var(--surface); }
+        [data-theme='light'] .video-card { background: linear-gradient(180deg, rgba(255,255,255,.98), rgba(244,248,252,.94)); box-shadow: 0 18px 42px rgba(24, 56, 92, .1); }
+        @media (max-width: 1120px) { .video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        @media (max-width: 980px) { }
+        @media (max-width: 760px) { .video-grid { grid-template-columns: 1fr; } .video-summary { min-height: auto; } }
+        @media (max-width: 680px) { .media-section-head { align-items: flex-start; flex-direction: column; } .media-section-desc { text-align: left; } .archive-link { width: 100%; } .episode-mini, .mini-player { gap: 14px; padding: 14px; } .episode-cover, .mini-cover { width: 62px; height: 62px; } .play-btn-icon, .mini-play-btn { width: 42px; height: 42px; } .episode-inline-player { padding: 0 14px 14px; } .inline-progress { flex-wrap: wrap; } .inline-progress-bar { order: 1; flex-basis: 100%; } .inline-time { margin-left: auto; } .custom-player.expanded { padding: 16px; } }
     </style>
 </head>
 <body>
@@ -116,17 +124,15 @@
         <section class="media-section" id="video" aria-labelledby="videoTitle">
             <div class="media-section-head">
                 <div><span class="media-section-kicker">01 / VIDEO</span><h2 id="videoTitle">视频</h2></div>
-                <p class="media-section-desc">最近发布的三条视频内容。</p>
-                <a class="archive-link" href="video.html">查看完整版 <i class="fas fa-arrow-right"></i></a>
+                <a class="archive-link" href="video.html">查看更多 <i class="fas fa-arrow-right"></i></a>
             </div>
-            <div class="media-grid" id="mediaVideoGrid"><div class="empty-media">正在加载视频...</div></div>
+            <div class="video-grid" id="mediaVideoGrid"><div class="empty-media">正在加载视频...</div></div>
         </section>
 
         <section class="media-section" id="podcast" aria-labelledby="podcastTitle">
             <div class="media-section-head">
                 <div><span class="media-section-kicker">02 / PODCAST</span><h2 id="podcastTitle">播客</h2></div>
-                <p class="media-section-desc">最近更新的三期播客节目。</p>
-                <a class="archive-link" href="podcast.html">查看完整版 <i class="fas fa-arrow-right"></i></a>
+                <a class="archive-link" href="podcast.html">查看更多 <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="episodes-list" id="mediaPodcastGrid"><div class="empty-media">正在加载播客...</div></div>
         </section>
@@ -134,8 +140,7 @@
         <section class="media-section" id="music" aria-labelledby="musicTitle">
             <div class="media-section-head">
                 <div><span class="media-section-kicker">03 / MUSIC</span><h2 id="musicTitle">音乐</h2></div>
-                <p class="media-section-desc">原创音乐《海阔余响》。</p>
-                <a class="archive-link" href="music.html">查看完整版 <i class="fas fa-arrow-right"></i></a>
+                <a class="archive-link" href="music.html">查看更多 <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="music-card" id="mediaMusicCard">
                 <div class="mini-player" id="mediaMiniPlayer" role="group" aria-label="海阔余响迷你播放器">
@@ -158,9 +163,32 @@
     <script src="js/umami-config.js"></script><script src="js/analytics.js"></script><script src="js/bilibili-videos-data.js"></script>
     <script>
         function toggleMobileMenu(){const n=document.getElementById('navLinks');if(n)n.classList.toggle('active')}
-        function escapeMediaText(value){const d=document.createElement('div');d.textContent=value==null?'':String(value);return d.innerHTML}
+        function escapeMediaText(str){return String(str||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
         function formatDuration(seconds){if(!seconds)return '';const h=Math.floor(seconds/3600);const m=Math.floor((seconds%3600)/60);const s=seconds%60;return h>0?h+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0'):m+':'+String(s).padStart(2,'0')}
-        function renderMediaCards(gridId, items, options){const grid=document.getElementById(gridId);const data=(Array.isArray(items)?items:[]).slice(0,3);if(!data.length){grid.innerHTML='<div class="empty-media">'+escapeMediaText(options.emptyText||'暂时没有可展示的内容。')+'</div>';return}grid.innerHTML=data.map(item=>{const cover=item.cover||item.coverUrl||item.pic||'';const icon=item.icon||options.icon||'fas fa-play';const href=item.href||item.watchUrl||item.externalUrl||options.fallbackHref||'#';const meta=[item.date||item.publishedAt,item.duration].filter(Boolean).join(' · ')||options.meta||'';const summary=item.summary||item.description||'';return '<a class="media-card" href="'+escapeMediaText(href)+'" '+(href==='#'?'':'target="_blank" rel="noopener"')+'><div class="media-cover '+(cover?'':'no-image')+'">'+(cover?'<img src="'+escapeMediaText(cover)+'" alt="" loading="lazy">':'<i class="'+escapeMediaText(icon)+'"></i>')+'<span class="media-play"><i class="'+escapeMediaText(icon)+'"></i></span></div><div class="media-body"><span class="media-meta">'+escapeMediaText(meta)+'</span><h3>'+escapeMediaText(item.title||'未命名')+'</h3>'+(summary?'<p class="media-summary">'+escapeMediaText(summary)+'</p>':'')+'<span class="media-card-action">'+escapeMediaText(options.actionText||'打开观看')+' <i class="fas fa-arrow-up-right-from-square"></i></span></div></a>'}).join('')}
+        function renderMediaVideos(items){
+            const grid=document.getElementById('mediaVideoGrid');
+            const data=(Array.isArray(items)?items:[]).slice(0,3).sort((a,b)=>String(b.publishedAt||'').localeCompare(String(a.publishedAt||'')));
+            if(!data.length){grid.innerHTML='<div class="empty-media">暂时没有可展示的视频。</div>';return}
+            grid.innerHTML=data.map(video=>{
+                const watchUrl = video.watchUrl || ('https://www.bilibili.com/video/' + video.bvid);
+                const summary = video.summary || '';
+                const truncatedSummary = summary.length > 120 ? summary.slice(0, 119) + '…' : summary;
+                return '<a class="video-card" href="'+escapeMediaText(watchUrl)+'" target="_blank" rel="noopener">'
+                    + '<div class="video-cover">'
+                    + '<img src="'+escapeMediaText(video.cover||'')+'" alt="" loading="lazy">'
+                    + '<div class="video-overlay">'
+                    + '<span class="pill">'+escapeMediaText(video.duration||'')+'</span>'
+                    + '</div></div>'
+                    + '<div class="video-body">'
+                    + '<div class="video-meta">'
+                    + '<span class="platform-mark" aria-label="B站"><i class="fa-brands fa-bilibili"></i></span>'
+                    + '<span class="video-date"><i class="fas fa-calendar-days"></i><span>'+escapeMediaText(video.publishedAt||'')+'</span></span>'
+                    + '</div>'
+                    + '<h3 class="video-title">'+escapeMediaText(video.title||'未命名')+'</h3>'
+                    + '<p class="video-summary">'+escapeMediaText(truncatedSummary)+'</p>'
+                    + '</div></a>';
+            }).join('');
+        }
         function formatDate(dateText){if(!dateText)return '';const date=new Date(dateText);if(Number.isNaN(date.getTime()))return dateText;return date.getFullYear()+'年'+String(date.getMonth()+1).padStart(2,'0')+'月'+String(date.getDate()).padStart(2,'0')+'日'}
         function renderPodcastEpisodes(items){
             const grid=document.getElementById('mediaPodcastGrid'); const data=(Array.isArray(items)?items:[]).slice(0,3);
@@ -180,7 +208,7 @@
             grid.onclick=event=>{const speedButton=event.target.closest('[data-podcast-speed]'); const card=event.target.closest('[data-podcast-index]'); if(!card)return; const index=Number(card.dataset.podcastIndex); if(speedButton){event.stopPropagation();toggleSpeed(index);return} const progress=event.target.closest('.inline-progress-bar'); if(progress){event.stopPropagation();if(audio&&index===activeIndex&&Number.isFinite(audio.duration)){const rect=progress.getBoundingClientRect();audio.currentTime=Math.max(0,Math.min(audio.duration,(event.clientX-rect.left)/rect.width*audio.duration));updateProgress()}return} playEpisode(index)};
             grid.onkeydown=event=>{if((event.key==='Enter'||event.key===' ')&&event.target.closest('[data-podcast-index]')){event.preventDefault();playEpisode(Number(event.target.closest('[data-podcast-index]').dataset.podcastIndex))}};
         }
-        function renderMediaVideos(items){const videos=(Array.isArray(items)?items:[]).slice().sort((a,b)=>String(b.publishedAt||'').localeCompare(String(a.publishedAt||'')));renderMediaCards('mediaVideoGrid',videos,{icon:'fas fa-play',actionText:'打开视频',emptyText:'暂时没有可展示的视频。'})}
+
         function initMediaMusicPlayer(){
             const audio=document.getElementById('mediaMusicAudio'); const player=document.getElementById('mediaMiniPlayer'); const button=document.getElementById('mediaMusicPlayBtn'); const icon=document.getElementById('mediaMusicPlayIcon'); const hint=document.getElementById('mediaMusicHint'); const expanded=document.getElementById('mediaExpandedPlayer');
             if(!audio||!player||!button||!icon||!hint||!expanded)return;
