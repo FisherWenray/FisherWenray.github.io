@@ -36,18 +36,7 @@
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .about-page { width: min(1080px, 94vw); margin: 34px auto 54px; }
-        .about-hero { position: relative; overflow: hidden; min-height: 480px; padding: clamp(42px, 7vw, 76px) 0; }
-        .about-hero::before { content: "01"; position: absolute; right: clamp(22px, 5vw, 62px); top: 24px; color: rgba(var(--primary-rgb), .13); font: 700 clamp(100px, 18vw, 200px)/1 var(--font-serif); letter-spacing: -.08em; pointer-events: none; }
-        .about-hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 76px; height: 1px; background: linear-gradient(90deg, var(--gold), rgba(var(--primary-rgb), .2) 42%, transparent); }
-        .about-hero-main { position: relative; z-index: 1; max-width: 900px; }
-        .about-kicker { display: flex; align-items: center; gap: 14px; margin-bottom: 30px; color: var(--gold); font: 600 13px/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; }
-        .about-kicker::before { content: ""; width: 42px; height: 1px; background: currentColor; }
-        .about-title { max-width: 900px; color: var(--gold); font: 700 clamp(44px, 7.1vw, 82px)/1.14 var(--font-serif); letter-spacing: -.035em; text-wrap: balance; }
-        .about-lead { max-width: 780px; margin-top: 32px; color: var(--ink); font-size: clamp(17px, 2vw, 21px); line-height: 1.85; }
-        .about-signals { position: absolute; z-index: 1; left: 0; right: 0; bottom: 28px; display: flex; justify-content: space-between; gap: 20px; color: var(--ink-soft); font: 600 11px/1 var(--font-mono); letter-spacing: .11em; text-transform: uppercase; }
-        .about-signals span { display: inline-flex; align-items: center; gap: 8px; }
-        .about-signals span::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); }
-        .about-content { margin-top: 18px; }
+        .about-content { margin-top: 0; }
         .about-sections { display: grid; gap: 24px; }
         .about-section { scroll-margin-top: 96px; padding: clamp(28px, 5vw, 50px); border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--surface); box-shadow: var(--shadow); }
         .section-number { color: var(--gold); font: 600 12px/1 var(--font-mono); letter-spacing: .14em; }
@@ -66,8 +55,8 @@
         .service-card { position: relative; padding-top: 52px; }
         .service-card::before { content: attr(data-number); position: absolute; left: 20px; top: 18px; color: var(--gold); font: 600 12px/1 var(--font-mono); letter-spacing: .08em; }
         .book-link { color: var(--gold); text-underline-offset: 4px; }
-        [data-theme='dark'] .about-title, [data-theme='dark'] .about-section h2 { color: #fff; text-shadow: 0 0 12px rgba(0, 78, 140, .35); }
-        @media (max-width: 620px) { .milestones, .service-grid { grid-template-columns: 1fr; } .about-page { margin-top: 18px; } .about-hero { min-height: 460px; padding: 34px 0 92px; } .about-hero::before { right: 6px; top: 20px; font-size: 92px; } .about-hero::after { bottom: 72px; } .about-kicker { margin-bottom: 26px; font-size: 11px; } .about-kicker::before { width: 24px; } .about-title { font-size: clamp(40px, 12vw, 52px); line-height: 1.18; } .about-lead { margin-top: 26px; font-size: 17px; line-height: 1.8; } .about-signals { bottom: 27px; } .about-signals span:nth-child(2) { display: none; } }
+        [data-theme='dark'] .about-section h2 { color: #fff; text-shadow: 0 0 12px rgba(0, 78, 140, .35); }
+        @media (max-width: 620px) { .milestones, .service-grid { grid-template-columns: 1fr; } .about-page { margin-top: 18px; } }
         @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
     </style>
 </head>
@@ -81,19 +70,11 @@
         </div>
     </nav>
     <main class="about-page">
-        <header class="about-hero">
-            <div class="about-hero-main">
-                <p class="about-kicker">Personal Manual · 文鳐夜飞</p>
-                <h1 class="about-title">在技术与人文之间，探索自由生活的可能</h1>
-                <p class="about-lead">Hi，新朋友 👋 欢迎来到我的个人说明书。我是一个有着嬉皮精神的 geek，在 AI 时代探索“一人公司”的生活方式。</p>
-            </div>
-            <div class="about-signals" aria-hidden="true"><span>Hippie spirit</span><span>Geek mind</span><span>One-person company</span></div>
-        </header>
         <div class="about-content">
             <div class="about-sections">
                 <section class="about-section" id="who"><span class="section-number">01 / WHO I AM</span><h2>我是谁</h2><h3>嬉皮与 geek</h3><p>我有着嬉皮的人文艺术情怀，又具备 geek 的理性思维。对我而言，技术不只是效率工具，也可以成为个人解放、自由创造和建立理想生活的媒介。</p><h3>他们这样理解这两种精神的交汇</h3><ol class="quote-list"><li>乔布斯曾在访谈中说，自己显然是一个嬉皮士，而与他一同在硅谷工作的许多人也曾是嬉皮士。</li><li>弗雷德·特纳在《数字乌托邦：从反主流文化到赛博文化》中梳理了嬉皮士文化与硅谷早期计算机技术的融合：人们把冰冷的机构计算机重新想象为个人解放与数字乌托邦的工具。</li><li>吴晓波曾用一句生动的话概括这种关系：硅谷就是嬉皮士下的蛋。</li></ol></section>
                 <section class="about-section" id="career"><span class="section-number">02 / EXPERIENCE</span><h2>职业经历</h2><ul><li>毕业于苏州大学数学系。</li><li>曾就职于多家知名 IT 公司，担任程序员、产品经理及相关管理岗位，主要面向 B 端企业交付软件及硬件。</li><li>拥有 PMP、信息系统项目管理师证书。</li><li>《投资悟道、渡人渡己》栏目专题书籍主编，已出品<a class="book-link" href="books.html">《行思无界：从见天地到见自己》</a>。</li></ul></section>
-                <section class="about-section" id="interests"><span class="section-number">03 / LIFE</span><h2>兴趣爱好</h2><h3>旅行</h3><p>我曾是一名背包客，利用工作之外的时间走遍中国，并游历了大半个东南亚。旅行对我而言，不只是抵达不同的地方，更是一种认识世界、理解他人和重新发现自己的方式。</p><h3>自行车、摩托车与耐力运动</h3><div class="milestones"><div class="milestone"><strong>2012 · 骑行越南</strong><span>从广西东兴出发，历时 15 天抵达胡志明市。</span></div><div class="milestone"><strong>2014 · 骑行拉萨</strong><span>从兰州出发，沿途骑行 28 天，最终抵达拉萨。</span></div><div class="milestone"><strong>2024 · 铁人三项</strong><span>完成人生中的第一场铁人三项。</span></div></div><h3>民谣摇滚</h3><p>我是民谣与摇滚乐的重度爱好者。从中国城市民谣，到美国 20 世纪 60 年代的民谣摇滚，我着迷于音乐背后的自由精神与人文关怀。</p><h3>终身学习</h3><p>我长期关注通识教育与自我成长，并保持无目的、跨领域的广泛阅读，在历史、哲学、社会、科技、商业与艺术之间不断寻找底层关系。</p></section>
+                <section class="about-section" id="interests"><span class="section-number">03 / LIFE</span><h2>兴趣爱好</h2><h3>旅行</h3><p>我曾是一名背包客，利用工作之外的时间走遍中国，并游历了大半个东南亚。旅行对我而言，不只是抵达不同的地方，更是一种认识世界、理解他人和重新发现自己的方式。</p><h3>自行车、摩托车</h3><div class="milestones"><div class="milestone"><strong>2012 · 骑行越南</strong><span>从广西东兴出发，历时 15 天抵达胡志明市。</span></div><div class="milestone"><strong>2014 · 骑行拉萨</strong><span>从兰州出发，沿途骑行 28 天，最终抵达拉萨。</span></div><div class="milestone"><strong>2024 · 铁人三项</strong><span>完成人生中的第一场铁人三项。</span></div></div><h3>民谣摇滚</h3><p>我是民谣与摇滚乐的重度爱好者。从中国城市民谣，到美国 20 世纪 60 年代的民谣摇滚，我着迷于音乐背后的自由精神与人文关怀。</p><h3>终身学习</h3><p>我长期关注通识教育与自我成长，并保持无目的、跨领域的广泛阅读，在历史、哲学、社会、科技、商业与艺术之间不断寻找底层关系。</p></section>
                 <section class="about-section" id="business"><span class="section-number">04 / WORK</span><h2>我的业务</h2><h3>我擅长</h3><div class="service-grid"><article class="service-card" data-number="01"><strong>复杂问题拆解与方案设计</strong><p>把模糊想法、业务需求和技术问题，梳理成清晰的产品方案、业务流程与执行步骤。</p></article><article class="service-card" data-number="02"><strong>AI 工具与 AI Agent 应用</strong><p>研究 AI Agent、Vibe Coding、知识库与自动化工作流，并根据实际场景选择工具和实现方式。</p></article><article class="service-card" data-number="03"><strong>个人知识系统搭建</strong><p>长期使用 Obsidian 管理知识、项目和思考，帮助个人建立可长期积累的知识管理系统。</p></article><article class="service-card" data-number="04"><strong>AI 产品原型与独立开发</strong><p>借助 AI 编程工具，将想法快速转化为网页、工具或 MVP 原型。</p></article><article class="service-card" data-number="05"><strong>技术、产品与商业的连接</strong><p>关注 AI 产品如何解决真实问题、形成服务并实现商业化。</p></article></div><h3>我能提供</h3><div class="service-grid"><article class="service-card" data-number="01"><strong>Obsidian 个人知识系统培训与搭建</strong><p>知识库结构设计、笔记方法、项目管理、信息整理与个人工作台搭建。</p></article><article class="service-card" data-number="02"><strong>飞书多维表格培训与业务系统搭建</strong><p>帮助个人和小团队管理客户、项目、内容、任务与业务数据。</p></article><article class="service-card" data-number="03"><strong>AI 工具应用培训</strong><p>面向个人、小团队和企业，讲解大模型、AI 搜索、写作、编程及常用 AI 工具。</p></article><article class="service-card" data-number="04"><strong>AI Agent 场景梳理与落地方案</strong><p>分析适合使用 AI 的业务环节，梳理需求、流程、工具选型与初步实施方案。</p></article><article class="service-card" data-number="05"><strong>一人公司数字化工作流搭建</strong><p>整合知识、项目、内容与客户管理，连接 AI 自动化工具。</p></article></div></section>
             </div>
         </div>
