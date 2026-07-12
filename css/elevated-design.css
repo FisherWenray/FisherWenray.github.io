@@ -170,6 +170,34 @@ body::after {
     overflow: hidden;
 }
 
+/*
+ * Blog、影音、书籍与产品共享的页面基线。
+ * 同时锁定外层容器与页头，避免页面自身样式影响宽度、位置或高度。
+ */
+.standard-page-shell {
+    box-sizing: border-box !important;
+    width: var(--page-width) !important;
+    max-width: none !important;
+    margin: clamp(28px, 4vw, 48px) auto 44px !important;
+    padding: 0 !important;
+}
+
+.standard-page-header {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    min-height: 220px !important;
+    height: 220px !important;
+    max-height: 220px !important;
+    margin: 0 0 24px !important;
+    transform: none !important;
+    transition: none !important;
+}
+
+.standard-page-header .header-subtitle-placeholder {
+    visibility: hidden;
+    user-select: none;
+}
+
 .header::before,
 .products-section::before,
 .teaser-section::before {
@@ -921,6 +949,12 @@ body::after {
     .panel.hero,
     .products-section {
         padding: 26px 20px !important;
+    }
+
+    .standard-page-header {
+        height: auto !important;
+        min-height: 220px !important;
+        max-height: none !important;
     }
 
     .header-top {
