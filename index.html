@@ -443,8 +443,8 @@
             width: 100%;
         }
 
-        .showcase-grid-articles {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+        .showcase-grid-writing {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
         }
 
         .showcase-grid-media {
@@ -487,6 +487,88 @@
 
         .showcase-card .product-desc {
             margin-bottom: 0;
+        }
+
+        .writing-book-card .product-info {
+            display: grid;
+            grid-template-columns: 88px minmax(0, 1fr);
+            gap: 18px;
+            align-items: center;
+            justify-content: stretch;
+        }
+
+        .writing-book-copy {
+            min-width: 0;
+        }
+
+        .mini-book-cover {
+            position: relative;
+            width: 88px;
+            aspect-ratio: 2 / 3;
+            overflow: hidden;
+            flex: 0 0 auto;
+            border: 1px solid rgba(197, 179, 88, 0.34);
+            border-radius: 5px 9px 9px 5px;
+            background:
+                radial-gradient(circle at 78% 16%, rgba(239, 224, 143, 0.9) 0 9px, rgba(239, 224, 143, 0.13) 10px 20px, transparent 21px),
+                linear-gradient(155deg, rgba(0, 78, 140, 0.96), rgba(2, 20, 34, 0.99) 54%, rgba(3, 32, 52, 0.98));
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.24);
+        }
+
+        .mini-book-cover::before {
+            content: "";
+            position: absolute;
+            inset: auto -12% 15% 18%;
+            height: 34%;
+            border-radius: 50%;
+            background: repeating-linear-gradient(178deg, rgba(157, 219, 255, 0.24) 0 1px, transparent 1px 7px);
+            opacity: 0.62;
+            transform: rotate(-5deg);
+        }
+
+        .mini-book-spine {
+            position: absolute;
+            inset: 0 auto 0 0;
+            width: 10px;
+            border-right: 1px solid rgba(255, 255, 255, 0.12);
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.38), rgba(255, 255, 255, 0.08));
+        }
+
+        .mini-book-content {
+            position: absolute;
+            z-index: 1;
+            right: 8px;
+            bottom: 12px;
+            left: 17px;
+        }
+
+        .mini-book-content small {
+            display: block;
+            margin-bottom: 5px;
+            color: rgba(239, 224, 143, 0.88);
+            font: 600 5px/1 var(--font-mono);
+            letter-spacing: 0.1em;
+        }
+
+        .mini-book-content strong {
+            display: block;
+            color: #fff;
+            font: 700 15px/1.15 var(--font-serif);
+            text-shadow: 0 5px 12px rgba(0, 0, 0, 0.42);
+        }
+
+        .mini-book-content span {
+            display: block;
+            margin-top: 5px;
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 6px;
+            font-weight: 700;
+            line-height: 1.35;
+        }
+
+        .writing-book-card:hover .mini-book-cover {
+            transform: translateY(-2px) rotate(-1deg);
+            box-shadow: 0 17px 30px rgba(0, 0, 0, 0.3);
         }
 
         @media (max-width: 1240px) {
@@ -533,7 +615,7 @@
             .social-row {
                 justify-content: center;
             }
-            .showcase-grid-articles,
+            .showcase-grid-writing,
             .showcase-grid-media {
                 grid-template-columns: 1fr;
             }
@@ -1542,9 +1624,9 @@
 
 
 
-        <section class="section showcase-section reveal" style="--delay: 0.18s;" aria-labelledby="latestArticlesTitle">
+        <section class="section showcase-section reveal" style="--delay: 0.18s;" aria-labelledby="writingTitle">
             <div class="products-header">
-                <h2 class="products-title" id="latestArticlesTitle">
+                <h2 class="products-title" id="writingTitle">
                     <span class="header-mark" aria-hidden="true">
                         <svg viewBox="0 0 24 24" focusable="false">
                             <path d="M5 5.5h14"/>
@@ -1553,7 +1635,7 @@
                             <circle cx="17.5" cy="17.5" r="1.5" fill="currentColor" stroke="none"/>
                         </svg>
                     </span>
-                    最新文章
+                    我的文字
                 </h2>
                 <a href="articles.html" class="products-more-link" data-umami-event="homepage_articles_more">
                     <span>全部文章</span>
@@ -1561,7 +1643,7 @@
                 </a>
             </div>
 
-            <div class="showcase-grid showcase-grid-articles" id="latestArticleList">
+            <div class="showcase-grid showcase-grid-writing" id="latestArticleList">
                 <a class="product-card showcase-card" href="posts/011.html">
                     <div class="product-info">
                         <div class="showcase-meta">
@@ -1580,6 +1662,23 @@
                         </div>
                         <h3 class="product-name">一人公司大神Peter Levels《MAKE》（05）：想法先从小开始</h3>
                         <p class="product-desc">从更小的切口开始验证，让想法更快进入真实世界。</p>
+                    </div>
+                </a>
+                <a class="product-card showcase-card writing-book-card" href="books.html" data-umami-event="homepage_writing_book_click" data-umami-props='{"book":"xingsi_wujie"}'>
+                    <div class="product-info">
+                        <div class="mini-book-cover" aria-hidden="true">
+                            <div class="mini-book-spine"></div>
+                            <div class="mini-book-content">
+                                <small>WENYAOYEFEI</small>
+                                <strong>行思无界</strong>
+                                <span>从见天地到见自己</span>
+                            </div>
+                        </div>
+                        <div class="writing-book-copy">
+                            <div class="showcase-meta"><span><i class="fas fa-book-open"></i>我的书籍</span></div>
+                            <h3 class="product-name">《行思无界：从见天地到见自己》</h3>
+                            <p class="product-desc">围绕间隔年、通识教育、一人一文明与全球生活方式展开的系统思考。</p>
+                        </div>
                     </div>
                 </a>
             </div>
@@ -1691,7 +1790,7 @@
 
                 if (!articles.length) return;
 
-                list.innerHTML = articles.map((article) => `
+                const articleCards = articles.map((article) => `
                     <a class="product-card showcase-card" href="posts/${encodeURIComponent(article.id)}.html">
                         <div class="product-info">
                             <div class="showcase-meta">
@@ -1703,6 +1802,28 @@
                         </div>
                     </a>
                 `).join('');
+
+                const bookCard = `
+                    <a class="product-card showcase-card writing-book-card" href="books.html" data-umami-event="homepage_writing_book_click" data-umami-props='{"book":"xingsi_wujie"}'>
+                        <div class="product-info">
+                            <div class="mini-book-cover" aria-hidden="true">
+                                <div class="mini-book-spine"></div>
+                                <div class="mini-book-content">
+                                    <small>WENYAOYEFEI</small>
+                                    <strong>行思无界</strong>
+                                    <span>从见天地到见自己</span>
+                                </div>
+                            </div>
+                            <div class="writing-book-copy">
+                                <div class="showcase-meta"><span><i class="fas fa-book-open"></i>我的书籍</span></div>
+                                <h3 class="product-name">《行思无界：从见天地到见自己》</h3>
+                                <p class="product-desc">围绕间隔年、通识教育、一人一文明与全球生活方式展开的系统思考。</p>
+                            </div>
+                        </div>
+                    </a>
+                `;
+
+                list.innerHTML = articleCards + bookCard;
             } catch (error) {
                 console.warn('最新文章加载失败:', error);
             }
