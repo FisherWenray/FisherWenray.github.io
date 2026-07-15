@@ -9,6 +9,7 @@ const files = [
     'podcast.html',
     'music.html',
     'books.html',
+    'business.html',
     'scripts/generate-seo-articles.js'
 ];
 
