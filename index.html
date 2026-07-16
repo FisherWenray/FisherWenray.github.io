@@ -1800,10 +1800,14 @@
             box-shadow: none !important;
         }
 
+        .home-content-section .home-section-header {
+            margin-bottom: 28px;
+        }
+
         .home-content-layout {
             display: grid;
-            grid-template-columns: minmax(0, 1.18fr) minmax(390px, .82fr);
-            gap: 24px;
+            grid-template-columns: minmax(0, 1.08fr) minmax(390px, .92fr);
+            gap: 20px;
         }
 
         .home-content-lead {
@@ -1811,9 +1815,9 @@
         }
 
         .home-content-lead .showcase-card {
-            min-height: 430px;
-            padding: clamp(30px, 4vw, 46px) !important;
-            justify-content: flex-end;
+            min-height: 340px;
+            padding: clamp(28px, 3.5vw, 38px) !important;
+            justify-content: center;
             overflow: hidden;
         }
 
@@ -1832,7 +1836,7 @@
             height: auto;
             color: rgba(var(--primary-rgb), .07);
             background: none !important;
-            font: 700 clamp(68px, 10vw, 126px)/1 var(--font-mono);
+            font: 700 clamp(58px, 8vw, 96px)/1 var(--font-mono);
             letter-spacing: -.08em;
             transform: none;
             animation: none !important;
@@ -1840,14 +1844,14 @@
 
         .home-content-lead .product-info {
             position: relative;
-            justify-content: flex-end;
+            justify-content: center;
         }
 
         .home-content-label {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            margin-bottom: 24px;
+            margin-bottom: 18px;
             color: var(--gold);
             font: 600 11px/1 var(--font-mono);
             letter-spacing: .14em;
@@ -1871,7 +1875,7 @@
             display: inline-flex;
             align-items: center;
             gap: 9px;
-            margin-top: 28px;
+            margin-top: 22px;
             color: var(--ink-soft);
             font-size: 13px;
             font-weight: 700;
@@ -1885,15 +1889,16 @@
         .home-content-rail {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 18px;
+            gap: 14px;
         }
 
         .home-content-entry {
-            min-height: 206px;
+            min-height: 163px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            padding: 23px;
+            justify-content: flex-start;
+            gap: 28px;
+            padding: 20px;
             color: inherit;
             text-decoration: none;
             border: 1px solid rgba(var(--primary-rgb), .16);
@@ -2021,12 +2026,12 @@
             }
 
             .home-content-lead .showcase-card {
-                min-height: 380px;
+                min-height: 330px;
                 padding: 28px 24px !important;
             }
 
             .home-content-entry {
-                min-height: 166px;
+                min-height: 150px;
             }
         }
 
