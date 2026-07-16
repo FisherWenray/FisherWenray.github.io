@@ -48,12 +48,9 @@
         .offer-copy p { margin: 0; max-width: 700px; color: var(--ink-soft); font-size: 14px; line-height: 1.75; }
         .offer-icon { width: 52px; height: 52px; display: grid; place-items: center; border: 1px solid rgba(var(--primary-rgb), .24); border-radius: 50%; color: var(--gold); background: rgba(var(--primary-rgb), .08); font-size: 19px; transition: transform .24s ease, background .24s ease, color .24s ease; }
         .service-offer:hover .offer-icon { transform: rotate(-6deg) scale(1.04); color: #fff; background: var(--primary); }
-        .service-contact { display: grid; grid-template-columns: 46px minmax(0, 1fr) auto; align-items: center; gap: 18px; margin-top: 18px; padding: 20px 24px; border: 1px solid rgba(var(--primary-rgb), .22); border-radius: var(--radius-lg); background: rgba(var(--primary-rgb), .055); }
-        .service-contact-icon { width: 46px; height: 46px; display: grid; place-items: center; border: 1px solid rgba(var(--primary-rgb), .22); border-radius: 50%; color: var(--gold); background: var(--surface); font-size: 17px; }
-        .service-contact-copy h2 { margin: 0 0 4px; color: var(--ink); font: 700 19px/1.4 var(--font-serif); }
-        .service-contact-copy p { margin: 0; color: var(--ink-soft); font-size: 13px; line-height: 1.65; }
-        .service-contact-button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 42px; padding: 0 19px; border: 1px solid rgba(var(--primary-rgb), .24); border-radius: 999px; color: var(--ink-soft); background: rgba(var(--primary-rgb), .06); font: 700 14px/1 var(--font-sans); cursor: pointer; transition: color .2s ease, background .2s ease, border-color .2s ease, transform .2s ease; }
-        .service-contact-button:hover { color: #fff; border-color: var(--primary); background: var(--primary); transform: translateY(-1px); }
+        .service-contact { display: flex; justify-content: center; margin-top: clamp(34px, 5vw, 56px); padding: 0; }
+        .service-contact-button { min-width: 190px; min-height: 58px; display: inline-flex; align-items: center; justify-content: center; gap: 11px; padding: 0 32px; border: 1px solid rgba(var(--primary-rgb), .5); border-radius: 999px; color: #eef5fb; background: linear-gradient(135deg, rgba(0, 78, 140, .68), rgba(0, 35, 68, .94)); box-shadow: 0 14px 30px rgba(var(--primary-rgb), .18); font: 700 17px/1 var(--font-sans); cursor: pointer; transition: transform .24s ease, box-shadow .24s ease, filter .24s ease; }
+        .service-contact-button:hover { color: #fff; transform: translateY(-2px); box-shadow: 0 18px 36px rgba(var(--primary-rgb), .26); filter: brightness(1.04); }
         .service-contact-button:focus-visible, .contact-modal-close:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
         .contact-modal { display: none; position: fixed; inset: 0; z-index: 400; place-items: center; padding: 20px; background: rgba(0, 12, 24, .72); backdrop-filter: blur(8px); }
         .contact-modal.is-open { display: grid; animation: contact-fade-in .2s ease both; }
@@ -65,10 +62,10 @@
         .contact-modal-close { position: absolute; top: 14px; right: 14px; width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid rgba(var(--primary-rgb), .18); border-radius: 50%; color: var(--ink-soft); background: rgba(var(--primary-rgb), .06); cursor: pointer; transition: color .2s ease, background .2s ease, transform .2s ease; }
         .contact-modal-close:hover { color: #fff; background: var(--primary); transform: rotate(6deg); }
         [data-theme='dark'] .services-directory-head h2, [data-theme='dark'] .offer-copy h3 { color: #fff; text-shadow: 0 0 12px rgba(0, 78, 140, .35); }
-        [data-theme='dark'] .service-contact-copy h2, [data-theme='dark'] .contact-modal-panel h2 { color: #fff; }
+        [data-theme='dark'] .contact-modal-panel h2 { color: #fff; }
         @keyframes contact-fade-in { from { opacity: 0; } to { opacity: 1; } }
         @keyframes contact-panel-in { from { opacity: 0; transform: translateY(10px) scale(.98); } to { opacity: 1; transform: none; } }
-        @media (max-width: 680px) { .business-page { margin-top: 18px; } .services-directory { margin-top: 24px; min-width: 0; } .services-directory-head { grid-template-columns: minmax(0, 1fr); gap: 12px; padding: 4px 2px 20px; } .service-offer-list { min-width: 0; } .service-offer { width: 100%; max-width: 100%; min-width: 0; min-height: 0; grid-template-columns: minmax(0, 1fr); gap: 16px; padding: 22px 20px; } .offer-meta { grid-column: 1; grid-row: 1; padding-right: 54px; } .offer-copy { grid-column: 1; grid-row: 2; min-width: 0; } .offer-icon { position: absolute; top: 18px; right: 18px; width: 42px; height: 42px; font-size: 16px; } .service-contact { grid-template-columns: 42px minmax(0, 1fr); gap: 14px; padding: 18px; } .service-contact-icon { width: 42px; height: 42px; } .service-contact-button { grid-column: 1 / -1; width: 100%; } .contact-modal-panel { padding: 22px 18px 18px; } }
+        @media (max-width: 680px) { .business-page { margin-top: 18px; } .services-directory { margin-top: 24px; min-width: 0; } .services-directory-head { grid-template-columns: minmax(0, 1fr); gap: 12px; padding: 4px 2px 20px; } .service-offer-list { min-width: 0; } .service-offer { width: 100%; max-width: 100%; min-width: 0; min-height: 0; grid-template-columns: minmax(0, 1fr); gap: 16px; padding: 22px 20px; } .offer-meta { grid-column: 1; grid-row: 1; padding-right: 54px; } .offer-copy { grid-column: 1; grid-row: 2; min-width: 0; } .offer-icon { position: absolute; top: 18px; right: 18px; width: 42px; height: 42px; font-size: 16px; } .service-contact { margin-top: 32px; } .service-contact-button { width: min(100%, 320px); } .contact-modal-panel { padding: 22px 18px 18px; } }
         @media (prefers-reduced-motion: reduce) { .service-offer, .offer-icon, .service-contact-button, .contact-modal-close { transition: none; } .contact-modal.is-open, .contact-modal-panel { animation: none; } }
     </style>
 </head>
@@ -141,14 +138,9 @@
                 </article>
             </div>
 
-            <aside class="service-contact" aria-labelledby="service-contact-title">
-                <span class="service-contact-icon" aria-hidden="true"><i class="fab fa-weixin"></i></span>
-                <div class="service-contact-copy">
-                    <h2 id="service-contact-title">有具体需求？</h2>
-                    <p>添加微信，简单说说你正在解决的问题。</p>
-                </div>
+            <aside class="service-contact" aria-label="联系我">
                 <button class="service-contact-button" type="button" id="openContactModal" aria-haspopup="dialog" aria-controls="contactModal" onclick="openServiceContactModal()">
-                    联系我 <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    <i class="fab fa-weixin" aria-hidden="true"></i> 联系我 <i class="fas fa-arrow-right" aria-hidden="true"></i>
                 </button>
             </aside>
         </section>
