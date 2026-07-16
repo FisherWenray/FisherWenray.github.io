@@ -317,6 +317,14 @@
             padding: 0 !important;
             overflow: hidden;
             border-radius: 18px !important;
+            color: inherit;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .standard-page-shell .software-card:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 4px;
         }
 
         .standard-page-shell .software-card .card-cover.product-screenshot-cover {
@@ -349,7 +357,7 @@
         }
 
         .standard-page-shell .software-card .card-body {
-            min-height: 300px;
+            min-height: 230px;
             padding: 24px 24px 26px;
         }
 
@@ -405,11 +413,11 @@
                 </span>
                 我的产品
             </h1>
-            <p class="header-subtitle header-subtitle-placeholder" aria-hidden="true">占位</p>
+            <p class="header-subtitle">我独立开发的产品</p>
         </div>
 
         <div class="software-grid">
-            <div class="software-card" style="--card-index: 0">
+            <a class="software-card" href="https://nav.wenyaoyefei.com" target="_blank" rel="noopener" style="--card-index: 0" data-umami-event="software_card_click" data-umami-props='{"target":"bookmark_site"}'>
                 <div class="card-cover product-screenshot-cover">
                     <picture>
                         <source srcset="images/zhijing-product-screenshot.webp" type="image/webp">
@@ -422,24 +430,10 @@
                     <p class="card-description">
                         聚合 5000+ 精选标签与常用工具链接，支持智能全局检索、多层级折叠分类和树状导航，让信息查找沿着清晰路径直达所需。
                     </p>
-                    <div class="card-actions">
-                        <a href="https://nav.wenyaoyefei.com" target="_blank" rel="noopener"
-                            class="card-btn card-btn-primary" data-umami-event="software_link_click"
-                            data-umami-props='{"target":"bookmark_site"}'>
-                            <i class="fas fa-external-link-alt"></i>
-                            访问网站
-                        </a>
-                        <a href="https://github.com/FisherWenray/bookmark" target="_blank" rel="noopener"
-                            class="card-btn card-btn-secondary" data-umami-event="software_link_click"
-                            data-umami-props='{"target":"bookmark_github"}'>
-                            <i class="fab fa-github"></i>
-                            GitHub
-                        </a>
-                    </div>
                 </div>
-            </div>
+            </a>
 
-            <div class="software-card" style="--card-index: 1">
+            <a class="software-card" href="https://stock.wenyaoyefei.com/" target="_blank" rel="noopener" style="--card-index: 1" data-umami-event="software_card_click" data-umami-props='{"target":"stock_site"}'>
                 <div class="card-cover product-screenshot-cover">
                     <picture>
                         <img class="product-screenshot" src="images/stock-product-screenshot.webp" alt="股票行情云图产品界面截图" width="1280" height="800" loading="lazy" decoding="async">
@@ -451,24 +445,10 @@
                     <p class="card-description">
                         一个直观的云端港股与美股看盘分析面板，提供实时行情、关键指标与可视化数据云图，助力投资者高效洞察市场动态。
                     </p>
-                    <div class="card-actions">
-                        <a href="https://stock.wenyaoyefei.com/" target="_blank" rel="noopener"
-                            class="card-btn card-btn-primary" data-umami-event="software_link_click"
-                            data-umami-props='{"target":"stock_site"}'>
-                            <i class="fas fa-external-link-alt"></i>
-                            访问网站
-                        </a>
-                        <a href="https://github.com/FisherWenray/stock-market-cloud" target="_blank" rel="noopener"
-                            class="card-btn card-btn-secondary" data-umami-event="software_link_click"
-                            data-umami-props='{"target":"stock_github"}'>
-                            <i class="fab fa-github"></i>
-                            GitHub
-                        </a>
-                    </div>
                 </div>
-            </div>
+            </a>
 
-            <div class="software-card" style="--card-index: 2">
+            <a class="software-card" href="https://www.oneopc.ai/" target="_blank" rel="noopener" style="--card-index: 2" data-umami-event="software_card_click" data-umami-props='{"target":"oneopc_site"}'>
                 <div class="card-cover product-screenshot-cover">
                     <picture>
                         <img class="product-screenshot" src="images/oneopc-product-screenshot.webp" alt="OneOPC.ai 产品界面截图" width="1280" height="800" loading="lazy" decoding="async">
@@ -480,16 +460,8 @@
                     <p class="card-description">
                         面向“一人公司”工作流的 AI 产品，聚焦效率放大、流程协同与个人创作者/创业者的日常执行支持。
                     </p>
-                    <div class="card-actions">
-                        <a href="https://www.oneopc.ai/" target="_blank" rel="noopener"
-                            class="card-btn card-btn-primary" data-umami-event="software_link_click"
-                            data-umami-props='{"target":"oneopc_site"}'>
-                            <i class="fas fa-external-link-alt"></i>
-                            访问网站
-                        </a>
-                    </div>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 

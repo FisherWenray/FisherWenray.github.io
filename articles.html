@@ -680,10 +680,10 @@
             min-height: 220px !important;
             max-height: 220px !important;
             padding: clamp(24px, 4vw, 42px) !important;
-            display: grid !important;
-            grid-template-columns: minmax(0, 1fr) minmax(290px, 0.72fr);
-            align-items: center !important;
-            gap: clamp(20px, 4vw, 54px);
+            display: flex !important;
+            align-items: flex-start !important;
+            justify-content: center !important;
+            text-align: left;
         }
 
         .writing-hub-header::before {
@@ -702,104 +702,12 @@
             margin: 0 0 8px;
         }
 
-        .writing-featured-book {
-            min-width: 0;
-            height: 132px;
-            padding: 14px 16px;
-            display: grid;
-            grid-template-columns: 58px minmax(0, 1fr) 24px;
-            align-items: center;
-            gap: 14px;
-            color: var(--ink);
-            text-decoration: none;
-            border: 1px solid rgba(var(--primary-rgb), 0.28);
-            border-radius: 14px;
-            background: linear-gradient(145deg, rgba(var(--primary-rgb), 0.09), rgba(255, 255, 255, 0.05));
-            transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
-        }
-
-        .writing-featured-book:hover {
-            transform: translateY(-2px);
-            border-color: rgba(var(--primary-rgb), 0.56);
-            background: linear-gradient(145deg, rgba(var(--primary-rgb), 0.16), rgba(255, 255, 255, 0.08));
-        }
-
-        .featured-book-cover {
-            position: relative;
-            width: 58px;
-            height: 88px;
-            overflow: hidden;
-            border-radius: 3px 7px 7px 3px;
-            background: linear-gradient(155deg, #071a2d 0%, #004e8c 62%, #10293d 100%);
-            box-shadow: -4px 7px 14px rgba(7, 20, 34, 0.3);
-        }
-
-        .featured-book-cover::before {
-            content: "行思\A无界";
-            white-space: pre;
-            position: absolute;
-            inset: 13px 7px auto 10px;
-            color: #f2df8b;
-            font-family: var(--font-serif);
-            font-size: 14px;
-            font-weight: 700;
-            line-height: 1.35;
-            letter-spacing: 0.12em;
-        }
-
-        .featured-book-cover::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 5px;
-            background: rgba(255, 255, 255, 0.1);
-            border-right: 1px solid rgba(255, 255, 255, 0.14);
-        }
-
-        .featured-book-copy {
-            min-width: 0;
-        }
-
-        .featured-book-label {
-            display: block;
-            margin-bottom: 7px;
-            color: var(--gold);
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.14em;
-        }
-
-        .featured-book-title {
-            display: -webkit-box;
-            overflow: hidden;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 2;
-            margin: 0;
-            font-family: var(--font-serif);
-            font-size: clamp(15px, 1.45vw, 19px);
-            line-height: 1.55;
-        }
-
-        .featured-book-arrow {
-            color: var(--gold);
-            font-size: 14px;
-            transition: transform 180ms ease;
-        }
-
-        .writing-featured-book:hover .featured-book-arrow {
-            transform: translateX(3px);
-        }
-
         @media (max-width: 680px) {
             .standard-page-header.writing-hub-header {
                 height: 220px !important;
                 min-height: 220px !important;
                 max-height: 220px !important;
                 padding: 20px !important;
-                grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-                gap: 12px;
             }
 
             .writing-hub-header::before {
@@ -831,37 +739,6 @@
                 line-height: 1.55;
             }
 
-            .writing-featured-book {
-                height: 132px;
-                padding: 12px;
-                grid-template-columns: 42px minmax(0, 1fr);
-                gap: 10px;
-            }
-
-            .featured-book-cover {
-                width: 42px;
-                height: 68px;
-            }
-
-            .featured-book-cover::before {
-                inset: 10px 4px auto 8px;
-                font-size: 11px;
-            }
-
-            .featured-book-label {
-                margin-bottom: 5px;
-                font-size: 9px;
-            }
-
-            .featured-book-title {
-                -webkit-line-clamp: 3;
-                font-size: 13px;
-                line-height: 1.45;
-            }
-
-            .featured-book-arrow {
-                display: none;
-            }
         }
     </style>
 </head>
@@ -898,18 +775,10 @@
                             <path d="M10.7 20.5h2.6"/>
                         </svg>
                     </span>
-                    我的文字
+                    我的Blog
                 </h1>
-                <p class="header-subtitle">包含了我的 Blog 文章和书籍</p>
+                <p class="header-subtitle">我的文章、随笔与思考</p>
             </div>
-            <a class="writing-featured-book" href="books/xingsi-wujie/chapter-01.html" aria-label="直接阅读《行思无界：从见天地到见自己》" data-umami-event="writing_hub_book_click">
-                <span class="featured-book-cover" aria-hidden="true"></span>
-                <span class="featured-book-copy">
-                    <span class="featured-book-label">我的书籍</span>
-                    <span class="featured-book-title">《行思无界：从见天地到见自己》</span>
-                </span>
-                <i class="fas fa-arrow-right featured-book-arrow" aria-hidden="true"></i>
-            </a>
         </div>
 
         <div class="content-card">
