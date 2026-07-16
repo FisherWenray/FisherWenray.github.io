@@ -1748,22 +1748,12 @@
 
         .home-service-row {
             display: grid;
-            grid-template-columns: 64px minmax(0, 1fr) 48px;
+            grid-template-columns: 64px minmax(0, 1fr);
             align-items: center;
             gap: 24px;
             min-height: 150px;
             padding: 28px 8px;
-            color: inherit;
-            text-decoration: none;
             border-bottom: 1px solid rgba(var(--primary-rgb), .18);
-            transition: padding .3s ease, background .3s ease, border-color .3s ease;
-        }
-
-        .home-service-row:hover {
-            padding-right: 22px;
-            padding-left: 22px;
-            border-color: rgba(var(--primary-rgb), .34);
-            background: rgba(var(--primary-rgb), .045);
         }
 
         .home-service-meta {
@@ -1794,25 +1784,6 @@
             color: var(--ink-soft);
             font-size: 14px;
             line-height: 1.75;
-        }
-
-        .home-service-arrow {
-            width: 44px;
-            height: 44px;
-            display: grid;
-            place-items: center;
-            justify-self: end;
-            border: 1px solid rgba(var(--primary-rgb), .18);
-            border-radius: 50%;
-            color: var(--ink-soft);
-            transition: color .25s ease, border-color .25s ease, background .25s ease, transform .25s ease;
-        }
-
-        .home-service-row:hover .home-service-arrow {
-            color: #fff;
-            border-color: var(--primary);
-            background: var(--primary);
-            transform: translateX(3px);
         }
 
         .home-content-section {
@@ -1985,10 +1956,6 @@
             color: #fff;
         }
 
-        [data-theme='dark'] .home-service-row:hover {
-            background: rgba(var(--primary-rgb), .09);
-        }
-
         @media (max-width: 1040px) {
             .home-product-gallery {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2035,7 +2002,7 @@
             }
 
             .home-service-row {
-                grid-template-columns: 54px minmax(0, 1fr) 38px;
+                grid-template-columns: 54px minmax(0, 1fr);
                 gap: 16px;
                 padding: 24px 4px;
             }
@@ -2047,11 +2014,6 @@
             .home-service-icon {
                 width: 38px;
                 height: 38px;
-            }
-
-            .home-service-arrow {
-                width: 36px;
-                height: 36px;
             }
 
             .home-content-section {
@@ -2074,7 +2036,7 @@
             }
 
             .home-service-row {
-                grid-template-columns: 46px minmax(0, 1fr) 32px;
+                grid-template-columns: 46px minmax(0, 1fr);
                 gap: 12px;
             }
 
@@ -2282,7 +2244,7 @@
         </section>
 
 
-        <section class="section services-section home-editorial-section reveal" style="--delay: 0.14s;" aria-labelledby="servicesTitle">
+        <section class="section services-section home-editorial-section" aria-labelledby="servicesTitle">
             <div class="products-header home-section-header">
                 <div class="home-section-heading">
                     <h2 class="products-title" id="servicesTitle">
@@ -2303,23 +2265,20 @@
             </div>
 
             <div class="home-service-list">
-                <a class="home-service-row" href="business.html#services-title" data-umami-event="homepage_service_click" data-umami-props='{"service":"ai_agent"}'>
+                <article class="home-service-row">
                     <div class="home-service-meta"><span class="home-service-icon" aria-hidden="true"><i class="fas fa-diagram-project"></i></span></div>
                     <div class="home-service-copy"><h3>AI Agent 场景梳理与落地</h3><p>从真实业务环节出发，完成需求分析、流程设计、工具选型与初步实施方案。</p></div>
-                    <span class="home-service-arrow" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
-                </a>
+                </article>
 
-                <a class="home-service-row" href="business.html#services-title" data-umami-event="homepage_service_click" data-umami-props='{"service":"one_person_company"}'>
+                <article class="home-service-row">
                     <div class="home-service-meta"><span class="home-service-icon" aria-hidden="true"><i class="fas fa-route"></i></span></div>
                     <div class="home-service-copy"><h3>一人公司数字化工作流</h3><p>整合知识、项目、内容与客户管理，让个人业务流程更清晰、更易持续运转。</p></div>
-                    <span class="home-service-arrow" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
-                </a>
+                </article>
 
-                <a class="home-service-row" href="business.html#services-title" data-umami-event="homepage_service_click" data-umami-props='{"service":"knowledge_system"}'>
+                <article class="home-service-row">
                     <div class="home-service-meta"><span class="home-service-icon" aria-hidden="true"><i class="fas fa-layer-group"></i></span></div>
                     <div class="home-service-copy"><h3>知识与业务系统搭建</h3><p>基于 Obsidian、飞书多维表格等工具，搭建适合个人与小团队的长期工作系统。</p></div>
-                    <span class="home-service-arrow" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
-                </a>
+                </article>
             </div>
         </section>
 
