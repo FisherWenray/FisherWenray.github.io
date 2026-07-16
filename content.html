@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内容 | 文鳐夜飞</title>
+    <meta name="description" content="文鳐夜飞的内容与创作，包含 Blog、书籍、播客、视频和原创音乐。">
+    <meta property="og:title" content="内容 | 文鳐夜飞">
+    <meta property="og:description" content="浏览文鳐夜飞的 Blog、书籍、播客、视频和原创音乐。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wenyaoyefei.com/content.html">
+    <meta property="og:image" content="https://wenyaoyefei.com/images/article-cover-011.png">
+    <link rel="canonical" href="https://wenyaoyefei.com/content.html">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "内容 | 文鳐夜飞",
+      "url": "https://wenyaoyefei.com/content.html",
+      "description": "文鳐夜飞的 Blog、书籍、播客、视频和原创音乐。",
+      "inLanguage": "zh-CN"
+    }
+    </script>
+    <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
+    <script src="js/theme.js?v=5" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&amp;family=Noto+Sans+SC:wght@400;500;700&amp;family=Noto+Serif+SC:wght@500;700&amp;display=swap" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/site.css?v=2">
+    <link rel="stylesheet" href="css/elevated-design.css?v=21">
+    <link rel="icon" type="image/jpeg" href="avatar.jpg">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .content-page { width: min(1180px, 94vw); margin: 34px auto 54px; }
+        .content-header-icon .content-icon-page { fill: none; }
+        .content-header-icon .content-icon-dot { fill: var(--gold); stroke: none; }
+        .content-switcher { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; margin: 18px 0 28px; }
+        .content-switcher a, .content-switcher span { min-height: 66px; display: flex; align-items: center; justify-content: center; gap: 9px; padding: 12px; border: 1px solid rgba(var(--primary-rgb), .17); border-radius: var(--radius-md); color: var(--ink-soft); background: rgba(var(--primary-rgb), .045); text-decoration: none; font-size: 14px; font-weight: 700; transition: transform .24s ease, color .24s ease, border-color .24s ease, background .24s ease; }
+        .content-switcher span { color: #fff; border-color: var(--primary); background: var(--primary); }
+        .content-switcher a:hover { color: #fff; border-color: var(--primary); background: var(--primary); transform: translateY(-2px); }
+        .content-switcher i { color: var(--gold); }
+        .content-switcher span i, .content-switcher a:hover i { color: #fff; }
+        .content-section { margin-top: 20px; padding: clamp(22px, 4vw, 34px); border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--surface); box-shadow: var(--shadow); }
+        .content-section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; margin-bottom: 22px; padding-bottom: 18px; border-bottom: 1px solid rgba(var(--primary-rgb), .15); }
+        .content-section-kicker { display: block; margin-bottom: 8px; color: var(--gold); font: 600 11px/1 var(--font-mono); letter-spacing: .14em; }
+        .content-section h2 { margin: 0; color: var(--ink); font: 700 clamp(27px, 3.5vw, 39px)/1.2 var(--font-serif); }
+        .content-section-head p { max-width: 430px; margin: 0; color: var(--ink-soft); font-size: 13px; line-height: 1.75; text-align: right; }
+        .latest-layout { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(300px, .85fr); gap: 18px; }
+        .latest-lead, .latest-brief, .lasting-card { position: relative; overflow: hidden; color: inherit; text-decoration: none; border: 1px solid rgba(var(--primary-rgb), .17); border-radius: var(--radius-lg); background: rgba(var(--primary-rgb), .035); transition: transform .3s cubic-bezier(.19, 1, .22, 1), border-color .3s ease, box-shadow .3s ease; }
+        .latest-lead:hover, .latest-brief:hover, .lasting-card:hover { transform: translateY(-5px); border-color: rgba(var(--primary-rgb), .38); box-shadow: var(--shadow-hover); }
+        .latest-lead { display: grid; grid-template-rows: minmax(240px, 1fr) auto; }
+        .latest-lead-media { min-height: 240px; overflow: hidden; background: #eee; }
+        .latest-lead-media img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .4s ease; }
+        .latest-lead:hover .latest-lead-media img { transform: scale(1.025); }
+        .latest-copy { padding: 22px 24px 24px; }
+        .content-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; color: var(--ink-soft); font-size: 12px; }
+        .content-meta span { display: inline-flex; align-items: center; gap: 6px; }
+        .content-meta i { color: var(--gold); }
+        .latest-copy h3, .latest-brief h3, .lasting-copy h3 { margin: 0; color: var(--ink); font: 700 clamp(19px, 2.1vw, 25px)/1.45 var(--font-serif); }
+        .latest-copy p, .latest-brief p, .lasting-copy p { margin: 10px 0 0; color: var(--ink-soft); font-size: 13px; line-height: 1.75; }
+        .latest-stack { display: grid; grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 18px; }
+        .latest-brief { display: grid; grid-template-columns: 138px minmax(0, 1fr); min-height: 0; }
+        .latest-brief-visual { min-height: 190px; display: grid; place-items: center; overflow: hidden; background: rgba(var(--primary-rgb), .08); }
+        .latest-brief-visual img { width: 100%; height: 100%; display: block; object-fit: cover; }
+        .latest-brief-visual.podcast-visual img { width: 76px; height: 76px; border-radius: 18px; box-shadow: 0 14px 30px rgba(0, 12, 24, .28); }
+        .latest-brief-visual.video-visual { background: linear-gradient(145deg, rgba(var(--primary-rgb), .16), rgba(var(--primary-rgb), .045)); }
+        .content-video-symbol { width: 78px; height: 78px; display: grid; place-items: center; align-content: center; gap: 7px; border: 1px solid rgba(var(--primary-rgb), .22); border-radius: 20px; color: var(--gold); background: rgba(var(--primary-rgb), .08); box-shadow: 0 14px 30px rgba(0, 12, 24, .2); }
+        .content-video-symbol i { font-size: 24px; }
+        .content-video-symbol small { font: 600 8px/1 var(--font-mono); letter-spacing: .14em; }
+        .latest-brief-copy { align-self: center; padding: 20px; }
+        .latest-brief h3 { font-size: 19px; }
+        .lasting-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+        .lasting-card { min-height: 230px; display: grid; grid-template-columns: 180px minmax(0, 1fr); align-items: stretch; }
+        .lasting-visual { display: grid; place-items: center; padding: 24px; background: rgba(var(--primary-rgb), .07); }
+        .content-book-cover { position: relative; width: 112px; aspect-ratio: 2 / 3; display: flex; flex-direction: column; justify-content: flex-end; padding: 17px 13px; overflow: hidden; border: 1px solid rgba(197, 179, 88, .38); border-radius: 5px 10px 10px 5px; background: radial-gradient(circle at 76% 18%, rgba(239,224,143,.92) 0 11px, rgba(239,224,143,.12) 12px 26px, transparent 27px), linear-gradient(155deg, #075891, #031a2d 54%, #072d46); box-shadow: 0 18px 34px rgba(0, 0, 0, .28); }
+        .content-book-cover small { color: rgba(239,224,143,.84); font: 600 6px/1 var(--font-mono); letter-spacing: .1em; }
+        .content-book-cover strong { margin-top: 8px; color: #fff; font: 700 20px/1.15 var(--font-serif); }
+        .content-book-cover em { margin-top: 6px; color: rgba(255,255,255,.7); font-size: 8px; font-style: normal; line-height: 1.4; }
+        .lasting-visual img { width: 132px; height: 132px; display: block; object-fit: cover; border-radius: 18px; box-shadow: 0 18px 34px rgba(0, 0, 0, .27); }
+        .lasting-copy { align-self: center; padding: 26px; }
+        .lasting-label { display: inline-flex; align-items: center; gap: 7px; margin-bottom: 14px; color: var(--gold); font: 600 11px/1 var(--font-mono); letter-spacing: .1em; }
+        .lasting-action { display: inline-flex; align-items: center; gap: 8px; margin-top: 22px; color: var(--ink-soft); font-size: 13px; font-weight: 700; }
+        .lasting-card:hover .lasting-action { color: var(--primary); gap: 12px; }
+        [data-theme='dark'] .content-section h2, [data-theme='dark'] .latest-copy h3, [data-theme='dark'] .latest-brief h3, [data-theme='dark'] .lasting-copy h3 { color: #fff; text-shadow: 0 0 10px rgba(var(--primary-rgb), .24); }
+        @media (max-width: 900px) { .content-switcher { grid-template-columns: repeat(3, minmax(0, 1fr)); } .latest-layout { grid-template-columns: minmax(0, 1fr); } .latest-stack { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto; } .latest-brief { grid-template-columns: minmax(0, 1fr); } .latest-brief-visual { min-height: 180px; } .lasting-grid { grid-template-columns: minmax(0, 1fr); } }
+        @media (max-width: 620px) { .content-page { margin-top: 18px; } .content-switcher { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; } .content-switcher a, .content-switcher span { min-height: 54px; font-size: 13px; } .content-section-head { align-items: flex-start; flex-direction: column; } .content-section-head p { text-align: left; } .latest-stack { grid-template-columns: minmax(0, 1fr); } .latest-lead { grid-template-rows: 190px auto; } .latest-brief { grid-template-columns: 104px minmax(0, 1fr); } .latest-brief-visual { min-height: 150px; } .latest-brief-copy { padding: 17px; } .latest-brief p { display: none; } .lasting-card { grid-template-columns: 118px minmax(0, 1fr); min-height: 210px; } .lasting-visual { padding: 14px; } .content-book-cover { width: 82px; } .content-book-cover strong { font-size: 15px; } .lasting-visual img { width: 88px; height: 88px; } .lasting-copy { padding: 20px 17px; } }
+        @media (prefers-reduced-motion: reduce) { .content-switcher a, .latest-lead, .latest-brief, .lasting-card, .latest-lead-media img { transition: none; } }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-container">
+            <ul class="nav-links" id="navLinks"><li><a href="index.html">首页</a></li><li><a href="software.html">产品</a></li><li><a href="business.html">服务</a></li><li><a href="content.html" class="active">内容</a></li><li><a href="about.html">关于</a></li></ul>
+            <div style="display:flex;align-items:center"><button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题"><i class="fas fa-moon"></i></button><button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="菜单"><i class="fas fa-bars"></i></button></div>
+        </div>
+    </nav>
+
+    <main class="content-page standard-page-shell">
+        <header class="header standard-page-header">
+            <h1 class="header-title">
+                <span class="header-mark" aria-hidden="true">
+                    <svg class="content-header-icon" viewBox="0 0 24 24" focusable="false">
+                        <path class="content-icon-page" d="M5 4.5h9l5 5v10H5Z"/>
+                        <path class="content-icon-page" d="M14 4.5v5h5M8 13h8M8 16.5h5"/>
+                        <circle class="content-icon-dot" cx="18" cy="18" r="2.4"/>
+                    </svg>
+                </span>
+                我的创作
+            </h1>
+            <p class="header-subtitle">包含我的 Blog、书籍、播客、视频与原创音乐</p>
+        </header>
+
+        <nav class="content-switcher" aria-label="内容分类">
+            <span aria-current="page"><i class="fas fa-layer-group" aria-hidden="true"></i>全部内容</span>
+            <a href="articles.html"><i class="fas fa-pen-nib" aria-hidden="true"></i>Blog</a>
+            <a href="books.html"><i class="fas fa-book-open" aria-hidden="true"></i>书籍</a>
+            <a href="podcast.html"><i class="fas fa-podcast" aria-hidden="true"></i>播客</a>
+            <a href="video.html"><i class="fas fa-clapperboard" aria-hidden="true"></i>视频</a>
+            <a href="music.html"><i class="fas fa-headphones" aria-hidden="true"></i>音乐</a>
+        </nav>
+
+        <section class="content-section" aria-labelledby="latestContentTitle">
+            <header class="content-section-head">
+                <div><span class="content-section-kicker">01 / RECENT</span><h2 id="latestContentTitle">最近更新</h2></div>
+                <p>从最近的一篇文章开始，也可以在影像与声音中继续浏览。</p>
+            </header>
+            <div class="latest-layout">
+                <a class="latest-lead" href="posts/011.html" data-umami-event="content_recent_click" data-umami-props='{"type":"blog","id":"011"}'>
+                    <div class="latest-lead-media"><img src="images/article-cover-011.png" alt="文章《记录并分享你的想法》封面" loading="eager" decoding="async"></div>
+                    <div class="latest-copy">
+                        <div class="content-meta"><span><i class="fas fa-pen-nib"></i>Blog</span><span><i class="far fa-calendar"></i>2026-03-02</span></div>
+                        <h3>一人公司大神 Peter Levels《MAKE》（06）：记录并分享你的想法</h3>
+                        <p>建立想法清单，通过市场验证创意，并勇敢分享以获得真实反馈。</p>
+                    </div>
+                </a>
+                <div class="latest-stack">
+                    <a class="latest-brief" href="video.html" data-umami-event="content_recent_click" data-umami-props='{"type":"video"}'>
+                        <div class="latest-brief-visual video-visual" aria-hidden="true"><span class="content-video-symbol"><i class="fas fa-clapperboard"></i><small>VIDEO</small></span></div>
+                        <div class="latest-brief-copy">
+                            <div class="content-meta"><span><i class="fas fa-clapperboard"></i>视频</span><span>2026-01-31</span></div>
+                            <h3>A股交易手续费全解析</h3>
+                            <p>用六分钟梳理交易成本的构成。</p>
+                        </div>
+                    </a>
+                    <a class="latest-brief" href="podcast.html" data-umami-event="content_recent_click" data-umami-props='{"type":"podcast"}'>
+                        <div class="latest-brief-visual podcast-visual"><img src="images/xiaoyuzhou-apple-touch-icon.png" alt="文鳐夜飞播客封面" loading="lazy" decoding="async"></div>
+                        <div class="latest-brief-copy">
+                            <div class="content-meta"><span><i class="fas fa-podcast"></i>播客</span><span>持续更新</span></div>
+                            <h3>文鳐夜飞播客</h3>
+                            <p>关于技术、产品、个人成长与自由生活的声音记录。</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section" aria-labelledby="lastingWorksTitle">
+            <header class="content-section-head">
+                <div><span class="content-section-kicker">02 / LONG-FORM</span><h2 id="lastingWorksTitle">长期作品</h2></div>
+                <p>比日常更新更完整，也更适合从头开始阅读或聆听。</p>
+            </header>
+            <div class="lasting-grid">
+                <a class="lasting-card" href="books.html" data-umami-event="content_work_click" data-umami-props='{"type":"book"}'>
+                    <div class="lasting-visual">
+                        <div class="content-book-cover" aria-hidden="true"><small>WENYAOYEFEI</small><strong>行思无界</strong><em>从见天地到见自己</em></div>
+                    </div>
+                    <div class="lasting-copy">
+                        <span class="lasting-label"><i class="fas fa-book-open"></i>BOOK / 书籍</span>
+                        <h3>《行思无界：从见天地到见自己》</h3>
+                        <p>围绕间隔年、通识教育、一人一文明与全球生活方式展开的系统思考。</p>
+                        <span class="lasting-action">开始阅读 <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="lasting-card" href="music.html" data-umami-event="content_work_click" data-umami-props='{"type":"music"}'>
+                    <div class="lasting-visual"><img src="images/haikuo-yuxiang-netease.png" alt="原创音乐《海阔余响》封面" loading="lazy" decoding="async"></div>
+                    <div class="lasting-copy">
+                        <span class="lasting-label"><i class="fas fa-headphones"></i>MUSIC / 原创音乐</span>
+                        <h3>《海阔余响》</h3>
+                        <p>用旋律保存那些无法被文章完全表达的感受。</p>
+                        <span class="lasting-action">开始聆听 <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <div class="footer"></div>
+    <script src="js/umami-config.js"></script><script src="js/analytics.js"></script><script>function toggleMobileMenu(){const n=document.getElementById('navLinks');if(n)n.classList.toggle('active')}</script>
+</body>
+</html>

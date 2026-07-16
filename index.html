@@ -554,6 +554,14 @@
             grid-template-columns: repeat(3, minmax(0, 1fr));
         }
 
+        .showcase-grid-content {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .home-content-dynamic {
+            display: contents;
+        }
+
         .showcase-card {
             min-height: 100%;
         }
@@ -675,7 +683,8 @@
         }
 
         @media (max-width: 1240px) {
-            .showcase-grid-media {
+            .showcase-grid-media,
+            .showcase-grid-content {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
         }
@@ -731,7 +740,8 @@
                 justify-content: center;
             }
             .showcase-grid-writing,
-            .showcase-grid-media {
+            .showcase-grid-media,
+            .showcase-grid-content {
                 grid-template-columns: 1fr;
             }
 }
@@ -1609,8 +1619,7 @@
                 <li><a href="index.html" class="active">首页</a></li>
                 <li><a href="software.html">产品</a></li>
                 <li><a href="business.html">服务</a></li>
-                <li><a href="articles.html">文字</a></li>
-                <li><a href="media.html">影音</a></li><li><a href="about.html">关于</a></li>
+                <li><a href="content.html">内容</a></li><li><a href="about.html">关于</a></li>
             </ul>
             <div style="display: flex; align-items: center;">
                 <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
@@ -1842,77 +1851,60 @@
         </section>
 
 
-        <section class="section showcase-section reveal" style="--delay: 0.18s;" aria-labelledby="writingTitle">
+        <section class="section showcase-section reveal" style="--delay: 0.18s;" aria-labelledby="contentTitle">
             <div class="products-header">
-                <h2 class="products-title" id="writingTitle">
+                <h2 class="products-title" id="contentTitle">
                     <span class="header-mark" aria-hidden="true">
                         <svg viewBox="0 0 24 24" focusable="false">
-                            <path d="M5 5.5h14"/>
-                            <path d="M5 11.5h14"/>
-                            <path d="M5 17.5h9"/>
-                            <circle cx="17.5" cy="17.5" r="1.5" fill="currentColor" stroke="none"/>
+                            <path d="M5 4.5h9l5 5v10H5Z"/>
+                            <path d="M14 4.5v5h5M8 13h8M8 16.5h5"/>
                         </svg>
                     </span>
-                    我的文字
+                    我的内容
                 </h2>
-                <a href="articles.html" class="products-more-link" data-umami-event="homepage_articles_more">
-                    <span>全部文章</span>
+                <a href="content.html" class="products-more-link" data-umami-event="homepage_content_more">
+                    <span>全部内容</span>
                     <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
 
-            <div class="showcase-grid showcase-grid-writing" id="latestArticleList">
-                <a class="product-card showcase-card" href="posts/011.html">
-                    <div class="product-info">
-                        <div class="showcase-meta">
-                            <span><i class="far fa-calendar"></i>2026-03-02</span>
-                            <span><i class="fas fa-tag"></i>一人公司</span>
+            <div class="showcase-grid showcase-grid-content">
+                <div class="home-content-dynamic" id="latestArticleList">
+                    <a class="product-card showcase-card" href="posts/011.html">
+                        <div class="product-info">
+                            <div class="showcase-meta">
+                                <span><i class="far fa-calendar"></i>2026-03-02</span>
+                                <span><i class="fas fa-tag"></i>一人公司</span>
+                            </div>
+                            <h3 class="product-name">一人公司大神Peter Levels《MAKE》（06）：记录并分享你的想法</h3>
                         </div>
-                        <h3 class="product-name">一人公司大神Peter Levels《MAKE》（06）：记录并分享你的想法</h3>
-                    </div>
-                </a>
-                <a class="product-card showcase-card" href="posts/010.html">
-                    <div class="product-info">
-                        <div class="showcase-meta">
-                            <span><i class="far fa-calendar"></i>2026-02-08</span>
-                            <span><i class="fas fa-tag"></i>一人公司</span>
+                    </a>
+                    <a class="product-card showcase-card" href="posts/010.html">
+                        <div class="product-info">
+                            <div class="showcase-meta">
+                                <span><i class="far fa-calendar"></i>2026-02-08</span>
+                                <span><i class="fas fa-tag"></i>一人公司</span>
+                            </div>
+                            <h3 class="product-name">一人公司大神Peter Levels《MAKE》（05）：想法先从小开始</h3>
                         </div>
-                        <h3 class="product-name">一人公司大神Peter Levels《MAKE》（05）：想法先从小开始</h3>
-                    </div>
-                </a>
-                <a class="product-card showcase-card writing-book-card" href="books.html" data-umami-event="homepage_writing_book_click" data-umami-props='{"book":"xingsi_wujie"}'>
-                    <div class="product-info">
-                        <div class="mini-book-cover" aria-hidden="true">
-                            <div class="mini-book-spine"></div>
-                            <div class="mini-book-content">
-                                <small>WENYAOYEFEI</small>
-                                <strong>行思无界</strong>
-                                <span>从见天地到见自己</span>
+                    </a>
+                    <a class="product-card showcase-card writing-book-card" href="books.html" data-umami-event="homepage_writing_book_click" data-umami-props='{"book":"xingsi_wujie"}'>
+                        <div class="product-info">
+                            <div class="mini-book-cover" aria-hidden="true">
+                                <div class="mini-book-spine"></div>
+                                <div class="mini-book-content">
+                                    <small>WENYAOYEFEI</small>
+                                    <strong>行思无界</strong>
+                                    <span>从见天地到见自己</span>
+                                </div>
+                            </div>
+                            <div class="writing-book-copy">
+                                <div class="showcase-meta"><span><i class="fas fa-book-open"></i>我的书籍</span></div>
+                                <h3 class="product-name">《行思无界：从见天地到见自己》</h3>
                             </div>
                         </div>
-                        <div class="writing-book-copy">
-                            <div class="showcase-meta"><span><i class="fas fa-book-open"></i>我的书籍</span></div>
-                            <h3 class="product-name">《行思无界：从见天地到见自己》</h3>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </section>
-
-        <section class="section showcase-section reveal" style="--delay: 0.2s;" aria-labelledby="mediaTitle">
-            <div class="products-header">
-                <h2 class="products-title" id="mediaTitle">
-                    <span class="header-mark" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" focusable="false">
-                            <rect x="4" y="5" width="10" height="14" rx="2"/>
-                            <path d="M16 9.5l4-2.5v10l-4-2.5z"/>
-                        </svg>
-                    </span>
-                    我的影音
-                </h2>
-            </div>
-
-            <div class="showcase-grid showcase-grid-media">
+                    </a>
+                </div>
                 <a class="product-card showcase-card" href="video.html" data-umami-event="homepage_latest_click" data-umami-props='{"target":"media_video"}'>
                     <div class="product-info">
                         <div class="showcase-meta">

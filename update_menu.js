@@ -2,14 +2,17 @@ const fs = require('fs');
 
 const files = [
     'index.html',
+    'content.html',
     'articles.html',
     'article.html',
     'software.html',
+    'media.html',
     'video.html',
     'podcast.html',
     'music.html',
     'books.html',
     'business.html',
+    'about.html',
     'scripts/generate-seo-articles.js'
 ];
 
