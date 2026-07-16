@@ -31,21 +31,24 @@
     <link rel="icon" type="image/jpeg" href="avatar.jpg">
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .business-page { width: min(1080px, 94vw); margin: 34px auto 54px; }
+        .business-page { width: min(1180px, 94vw); margin: 34px auto 54px; }
         .section-number { color: var(--gold); font: 600 12px/1 var(--font-mono); letter-spacing: .14em; }
         .services-directory { margin-top: 30px; }
         .services-directory-head { padding: 8px 4px 24px; border-bottom: 1px solid rgba(var(--primary-rgb), .2); }
         .services-directory-head h2 { margin: 12px 0 0; color: var(--ink); font: 700 clamp(29px, 4vw, 40px)/1.2 var(--font-serif); }
-        .service-offer-list { display: grid; gap: 14px; margin-top: 16px; }
-        .service-offer { min-height: 138px; display: grid; grid-template-columns: 116px minmax(0, 1fr) 56px; align-items: center; gap: 24px; padding: 26px 28px; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--surface); box-shadow: var(--shadow); overflow: hidden; position: relative; transition: transform .24s ease, border-color .24s ease, box-shadow .24s ease; }
-        .service-offer::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 3px; background: linear-gradient(180deg, var(--gold), rgba(var(--primary-rgb), .7)); opacity: .82; }
-        .service-offer:hover { transform: translateY(-3px); border-color: rgba(var(--primary-rgb), .42); box-shadow: var(--shadow-hover); }
-        .offer-meta { align-self: start; padding-top: 3px; }
+        .service-offer-list { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 20px; margin-top: 20px; }
+        .service-offer { grid-column: span 2; min-width: 0; min-height: 292px; display: flex; flex-direction: column; align-items: flex-start; padding: 26px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface-strong); box-shadow: var(--shadow); overflow: hidden; position: relative; transition: transform .3s cubic-bezier(.19, 1, .22, 1), border-color .3s ease, box-shadow .3s ease; }
+        .service-offer:nth-child(n + 4) { grid-column: span 3; min-height: 260px; }
+        .service-offer::before { content: ""; position: absolute; inset: 0 0 auto; height: 3px; background: linear-gradient(90deg, var(--gold), rgba(var(--primary-rgb), .72), transparent 82%); opacity: .84; }
+        .service-offer:hover { transform: translateY(-6px); border-color: var(--line-strong); box-shadow: var(--shadow-hover); }
+        .offer-meta { min-height: 64px; padding: 2px 64px 0 0; }
         .offer-number { display: block; color: var(--gold); font: 600 12px/1 var(--font-mono); letter-spacing: .1em; }
         .offer-type { display: block; margin-top: 13px; color: var(--ink-soft); font: 600 9px/1.5 var(--font-mono); letter-spacing: .08em; }
-        .offer-copy h3 { margin: 0 0 9px; color: var(--ink); font: 700 clamp(18px, 2vw, 22px)/1.45 var(--font-serif); }
-        .offer-copy p { margin: 0; max-width: 700px; color: var(--ink-soft); font-size: 14px; line-height: 1.75; }
-        .offer-icon { width: 52px; height: 52px; display: grid; place-items: center; border: 1px solid rgba(var(--primary-rgb), .24); border-radius: 50%; color: var(--gold); background: rgba(var(--primary-rgb), .08); font-size: 19px; transition: transform .24s ease, background .24s ease, color .24s ease; }
+        .offer-copy { margin-top: auto; min-width: 0; }
+        .offer-copy h3 { margin: 0 0 12px; color: var(--ink); font: 700 clamp(18px, 1.8vw, 22px)/1.45 var(--font-serif); }
+        .offer-copy p { margin: 0; color: var(--ink-soft); font-size: 14px; line-height: 1.75; }
+        .offer-copy .service-price { display: block; margin-top: 7px; color: var(--gold); font: 600 12px/1.4 var(--font-sans); }
+        .offer-icon { position: absolute; top: 24px; right: 24px; width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid rgba(var(--primary-rgb), .24); border-radius: 50%; color: var(--gold); background: rgba(var(--primary-rgb), .08); font-size: 18px; transition: transform .3s ease, background .3s ease, color .3s ease; }
         .service-offer:hover .offer-icon { transform: rotate(-6deg) scale(1.04); color: #fff; background: var(--primary); }
         .service-contact { display: flex; justify-content: center; margin-top: clamp(34px, 5vw, 56px); padding: 0; }
         .service-contact-button { min-width: 190px; min-height: 58px; display: inline-flex; align-items: center; justify-content: center; gap: 11px; padding: 0 32px; border: 1px solid rgba(var(--primary-rgb), .5); border-radius: 999px; color: #eef5fb; background: linear-gradient(135deg, rgba(0, 78, 140, .68), rgba(0, 35, 68, .94)); box-shadow: 0 14px 30px rgba(var(--primary-rgb), .18); font: 700 17px/1 var(--font-sans); cursor: pointer; transition: transform .24s ease, box-shadow .24s ease, filter .24s ease; }
@@ -64,7 +67,8 @@
         [data-theme='dark'] .contact-modal-panel h2 { color: #fff; }
         @keyframes contact-fade-in { from { opacity: 0; } to { opacity: 1; } }
         @keyframes contact-panel-in { from { opacity: 0; transform: translateY(10px) scale(.98); } to { opacity: 1; transform: none; } }
-        @media (max-width: 680px) { .business-page { margin-top: 18px; } .services-directory { margin-top: 24px; min-width: 0; } .services-directory-head { padding: 4px 2px 20px; } .service-offer-list { min-width: 0; } .service-offer { width: 100%; max-width: 100%; min-width: 0; min-height: 0; grid-template-columns: minmax(0, 1fr); gap: 16px; padding: 22px 20px; } .offer-meta { grid-column: 1; grid-row: 1; padding-right: 54px; } .offer-copy { grid-column: 1; grid-row: 2; min-width: 0; } .offer-icon { position: absolute; top: 18px; right: 18px; width: 42px; height: 42px; font-size: 16px; } .service-contact { margin-top: 32px; } .service-contact-button { width: min(100%, 320px); } .contact-modal-panel { padding: 22px 18px 18px; } }
+        @media (max-width: 960px) { .service-offer-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } .service-offer, .service-offer:nth-child(n + 4) { grid-column: span 1; min-height: 270px; } }
+        @media (max-width: 680px) { .business-page { margin-top: 18px; } .services-directory { margin-top: 24px; min-width: 0; } .services-directory-head { padding: 4px 2px 20px; } .service-offer-list { min-width: 0; grid-template-columns: minmax(0, 1fr); gap: 16px; } .service-offer, .service-offer:nth-child(n + 4) { width: 100%; max-width: 100%; min-width: 0; min-height: 230px; grid-column: 1; padding: 22px 20px; } .offer-meta { min-height: 58px; padding-right: 54px; } .offer-copy { min-width: 0; } .offer-icon { top: 18px; right: 18px; width: 42px; height: 42px; font-size: 16px; } .service-contact { margin-top: 32px; } .service-contact-button { width: min(100%, 320px); } .contact-modal-panel { padding: 22px 18px 18px; } }
         @media (prefers-reduced-motion: reduce) { .service-offer, .offer-icon, .service-contact-button, .contact-modal-close { transition: none; } .contact-modal.is-open, .contact-modal-panel { animation: none; } }
     </style>
 </head>
@@ -124,15 +128,15 @@
                 </article>
 
                 <article class="service-offer">
-                    <div class="offer-meta"><span class="offer-number">04</span><span class="offer-type">AGENT<br>STRATEGY</span></div>
-                    <div class="offer-copy"><h3>AI Agent 场景梳理与落地方案</h3><p>分析适合使用 AI 的业务环节，梳理需求、流程、工具选型与初步实施方案。</p></div>
-                    <span class="offer-icon" aria-hidden="true"><i class="fas fa-diagram-project"></i></span>
+                    <div class="offer-meta"><span class="offer-number">04</span><span class="offer-type">MODEL<br>TOKEN</span></div>
+                    <div class="offer-copy"><h3>企业级大模型 Token 服务</h3><p>聚合 Claude、GPT、Gemini 等海外主流模型，以及 GLM、豆包等国内主流模型，为企业提供稳定、便捷、高性价比的 Token 服务。</p></div>
+                    <span class="offer-icon" aria-hidden="true"><i class="fas fa-key"></i></span>
                 </article>
 
                 <article class="service-offer">
-                    <div class="offer-meta"><span class="offer-number">05</span><span class="offer-type">SOLO<br>WORKFLOW</span></div>
-                    <div class="offer-copy"><h3>一人公司数字化工作流搭建</h3><p>整合知识、项目、内容与客户管理，连接 AI 自动化工具。</p></div>
-                    <span class="offer-icon" aria-hidden="true"><i class="fas fa-route"></i></span>
+                    <div class="offer-meta"><span class="offer-number">05</span><span class="offer-type">CUSTOM<br>EMOJI</span></div>
+                    <div class="offer-copy"><h3>定制专属表情包</h3><p>根据你的个人形象、性格特点与使用场景，打造有辨识度、好玩又实用的专属表情包。</p><small class="service-price">49 元/套</small></div>
+                    <span class="offer-icon" aria-hidden="true"><i class="fas fa-face-smile"></i></span>
                 </article>
             </div>
 
