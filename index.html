@@ -54,7 +54,7 @@
     }
     </script>
     <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
-    <script src="js/theme.js?v=3" defer></script>
+    <script src="js/theme.js?v=5" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet"
@@ -437,6 +437,109 @@
             padding: 30px clamp(20px, 4vw, 40px) 36px;
         }
 
+        .services-section {
+            position: relative;
+            overflow: hidden;
+            padding: 30px clamp(20px, 4vw, 40px) 36px;
+        }
+
+        .services-section::after {
+            content: "SERVICE";
+            position: absolute;
+            right: clamp(18px, 4vw, 42px);
+            bottom: -0.18em;
+            color: rgba(var(--primary-rgb), 0.035);
+            font: 700 clamp(64px, 11vw, 132px)/1 var(--font-mono);
+            letter-spacing: -0.08em;
+            pointer-events: none;
+        }
+
+        .home-services-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .home-service-card {
+            min-height: 230px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            color: inherit;
+            text-decoration: none;
+            border: 1px solid rgba(var(--primary-rgb), 0.16);
+            border-radius: var(--radius-lg);
+            background: rgba(255, 255, 255, 0.58);
+            transition: transform .35s cubic-bezier(.19, 1, .22, 1), border-color .35s ease, box-shadow .35s ease;
+        }
+
+        .home-service-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(var(--primary-rgb), 0.38);
+            box-shadow: 0 20px 38px rgba(var(--primary-rgb), 0.1);
+        }
+
+        .service-card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 36px;
+        }
+
+        .service-card-index {
+            color: var(--gold);
+            font: 600 12px/1 var(--font-mono);
+            letter-spacing: .12em;
+        }
+
+        .service-card-icon {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(var(--primary-rgb), 0.2);
+            border-radius: 50%;
+            color: var(--primary);
+            background: rgba(var(--primary-rgb), 0.06);
+            transition: transform .35s ease, color .35s ease, background .35s ease;
+        }
+
+        .home-service-card:hover .service-card-icon {
+            transform: rotate(-8deg) scale(1.06);
+            color: #fff;
+            background: var(--primary);
+        }
+
+        .home-service-card h3 {
+            margin: 0 0 12px;
+            color: var(--ink);
+            font: 700 clamp(19px, 2vw, 23px)/1.45 var(--font-serif);
+        }
+
+        .home-service-card p {
+            margin: 0;
+            color: var(--ink-soft);
+            font-size: 14px;
+            line-height: 1.75;
+        }
+
+        .service-card-action {
+            margin-top: auto;
+            padding-top: 22px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gold);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .home-service-card:hover .service-card-action {
+            gap: 12px;
+        }
+
         .showcase-grid {
             display: grid;
             gap: 28px;
@@ -578,6 +681,18 @@
         }
 
         @media (max-width: 980px) {
+            .home-services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .home-service-card {
+                min-height: 0;
+            }
+
+            .service-card-top {
+                margin-bottom: 22px;
+            }
+
             .panel {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -1004,6 +1119,33 @@
             filter: drop-shadow(0 12px 16px rgba(var(--primary-rgb), 0.2));
         }
 
+        .product-cover.product-screenshot-cover {
+            padding: 10px;
+            background: linear-gradient(145deg, rgba(4, 20, 34, .96), rgba(10, 35, 56, .9));
+        }
+
+        .product-cover.product-screenshot-cover::after {
+            display: none;
+        }
+
+        .product-cover img.product-screenshot {
+            width: 100%;
+            height: 100%;
+            max-width: none;
+            max-height: none;
+            object-fit: cover;
+            object-position: left top;
+            border: 1px solid rgba(124, 164, 199, .22);
+            border-radius: 10px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, .28);
+            filter: none;
+        }
+
+        .product-card:hover .product-cover img.product-screenshot {
+            transform: scale(1.025);
+            filter: none;
+        }
+
         /* OneOPC.ai Animated Cover */
         .oneopc-cover {
             background: #0f172a;
@@ -1239,6 +1381,32 @@
             color: var(--gold) !important;
         }
 
+        [data-theme='dark'] .services-section::after {
+            color: rgba(255, 255, 255, 0.025);
+        }
+
+        [data-theme='dark'] .home-service-card {
+            background: rgba(0, 8, 20, 0.6);
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.52);
+        }
+
+        [data-theme='dark'] .home-service-card:hover {
+            background: rgba(0, 20, 40, 0.82);
+            border-color: rgba(255, 255, 255, 0.24);
+            box-shadow: 0 24px 54px rgba(0, 78, 140, 0.28);
+        }
+
+        [data-theme='dark'] .home-service-card h3 {
+            color: #fff;
+        }
+
+        [data-theme='dark'] .service-card-icon {
+            color: var(--gold);
+            border-color: rgba(255, 255, 255, 0.12);
+            background: rgba(var(--primary-rgb), 0.18);
+        }
+
         [data-theme='dark'] .wechat-section {
             background: rgba(0, 78, 140, 0.15) !important;
             border: 1px solid var(--primary) !important;
@@ -1431,7 +1599,7 @@
             border-color: rgba(255, 255, 255, 0.1) !important;
         }
   </style>
-    <link rel="stylesheet" href="css/elevated-design.css?v=12">
+    <link rel="stylesheet" href="css/elevated-design.css?v=21">
 </head>
 
 <body>
@@ -1440,9 +1608,9 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html" class="active">首页</a></li>
                 <li><a href="software.html">产品</a></li>
-                <li><a href="business.html">业务</a></li>
+                <li><a href="business.html">服务</a></li>
                 <li><a href="articles.html">文字</a></li>
-                <li><a href="media.html">影音</a></li><li><a href="about.html">关于我</a></li>
+                <li><a href="media.html">影音</a></li><li><a href="about.html">关于</a></li>
             </ul>
             <div style="display: flex; align-items: center;">
                 <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
@@ -1577,18 +1745,18 @@
             </div>
 
             <div class="products-grid">
-                <!-- 数字驾驶舱 -->
+                <!-- 知径 -->
                 <a href="https://nav.wenyaoyefei.com" target="_blank" rel="noopener" class="product-card" data-umami-event="homepage_product_click" data-umami-props='{"target":"bookmark_site"}'>
-                    <div class="product-cover">
+                    <div class="product-cover product-screenshot-cover">
                         <picture>
-                            <source srcset="images/bookmark-logo.webp" type="image/webp">
-                            <img src="images/bookmark-logo.png" alt="数字驾驶舱 Logo" loading="lazy" decoding="async">
+                            <source srcset="images/zhijing-product-screenshot.webp" type="image/webp">
+                            <img class="product-screenshot" src="images/zhijing-product-screenshot.png" alt="知径产品界面截图" width="1440" height="900" loading="lazy" decoding="async">
                         </picture>
                     </div>
                     <div class="product-info">
-                        <span class="product-tag"><i class="fas fa-tachometer-alt"></i> 核心产品 / 生产力工作台</span>
-                        <h3 class="product-name">数字驾驶舱</h3>
-                        <p class="product-desc">集成 5000+ 标签与常用工具的个人数字驾驶舱，支持智能全局检索与树状导航边栏。专为追求极致效率与信息掌控的知识工作者打造。</p>
+                        <span class="product-tag"><i class="fas fa-compass"></i> 核心产品 / 生产力工作台</span>
+                        <h3 class="product-name">知径</h3>
+                        <p class="product-desc">聚合 5000+ 精选标签与常用工具，支持智能全局检索和树状分类，为知识工作者提供清晰、高效的信息路径。</p>
                     </div>
                 </a>
 
@@ -1621,6 +1789,57 @@
             </div>
         </section>
 
+
+        <section class="section services-section reveal" style="--delay: 0.14s;" aria-labelledby="servicesTitle">
+            <div class="products-header">
+                <h2 class="products-title" id="servicesTitle">
+                    <span class="header-mark" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" focusable="false">
+                            <path d="M12 3.5 20 8v8l-8 4.5L4 16V8Z"/>
+                            <path d="m4.5 8.2 7.5 4.3 7.5-4.3"/>
+                            <path d="M12 12.5v8"/>
+                        </svg>
+                    </span>
+                    我的服务
+                </h2>
+                <a href="business.html" class="products-more-link" data-umami-event="homepage_services_more">
+                    <span>全部服务</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="home-services-grid">
+                <a class="home-service-card" href="business.html#services-title" data-umami-event="homepage_service_click" data-umami-props='{"service":"ai_agent"}'>
+                    <div class="service-card-top">
+                        <span class="service-card-index">01 / AI AGENT</span>
+                        <span class="service-card-icon" aria-hidden="true"><i class="fas fa-diagram-project"></i></span>
+                    </div>
+                    <h3>AI Agent 场景梳理与落地</h3>
+                    <p>从真实业务环节出发，完成需求分析、流程设计、工具选型与初步实施方案。</p>
+                    <span class="service-card-action">了解服务 <i class="fas fa-arrow-right"></i></span>
+                </a>
+
+                <a class="home-service-card" href="business.html#services-title" data-umami-event="homepage_service_click" data-umami-props='{"service":"one_person_company"}'>
+                    <div class="service-card-top">
+                        <span class="service-card-index">02 / WORKFLOW</span>
+                        <span class="service-card-icon" aria-hidden="true"><i class="fas fa-route"></i></span>
+                    </div>
+                    <h3>一人公司数字化工作流</h3>
+                    <p>整合知识、项目、内容与客户管理，让个人业务流程更清晰、更易持续运转。</p>
+                    <span class="service-card-action">了解服务 <i class="fas fa-arrow-right"></i></span>
+                </a>
+
+                <a class="home-service-card" href="business.html#services-title" data-umami-event="homepage_service_click" data-umami-props='{"service":"knowledge_system"}'>
+                    <div class="service-card-top">
+                        <span class="service-card-index">03 / SYSTEM</span>
+                        <span class="service-card-icon" aria-hidden="true"><i class="fas fa-layer-group"></i></span>
+                    </div>
+                    <h3>知识与业务系统搭建</h3>
+                    <p>基于 Obsidian、飞书多维表格等工具，搭建适合个人与小团队的长期工作系统。</p>
+                    <span class="service-card-action">了解服务 <i class="fas fa-arrow-right"></i></span>
+                </a>
+            </div>
+        </section>
 
 
         <section class="section showcase-section reveal" style="--delay: 0.18s;" aria-labelledby="writingTitle">
@@ -1724,17 +1943,7 @@
         </section>
     </main>
 
-    <div class="footer">
-        <div class="footer-links">
-            <span class="link-label">友情链接</span>
-            <a href="https://muimi.club" target="_blank" rel="noopener" data-umami-event="friend_link_click"
-                data-umami-props='{"site":"muimi.club", "from":"footer"}'>
-                <i class="fas fa-link"></i>
-                <span>Muimi Club</span>
-            </a>
-        </div>
-        <p>© All Rights Reserved.</p>
-    </div>
+    <div class="footer"></div>
 
     <div id="wechatQRModal" class="modal">
         <div class="modal-content">

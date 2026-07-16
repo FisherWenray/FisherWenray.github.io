@@ -292,34 +292,6 @@ body::after {
     padding-top: 30px;
 }
 
-.footer-links {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 16px;
-    flex-wrap: wrap;
-}
-
-.footer-links a {
-    text-decoration: none;
-    color: var(--ink-soft);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-weight: 500;
-    transition: all 0.25s ease;
-}
-
-.footer-links a:hover {
-    color: #c5b358;
-}
-
-.footer-links .link-label {
-    color: #c5b358;
-    font-weight: 700;
-    margin-right: 4px;
-}
-
 /* 移动端菜单按钮 */
 .mobile-menu-btn {
     display: none;

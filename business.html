@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>业务服务 | 文鳐夜飞</title>
+    <title>服务 | 文鳐夜飞</title>
     <meta name="description" content="文鳐夜飞提供个人知识系统、飞书多维表格、AI 工具应用、AI Agent 场景落地与一人公司数字化工作流服务。">
-    <meta property="og:title" content="业务服务 | 文鳐夜飞">
+    <meta property="og:title" content="服务 | 文鳐夜飞">
     <meta property="og:description" content="连接技术、产品与商业，把复杂问题转化为可执行的数字化方案。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://wenyaoyefei.com/business.html">
@@ -15,89 +15,182 @@
     {
       "@context": "https://schema.org",
       "@type": "Service",
-      "name": "文鳐夜飞业务服务",
+      "name": "文鳐夜飞服务",
       "url": "https://wenyaoyefei.com/business.html",
       "description": "个人知识系统、飞书多维表格、AI 工具应用、AI Agent 场景落地与一人公司数字化工作流服务。",
       "provider": { "@type": "Person", "name": "文鳐夜飞" }
     }
     </script>
     <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
-    <script src="js/theme.js?v=3" defer></script>
+    <script src="js/theme.js?v=5" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&amp;family=Noto+Sans+SC:wght@400;500;700&amp;family=Noto+Serif+SC:wght@500;700&amp;display=swap" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="css/site.css?v=2">
-    <link rel="stylesheet" href="css/elevated-design.css?v=14">
+    <link rel="stylesheet" href="css/elevated-design.css?v=21">
     <link rel="icon" type="image/jpeg" href="avatar.jpg">
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .business-page { width: min(1080px, 94vw); margin: 34px auto 54px; }
-        .business-hero { min-height: 220px; padding: clamp(30px, 5vw, 52px); display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 28px; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--surface); box-shadow: var(--shadow); overflow: hidden; position: relative; }
-        .business-hero::before { content: ""; position: absolute; width: 340px; height: 340px; right: -130px; top: -180px; border: 1px solid rgba(var(--primary-rgb), .22); border-radius: 50%; box-shadow: 0 0 0 42px rgba(var(--primary-rgb), .035), 0 0 0 84px rgba(var(--primary-rgb), .025); }
-        .business-kicker, .section-number { color: var(--gold); font: 600 12px/1 var(--font-mono); letter-spacing: .14em; }
-        .business-hero h1 { margin: 14px 0 12px; color: var(--ink); font: 700 clamp(34px, 5vw, 54px)/1.15 var(--font-serif); }
-        .business-hero p { max-width: 680px; color: var(--ink-soft); font-size: clamp(15px, 1.8vw, 18px); line-height: 1.8; }
-        .hero-mark { position: relative; z-index: 1; width: 74px; height: 74px; display: grid; place-items: center; border: 1px solid rgba(var(--primary-rgb), .28); border-radius: 50%; color: var(--gold); background: rgba(var(--primary-rgb), .08); font-size: 26px; }
-        .business-section { margin-top: 24px; padding: clamp(28px, 5vw, 50px); border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--surface); box-shadow: var(--shadow); }
-        .business-section h2 { margin: 12px 0 10px; color: var(--ink); font: 700 clamp(27px, 4vw, 38px)/1.25 var(--font-serif); }
-        .section-intro { margin-bottom: 26px; color: var(--ink-soft); font-size: 15px; line-height: 1.8; }
-        .service-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-        .service-card { position: relative; min-height: 168px; padding: 54px 22px 22px; border: 1px solid rgba(var(--primary-rgb), .2); border-radius: var(--radius-md); background: linear-gradient(145deg, rgba(var(--primary-rgb), .07), rgba(var(--primary-rgb), .025)); transition: transform .2s ease, border-color .2s ease; }
-        .service-card:hover { transform: translateY(-3px); border-color: rgba(var(--primary-rgb), .48); }
-        .service-card::before { content: attr(data-number); position: absolute; left: 22px; top: 20px; color: var(--gold); font: 600 12px/1 var(--font-mono); letter-spacing: .08em; }
-        .service-card strong { display: block; margin-bottom: 9px; color: var(--ink); font-size: 17px; line-height: 1.5; }
-        .service-card p { color: var(--ink-soft); font-size: 14px; line-height: 1.8; }
-        [data-theme='dark'] .business-hero h1, [data-theme='dark'] .business-section h2 { color: #fff; text-shadow: 0 0 12px rgba(0, 78, 140, .35); }
-        @media (max-width: 680px) { .business-page { margin-top: 18px; } .business-hero { min-height: 220px; padding: 28px 22px; grid-template-columns: 1fr; align-items: center; } .hero-mark { display: none; } .service-grid { grid-template-columns: 1fr; } .service-card { min-height: 0; } }
-        @media (prefers-reduced-motion: reduce) { .service-card { transition: none; } }
+        .section-number { color: var(--gold); font: 600 12px/1 var(--font-mono); letter-spacing: .14em; }
+        .services-directory { margin-top: 30px; }
+        .services-directory-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 470px); align-items: end; gap: 36px; padding: 8px 4px 24px; border-bottom: 1px solid rgba(var(--primary-rgb), .2); }
+        .services-directory-head h2 { margin: 12px 0 0; color: var(--ink); font: 700 clamp(29px, 4vw, 40px)/1.2 var(--font-serif); }
+        .services-directory-head p { margin: 0; color: var(--ink-soft); font-size: 14px; line-height: 1.8; }
+        .service-offer-list { display: grid; gap: 14px; margin-top: 16px; }
+        .service-offer { min-height: 138px; display: grid; grid-template-columns: 116px minmax(0, 1fr) 56px; align-items: center; gap: 24px; padding: 26px 28px; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--surface); box-shadow: var(--shadow); overflow: hidden; position: relative; transition: transform .24s ease, border-color .24s ease, box-shadow .24s ease; }
+        .service-offer::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 3px; background: linear-gradient(180deg, var(--gold), rgba(var(--primary-rgb), .7)); opacity: .82; }
+        .service-offer:hover { transform: translateY(-3px); border-color: rgba(var(--primary-rgb), .42); box-shadow: var(--shadow-hover); }
+        .offer-meta { align-self: start; padding-top: 3px; }
+        .offer-number { display: block; color: var(--gold); font: 600 12px/1 var(--font-mono); letter-spacing: .1em; }
+        .offer-type { display: block; margin-top: 13px; color: var(--ink-soft); font: 600 9px/1.5 var(--font-mono); letter-spacing: .08em; }
+        .offer-copy h3 { margin: 0 0 9px; color: var(--ink); font: 700 clamp(18px, 2vw, 22px)/1.45 var(--font-serif); }
+        .offer-copy p { margin: 0; max-width: 700px; color: var(--ink-soft); font-size: 14px; line-height: 1.75; }
+        .offer-icon { width: 52px; height: 52px; display: grid; place-items: center; border: 1px solid rgba(var(--primary-rgb), .24); border-radius: 50%; color: var(--gold); background: rgba(var(--primary-rgb), .08); font-size: 19px; transition: transform .24s ease, background .24s ease, color .24s ease; }
+        .service-offer:hover .offer-icon { transform: rotate(-6deg) scale(1.04); color: #fff; background: var(--primary); }
+        .service-contact { display: grid; grid-template-columns: 46px minmax(0, 1fr) auto; align-items: center; gap: 18px; margin-top: 18px; padding: 20px 24px; border: 1px solid rgba(var(--primary-rgb), .22); border-radius: var(--radius-lg); background: rgba(var(--primary-rgb), .055); }
+        .service-contact-icon { width: 46px; height: 46px; display: grid; place-items: center; border: 1px solid rgba(var(--primary-rgb), .22); border-radius: 50%; color: var(--gold); background: var(--surface); font-size: 17px; }
+        .service-contact-copy h2 { margin: 0 0 4px; color: var(--ink); font: 700 19px/1.4 var(--font-serif); }
+        .service-contact-copy p { margin: 0; color: var(--ink-soft); font-size: 13px; line-height: 1.65; }
+        .service-contact-button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 42px; padding: 0 19px; border: 1px solid rgba(var(--primary-rgb), .24); border-radius: 999px; color: var(--ink-soft); background: rgba(var(--primary-rgb), .06); font: 700 14px/1 var(--font-sans); cursor: pointer; transition: color .2s ease, background .2s ease, border-color .2s ease, transform .2s ease; }
+        .service-contact-button:hover { color: #fff; border-color: var(--primary); background: var(--primary); transform: translateY(-1px); }
+        .service-contact-button:focus-visible, .contact-modal-close:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+        .contact-modal { display: none; position: fixed; inset: 0; z-index: 400; place-items: center; padding: 20px; background: rgba(0, 12, 24, .72); backdrop-filter: blur(8px); }
+        .contact-modal.is-open { display: grid; animation: contact-fade-in .2s ease both; }
+        .contact-modal-panel { position: relative; width: min(360px, 100%); padding: 24px; border: 1px solid rgba(var(--primary-rgb), .28); border-radius: 20px; background: var(--surface); box-shadow: 0 28px 70px rgba(0, 12, 24, .48); text-align: center; animation: contact-panel-in .24s ease both; }
+        .contact-modal-panel h2 { margin: 2px 36px 6px; color: var(--ink); font: 700 24px/1.35 var(--font-serif); }
+        .contact-modal-panel p { margin: 0 0 16px; color: var(--ink-soft); font-size: 13px; line-height: 1.7; }
+        .contact-qr-frame { margin: 0 auto; padding: 10px; border: 1px solid rgba(var(--primary-rgb), .18); border-radius: 14px; background: #fff; }
+        .contact-qr-frame img { display: block; width: 100%; height: auto; border-radius: 8px; }
+        .contact-modal-close { position: absolute; top: 14px; right: 14px; width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid rgba(var(--primary-rgb), .18); border-radius: 50%; color: var(--ink-soft); background: rgba(var(--primary-rgb), .06); cursor: pointer; transition: color .2s ease, background .2s ease, transform .2s ease; }
+        .contact-modal-close:hover { color: #fff; background: var(--primary); transform: rotate(6deg); }
+        [data-theme='dark'] .services-directory-head h2, [data-theme='dark'] .offer-copy h3 { color: #fff; text-shadow: 0 0 12px rgba(0, 78, 140, .35); }
+        [data-theme='dark'] .service-contact-copy h2, [data-theme='dark'] .contact-modal-panel h2 { color: #fff; }
+        @keyframes contact-fade-in { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes contact-panel-in { from { opacity: 0; transform: translateY(10px) scale(.98); } to { opacity: 1; transform: none; } }
+        @media (max-width: 680px) { .business-page { margin-top: 18px; } .services-directory { margin-top: 24px; min-width: 0; } .services-directory-head { grid-template-columns: minmax(0, 1fr); gap: 12px; padding: 4px 2px 20px; } .service-offer-list { min-width: 0; } .service-offer { width: 100%; max-width: 100%; min-width: 0; min-height: 0; grid-template-columns: minmax(0, 1fr); gap: 16px; padding: 22px 20px; } .offer-meta { grid-column: 1; grid-row: 1; padding-right: 54px; } .offer-copy { grid-column: 1; grid-row: 2; min-width: 0; } .offer-icon { position: absolute; top: 18px; right: 18px; width: 42px; height: 42px; font-size: 16px; } .service-contact { grid-template-columns: 42px minmax(0, 1fr); gap: 14px; padding: 18px; } .service-contact-icon { width: 42px; height: 42px; } .service-contact-button { grid-column: 1 / -1; width: 100%; } .contact-modal-panel { padding: 22px 18px 18px; } }
+        @media (prefers-reduced-motion: reduce) { .service-offer, .offer-icon, .service-contact-button, .contact-modal-close { transition: none; } .contact-modal.is-open, .contact-modal-panel { animation: none; } }
     </style>
 </head>
 <body>
     <nav class="top-nav">
         <div class="nav-container">
             <ul class="nav-links" id="navLinks">
-                <li><a href="index.html">首页</a></li><li><a href="software.html">产品</a></li><li><a href="business.html" class="active">业务</a></li><li><a href="articles.html">文字</a></li><li><a href="media.html">影音</a></li><li><a href="about.html">关于我</a></li>
+                <li><a href="index.html">首页</a></li><li><a href="software.html">产品</a></li><li><a href="business.html" class="active">服务</a></li><li><a href="articles.html">文字</a></li><li><a href="media.html">影音</a></li><li><a href="about.html">关于</a></li>
             </ul>
             <div style="display:flex;align-items:center"><button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题"><i class="fas fa-moon"></i></button><button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="菜单"><i class="fas fa-bars"></i></button></div>
         </div>
     </nav>
     <main class="business-page standard-page-shell">
-        <header class="business-hero">
-            <div>
-                <span class="business-kicker">WORK / SERVICES</span>
-                <h1>我的业务</h1>
-                <p>连接技术、产品与商业，把模糊想法和复杂问题梳理成清晰、可执行、能持续运转的数字化方案。</p>
-            </div>
-            <span class="hero-mark" aria-hidden="true"><i class="fas fa-compass-drafting"></i></span>
+        <header class="header standard-page-header business-hero">
+            <h1 class="header-title">
+                <span class="header-mark" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                        <circle cx="6" cy="7" r="2.5"/>
+                        <circle cx="18" cy="6" r="2.5"/>
+                        <circle cx="13" cy="18" r="2.5"/>
+                        <path d="m8.5 6.8 7-.6"/>
+                        <path d="m7.4 9.1 4.2 6.7"/>
+                        <path d="m16.9 8.3-2.8 7.3"/>
+                    </svg>
+                </span>
+                我的服务
+            </h1>
+            <p class="header-subtitle">我所能提供的付费服务</p>
         </header>
 
-        <section class="business-section" aria-labelledby="strength-title">
-            <span class="section-number">01 / EXPERTISE</span>
-            <h2 id="strength-title">我擅长</h2>
-            <p class="section-intro">从需求澄清到产品原型，再到适合真实场景的工具与工作流。</p>
-            <div class="service-grid">
-                <article class="service-card" data-number="01"><strong>复杂问题拆解与方案设计</strong><p>把模糊想法、业务需求和技术问题，梳理成清晰的产品方案、业务流程与执行步骤。</p></article>
-                <article class="service-card" data-number="02"><strong>AI 工具与 AI Agent 应用</strong><p>研究 AI Agent、Vibe Coding、知识库与自动化工作流，并根据实际场景选择工具和实现方式。</p></article>
-                <article class="service-card" data-number="03"><strong>个人知识系统搭建</strong><p>长期使用 Obsidian 管理知识、项目和思考，帮助个人建立可长期积累的知识管理系统。</p></article>
-                <article class="service-card" data-number="04"><strong>AI 产品原型与独立开发</strong><p>借助 AI 编程工具，将想法快速转化为网页、工具或 MVP 原型。</p></article>
-                <article class="service-card" data-number="05"><strong>技术、产品与商业的连接</strong><p>关注 AI 产品如何解决真实问题、形成服务并实现商业化。</p></article>
-            </div>
-        </section>
+        <section class="services-directory" aria-labelledby="services-title">
+            <header class="services-directory-head">
+                <div>
+                    <span class="section-number">01 / PAID SERVICES</span>
+                    <h2 id="services-title">我能提供</h2>
+                </div>
+                <p>面向个人、小团队与企业的培训、咨询和数字化系统搭建服务。</p>
+            </header>
 
-        <section class="business-section" aria-labelledby="services-title">
-            <span class="section-number">02 / SERVICES</span>
-            <h2 id="services-title">我能提供</h2>
-            <p class="section-intro">面向个人、小团队与企业的培训、咨询和数字化系统搭建服务。</p>
-            <div class="service-grid">
-                <article class="service-card" data-number="01"><strong>Obsidian 个人知识系统培训与搭建</strong><p>知识库结构设计、笔记方法、项目管理、信息整理与个人工作台搭建。</p></article>
-                <article class="service-card" data-number="02"><strong>飞书多维表格培训与业务系统搭建</strong><p>帮助个人和小团队管理客户、项目、内容、任务与业务数据。</p></article>
-                <article class="service-card" data-number="03"><strong>AI 工具应用培训</strong><p>面向个人、小团队和企业，讲解大模型、AI 搜索、写作、编程及常用 AI 工具。</p></article>
-                <article class="service-card" data-number="04"><strong>AI Agent 场景梳理与落地方案</strong><p>分析适合使用 AI 的业务环节，梳理需求、流程、工具选型与初步实施方案。</p></article>
-                <article class="service-card" data-number="05"><strong>一人公司数字化工作流搭建</strong><p>整合知识、项目、内容与客户管理，连接 AI 自动化工具。</p></article>
+            <div class="service-offer-list">
+                <article class="service-offer">
+                    <div class="offer-meta"><span class="offer-number">01</span><span class="offer-type">KNOWLEDGE<br>SYSTEM</span></div>
+                    <div class="offer-copy"><h3>Obsidian 个人知识系统培训与搭建</h3><p>知识库结构设计、笔记方法、项目管理、信息整理与个人工作台搭建。</p></div>
+                    <span class="offer-icon" aria-hidden="true"><i class="fas fa-book-open"></i></span>
+                </article>
+
+                <article class="service-offer">
+                    <div class="offer-meta"><span class="offer-number">02</span><span class="offer-type">BUSINESS<br>SYSTEM</span></div>
+                    <div class="offer-copy"><h3>飞书多维表格培训与业务系统搭建</h3><p>帮助个人和小团队管理客户、项目、内容、任务与业务数据。</p></div>
+                    <span class="offer-icon" aria-hidden="true"><i class="fas fa-table-cells-large"></i></span>
+                </article>
+
+                <article class="service-offer">
+                    <div class="offer-meta"><span class="offer-number">03</span><span class="offer-type">AI<br>TRAINING</span></div>
+                    <div class="offer-copy"><h3>AI 工具应用培训</h3><p>面向个人、小团队和企业，讲解大模型、AI 搜索、写作、编程及常用 AI 工具。</p></div>
+                    <span class="offer-icon" aria-hidden="true"><i class="fas fa-chalkboard-user"></i></span>
+                </article>
+
+                <article class="service-offer">
+                    <div class="offer-meta"><span class="offer-number">04</span><span class="offer-type">AGENT<br>STRATEGY</span></div>
+                    <div class="offer-copy"><h3>AI Agent 场景梳理与落地方案</h3><p>分析适合使用 AI 的业务环节，梳理需求、流程、工具选型与初步实施方案。</p></div>
+                    <span class="offer-icon" aria-hidden="true"><i class="fas fa-diagram-project"></i></span>
+                </article>
+
+                <article class="service-offer">
+                    <div class="offer-meta"><span class="offer-number">05</span><span class="offer-type">SOLO<br>WORKFLOW</span></div>
+                    <div class="offer-copy"><h3>一人公司数字化工作流搭建</h3><p>整合知识、项目、内容与客户管理，连接 AI 自动化工具。</p></div>
+                    <span class="offer-icon" aria-hidden="true"><i class="fas fa-route"></i></span>
+                </article>
             </div>
+
+            <aside class="service-contact" aria-labelledby="service-contact-title">
+                <span class="service-contact-icon" aria-hidden="true"><i class="fab fa-weixin"></i></span>
+                <div class="service-contact-copy">
+                    <h2 id="service-contact-title">有具体需求？</h2>
+                    <p>添加微信，简单说说你正在解决的问题。</p>
+                </div>
+                <button class="service-contact-button" type="button" id="openContactModal" aria-haspopup="dialog" aria-controls="contactModal" onclick="openServiceContactModal()">
+                    联系我 <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </button>
+            </aside>
         </section>
     </main>
-    <div class="footer"><p>© All Rights Reserved.</p></div>
-    <script src="js/umami-config.js"></script><script src="js/analytics.js"></script><script>function toggleMobileMenu(){const n=document.getElementById('navLinks');if(n)n.classList.toggle('active')}</script>
+
+    <div class="contact-modal" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle" aria-hidden="true">
+        <div class="contact-modal-panel">
+            <button class="contact-modal-close" type="button" id="closeContactModal" aria-label="关闭微信二维码弹窗" onclick="closeServiceContactModal()"><i class="fas fa-xmark" aria-hidden="true"></i></button>
+            <h2 id="contactModalTitle">添加我的微信</h2>
+            <p>扫码添加好友，联系时请简单注明你的需求。</p>
+            <div class="contact-qr-frame">
+                <img src="wechat-qr-personal.webp" alt="文鳐夜飞个人微信二维码" width="600" height="813" loading="lazy" decoding="async">
+            </div>
+        </div>
+    </div>
+    <div class="footer"></div>
+    <script src="js/umami-config.js"></script><script src="js/analytics.js"></script><script>
+        function toggleMobileMenu(){const n=document.getElementById('navLinks');if(n)n.classList.toggle('active')}
+
+        function openServiceContactModal() {
+            const modal = document.getElementById('contactModal');
+            modal.classList.add('is-open');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            document.getElementById('closeContactModal').focus();
+            if (typeof window.trackEvent === 'function') window.trackEvent('wechat_qr_open', { type: 'service_contact' });
+        }
+
+        function closeServiceContactModal() {
+            const modal = document.getElementById('contactModal');
+            if (!modal.classList.contains('is-open')) return;
+            modal.classList.remove('is-open');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            document.getElementById('openContactModal').focus();
+        }
+
+        document.getElementById('contactModal').addEventListener('click', (event) => {
+            if (event.target === event.currentTarget) closeServiceContactModal();
+        });
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') closeServiceContactModal();
+        });
+    </script>
 </body>
 </html>

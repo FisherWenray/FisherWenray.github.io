@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>产品 | 文鳐夜飞的独立开发作品、AI 工具与效率应用</title>
     <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
-    <script src="js/theme.js?v=3" defer></script>
+    <script src="js/theme.js?v=5" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet"
@@ -133,6 +133,31 @@
 
         .software-card:hover .card-cover img {
             transform: scale(1.06);
+        }
+
+        .card-cover.product-screenshot-cover {
+            padding: 12px;
+            background: linear-gradient(145deg, rgba(4, 20, 34, .96), rgba(10, 35, 56, .9));
+        }
+
+        .card-cover.product-screenshot-cover::after {
+            display: none;
+        }
+
+        .card-cover img.product-screenshot {
+            width: 100%;
+            height: 100%;
+            max-width: none;
+            max-height: none;
+            object-fit: cover;
+            object-position: left top;
+            border: 1px solid rgba(124, 164, 199, .22);
+            border-radius: 10px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, .28);
+        }
+
+        .software-card:hover .card-cover img.product-screenshot {
+            transform: scale(1.025);
         }
 
         .card-body {
@@ -278,7 +303,7 @@
             font-weight: 700 !important;
         }
   </style>
-    <link rel="stylesheet" href="css/elevated-design.css?v=14">
+    <link rel="stylesheet" href="css/elevated-design.css?v=21">
 </head>
 
 <body>
@@ -287,9 +312,9 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">首页</a></li>
                 <li><a href="software.html" class="active">产品</a></li>
-                <li><a href="business.html">业务</a></li>
+                <li><a href="business.html">服务</a></li>
                 <li><a href="articles.html">文字</a></li>
-                <li><a href="media.html">影音</a></li><li><a href="about.html">关于我</a></li>
+                <li><a href="media.html">影音</a></li><li><a href="about.html">关于</a></li>
             </ul>
             <div style="display: flex; align-items: center;">
                 <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
@@ -371,17 +396,17 @@
             </div>
 
             <div class="software-card" style="--card-index: 2">
-                <div class="card-cover">
+                <div class="card-cover product-screenshot-cover">
                     <picture>
-                        <source srcset="images/bookmark-logo.webp" type="image/webp">
-                        <img src="images/bookmark-logo.png" alt="Digital Cockpit Logo" loading="lazy" decoding="async">
+                        <source srcset="images/zhijing-product-screenshot.webp" type="image/webp">
+                        <img class="product-screenshot" src="images/zhijing-product-screenshot.png" alt="知径产品界面截图" width="1440" height="900" loading="lazy" decoding="async">
                     </picture>
                 </div>
                 <div class="card-body">
-                    <span class="card-tag"><i class="fas fa-tachometer-alt"></i> 生产力工作台</span>
-                    <h2 class="card-title">数字驾驶舱</h2>
+                    <span class="card-tag"><i class="fas fa-compass"></i> 生产力工作台</span>
+                    <h2 class="card-title">知径</h2>
                     <p class="card-description">
-                        集成 5000+ 标签与常用工具链接的个人数字驾驶舱，支持智能全局检索、多层级折叠分类与树状导航边栏，打造高效的信息聚合与个人生产力工作台。
+                        聚合 5000+ 精选标签与常用工具链接，支持智能全局检索、多层级折叠分类和树状导航，让信息查找沿着清晰路径直达所需。
                     </p>
                     <div class="card-actions">
                         <a href="https://nav.wenyaoyefei.com" target="_blank" rel="noopener"
@@ -402,17 +427,7 @@
         </div>
     </div>
 
-    <div class="footer">
-        <div class="footer-links">
-            <span class="link-label">友情链接</span>
-            <a href="https://muimi.club" target="_blank" rel="noopener" data-umami-event="friend_link_click"
-                data-umami-props='{"site":"muimi.club", "from":"footer"}'>
-                <i class="fas fa-link"></i>
-                <span>Muimi Club</span>
-            </a>
-        </div>
-        <p>© All Rights Reserved.</p>
-    </div>
+    <div class="footer"></div>
 
     <script src="js/umami-config.js"></script>
     <script src="js/analytics.js"></script>

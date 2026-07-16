@@ -173,7 +173,7 @@ function articleTemplate(article, htmlContent) {
   <meta property="og:image" content="https://wenyaoyefei.com/avatar.jpg">
   <link rel="canonical" href="${canonical}">
   <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
-  <script src="../js/theme.js?v=3" defer></script>
+  <script src="../js/theme.js?v=5" defer></script>
   <link rel="icon" type="image/jpeg" href="../avatar.jpg">
   <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -183,7 +183,7 @@ function articleTemplate(article, htmlContent) {
         media="print" onload="this.media='all'">
   <link rel="stylesheet" href="../css/site.css?v=2">
   <link rel="stylesheet" href="../css/article.css?v=1">
-  <link rel="stylesheet" href="../css/elevated-design.css?v=12">
+  <link rel="stylesheet" href="../css/elevated-design.css?v=21">
 </head>
 <body>
   <nav class="top-nav">
@@ -191,10 +191,10 @@ function articleTemplate(article, htmlContent) {
             <ul class="nav-links" id="navLinks">
         <li><a href="../index.html">首页</a></li>
         <li><a href="../software.html">产品</a></li>
-        <li><a href="../business.html">业务</a></li>
+        <li><a href="../business.html">服务</a></li>
         <li><a href="../articles.html" class="active">文字</a></li>
         <li><a href="../media.html">影音</a></li>
-        <li><a href="../about.html">关于我</a></li>      </ul>
+        <li><a href="../about.html">关于</a></li>      </ul>
             <div style="display: flex; align-items: center;">
                 <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
                     <i class="fas fa-moon"></i>
@@ -222,7 +222,7 @@ function articleTemplate(article, htmlContent) {
     </div>
   </main>
 
-  <div class="footer"><p>© All Rights Reserved.</p></div>
+  <div class="footer"></div>
 
     <script>
         function toggleMobileMenu() {

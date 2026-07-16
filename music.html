@@ -28,7 +28,7 @@
     }
     </script>
     <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
-    <script src="js/theme.js?v=3" defer></script>
+    <script src="js/theme.js?v=5" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet"
@@ -723,7 +723,7 @@
             background: rgba(0, 78, 140, 0.2) !important;
         }
   </style>
-    <link rel="stylesheet" href="css/elevated-design.css?v=12">
+    <link rel="stylesheet" href="css/elevated-design.css?v=21">
 </head>
 
 <body>
@@ -732,9 +732,9 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">首页</a></li>
                 <li><a href="software.html">产品</a></li>
-                <li><a href="business.html">业务</a></li>
+                <li><a href="business.html">服务</a></li>
                 <li><a href="articles.html">文字</a></li>
-                <li><a href="media.html" class="active">影音</a></li><li><a href="about.html">关于我</a></li>
+                <li><a href="media.html" class="active">影音</a></li><li><a href="about.html">关于</a></li>
             </ul>
             <div style="display: flex; align-items: center;">
                 <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
@@ -762,7 +762,7 @@
             <div class="header-content">
                 <p class="header-subtitle">主流音乐平台搜索歌手“文鳐夜飞”即可收听</p>
                 <div class="music-platforms">
-                    <a href="https://music.163.com/#/artist?id=123109920" target="_blank" rel="noopener" 
+                    <a href="https://music.163.com/#/artist?id=123109920" target="_blank" rel="noopener"
                        class="platform-link netease" title="在网易云音乐中收听">
                         <span class="platform-logo netease-logo" aria-hidden="true">
                             <img src="images/netease-cloud-music-favicon.ico" alt="" class="platform-logo-image">
@@ -811,17 +811,7 @@
         </div>
     </div>
 
-    <div class="footer">
-        <div class="footer-links">
-            <span class="link-label">友情链接</span>
-            <a href="https://muimi.club" target="_blank" rel="noopener" data-umami-event="friend_link_click"
-                data-umami-props='{"site":"muimi.club", "from":"footer"}'>
-                <i class="fas fa-link"></i>
-                <span>Muimi Club</span>
-            </a>
-        </div>
-        <p>© All Rights Reserved.</p>
-    </div>
+    <div class="footer"></div>
 
     <script src="js/umami-config.js"></script>
     <script src="js/analytics.js"></script>
@@ -915,7 +905,7 @@
                             <span id="totalTime">0:00</span>
                         </div>
                     </div>
-                    
+
                     <div class="player-lyrics">
                         <div class="lyrics-container" id="lyricsContainer">
                             ${currentLrc.length > 0
