@@ -401,7 +401,7 @@ body::after {
 .footer.site-footer {
     width: var(--page-width) !important;
     margin: clamp(42px, 7vw, 78px) auto 0 !important;
-    padding: clamp(30px, 5vw, 52px) 0 0 !important;
+    padding: clamp(30px, 5vw, 52px) 0 clamp(36px, 5vw, 58px) !important;
     text-align: left !important;
 }
 
@@ -504,7 +504,7 @@ body::after {
 @media (max-width: 720px) {
     .footer.site-footer {
         margin-top: 38px !important;
-        padding-top: 28px !important;
+        padding: 28px 0 36px !important;
     }
 
     .footer-main {

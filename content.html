@@ -50,6 +50,7 @@
         .latest-lead:hover, .latest-brief:hover, .lasting-card:hover { transform: translateY(-5px); border-color: rgba(var(--primary-rgb), .38); box-shadow: var(--shadow-hover); }
         .latest-lead { display: grid; grid-template-rows: minmax(240px, 1fr) auto; }
         .latest-lead-media { min-height: 240px; overflow: hidden; background: #eee; }
+        .latest-lead-media picture { display: block; width: 100%; height: 100%; }
         .latest-lead-media img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .4s ease; }
         .latest-lead:hover .latest-lead-media img { transform: scale(1.025); }
         .latest-copy { padding: 22px 24px 24px; }
@@ -72,6 +73,7 @@
         .lasting-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
         .lasting-card { min-height: 230px; display: grid; grid-template-columns: 180px minmax(0, 1fr); align-items: stretch; }
         .lasting-visual { display: grid; place-items: center; padding: 24px; background: rgba(var(--primary-rgb), .07); }
+        .lasting-visual picture { display: block; line-height: 0; }
         .content-book-cover { position: relative; width: 112px; aspect-ratio: 2 / 3; display: flex; flex-direction: column; justify-content: flex-end; padding: 17px 13px; overflow: hidden; border: 1px solid rgba(197, 179, 88, .38); border-radius: 5px 10px 10px 5px; background: radial-gradient(circle at 76% 18%, rgba(239,224,143,.92) 0 11px, rgba(239,224,143,.12) 12px 26px, transparent 27px), linear-gradient(155deg, #075891, #031a2d 54%, #072d46); box-shadow: 0 18px 34px rgba(0, 0, 0, .28); }
         .content-book-cover small { color: rgba(239,224,143,.84); font: 600 6px/1 var(--font-mono); letter-spacing: .1em; }
         .content-book-cover strong { margin-top: 8px; color: #fff; font: 700 20px/1.15 var(--font-serif); }
@@ -126,7 +128,12 @@
             </header>
             <div class="latest-layout">
                 <a class="latest-lead" href="posts/011.html" data-umami-event="content_recent_click" data-umami-props='{"type":"blog","id":"011"}'>
-                    <div class="latest-lead-media"><img src="images/article-cover-011.png" alt="文章《记录并分享你的想法》封面" loading="eager" decoding="async"></div>
+                    <div class="latest-lead-media">
+                        <picture>
+                            <source srcset="images/article-cover-011.webp" type="image/webp">
+                            <img src="images/article-cover-011.png" alt="文章《记录并分享你的想法》封面" width="1280" height="683" loading="eager" fetchpriority="high" decoding="async">
+                        </picture>
+                    </div>
                     <div class="latest-copy">
                         <div class="content-meta"><span><i class="fas fa-pen-nib"></i>Blog</span><span><i class="far fa-calendar"></i>2026-03-02</span></div>
                         <h3>一人公司大神 Peter Levels《MAKE》（06）：记录并分享你的想法</h3>
@@ -172,7 +179,12 @@
                     </div>
                 </a>
                 <a class="lasting-card" href="music.html" data-umami-event="content_work_click" data-umami-props='{"type":"music"}'>
-                    <div class="lasting-visual"><img src="images/haikuo-yuxiang-netease.png" alt="原创音乐《海阔余响》封面" loading="lazy" decoding="async"></div>
+                    <div class="lasting-visual">
+                        <picture>
+                            <source srcset="images/haikuo-yuxiang-netease.webp" type="image/webp">
+                            <img src="images/haikuo-yuxiang-netease.png" alt="原创音乐《海阔余响》封面" width="512" height="512" loading="lazy" decoding="async">
+                        </picture>
+                    </div>
                     <div class="lasting-copy">
                         <span class="lasting-label"><i class="fas fa-headphones"></i>MUSIC / 原创音乐</span>
                         <h3>《海阔余响》</h3>

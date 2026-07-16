@@ -304,6 +304,71 @@
         }
   </style>
     <link rel="stylesheet" href="css/elevated-design.css?v=21">
+    <style id="product-page-gallery-design">
+        .standard-page-shell .software-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+            gap: 24px !important;
+        }
+
+        .standard-page-shell .software-card {
+            min-width: 0;
+            display: grid !important;
+            grid-template-rows: auto 1fr;
+            padding: 0 !important;
+            overflow: hidden;
+            border-radius: 18px !important;
+        }
+
+        .standard-page-shell .software-card .card-cover.product-screenshot-cover {
+            width: 100% !important;
+            min-height: 0 !important;
+            height: auto !important;
+            aspect-ratio: 16 / 10;
+            margin: 0 !important;
+            padding: 10px !important;
+            border: 0 !important;
+            border-bottom: 1px solid var(--line) !important;
+            border-radius: 0 !important;
+            background: linear-gradient(145deg, rgba(4, 20, 34, .96), rgba(10, 35, 56, .9)) !important;
+        }
+
+        .standard-page-shell .card-cover.product-screenshot-cover picture {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .standard-page-shell .card-cover.product-screenshot-cover img.product-screenshot {
+            width: 100% !important;
+            height: 100% !important;
+            max-width: none !important;
+            max-height: none !important;
+            object-fit: cover !important;
+            object-position: top center !important;
+            border-radius: 10px;
+        }
+
+        .standard-page-shell .software-card .card-body {
+            min-height: 300px;
+            padding: 24px 24px 26px;
+        }
+
+        @media (max-width: 1040px) {
+            .standard-page-shell .software-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .standard-page-shell .software-grid {
+                grid-template-columns: minmax(0, 1fr) !important;
+            }
+
+            .standard-page-shell .software-card .card-body {
+                min-height: 0;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -340,14 +405,44 @@
                 </span>
                 我的产品
             </h1>
-            <p class="header-subtitle">个人开发的工具与应用，助力高效生活</p>
+            <p class="header-subtitle header-subtitle-placeholder" aria-hidden="true">占位</p>
         </div>
 
         <div class="software-grid">
             <div class="software-card" style="--card-index: 0">
-                <div class="card-cover">
+                <div class="card-cover product-screenshot-cover">
                     <picture>
-                        <img src="images/stock-logo.svg" alt="Stock Market Cloud Logo" loading="lazy" decoding="async">
+                        <source srcset="images/zhijing-product-screenshot.webp" type="image/webp">
+                        <img class="product-screenshot" src="images/zhijing-product-screenshot.png" alt="知径产品界面截图" width="1440" height="900" loading="lazy" decoding="async">
+                    </picture>
+                </div>
+                <div class="card-body">
+                    <span class="card-tag"><i class="fas fa-compass"></i> 生产力工作台</span>
+                    <h2 class="card-title">知径</h2>
+                    <p class="card-description">
+                        聚合 5000+ 精选标签与常用工具链接，支持智能全局检索、多层级折叠分类和树状导航，让信息查找沿着清晰路径直达所需。
+                    </p>
+                    <div class="card-actions">
+                        <a href="https://nav.wenyaoyefei.com" target="_blank" rel="noopener"
+                            class="card-btn card-btn-primary" data-umami-event="software_link_click"
+                            data-umami-props='{"target":"bookmark_site"}'>
+                            <i class="fas fa-external-link-alt"></i>
+                            访问网站
+                        </a>
+                        <a href="https://github.com/FisherWenray/bookmark" target="_blank" rel="noopener"
+                            class="card-btn card-btn-secondary" data-umami-event="software_link_click"
+                            data-umami-props='{"target":"bookmark_github"}'>
+                            <i class="fab fa-github"></i>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="software-card" style="--card-index: 1">
+                <div class="card-cover product-screenshot-cover">
+                    <picture>
+                        <img class="product-screenshot" src="images/stock-product-screenshot.webp" alt="股票行情云图产品界面截图" width="1280" height="800" loading="lazy" decoding="async">
                     </picture>
                 </div>
                 <div class="card-body">
@@ -373,9 +468,11 @@
                 </div>
             </div>
 
-            <div class="software-card" style="--card-index: 1">
-                <div class="card-cover">
-                    <div class="card-cover-label">ONEOPC.AI</div>
+            <div class="software-card" style="--card-index: 2">
+                <div class="card-cover product-screenshot-cover">
+                    <picture>
+                        <img class="product-screenshot" src="images/oneopc-product-screenshot.webp" alt="OneOPC.ai 产品界面截图" width="1280" height="800" loading="lazy" decoding="async">
+                    </picture>
                 </div>
                 <div class="card-body">
                     <span class="card-tag"><i class="fas fa-robot"></i> AI 工具</span>
@@ -389,36 +486,6 @@
                             data-umami-props='{"target":"oneopc_site"}'>
                             <i class="fas fa-external-link-alt"></i>
                             访问网站
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="software-card" style="--card-index: 2">
-                <div class="card-cover product-screenshot-cover">
-                    <picture>
-                        <source srcset="images/zhijing-product-screenshot.webp" type="image/webp">
-                        <img class="product-screenshot" src="images/zhijing-product-screenshot.png" alt="知径产品界面截图" width="1440" height="900" loading="lazy" decoding="async">
-                    </picture>
-                </div>
-                <div class="card-body">
-                    <span class="card-tag"><i class="fas fa-compass"></i> 生产力工作台</span>
-                    <h2 class="card-title">知径</h2>
-                    <p class="card-description">
-                        聚合 5000+ 精选标签与常用工具链接，支持智能全局检索、多层级折叠分类和树状导航，让信息查找沿着清晰路径直达所需。
-                    </p>
-                    <div class="card-actions">
-                        <a href="https://nav.wenyaoyefei.com" target="_blank" rel="noopener"
-                            class="card-btn card-btn-primary" data-umami-event="software_link_click"
-                            data-umami-props='{"target":"bookmark_site"}'>
-                            <i class="fas fa-external-link-alt"></i>
-                            访问网站
-                        </a>
-                        <a href="https://github.com/FisherWenray/bookmark" target="_blank" rel="noopener"
-                            class="card-btn card-btn-secondary" data-umami-event="software_link_click"
-                            data-umami-props='{"target":"bookmark_github"}'>
-                            <i class="fab fa-github"></i>
-                            GitHub
                         </a>
                     </div>
                 </div>
