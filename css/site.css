@@ -3,6 +3,96 @@
  * 负责：字体栈变量、:root 变量、基础 reset、导航、主题切换、页脚、移动端菜单、深色主题基础开关
  */
 
+/* 仅保留本站实际使用图标的 Font Awesome 本地子集，避免加载完整 CDN 字体。 */
+@font-face {
+    font-family: "Font Awesome 6 Free";
+    src: url("../webfonts/fa-solid-900-subset.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Font Awesome 6 Free";
+    src: url("../webfonts/fa-regular-400-subset.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Font Awesome 6 Brands";
+    src: url("../webfonts/fa-brands-400-subset.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+.fas,
+.far,
+.fab {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+.fas { font-family: "Font Awesome 6 Free"; font-weight: 900; }
+.far { font-family: "Font Awesome 6 Free"; font-weight: 400; }
+.fab { font-family: "Font Awesome 6 Brands"; font-weight: 400; }
+.fa-apple::before { content: "\f179"; }
+.fa-arrow-left::before { content: "\f060"; }
+.fa-arrow-right::before { content: "\f061"; }
+.fa-arrow-up::before { content: "\f062"; }
+.fa-arrow-up-right-from-square::before { content: "\f08e"; }
+.fa-bars::before { content: "\f0c9"; }
+.fa-bilibili::before { content: "\e3d9"; }
+.fa-book::before { content: "\f02d"; }
+.fa-book-open::before { content: "\f518"; }
+.fa-calendar::before { content: "\f133"; }
+.fa-calendar-days::before { content: "\f073"; }
+.fa-chalkboard-user::before { content: "\f51c"; }
+.fa-chart-line::before { content: "\f201"; }
+.fa-clapperboard::before { content: "\e131"; }
+.fa-compass::before { content: "\f14e"; }
+.fa-exclamation-circle::before { content: "\f06a"; }
+.fa-exclamation-triangle::before { content: "\f071"; }
+.fa-expand::before { content: "\f065"; }
+.fa-face-smile::before { content: "\f118"; }
+.fa-github::before { content: "\f09b"; }
+.fa-headphones::before { content: "\f025"; }
+.fa-inbox::before { content: "\f01c"; }
+.fa-key::before { content: "\f084"; }
+.fa-layer-group::before { content: "\f5fd"; }
+.fa-moon::before { content: "\f186"; }
+.fa-music::before { content: "\f001"; }
+.fa-pause::before { content: "\f04c"; }
+.fa-pen-nib::before { content: "\f5ad"; }
+.fa-play::before { content: "\f04b"; }
+.fa-play-circle::before { content: "\f144"; }
+.fa-podcast::before { content: "\f2ce"; }
+.fa-robot::before { content: "\f544"; }
+.fa-search::before { content: "\f002"; }
+.fa-spinner::before { content: "\f110"; }
+.fa-spotify::before { content: "\f1bc"; }
+.fa-table-cells-large::before { content: "\f009"; }
+.fa-tag::before { content: "\f02b"; }
+.fa-user::before { content: "\f007"; }
+.fa-user-plus::before { content: "\f234"; }
+.fa-volume-high::before { content: "\f028"; }
+.fa-weixin::before { content: "\f1d7"; }
+.fa-xmark::before { content: "\f00d"; }
+
+.fa-spin {
+    animation: fa-spin 1s linear infinite;
+}
+
+@keyframes fa-spin {
+    to { transform: rotate(360deg); }
+}
+
 :root {
     /* 品牌色（可被页面覆盖） */
     --primary: #004E8C;
@@ -19,11 +109,11 @@
     --radius-md: 12px;
     --shadow: 0 20px 44px rgba(28, 39, 50, 0.13);
 
-    /* 字体栈：Google Fonts 首选 + 系统字体 fallback */
-    --font-sans: "Noto Sans SC", -apple-system, BlinkMacSystemFont, "PingFang SC",
+    /* 系统字体优先，避免下载体积巨大的中文远程字体。 */
+    --font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC",
                  "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
-    --font-serif: "Noto Serif SC", ui-serif, Georgia, "Songti SC", STSong, "SimSun", serif;
-    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono",
+    --font-serif: ui-serif, Georgia, "Songti SC", STSong, "SimSun", serif;
+    --font-mono: ui-monospace, SFMono-Regular, "SF Mono",
                  "Cascadia Code", Menlo, Consolas, "Liberation Mono", monospace;
 }
 
@@ -112,6 +202,16 @@ body::after {
     background: var(--primary);
     color: #fff;
     transform: rotate(30deg);
+}
+
+button,
+[type="button"] {
+    font: inherit;
+}
+
+:where(a, button, [tabindex]):focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
 }
 
 .theme-toggle .theme-icon {

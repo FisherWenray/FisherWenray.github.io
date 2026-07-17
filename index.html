@@ -13,6 +13,10 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://wenyaoyefei.com/">
     <meta property="og:image" content="https://wenyaoyefei.com/avatar.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="文鳐夜飞 | 一人公司、独立开发、投资悟道与自由生活">
+    <meta name="twitter:description" content="文鳐夜飞的个人网站，分享一人公司、独立开发、投资悟道、播客、视频、产品与原创音乐，记录在 AI 时代探索自由生活方式的实践与思考。">
+    <meta name="twitter:image" content="https://wenyaoyefei.com/avatar.jpg">
     <link rel="canonical" href="https://wenyaoyefei.com/">
     <script type="application/ld+json">
     {
@@ -55,14 +59,8 @@
     </script>
     <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
     <script src="js/theme.js?v=5" defer></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap"
-        media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="css/site.css?v=2">
+    <link rel="stylesheet" href="css/site.css?v=3">
     <link rel="icon" type="image/jpeg" href="avatar.jpg">
-    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
 .page {
             width: min(1200px, 94vw);
@@ -268,6 +266,8 @@
         }
 
         .social-link {
+            appearance: none;
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -2103,7 +2103,7 @@
                                 class="social-link zhihu" title="知乎" data-umami-event="social_link_click"
                                 data-umami-props='{"platform":"zhihu"}'>
                                 <span class="social-logo" aria-hidden="true">
-                                    <img src="images/social-zhihu.jpg" alt="知乎二维码" decoding="async">
+                                    <img src="images/social-zhihu.jpg" alt="知乎二维码" width="100" height="100" decoding="async">
                                 </span>
                                 <span>知乎</span>
                             </a>
@@ -2111,14 +2111,14 @@
                                 target="_blank" rel="noopener" class="social-link toutiao" title="今日头条"
                                 data-umami-event="social_link_click" data-umami-props='{"platform":"toutiao"}'>
                                 <span class="social-logo" aria-hidden="true">
-                                    <img src="images/social-toutiao.jpg" alt="今日头条二维码" decoding="async">
+                                    <img src="images/social-toutiao.jpg" alt="今日头条二维码" width="100" height="100" decoding="async">
                                 </span>
                                 <span>头条</span>
                             </a>
                             <a href="https://author.baidu.com/home?context=%7B%22uk%22%3A%22irqf6e2aOib6uzrlSglpJw%22%7D" target="_blank" rel="noopener" class="social-link baijia"
                                 title="百度百家" data-umami-event="social_link_click" data-umami-props='{"platform":"baijiahao"}'>
                                 <span class="social-logo" aria-hidden="true">
-                                    <img src="images/social-baijiahao.jpg" alt="百家号二维码" decoding="async">
+                                    <img src="images/social-baijiahao.jpg" alt="百家号二维码" width="100" height="100" decoding="async">
                                 </span>
                                 <span>百度百家</span>
                             </a>
@@ -2126,14 +2126,14 @@
                                 target="_blank" rel="noopener" class="social-link xhs" title="小红书"
                                 data-umami-event="social_link_click" data-umami-props='{"platform":"xiaohongshu"}'>
                                 <span class="social-logo" aria-hidden="true">
-                                    <img src="images/social-xhs.jpg" alt="小红书二维码" decoding="async">
+                                    <img src="images/social-xhs.jpg" alt="小红书二维码" width="100" height="100" decoding="async">
                                 </span>
                                 <span>小红书</span>
                             </a>
                             <a href="https://x.com/wenyaoyefei" target="_blank" rel="noopener" class="social-link x"
                                 title="X (Twitter)" data-umami-event="social_link_click" data-umami-props='{"platform":"x"}'>
                                 <span class="social-logo" aria-hidden="true">
-                                    <img src="images/social-x.jpg" alt="X(Twitter)二维码" decoding="async">
+                                    <img src="images/social-x.jpg" alt="X(Twitter)二维码" width="100" height="100" decoding="async">
                                 </span>
                                 <span>X</span>
                             </a>
@@ -2145,22 +2145,22 @@
                             <a href="https://weibo.com/u/7527763202" target="_blank" rel="noopener" class="social-link weibo"
                                 title="微博" data-umami-event="social_link_click" data-umami-props='{"platform":"weibo"}'>
                                 <span class="social-logo" aria-hidden="true">
-                                    <img src="images/social-weibo.jpg" alt="微博二维码" decoding="async">
+                                    <img src="images/social-weibo.jpg" alt="微博二维码" width="100" height="100" decoding="async">
                                 </span>
                                 <span>微博</span>
                             </a>
-                            <a href="javascript:void(0);" onclick="openWechatQRModal()" class="social-link wechat"
+                            <button type="button" onclick="openWechatQRModal()" class="social-link wechat"
                                 title="微信公众号" data-umami-event="social_link_click"
                                 data-umami-props='{"platform":"wechat_public_account"}'>
                                 <span class="social-logo" aria-hidden="true">
-                                    <img src="images/social-wechat.jpg" alt="微信公众号二维码" decoding="async">
+                                    <img src="images/social-wechat.jpg" alt="微信公众号二维码" width="100" height="100" decoding="async">
                                 </span>
                                 <span>公众号</span>
-                            </a>
+                            </button>
                             <a href="https://web.okjike.com/u/a19b7684-014c-4bb7-a3c1-f43e5d7d3aca" target="_blank" rel="noopener" class="social-link jike"
                                 title="即刻" data-umami-event="social_link_click" data-umami-props='{"platform":"jike"}'>
                                 <span class="social-logo" aria-hidden="true">
-                                    <img src="images/social-jike.jpg" alt="即刻二维码" decoding="async">
+                                    <img src="images/social-jike.jpg" alt="即刻二维码" width="100" height="100" decoding="async">
                                 </span>
                                 <span>即刻</span>
                             </a>
@@ -2169,12 +2169,12 @@
                     <div class="social-group">
                         <span class="social-label">联系我</span>
                         <div class="social-row">
-                            <a href="javascript:void(0);" onclick="openPersonalWechatQRModal()" class="social-link special"
+                            <button type="button" onclick="openPersonalWechatQRModal()" class="social-link special"
                                 title="个人微信" data-umami-event="social_link_click"
                                 data-umami-props='{"platform":"personal_wechat"}'>
                                 <i class="fas fa-user-plus"></i>
                                 <span>个人微信</span>
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -2356,21 +2356,21 @@
 
     <div class="footer"></div>
 
-    <div id="wechatQRModal" class="modal">
-        <div class="modal-content">
-            <h2>微信公众号</h2>
+    <div id="wechatQRModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="wechatQRTitle">
+        <div class="modal-content" tabindex="-1">
+            <h2 id="wechatQRTitle">微信公众号</h2>
             <img data-src="wechat-qr-mp.webp" alt="微信公众号二维码" width="258" height="258" loading="lazy" decoding="async">
             <p>扫码关注我的微信公众号<br>获取更多精彩内容</p>
-            <button class="close-btn" onclick="closeWechatQRModal()">关闭</button>
+            <button type="button" class="close-btn" onclick="closeWechatQRModal()">关闭</button>
         </div>
     </div>
 
-    <div id="personalWechatQRModal" class="modal">
-        <div class="modal-content">
-            <h2>个人微信</h2>
+    <div id="personalWechatQRModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="personalWechatQRTitle">
+        <div class="modal-content" tabindex="-1">
+            <h2 id="personalWechatQRTitle">个人微信</h2>
             <img class="personal-wechat-qr" data-src="wechat-qr-personal.jpg" alt="&#20010;&#20154;&#24494;&#20449;&#20108;&#32500;&#30721;" width="600" height="813" loading="lazy" decoding="async">
             <p>扫码添加我的个人微信<br>一起交流分享</p>
-            <button class="close-btn" onclick="closePersonalWechatQRModal()">关闭</button>
+            <button type="button" class="close-btn" onclick="closePersonalWechatQRModal()">关闭</button>
         </div>
     </div>
 
@@ -2424,6 +2424,25 @@
             }
         }
 
+        let lastModalTrigger = null;
+
+        function openModal(modal) {
+            lastModalTrigger = document.activeElement;
+            modal.classList.add('show');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            requestAnimationFrame(() => modal.querySelector('.modal-content').focus());
+        }
+
+        function closeModal(modal) {
+            if (!modal.classList.contains('show')) return;
+            modal.classList.remove('show');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            if (lastModalTrigger instanceof HTMLElement) lastModalTrigger.focus();
+            lastModalTrigger = null;
+        }
+
         function openWechatQRModal() {
             trackEvent('wechat_qr_open', { type: 'public_account' });
             const modal = document.getElementById('wechatQRModal');
@@ -2431,14 +2450,12 @@
             if (img && !img.getAttribute('src')) {
                 img.setAttribute('src', img.getAttribute('data-src'));
             }
-            modal.classList.add('show');
-            document.body.style.overflow = 'hidden';
+            openModal(modal);
         }
 
         function closeWechatQRModal() {
             const modal = document.getElementById('wechatQRModal');
-            modal.classList.remove('show');
-            document.body.style.overflow = 'auto';
+            closeModal(modal);
         }
 
         function openPersonalWechatQRModal() {
@@ -2448,14 +2465,12 @@
             if (img && !img.getAttribute('src')) {
                 img.setAttribute('src', img.getAttribute('data-src'));
             }
-            modal.classList.add('show');
-            document.body.style.overflow = 'hidden';
+            openModal(modal);
         }
 
         function closePersonalWechatQRModal() {
             const modal = document.getElementById('personalWechatQRModal');
-            modal.classList.remove('show');
-            document.body.style.overflow = 'auto';
+            closeModal(modal);
         }
 
         window.onclick = function (event) {
@@ -2471,8 +2486,24 @@
 
         document.addEventListener('keydown', function (event) {
             if (event.key === 'Escape') {
-                closeWechatQRModal();
-                closePersonalWechatQRModal();
+                const openModalElement = document.querySelector('.modal.show');
+                if (openModalElement) closeModal(openModalElement);
+            }
+
+            if (event.key === 'Tab') {
+                const openModalElement = document.querySelector('.modal.show');
+                if (!openModalElement) return;
+                const focusable = [...openModalElement.querySelectorAll('button, [href], [tabindex]:not([tabindex="-1"])')];
+                if (!focusable.length) return;
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+                if (event.shiftKey && document.activeElement === first) {
+                    event.preventDefault();
+                    last.focus();
+                } else if (!event.shiftKey && document.activeElement === last) {
+                    event.preventDefault();
+                    first.focus();
+                }
             }
         });
 

@@ -42,6 +42,63 @@ function extractDescriptionFromMarkdown(markdown) {
   return plain.slice(0, 140);
 }
 
+function absoluteSiteUrl(value) {
+  if (!value) return 'https://wenyaoyefei.com/avatar.jpg';
+  if (/^https?:\/\//i.test(value)) return value;
+  return `https://wenyaoyefei.com/${String(value).replace(/^\/+/, '')}`;
+}
+
+function imageSizeAttributes(relativePath) {
+  if (!relativePath || /^https?:\/\//i.test(relativePath) || relativePath.startsWith('data:')) return '';
+  const filePath = path.join(repoRoot, relativePath);
+  if (!fs.existsSync(filePath)) return '';
+  const buffer = fs.readFileSync(filePath);
+
+  if (buffer.length >= 24 && buffer.toString('ascii', 1, 4) === 'PNG') {
+    return ` width="${buffer.readUInt32BE(16)}" height="${buffer.readUInt32BE(20)}"`;
+  }
+
+  if (buffer.length >= 10 && buffer.toString('ascii', 0, 3) === 'GIF') {
+    return ` width="${buffer.readUInt16LE(6)}" height="${buffer.readUInt16LE(8)}"`;
+  }
+
+  if (buffer.length >= 4 && buffer[0] === 0xff && buffer[1] === 0xd8) {
+    let offset = 2;
+    while (offset + 9 < buffer.length) {
+      if (buffer[offset] !== 0xff) {
+        offset += 1;
+        continue;
+      }
+      const marker = buffer[offset + 1];
+      const length = buffer.readUInt16BE(offset + 2);
+      if (marker >= 0xc0 && marker <= 0xc3) {
+        return ` width="${buffer.readUInt16BE(offset + 7)}" height="${buffer.readUInt16BE(offset + 5)}"`;
+      }
+      if (length < 2) break;
+      offset += length + 2;
+    }
+  }
+
+  return '';
+}
+
+function articleCoverMarkup(article, { eager = false } = {}) {
+  if (!article.image || article.image === 'images/article-placeholder.svg') {
+    return `<div class="article-image-wrap empty" aria-hidden="true"><div class="article-image"></div></div>`;
+  }
+  const width = Number(article.imageWidth) || 1200;
+  const height = Number(article.imageHeight) || 675;
+  const loading = eager ? 'eager' : 'lazy';
+  const priority = eager ? ' fetchpriority="high"' : '';
+  const source = article.imageSmall
+    ? `<source srcset="${escapeHtml(article.imageSmall)} 704w, ${escapeHtml(article.image)} ${width}w" sizes="(max-width: 720px) calc(100vw - 60px), 360px" type="image/webp">`
+    : '';
+  const badge = eager ? '\n    <span class="article-badge">最新</span>' : '';
+  return `<div class="article-image-wrap">${badge}
+    <picture>${source}<img class="article-image" src="${escapeHtml(article.image)}" alt="${escapeHtml(article.title)}" width="${width}" height="${height}" loading="${loading}" decoding="async"${priority}></picture>
+  </div>`;
+}
+
 function parseMarkdown(markdown, basePath = '') {
   let html = markdown;
 
@@ -68,6 +125,10 @@ function parseMarkdown(markdown, basePath = '') {
       finalUrl = `${basePath}/${url}`;
     }
     const src = finalUrl.startsWith('data:') ? finalUrl : `../${finalUrl}`;
+    if (/^data:image\/svg\+xml/i.test(finalUrl) && /width(?:=|%3D)["']?1px/i.test(decodeURIComponent(finalUrl))) {
+      return '';
+    }
+    const sizeAttrs = imageSizeAttributes(finalUrl);
     const webpCandidates = [
       finalUrl.replace(/\.jpg\.opt\.jpe?g$/i, '.webp'),
       finalUrl.replace(/\.(?:jpe?g|png)$/i, '.webp')
@@ -76,10 +137,10 @@ function parseMarkdown(markdown, basePath = '') {
     if (!finalUrl.startsWith('data:') && webpUrl) {
       return `<picture>
 <source srcset="../${webpUrl}" type="image/webp">
-<img src="${src}" alt="${alt}" loading="lazy" decoding="async">
+<img src="${src}" alt="${escapeHtml(alt)}"${sizeAttrs} loading="lazy" decoding="async">
 </picture>`;
     }
-    return `<img src="${src}" alt="${alt}" loading="lazy" decoding="async">`;
+    return `<img src="${src}" alt="${escapeHtml(alt)}"${sizeAttrs} loading="lazy" decoding="async">`;
   });
 
   html = html.replace(/(^|[^!])\[([^\]]*)\]\(((?:[^()]+|\([^)]+\))*)\)/g, (match, prefix, text, url) => {
@@ -140,24 +201,51 @@ function parseMarkdown(markdown, basePath = '') {
   return html;
 }
 
-function articleTemplate(article, htmlContent) {
+function articleTemplate(article, htmlContent, navigation = {}) {
   const title = stripHtmlTags(article.title || '').trim() || `文章 ${article.id || ''}`.trim();
   const desc = (stripHtmlTags(article.description || '').trim() || title).replace(/\s+/g, ' ').trim();
   const date = article.date || '';
+  const modifiedDate = article.updated || date;
   const canonical = `https://wenyaoyefei.com/posts/${article.id}.html`;
+  const imageUrl = absoluteSiteUrl(article.image);
+  const authorName = article.author || '文鳐夜飞';
+  const previous = navigation.previous;
+  const next = navigation.next;
+  const relLinks = [
+    previous ? `<link rel="prev" href="https://wenyaoyefei.com/posts/${previous.id}.html">` : '',
+    next ? `<link rel="next" href="https://wenyaoyefei.com/posts/${next.id}.html">` : ''
+  ].filter(Boolean).join('\n  ');
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: title,
-    description: desc,
-    author: { '@type': 'Person', name: article.author || '文鳐夜飞' },
-    datePublished: date || undefined,
-    dateModified: date || undefined,
-    mainEntityOfPage: canonical,
-    inLanguage: 'zh-CN',
-    publisher: { '@type': 'Person', name: '文鳐夜飞' }
-  };
+  const jsonLd = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      '@id': `${canonical}#article`,
+      headline: title,
+      description: desc,
+      image: [imageUrl],
+      author: { '@type': 'Person', name: authorName, url: 'https://wenyaoyefei.com/about.html' },
+      datePublished: date || undefined,
+      dateModified: modifiedDate || undefined,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
+      inLanguage: 'zh-CN',
+      publisher: { '@type': 'Person', name: '文鳐夜飞', url: 'https://wenyaoyefei.com/' }
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: '首页', item: 'https://wenyaoyefei.com/' },
+        { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://wenyaoyefei.com/articles.html' },
+        { '@type': 'ListItem', position: 3, name: title, item: canonical }
+      ]
+    }
+  ];
+
+  const articleNavigation = `<nav class="article-pagination" aria-label="文章导航">
+        ${previous ? `<a class="article-pagination-link" rel="prev" href="${previous.id}.html"><span>上一篇</span><strong>${escapeHtml(previous.title)}</strong></a>` : '<a class="article-pagination-link" href="../articles.html"><span>返回</span><strong>全部文章</strong></a>'}
+        ${next ? `<a class="article-pagination-link article-pagination-link-next" rel="next" href="${next.id}.html"><span>下一篇</span><strong>${escapeHtml(next.title)}</strong></a>` : '<a class="article-pagination-link article-pagination-link-next" href="../articles.html"><span>继续阅读</span><strong>浏览全部文章</strong></a>'}
+      </nav>`;
 
   return `<!DOCTYPE html>
 <html lang="zh-CN">
@@ -170,18 +258,21 @@ function articleTemplate(article, htmlContent) {
   <meta property="og:description" content="${escapeHtml(desc)}">
   <meta property="og:type" content="article">
   <meta property="og:url" content="${canonical}">
-  <meta property="og:image" content="https://wenyaoyefei.com/avatar.jpg">
+  <meta property="og:image" content="${imageUrl}">
+  <meta property="og:image:width" content="${Number(article.imageWidth) || 1200}">
+  <meta property="og:image:height" content="${Number(article.imageHeight) || 675}">
+  <meta property="article:published_time" content="${escapeHtml(date)}">
+  <meta property="article:modified_time" content="${escapeHtml(modifiedDate)}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${escapeHtml(title)} - 文鳐夜飞">
+  <meta name="twitter:description" content="${escapeHtml(desc)}">
+  <meta name="twitter:image" content="${imageUrl}">
   <link rel="canonical" href="${canonical}">
+  ${relLinks}
   <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
   <script src="../js/theme.js?v=5" defer></script>
   <link rel="icon" type="image/jpeg" href="../avatar.jpg">
-  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap"
-        media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="../css/site.css?v=2">
+  <link rel="stylesheet" href="../css/site.css?v=3">
   <link rel="stylesheet" href="../css/article.css?v=1">
   <link rel="stylesheet" href="../css/elevated-design.css?v=21">
 </head>
@@ -207,6 +298,9 @@ function articleTemplate(article, htmlContent) {
 
   <main class="page">
     <div class="container">
+      <nav class="article-breadcrumb" aria-label="面包屑导航">
+        <a href="../index.html">首页</a><span aria-hidden="true">/</span><a href="../articles.html">Blog</a><span aria-hidden="true">/</span><span aria-current="page">${escapeHtml(title)}</span>
+      </nav>
       <div class="article-header">
         <h1 class="article-title">${escapeHtml(title)}</h1>
         <div class="article-meta">
@@ -218,6 +312,7 @@ function articleTemplate(article, htmlContent) {
       <div class="article-body">
         <div class="article-content">${htmlContent}</div>
       </div>
+      ${articleNavigation}
     </div>
   </main>
 
@@ -235,83 +330,87 @@ function articleTemplate(article, htmlContent) {
 </html>`;
 }
 
-function generateSitemap(articles) {
+function existingSitemapLastmods() {
+  const sitemapPath = path.join(repoRoot, 'sitemap.xml');
+  const result = new Map();
+  if (!fs.existsSync(sitemapPath)) return result;
+  const xml = fs.readFileSync(sitemapPath, 'utf8');
+  for (const match of xml.matchAll(/<loc>([^<]+)<\/loc>\s*<lastmod>([^<]+)<\/lastmod>/g)) {
+    result.set(match[1], match[2]);
+  }
+  return result;
+}
+
+function updateArticleIndex(articles) {
+  const indexPath = path.join(repoRoot, 'articles.html');
+  if (!fs.existsSync(indexPath)) return;
+  const sorted = [...articles].sort((a, b) => new Date(b.date) - new Date(a.date));
+  const cards = sorted.map((article, index) => `
+                <a class="article-card" style="--card-index: ${index}" href="posts/${article.id}.html" data-article-id="${article.id}" onclick="trackArticleClick(event)">
+                    ${articleCoverMarkup(article, { eager: index === 0 })}
+                    <div class="article-content">
+                        <span class="article-category">${escapeHtml(article.category || '')}</span>
+                        <h2 class="article-title">${escapeHtml(article.title)}</h2>
+                        <p class="article-description">${escapeHtml(article.description || '')}</p>
+                        <div class="article-meta"><div class="article-date"><i class="far fa-calendar"></i><time datetime="${escapeHtml(article.date || '')}">${escapeHtml(article.date || '')}</time></div></div>
+                    </div>
+                </a>`).join('');
+  const cardsBlock = `<!-- SEO_ARTICLE_CARDS_START -->${cards}\n            <!-- SEO_ARTICLE_CARDS_END -->`;
+  const safeJson = JSON.stringify({ articles: sorted }).replace(/</g, '\\u003c');
+  const dataBlock = `<script id="articlesData" type="application/json">${safeJson}</script>`;
+  let html = fs.readFileSync(indexPath, 'utf8');
+
+  if (/<!-- SEO_ARTICLE_CARDS_START -->[\s\S]*?<!-- SEO_ARTICLE_CARDS_END -->/.test(html)) {
+    html = html.replace(/<!-- SEO_ARTICLE_CARDS_START -->[\s\S]*?<!-- SEO_ARTICLE_CARDS_END -->/, cardsBlock);
+  } else {
+    html = html.replace('<div class="articles-grid" id="articlesGrid"></div>', `<div class="articles-grid" id="articlesGrid">${cardsBlock}\n            </div>`);
+  }
+
+  if (/<script id="articlesData" type="application\/json">[\s\S]*?<\/script>/.test(html)) {
+    html = html.replace(/<script id="articlesData" type="application\/json">[\s\S]*?<\/script>/, dataBlock);
+  } else {
+    html = html.replace('    <script src="js/umami-config.js"></script>', `    ${dataBlock}\n    <script src="js/umami-config.js"></script>`);
+  }
+  fs.writeFileSync(indexPath, html, 'utf8');
+}
+
+function generateSitemap(articles, { refreshStatic = false } = {}) {
   const domain = 'https://wenyaoyefei.com';
   const today = new Date().toISOString().split('T')[0];
-  
-  let urls = `  <url>
-    <loc>${domain}/</loc>
-    <lastmod>${today}</lastmod>
-  </url>
-  <url>
-    <loc>${domain}/software.html</loc>
-    <lastmod>${today}</lastmod>
-  </url>
-  <url>
-    <loc>${domain}/content.html</loc>
-    <lastmod>${today}</lastmod>
-  </url>
-  <url>
-    <loc>${domain}/articles.html</loc>
-    <lastmod>${today}</lastmod>
-  </url>
-  <url>
-    <loc>${domain}/media.html</loc>
-    <lastmod>${today}</lastmod>
-  </url>
-  <url>
-    <loc>${domain}/business.html</loc>
-    <lastmod>${today}</lastmod>
-  </url>
-  <url>
-    <loc>${domain}/video.html</loc>
-    <lastmod>${today}</lastmod>
-  </url>
-  <url>
-    <loc>${domain}/podcast.html</loc>
-    <lastmod>${today}</lastmod>
-  </url>
-  <url>
-    <loc>${domain}/music.html</loc>
-    <lastmod>${today}</lastmod>
-  </url>
-  <url>
-    <loc>${domain}/books.html</loc>
-    <lastmod>${today}</lastmod>
-  </url>\n`;
-
-  for (let chapter = 1; chapter <= 6; chapter += 1) {
-    urls += `  <url>
-    <loc>${domain}/books/xingsi-wujie/chapter-${String(chapter).padStart(2, '0')}.html</loc>
-    <lastmod>${today}</lastmod>
-  </url>\n`;
-  }
+  const previous = existingSitemapLastmods();
+  const staticPaths = [
+    '', 'software.html', 'content.html', 'articles.html', 'video.html', 'media.html',
+    'business.html', 'podcast.html', 'music.html', 'books.html', 'about.html',
+    ...Array.from({ length: 6 }, (_, index) => `books/xingsi-wujie/chapter-${String(index + 1).padStart(2, '0')}.html`)
+  ];
+  const entries = staticPaths.map((relativePath) => {
+    const loc = `${domain}/${relativePath}`;
+    return { loc, lastmod: refreshStatic ? today : (previous.get(loc) || today) };
+  });
 
   for (const article of articles) {
     if (!article.id) continue;
-    const loc = `${domain}/posts/${article.id}.html`;
-    const lastmod = article.date || today;
-    urls += `  <url>
-    <loc>${loc}</loc>
-    <lastmod>${lastmod}</lastmod>
-  </url>\n`;
+    entries.push({
+      loc: `${domain}/posts/${article.id}.html`,
+      lastmod: article.updated || article.date || today
+    });
   }
 
-  const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls}</urlset>`;
-
+  const urls = entries.map(({ loc, lastmod }) => `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </url>`).join('\n');
+  const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
   fs.writeFileSync(path.join(repoRoot, 'sitemap.xml'), sitemapContent, 'utf8');
-  console.log('Successfully generated sitemap.xml');
+  console.log(`Successfully generated sitemap.xml (${refreshStatic ? 'refreshed static dates' : 'preserved static dates'})`);
 }
 
 function main() {
   const raw = fs.readFileSync(articlesJsonPath, 'utf8');
   const data = JSON.parse(raw);
   const articles = Array.isArray(data.articles) ? data.articles : [];
+  const refreshStatic = process.argv.includes('--refresh-static');
 
   fs.mkdirSync(outputDir, { recursive: true });
 
+  const prepared = [];
   for (const article of articles) {
     if (!article.id || !article.markdown) continue;
     const mdPath = path.join(repoRoot, article.markdown);
@@ -323,17 +422,26 @@ function main() {
     const markdownDesc = extractDescriptionFromMarkdown(md);
     const safeArticle = {
       ...article,
-      title: markdownTitle || article.title || `文章 ${article.id}`,
-      description: markdownDesc || article.description || markdownTitle || `文章 ${article.id}`
+      title: article.title || markdownTitle || `文章 ${article.id}`,
+      description: article.description || markdownDesc || markdownTitle || `文章 ${article.id}`
     };
 
     const mdWithoutTopTitle = md.replace(/^#\s+.*\r?\n?/m, '');
     const htmlContent = parseMarkdown(mdWithoutTopTitle, basePath).replace(/<h1[^>]*>[\s\S]*?(<\/h1>|\/h1>)/gi, '');
-    const out = articleTemplate(safeArticle, htmlContent);
-    fs.writeFileSync(path.join(outputDir, `${article.id}.html`), out, 'utf8');
+    prepared.push({ article: safeArticle, htmlContent });
   }
-  
-  generateSitemap(articles);
+
+  prepared.sort((a, b) => new Date(a.article.date) - new Date(b.article.date));
+  prepared.forEach((entry, index) => {
+    const previous = prepared[index - 1]?.article;
+    const next = prepared[index + 1]?.article;
+    const out = articleTemplate(entry.article, entry.htmlContent, { previous, next });
+    fs.writeFileSync(path.join(outputDir, `${entry.article.id}.html`), out, 'utf8');
+  });
+
+  const safeArticles = prepared.map((entry) => entry.article);
+  updateArticleIndex(safeArticles);
+  generateSitemap(safeArticles, { refreshStatic });
 }
 
 main();

@@ -4,6 +4,11 @@ const path = require('path');
 const repoRoot = path.resolve(__dirname, '..');
 const bookTitle = '行思无界：从见天地到见自己';
 const bookTitleWrapped = `《${bookTitle}》`;
+const knownRemoteImageSizes = new Map([
+  ['https://uploader.shimo.im/f/Dlog31b6ffW7I7vw.png!thumbnail', [1536, 1024]],
+  ['https://uploader.shimo.im/f/1rj7ZqIqWcoRnZbs.png!thumbnail', [1586, 992]],
+  ['https://uploader.shimo.im/f/JiBEo88DhYhpdlbQ.png!thumbnail', [1536, 1024]],
+]);
 
 function escapeHtml(value) {
   return String(value)
@@ -123,7 +128,7 @@ function parseMarkdown(markdown) {
         skippedFirstTitle = true;
         continue;
       }
-      const tag = `h${Math.min(level + 1, 6)}`;
+      const tag = `h${Math.max(level, 2)}`;
       const id = slugify(title, `section-${toc.length + 1}`);
       if (level <= 2) toc.push({ id, title });
       html.push(`<${tag} id="${id}">${inlineMarkdown(title)}</${tag}>`);
@@ -135,7 +140,10 @@ function parseMarkdown(markdown) {
       flushParagraph();
       flushList();
       flushQuote();
-      html.push(`<figure><img src="${escapeAttr(imageMatch[2].trim())}" alt="${escapeAttr(imageMatch[1] || '书籍插图')}" loading="lazy" decoding="async"></figure>`);
+      const imageUrl = imageMatch[2].trim();
+      const dimensions = knownRemoteImageSizes.get(imageUrl);
+      const sizeAttrs = dimensions ? ` width="${dimensions[0]}" height="${dimensions[1]}"` : '';
+      html.push(`<figure><img src="${escapeAttr(imageUrl)}" alt="${escapeAttr(imageMatch[1] || '书籍插图')}"${sizeAttrs} loading="lazy" decoding="async"></figure>`);
       continue;
     }
 
@@ -188,7 +196,16 @@ function extractDescription(markdown) {
     .split(/\r?\n/)
     .map((line) => line.trim())
     .filter((line) => line && !line.startsWith('#') && !line.startsWith('![') && !line.startsWith('>'))[0] || '';
-  return text.replace(/\*\*/g, '').slice(0, 120);
+  const plain = text.replace(/\*\*/g, '').replace(/\s+/g, ' ').trim();
+  if (plain.length <= 120) return plain;
+  const candidate = plain.slice(0, 120);
+  const punctuation = Math.max(
+    candidate.lastIndexOf('。'),
+    candidate.lastIndexOf('！'),
+    candidate.lastIndexOf('？'),
+    candidate.lastIndexOf('；')
+  );
+  return punctuation >= 70 ? candidate.slice(0, punctuation + 1) : `${candidate.slice(0, 117)}…`;
 }
 
 function isChapterTitle(title) {
@@ -230,7 +247,9 @@ function splitChapters(markdown) {
   }
 
   return chapters.map((chapter, index) => ({
-    title: chapter.title,
+    title: /^附录[：:]?\s*$/.test(chapter.title)
+      ? '附录：配套音频节目索引'
+      : chapter.title.replace(/一人一文明:\s*/g, '一人一文明：'),
     file: chapterFileName(index),
     markdown: chapter.lines.join('\n'),
     sections: chapter.lines
@@ -250,6 +269,31 @@ function splitChapters(markdown) {
 
 function renderPage({ chapter, chapters, chapterIndex, description, contentHtml }) {
   const canonical = `https://wenyaoyefei.com/books/xingsi-wujie/${chapter.file}`;
+  const jsonLd = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      '@id': `${canonical}#chapter`,
+      headline: chapter.title,
+      description,
+      image: ['https://wenyaoyefei.com/avatar.jpg'],
+      author: { '@type': 'Person', name: '文鳐夜飞', url: 'https://wenyaoyefei.com/about.html' },
+      publisher: { '@type': 'Person', name: '文鳐夜飞', url: 'https://wenyaoyefei.com/' },
+      isPartOf: { '@type': 'Book', name: bookTitle, url: 'https://wenyaoyefei.com/books.html' },
+      mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
+      inLanguage: 'zh-CN'
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: '首页', item: 'https://wenyaoyefei.com/' },
+        { '@type': 'ListItem', position: 2, name: '书籍', item: 'https://wenyaoyefei.com/books.html' },
+        { '@type': 'ListItem', position: 3, name: bookTitle, item: 'https://wenyaoyefei.com/books/xingsi-wujie/chapter-01.html' },
+        { '@type': 'ListItem', position: 4, name: chapter.title, item: canonical }
+      ]
+    }
+  ];
   const tocHtml = chapters.length
     ? `<nav class="book-sidebar-nav" aria-label="章节目录">
           ${chapters.map((item, index) => {
@@ -291,20 +335,19 @@ function renderPage({ chapter, chapters, chapterIndex, description, contentHtml 
   <meta property="og:type" content="article">
   <meta property="og:url" content="${canonical}">
   <meta property="og:image" content="https://wenyaoyefei.com/avatar.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${escapeHtml(chapter.title)} - ${escapeHtml(bookTitleWrapped)}">
+  <meta name="twitter:description" content="${escapeAttr(description)}">
+  <meta name="twitter:image" content="https://wenyaoyefei.com/avatar.jpg">
   <link rel="canonical" href="${canonical}">
+  <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
   <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
   <script src="../../js/theme.js?v=5" defer></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap"
-        media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="../../css/site.css?v=2">
+  <link rel="stylesheet" href="../../css/site.css?v=3">
   <link rel="stylesheet" href="../../css/article.css?v=1">
   <link rel="stylesheet" href="../../css/book.css?v=11">
   <link rel="stylesheet" href="../../css/elevated-design.css?v=21">
   <link rel="icon" type="image/jpeg" href="../../avatar.jpg">
-  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <nav class="top-nav">
@@ -436,7 +479,9 @@ function main() {
   fs.mkdirSync(outputDir, { recursive: true });
 
   chapters.forEach((chapter, chapterIndex) => {
-    const description = extractDescription(chapter.markdown) || `${chapter.title}，文鳐夜飞${bookTitleWrapped}在线阅读章节。`;
+    const description = /^附录/.test(chapter.title)
+      ? `${bookTitleWrapped}配套音频节目索引，汇总间隔年、通识教育、一人一文明与全球生活方式等主题节目。`
+      : (extractDescription(chapter.markdown) || `${chapter.title}，文鳐夜飞${bookTitleWrapped}在线阅读章节。`);
     const { html } = parseMarkdown(chapter.markdown);
     const outputPath = path.join(outputDir, chapter.file);
     fs.writeFileSync(outputPath, renderPage({ chapter, chapters, chapterIndex, description, contentHtml: html }), 'utf8');
