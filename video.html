@@ -233,7 +233,7 @@
             }
 
             function embedUrl(video) {
-                return 'https://player.bilibili.com/player.html?bvid=' + encodeURIComponent(video.bvid) + '&cid=' + encodeURIComponent(video.cid) + '&page=1&as_wide=1&high_quality=1&danmaku=0';
+                return 'https://player.bilibili.com/player.html?bvid=' + encodeURIComponent(video.bvid) + '&cid=' + encodeURIComponent(video.cid) + '&page=1&as_wide=1&high_quality=1&danmaku=0&autoplay=1';
             }
 
             function findVideo(bvid) {
@@ -277,6 +277,14 @@
                 refs.grid.innerHTML = state.videos.map(function (video) { return cardHtml(video); }).join('');
                 refs.count.textContent = state.videos.length + ' 条视频';
                 bindEvents();
+            }
+
+            function openRequestedVideo() {
+                var params = new URLSearchParams(window.location.search);
+                var requestedBvid = params.get('video');
+                if (!requestedBvid) return;
+                var requestedVideo = findVideo(requestedBvid);
+                if (requestedVideo) openModal(requestedVideo);
             }
 
             function openModal(video) {
@@ -338,6 +346,7 @@
             loadVideos().then(function (videos) {
                 state.videos = videos || [];
                 render();
+                openRequestedVideo();
             }).catch(function () {
                 state.videos = [];
                 render();

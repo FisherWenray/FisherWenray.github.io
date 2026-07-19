@@ -34,59 +34,288 @@
         .content-page { width: min(1180px, 94vw); margin: 34px auto 54px; }
         .content-header-icon .content-icon-page { fill: none; }
         .content-header-icon .content-icon-dot { fill: var(--gold); stroke: none; }
-        .content-switcher { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; margin: 18px 0 28px; }
-        .content-switcher a, .content-switcher span { min-height: 66px; display: flex; align-items: center; justify-content: center; gap: 9px; padding: 12px; border: 1px solid rgba(var(--primary-rgb), .17); border-radius: var(--radius-md); color: var(--ink-soft); background: rgba(var(--primary-rgb), .045); text-decoration: none; font-size: 14px; font-weight: 700; transition: transform .24s ease, color .24s ease, border-color .24s ease, background .24s ease; }
-        .content-switcher span { color: #fff; border-color: var(--primary); background: var(--primary); }
-        .content-switcher a:hover { color: #fff; border-color: var(--primary); background: var(--primary); transform: translateY(-2px); }
-        .content-switcher i { color: var(--gold); }
-        .content-switcher span i, .content-switcher a:hover i { color: #fff; }
-        .content-section { margin-top: 20px; padding: clamp(22px, 4vw, 34px); border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--surface); box-shadow: var(--shadow); }
-        .content-section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; margin-bottom: 22px; padding-bottom: 18px; border-bottom: 1px solid rgba(var(--primary-rgb), .15); }
-        .content-section-kicker { display: block; margin-bottom: 8px; color: var(--gold); font: 600 11px/1 var(--font-mono); letter-spacing: .14em; }
-        .content-section h2 { margin: 0; color: var(--ink); font: 700 clamp(27px, 3.5vw, 39px)/1.2 var(--font-serif); }
-        .content-section-head p { max-width: 430px; margin: 0; color: var(--ink-soft); font-size: 13px; line-height: 1.75; text-align: right; }
-        .latest-layout { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(300px, .85fr); gap: 18px; }
-        .latest-lead, .latest-brief, .lasting-card { position: relative; overflow: hidden; color: inherit; text-decoration: none; border: 1px solid rgba(var(--primary-rgb), .17); border-radius: var(--radius-lg); background: rgba(var(--primary-rgb), .035); transition: transform .3s cubic-bezier(.19, 1, .22, 1), border-color .3s ease, box-shadow .3s ease; }
-        .latest-lead:hover, .latest-brief:hover, .lasting-card:hover { transform: translateY(-5px); border-color: rgba(var(--primary-rgb), .38); box-shadow: var(--shadow-hover); }
-        .latest-lead { display: grid; grid-template-rows: minmax(240px, 1fr) auto; }
-        .latest-lead-media { min-height: 240px; overflow: hidden; background: #eee; }
-        .latest-lead-media picture { display: block; width: 100%; height: 100%; }
-        .latest-lead-media img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .4s ease; }
-        .latest-lead:hover .latest-lead-media img { transform: scale(1.025); }
-        .latest-copy { padding: 22px 24px 24px; }
-        .content-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; color: var(--ink-soft); font-size: 12px; }
+
+        .content-category {
+            position: relative;
+            margin-top: clamp(56px, 7vw, 88px);
+            padding: 0;
+            overflow: hidden;
+            border: 0;
+            border-radius: 0;
+            background: transparent;
+            box-shadow: none;
+            backdrop-filter: none;
+            opacity: 0;
+            transform: translateY(18px);
+            animation: content-reveal .72s cubic-bezier(.19, 1, .22, 1) forwards;
+        }
+
+        .content-category:nth-of-type(2) { animation-delay: .06s; }
+        .content-category:nth-of-type(3) { animation-delay: .12s; }
+        .content-category:nth-of-type(4) { animation-delay: .18s; }
+        .content-category:nth-of-type(5) { animation-delay: .24s; }
+
+        @keyframes content-reveal { to { opacity: 1; transform: none; } }
+
+        .content-category::after {
+            content: attr(data-word);
+            position: absolute;
+            right: 24px;
+            bottom: -28px;
+            color: rgba(var(--primary-rgb), .035);
+            font: 800 clamp(70px, 13vw, 150px)/1 var(--font-serif);
+            letter-spacing: -.08em;
+            pointer-events: none;
+        }
+
+        .category-header {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 28px;
+            margin-bottom: 28px;
+            padding-bottom: 22px;
+            border-bottom: 1px solid rgba(var(--primary-rgb), .13);
+        }
+
+        .category-heading { display: block; }
+
+        .category-kicker {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--ink-soft);
+            font: 700 10px/1 var(--font-mono);
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+
+        .category-header h2 {
+            margin: 0;
+            color: var(--ink);
+            font: 700 clamp(28px, 3.4vw, 40px)/1.16 var(--font-serif);
+            letter-spacing: -.02em;
+        }
+
+        .category-link, .content-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            flex: 0 0 auto;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            transition: gap .25s ease, color .25s ease;
+        }
+
+        .category-link { margin-top: 11px; padding: 9px 14px; border: 1px solid rgba(var(--primary-rgb), .14); border-radius: 999px; color: #c5b358; background: rgba(var(--primary-rgb), .045); }
+        .category-link:hover, .content-card:hover .content-action { gap: 13px; color: var(--gold); }
+
+        .content-card {
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            border: 1px solid rgba(var(--primary-rgb), .14);
+            border-radius: var(--radius-lg);
+            color: inherit;
+            background: rgba(var(--primary-rgb), .028);
+            text-decoration: none;
+            transition: transform .35s cubic-bezier(.19, 1, .22, 1), border-color .35s ease, box-shadow .35s ease, background .35s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(var(--primary-rgb), .34);
+            background: rgba(var(--primary-rgb), .05);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .content-card img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .55s cubic-bezier(.19, 1, .22, 1); }
+        .content-card:hover img { transform: scale(1.035); }
+        .content-card-copy { padding: 22px; }
+        .content-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 10px; color: var(--ink-soft); font-size: 11px; font-weight: 600; }
         .content-meta span { display: inline-flex; align-items: center; gap: 6px; }
         .content-meta i { color: var(--gold); }
-        .latest-copy h3, .latest-brief h3, .lasting-copy h3 { margin: 0; color: var(--ink); font: 700 clamp(19px, 2.1vw, 25px)/1.45 var(--font-serif); }
-        .latest-copy p, .latest-brief p, .lasting-copy p { margin: 10px 0 0; color: var(--ink-soft); font-size: 13px; line-height: 1.75; }
-        .latest-stack { display: grid; grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 18px; }
-        .latest-brief { display: grid; grid-template-columns: 138px minmax(0, 1fr); min-height: 0; }
-        .latest-brief-visual { min-height: 190px; display: grid; place-items: center; overflow: hidden; background: rgba(var(--primary-rgb), .08); }
-        .latest-brief-visual img { width: 100%; height: 100%; display: block; object-fit: cover; }
-        .latest-brief-visual.podcast-visual img { width: 76px; height: 76px; border-radius: 18px; box-shadow: 0 14px 30px rgba(0, 12, 24, .28); }
-        .latest-brief-visual.video-visual { background: linear-gradient(145deg, rgba(var(--primary-rgb), .16), rgba(var(--primary-rgb), .045)); }
-        .content-video-symbol { width: 78px; height: 78px; display: grid; place-items: center; align-content: center; gap: 7px; border: 1px solid rgba(var(--primary-rgb), .22); border-radius: 20px; color: var(--gold); background: rgba(var(--primary-rgb), .08); box-shadow: 0 14px 30px rgba(0, 12, 24, .2); }
-        .content-video-symbol i { font-size: 24px; }
-        .content-video-symbol small { font: 600 8px/1 var(--font-mono); letter-spacing: .14em; }
-        .latest-brief-copy { align-self: center; padding: 20px; }
-        .latest-brief h3 { font-size: 19px; }
-        .lasting-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
-        .lasting-card { min-height: 230px; display: grid; grid-template-columns: 180px minmax(0, 1fr); align-items: stretch; }
-        .lasting-visual { display: grid; place-items: center; padding: 24px; background: rgba(var(--primary-rgb), .07); }
-        .lasting-visual picture { display: block; line-height: 0; }
-        .content-book-cover { position: relative; width: 112px; aspect-ratio: 2 / 3; display: flex; flex-direction: column; justify-content: flex-end; padding: 17px 13px; overflow: hidden; border: 1px solid rgba(197, 179, 88, .38); border-radius: 5px 10px 10px 5px; background: radial-gradient(circle at 76% 18%, rgba(239,224,143,.92) 0 11px, rgba(239,224,143,.12) 12px 26px, transparent 27px), linear-gradient(155deg, #075891, #031a2d 54%, #072d46); box-shadow: 0 18px 34px rgba(0, 0, 0, .28); }
-        .content-book-cover small { color: rgba(239,224,143,.84); font: 600 6px/1 var(--font-mono); letter-spacing: .1em; }
-        .content-book-cover strong { margin-top: 8px; color: #fff; font: 700 20px/1.15 var(--font-serif); }
-        .content-book-cover em { margin-top: 6px; color: rgba(255,255,255,.7); font-size: 8px; font-style: normal; line-height: 1.4; }
-        .lasting-visual img { width: 132px; height: 132px; display: block; object-fit: cover; border-radius: 18px; box-shadow: 0 18px 34px rgba(0, 0, 0, .27); }
-        .lasting-copy { align-self: center; padding: 26px; }
-        .lasting-label { display: inline-flex; align-items: center; gap: 7px; margin-bottom: 14px; color: var(--gold); font: 600 11px/1 var(--font-mono); letter-spacing: .1em; }
-        .lasting-action { display: inline-flex; align-items: center; gap: 8px; margin-top: 22px; color: var(--ink-soft); font-size: 13px; font-weight: 700; }
-        .lasting-card:hover .lasting-action { color: var(--primary); gap: 12px; }
-        [data-theme='dark'] .content-section h2, [data-theme='dark'] .latest-copy h3, [data-theme='dark'] .latest-brief h3, [data-theme='dark'] .lasting-copy h3 { color: #fff; text-shadow: 0 0 10px rgba(var(--primary-rgb), .24); }
-        @media (max-width: 900px) { .content-switcher { grid-template-columns: repeat(3, minmax(0, 1fr)); } .latest-layout { grid-template-columns: minmax(0, 1fr); } .latest-stack { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto; } .latest-brief { grid-template-columns: minmax(0, 1fr); } .latest-brief-visual { min-height: 180px; } .lasting-grid { grid-template-columns: minmax(0, 1fr); } }
-        @media (max-width: 620px) { .content-page { margin-top: 18px; } .content-switcher { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; } .content-switcher a, .content-switcher span { min-height: 54px; font-size: 13px; } .content-section-head { align-items: flex-start; flex-direction: column; } .content-section-head p { text-align: left; } .latest-stack { grid-template-columns: minmax(0, 1fr); } .latest-lead { grid-template-rows: 190px auto; } .latest-brief { grid-template-columns: 104px minmax(0, 1fr); } .latest-brief-visual { min-height: 150px; } .latest-brief-copy { padding: 17px; } .latest-brief p { display: none; } .lasting-card { grid-template-columns: 118px minmax(0, 1fr); min-height: 210px; } .lasting-visual { padding: 14px; } .content-book-cover { width: 82px; } .content-book-cover strong { font-size: 15px; } .lasting-visual img { width: 88px; height: 88px; } .lasting-copy { padding: 20px 17px; } }
-        @media (prefers-reduced-motion: reduce) { .content-switcher a, .latest-lead, .latest-brief, .lasting-card, .latest-lead-media img { transition: none; } }
+        .content-card h3 { margin: 0; color: var(--ink); font: 700 20px/1.45 var(--font-serif); }
+        .content-card p { margin: 10px 0 0; color: var(--ink-soft); font-size: 13px; line-height: 1.75; }
+        .content-action { margin-top: 19px; color: #c5b358; }
+
+        .blog-layout { display: grid; grid-template-columns: minmax(0, 1.28fr) minmax(320px, .72fr); gap: 18px; }
+        .blog-feature { display: grid; grid-template-rows: 300px auto; }
+        .blog-feature .content-card-copy { padding: 25px 26px 27px; }
+        .blog-feature h3 { font-size: clamp(23px, 2.8vw, 31px); line-height: 1.38; }
+        .blog-rail { display: grid; grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 18px; }
+        .blog-compact { display: grid; grid-template-columns: 140px minmax(0, 1fr); }
+        .blog-compact-media { min-height: 190px; display: grid; place-items: center; overflow: hidden; background: #f1eee6; }
+        .blog-compact-media picture { display: block; width: 100%; line-height: 0; }
+        .blog-compact-media img { width: 100%; height: auto; object-fit: contain; }
+        .blog-compact .content-card-copy { align-self: center; padding: 19px; }
+        .blog-compact h3 { font-size: 17px; }
+        .blog-compact p { display: none; }
+
+        .book-layout { display: grid; grid-template-columns: minmax(260px, .72fr) minmax(0, 1.28fr); gap: 32px; align-items: stretch; }
+        .book-visual {
+            min-height: 410px;
+            display: grid;
+            place-items: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(var(--primary-rgb), .15);
+            border-radius: var(--radius-lg);
+            background: radial-gradient(circle at 50% 44%, rgba(197,179,88,.14), transparent 42%), linear-gradient(145deg, rgba(var(--primary-rgb), .12), rgba(var(--primary-rgb), .025));
+        }
+
+        .book-visual::before { content: ""; position: absolute; inset: 28px; border: 1px solid rgba(197,179,88,.14); border-radius: 50%; }
+        .book-cover {
+            position: relative;
+            z-index: 1;
+            width: 178px;
+            aspect-ratio: 2 / 3;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 26px 22px;
+            overflow: hidden;
+            border: 1px solid rgba(239,224,143,.42);
+            border-radius: 6px 14px 14px 6px;
+            background: radial-gradient(circle at 76% 18%, rgba(239,224,143,.95) 0 16px, rgba(239,224,143,.12) 17px 40px, transparent 41px), linear-gradient(155deg, #075891, #031a2d 54%, #072d46);
+            box-shadow: -9px 16px 0 rgba(1, 18, 31, .18), 0 32px 54px rgba(0, 0, 0, .34);
+            transform: rotate(-2deg);
+            transition: transform .4s cubic-bezier(.19, 1, .22, 1);
+        }
+
+        .book-visual:hover .book-cover { transform: rotate(0) translateY(-5px); }
+        .book-cover small { color: rgba(239,224,143,.84); font: 700 8px/1 var(--font-mono); letter-spacing: .12em; }
+        .book-cover strong { margin-top: 12px; color: #fff; font: 700 29px/1.18 var(--font-serif); }
+        .book-cover em { margin-top: 9px; color: rgba(255,255,255,.72); font-size: 11px; font-style: normal; line-height: 1.5; }
+        .book-copy { display: flex; flex-direction: column; justify-content: center; }
+        .book-copy h3 { margin: 0; color: var(--ink); font: 700 clamp(25px, 3.3vw, 37px)/1.35 var(--font-serif); }
+        .book-copy > p { max-width: 680px; margin: 14px 0 22px; color: var(--ink-soft); font-size: 14px; line-height: 1.85; }
+        .chapter-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid rgba(var(--primary-rgb), .13); }
+        .chapter-list a { display: flex; align-items: center; gap: 11px; min-height: 51px; padding: 9px 3px; border-bottom: 1px solid rgba(var(--primary-rgb), .1); color: var(--ink-soft); text-decoration: none; font-size: 12px; transition: color .2s ease, padding-left .2s ease; }
+        .chapter-list a:nth-child(odd) { margin-right: 16px; }
+        .chapter-list a:hover { color: var(--primary); padding-left: 4px; }
+        .chapter-list span { color: var(--gold); font: 700 10px/1 var(--font-mono); }
+
+        .podcast-layout { display: grid; grid-template-columns: minmax(280px, .7fr) minmax(0, 1.3fr); gap: 24px; }
+        .podcast-intro { display: flex; flex-direction: column; justify-content: space-between; min-height: 354px; padding: 28px; background: linear-gradient(145deg, rgba(var(--primary-rgb), .13), rgba(var(--primary-rgb), .035)); }
+        .podcast-cover-row { display: flex; align-items: center; gap: 20px; }
+        .podcast-cover { width: 108px; height: 108px; flex: 0 0 auto; overflow: hidden; border-radius: 24px; box-shadow: 0 20px 38px rgba(0, 12, 24, .28); }
+        .podcast-cover img { width: 100%; height: 100%; }
+        .podcast-name small { display: block; margin-bottom: 7px; color: var(--gold); font: 700 10px/1 var(--font-mono); letter-spacing: .12em; }
+        .podcast-name strong { color: var(--ink); font: 700 25px/1.3 var(--font-serif); }
+        .podcast-intro p { margin: 25px 0 0; color: var(--ink-soft); font-size: 13px; line-height: 1.8; }
+        .episode-list { display: grid; gap: 12px; }
+        .episode-row { min-height: 106px; display: grid; grid-template-columns: 52px minmax(0, 1fr) auto; align-items: center; gap: 18px; padding: 17px 20px; }
+        .episode-index { display: grid; place-items: center; width: 48px; height: 48px; border: 1px solid rgba(var(--primary-rgb), .18); border-radius: 50%; color: var(--gold); background: rgba(var(--primary-rgb), .055); font: 700 11px/1 var(--font-mono); }
+        .episode-row h3 { font-size: 18px; }
+        .episode-row p { margin-top: 5px; }
+        .episode-duration { color: var(--ink-soft); font: 700 10px/1 var(--font-mono); letter-spacing: .08em; }
+
+        .video-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+        .video-card { width: 100%; display: grid; grid-template-rows: 180px auto; padding: 0; appearance: none; font: inherit; text-align: left; cursor: pointer; }
+        .video-media { position: relative; overflow: hidden; }
+        .video-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgba(0, 8, 16, .54)); }
+        .video-play { position: absolute; z-index: 1; left: 18px; bottom: 16px; display: grid; place-items: center; width: 42px; height: 42px; border: 1px solid rgba(255,255,255,.34); border-radius: 50%; color: #fff; background: rgba(0, 24, 44, .74); backdrop-filter: blur(10px); }
+        .video-card h3 { font-size: 18px; }
+
+        .content-video-modal[hidden] { display: none; }
+        .content-video-modal { position: fixed; inset: 0; z-index: 1200; display: flex; align-items: center; justify-content: center; padding: 28px; background: rgba(3, 8, 15, .86); }
+        .content-video-backdrop { position: absolute; inset: 0; }
+        .content-video-dialog { position: relative; width: min(1200px, 100%); display: grid; gap: 16px; padding: 18px; border: 1px solid rgba(var(--primary-rgb), .24); border-radius: 24px; background: rgba(5, 14, 24, .96); box-shadow: 0 40px 80px rgba(0, 0, 0, .42); }
+        .content-video-modal-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; color: #fff; }
+        .content-video-modal-header h3 { margin: 0; font: 700 clamp(18px, 2vw, 24px)/1.4 var(--font-serif); }
+        .content-video-modal-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+        .content-video-modal-btn { min-height: 42px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 0 16px; border: 1px solid rgba(255,255,255,.14); border-radius: 999px; color: #fff; background: rgba(255,255,255,.06); text-decoration: none; font: 700 13px/1 var(--font-sans); cursor: pointer; transition: transform .25s ease, background .25s ease; }
+        .content-video-modal-btn:hover { transform: translateY(-2px); background: rgba(255,255,255,.12); }
+        .content-video-modal-btn.primary { border-color: transparent; background: #00aeec; }
+        .content-video-stage { width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 18px; background: #050b14; }
+        .content-video-stage iframe { width: 100%; height: 100%; display: block; border: 0; }
+        body.content-video-open { overflow: hidden; }
+
+        .music-layout { display: grid; grid-template-columns: minmax(300px, 350px) minmax(0, 1fr); gap: 0; min-height: 0; }
+        .music-art { position: relative; min-height: 0; aspect-ratio: 1; overflow: hidden; background: var(--navy-dark); }
+        .music-art picture { display: block; width: 100%; height: 100%; line-height: 0; }
+        .music-art img { object-fit: contain; }
+        .music-art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(140deg, transparent 45%, rgba(0, 12, 24, .28)); }
+        .music-copy { position: relative; display: flex; flex-direction: column; justify-content: center; padding: clamp(28px, 5vw, 60px); }
+        .music-copy::before { content: "♪"; position: absolute; right: 34px; top: 20px; color: rgba(var(--primary-rgb), .07); font: 700 100px/1 var(--font-serif); }
+        .music-copy h3 { margin: 0; color: var(--ink); font: 700 clamp(30px, 4vw, 46px)/1.2 var(--font-serif); }
+        .music-copy p { max-width: 560px; margin: 15px 0 0; color: var(--ink-soft); font-size: 14px; line-height: 1.85; }
+        .music-notes { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 22px; }
+        .music-notes span { padding: 7px 11px; border: 1px solid rgba(var(--primary-rgb), .14); border-radius: 999px; color: var(--ink-soft); background: rgba(var(--primary-rgb), .04); font-size: 11px; font-weight: 700; }
+
+        [data-theme='dark'] .content-category {
+            background: transparent;
+            border: 0;
+            box-shadow: none;
+            backdrop-filter: none;
+        }
+
+        [data-theme='dark'] .category-link { color: var(--ink-soft); }
+        [data-theme='dark'] .category-link:hover { color: #fff; }
+        [data-theme='dark'] .content-action { color: var(--ink-soft); }
+        [data-theme='dark'] .content-card:hover .content-action { color: #fff; }
+
+        [data-theme='dark'] .category-header h2,
+        [data-theme='dark'] .content-card h3,
+        [data-theme='dark'] .book-copy h3,
+        [data-theme='dark'] .podcast-name strong,
+        [data-theme='dark'] .music-copy h3 { color: #f5f8fb; }
+
+        [data-theme='dark'] .content-card { background: rgba(255, 255, 255, .025); border-color: rgba(160, 179, 198, .14); }
+        [data-theme='dark'] .content-card:hover { background: rgba(var(--primary-rgb), .14); border-color: rgba(160, 179, 198, .3); }
+        [data-theme='dark'] .book-visual { background: radial-gradient(circle at 50% 44%, rgba(197,179,88,.13), transparent 42%), linear-gradient(145deg, rgba(var(--primary-rgb), .18), rgba(255,255,255,.015)); }
+
+        @media (max-width: 960px) {
+            .blog-layout, .book-layout, .podcast-layout { grid-template-columns: minmax(0, 1fr); }
+            .blog-rail { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto; }
+            .book-visual { min-height: 370px; }
+            .podcast-intro { min-height: 280px; }
+            .video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .video-card:last-child { grid-column: 1 / -1; grid-template-columns: minmax(260px, .65fr) minmax(0, 1fr); grid-template-rows: auto; }
+        }
+
+        @media (max-width: 680px) {
+            .content-page { margin-top: 18px; }
+            .content-category { margin-top: 48px; padding: 0; }
+            .category-header { align-items: flex-start; margin-bottom: 20px; }
+            .category-link span { display: none; }
+            .category-link { width: 38px; height: 38px; justify-content: center; margin-top: 0; padding: 0; }
+            .blog-feature { grid-template-rows: 190px auto; }
+            .blog-rail { grid-template-columns: minmax(0, 1fr); }
+            .blog-compact { grid-template-columns: minmax(0, 1fr); }
+            .blog-compact-media { min-height: 0; aspect-ratio: 1725 / 912; }
+            .blog-compact-media picture, .blog-compact-media img { height: 100%; }
+            .blog-compact .content-card-copy { padding: 15px; }
+            .blog-compact h3 { font-size: 15px; }
+            .chapter-list { grid-template-columns: minmax(0, 1fr); }
+            .chapter-list a:nth-child(odd) { margin-right: 0; }
+            .podcast-intro { min-height: 0; padding: 22px; }
+            .podcast-cover { width: 84px; height: 84px; border-radius: 19px; }
+            .podcast-name strong { font-size: 21px; }
+            .episode-row { grid-template-columns: 42px minmax(0, 1fr); gap: 13px; padding: 15px; }
+            .episode-index { width: 40px; height: 40px; }
+            .episode-duration { display: none; }
+            .episode-row h3 { font-size: 15px; }
+            .episode-row p { display: none; }
+            .video-grid { grid-template-columns: minmax(0, 1fr); }
+            .video-card, .video-card:last-child { grid-column: auto; grid-template-columns: minmax(0, 1fr); grid-template-rows: 180px auto; }
+            .content-video-modal { padding: 14px; }
+            .content-video-dialog { padding: 14px; }
+            .content-video-modal-header { align-items: flex-start; flex-direction: column; }
+            .music-layout { grid-template-columns: minmax(0, 1fr); }
+            .music-art { min-height: 0; aspect-ratio: 1; }
+            .music-copy { padding: 28px 22px 32px; }
+            .music-copy::before { font-size: 74px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .content-category { opacity: 1; transform: none; animation: none; }
+            .content-card, .content-card img, .book-cover, .category-link, .content-action { transition: none; }
+        }
     </style>
 </head>
 <body>
@@ -112,91 +341,175 @@
             <p class="header-subtitle">包含我的 Blog、书籍、播客、视频与原创音乐</p>
         </header>
 
-        <nav class="content-switcher" aria-label="内容分类">
-            <span aria-current="page"><i class="fas fa-layer-group" aria-hidden="true"></i>全部内容</span>
-            <a href="articles.html"><i class="fas fa-pen-nib" aria-hidden="true"></i>Blog</a>
-            <a href="books.html"><i class="fas fa-book-open" aria-hidden="true"></i>书籍</a>
-            <a href="podcast.html"><i class="fas fa-podcast" aria-hidden="true"></i>播客</a>
-            <a href="video.html"><i class="fas fa-clapperboard" aria-hidden="true"></i>视频</a>
-            <a href="music.html"><i class="fas fa-headphones" aria-hidden="true"></i>音乐</a>
-        </nav>
-
-        <section class="content-section" aria-labelledby="latestContentTitle">
-            <header class="content-section-head">
-                <div><span class="content-section-kicker">01 / RECENT</span><h2 id="latestContentTitle">最近更新</h2></div>
-                <p>从最近的一篇文章开始，也可以在影像与声音中继续浏览。</p>
+        <section class="content-category" data-word="BLOG" aria-labelledby="blogTitle">
+            <header class="category-header">
+                <div class="category-heading"><span class="category-kicker">Recent writing</span><h2 id="blogTitle">Blog</h2></div>
+                <a class="category-link" href="articles.html" data-umami-event="content_category_more" data-umami-props='{"type":"blog"}'><span>查看全部文章</span><i class="fas fa-arrow-right"></i></a>
             </header>
-            <div class="latest-layout">
-                <a class="latest-lead" href="posts/011.html" data-umami-event="content_recent_click" data-umami-props='{"type":"blog","id":"011"}'>
-                    <div class="latest-lead-media">
-                        <picture>
-                            <source srcset="images/article-cover-011-704.webp 704w, images/article-cover-011.webp 1717w" sizes="(max-width: 760px) calc(100vw - 40px), 720px" type="image/webp">
-                            <img src="images/article-cover-011.webp" alt="文章《记录并分享你的想法》封面" width="1717" height="916" loading="eager" fetchpriority="high" decoding="async">
-                        </picture>
-                    </div>
-                    <div class="latest-copy">
-                        <div class="content-meta"><span><i class="fas fa-pen-nib"></i>Blog</span><span><i class="far fa-calendar"></i>2026-03-02</span></div>
-                        <h3>一人公司大神 Peter Levels《MAKE》（06）：记录并分享你的想法</h3>
-                        <p>建立想法清单，通过市场验证创意，并勇敢分享以获得真实反馈。</p>
-                    </div>
+            <div class="blog-layout">
+                <a class="content-card blog-feature" href="posts/011.html" data-umami-event="content_recent_click" data-umami-props='{"type":"blog","id":"011"}'>
+                    <div class="blog-feature-media"><picture><source srcset="images/article-cover-011-704.webp 704w, images/article-cover-011.webp 1717w" sizes="(max-width: 960px) 92vw, 700px" type="image/webp"><img src="images/article-cover-011.webp" alt="文章《记录并分享你的想法》封面" width="1717" height="916" loading="eager" fetchpriority="high" decoding="async"></picture></div>
+                    <div class="content-card-copy"><div class="content-meta"><span><i class="far fa-calendar"></i>2026-03-02</span><span><i class="fas fa-tag"></i>一人公司</span></div><h3>一人公司大神 Peter Levels《MAKE》（06）：记录并分享你的想法</h3><p>建立想法清单，通过市场而非群体思维验证创意，并勇敢分享以获得真实反馈。</p><span class="content-action">阅读文章 <i class="fas fa-arrow-right"></i></span></div>
                 </a>
-                <div class="latest-stack">
-                    <a class="latest-brief" href="video.html" data-umami-event="content_recent_click" data-umami-props='{"type":"video"}'>
-                        <div class="latest-brief-visual video-visual" aria-hidden="true"><span class="content-video-symbol"><i class="fas fa-clapperboard"></i><small>VIDEO</small></span></div>
-                        <div class="latest-brief-copy">
-                            <div class="content-meta"><span><i class="fas fa-clapperboard"></i>视频</span><span>2026-01-31</span></div>
-                            <h3>A股交易手续费全解析</h3>
-                            <p>用六分钟梳理交易成本的构成。</p>
-                        </div>
+                <div class="blog-rail">
+                    <a class="content-card blog-compact" href="posts/010.html" data-umami-event="content_recent_click" data-umami-props='{"type":"blog","id":"010"}'>
+                        <div class="blog-compact-media"><picture><source srcset="images/article-cover-010-704.webp" type="image/webp"><img src="images/article-cover-010.webp" alt="文章《想法先从小开始》封面" width="1725" height="912" loading="lazy" decoding="async"></picture></div>
+                        <div class="content-card-copy"><div class="content-meta"><span>2026-02-08</span></div><h3>《MAKE》（05）：想法先从小开始</h3><p>从利基市场切入，逐步扩展。</p></div>
                     </a>
-                    <a class="latest-brief" href="podcast.html" data-umami-event="content_recent_click" data-umami-props='{"type":"podcast"}'>
-                        <div class="latest-brief-visual podcast-visual"><img src="images/xiaoyuzhou-apple-touch-icon.png" alt="文鳐夜飞播客封面" width="180" height="180" loading="lazy" decoding="async"></div>
-                        <div class="latest-brief-copy">
-                            <div class="content-meta"><span><i class="fas fa-podcast"></i>播客</span><span>持续更新</span></div>
-                            <h3>文鳐夜飞播客</h3>
-                            <p>关于技术、产品、个人成长与自由生活的声音记录。</p>
-                        </div>
+                    <a class="content-card blog-compact" href="posts/009.html" data-umami-event="content_recent_click" data-umami-props='{"type":"blog","id":"009"}'>
+                        <div class="blog-compact-media"><picture><source srcset="images/article-cover-009-704.webp" type="image/webp"><img src="images/article-cover-009.webp" alt="文章《想法先解决自己的问题》封面" width="1721" height="914" loading="lazy" decoding="async"></picture></div>
+                        <div class="content-card-copy"><div class="content-meta"><span>2026-01-30</span></div><h3>《MAKE》（04）：想法先解决自己的问题</h3><p>真实体验是产品成功的基石。</p></div>
                     </a>
                 </div>
             </div>
         </section>
 
-        <section class="content-section" aria-labelledby="lastingWorksTitle">
-            <header class="content-section-head">
-                <div><span class="content-section-kicker">02 / LONG-FORM</span><h2 id="lastingWorksTitle">长期作品</h2></div>
-                <p>比日常更新更完整，也更适合从头开始阅读或聆听。</p>
+        <section class="content-category" data-word="BOOK" aria-labelledby="bookTitle">
+            <header class="category-header">
+                <div class="category-heading"><span class="category-kicker">Long-form reading</span><h2 id="bookTitle">书籍</h2></div>
+                <a class="category-link" href="books.html" data-umami-event="content_category_more" data-umami-props='{"type":"book"}'><span>进入书籍页面</span><i class="fas fa-arrow-right"></i></a>
             </header>
-            <div class="lasting-grid">
-                <a class="lasting-card" href="books.html" data-umami-event="content_work_click" data-umami-props='{"type":"book"}'>
-                    <div class="lasting-visual">
-                        <div class="content-book-cover" aria-hidden="true"><small>WENYAOYEFEI</small><strong>行思无界</strong><em>从见天地到见自己</em></div>
-                    </div>
-                    <div class="lasting-copy">
-                        <span class="lasting-label"><i class="fas fa-book-open"></i>BOOK / 书籍</span>
-                        <h3>《行思无界：从见天地到见自己》</h3>
-                        <p>围绕间隔年、通识教育、一人一文明与全球生活方式展开的系统思考。</p>
-                        <span class="lasting-action">开始阅读 <i class="fas fa-arrow-right"></i></span>
-                    </div>
+            <div class="book-layout">
+                <a class="book-visual" href="books/xingsi-wujie/chapter-01.html" aria-label="开始阅读《行思无界：从见天地到见自己》">
+                    <div class="book-cover" aria-hidden="true"><small>WENYAOYEFEI</small><strong>行思无界</strong><em>从见天地到见自己</em></div>
                 </a>
-                <a class="lasting-card" href="music.html" data-umami-event="content_work_click" data-umami-props='{"type":"music"}'>
-                    <div class="lasting-visual">
-                        <picture>
-                            <source srcset="images/haikuo-yuxiang-netease.webp" type="image/webp">
-                            <img src="images/haikuo-yuxiang-netease.png" alt="原创音乐《海阔余响》封面" width="512" height="512" loading="lazy" decoding="async">
-                        </picture>
-                    </div>
-                    <div class="lasting-copy">
-                        <span class="lasting-label"><i class="fas fa-headphones"></i>MUSIC / 原创音乐</span>
-                        <h3>《海阔余响》</h3>
-                        <p>用旋律保存那些无法被文章完全表达的感受。</p>
-                        <span class="lasting-action">开始聆听 <i class="fas fa-arrow-right"></i></span>
-                    </div>
-                </a>
+                <div class="book-copy">
+                    <div class="content-meta"><span><i class="fas fa-book-open"></i>在线阅读</span><span>全 6 节</span></div>
+                    <h3>《行思无界：从见天地到见自己》</h3>
+                    <p>从间隔年出发，走向通识教育、一人一文明与全球生活方式。这是关于如何认识世界，也重新认识自己的系统思考。</p>
+                    <nav class="chapter-list" aria-label="书籍章节">
+                        <a href="books/xingsi-wujie/chapter-01.html"><span>01</span>第一章 间隔年</a>
+                        <a href="books/xingsi-wujie/chapter-02.html"><span>02</span>间隔年的读后感</a>
+                        <a href="books/xingsi-wujie/chapter-03.html"><span>03</span>从间隔年到通识教育</a>
+                        <a href="books/xingsi-wujie/chapter-04.html"><span>04</span>一人一文明</a>
+                        <a href="books/xingsi-wujie/chapter-05.html"><span>05</span>全球人</a>
+                        <a href="books/xingsi-wujie/chapter-06.html"><span>06</span>配套音频节目索引</a>
+                    </nav>
+                    <a class="content-action" href="books/xingsi-wujie/chapter-01.html">从第一章开始 <i class="fas fa-arrow-right"></i></a>
+                </div>
             </div>
+        </section>
+
+        <section class="content-category" data-word="PODCAST" aria-labelledby="podcastTitle">
+            <header class="category-header">
+                <div class="category-heading"><span class="category-kicker">Ideas in audio</span><h2 id="podcastTitle">播客</h2></div>
+                <a class="category-link" href="podcast.html" data-umami-event="content_category_more" data-umami-props='{"type":"podcast"}'><span>收听全部节目</span><i class="fas fa-arrow-right"></i></a>
+            </header>
+            <div class="podcast-layout">
+                <a class="content-card podcast-intro" href="podcast.html">
+                    <div><div class="podcast-cover-row"><span class="podcast-cover"><img src="images/xiaoyuzhou-apple-touch-icon.png" alt="文鳐夜飞播客封面" width="180" height="180" loading="lazy" decoding="async"></span><span class="podcast-name"><small>WENYAO PODCAST</small><strong>文鳐夜飞</strong></span></div><p>关于技术、商业、个人成长与自由生活的声音记录。用更接近谈话的方式，延伸文字之外的思考。</p></div>
+                    <span class="content-action">进入播客 <i class="fas fa-arrow-right"></i></span>
+                </a>
+                <div class="episode-list">
+                    <a class="content-card episode-row" href="podcast.html?episode=1000722825483&amp;autoplay=1" data-umami-event="content_recent_click" data-umami-props='{"type":"podcast","id":"004"}'><span class="episode-index">004</span><div><div class="content-meta"><span>2025-08-20</span></div><h3>AI 时代，做一个野生知识分子</h3><p>独立思考、跨领域探索与非学院化的自我学习。</p></div><span class="episode-duration">03:54</span></a>
+                    <a class="content-card episode-row" href="podcast.html?episode=1000717203674&amp;autoplay=1" data-umami-event="content_recent_click" data-umami-props='{"type":"podcast","id":"003"}'><span class="episode-index">003</span><div><div class="content-meta"><span>2025-07-14</span></div><h3>密码朋克的理想主义与 Web3</h3><p>从密码朋克精神，理解区块链与下一代互联网。</p></div><span class="episode-duration">03:36</span></a>
+                    <a class="content-card episode-row" href="podcast.html?episode=1000716932469&amp;autoplay=1" data-umami-event="content_recent_click" data-umami-props='{"type":"podcast","id":"002"}'><span class="episode-index">002</span><div><div class="content-meta"><span>2025-07-12</span></div><h3>什么是通识教育（二）</h3><p>把通识教育理解为一种学习的方法论。</p></div><span class="episode-duration">05:36</span></a>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-category" data-word="VIDEO" aria-labelledby="videoTitle">
+            <header class="category-header">
+                <div class="category-heading"><span class="category-kicker">Visual notes</span><h2 id="videoTitle">视频</h2></div>
+                <a class="category-link" href="video.html" data-umami-event="content_category_more" data-umami-props='{"type":"video"}'><span>观看全部视频</span><i class="fas fa-arrow-right"></i></a>
+            </header>
+            <div class="video-grid">
+                <button type="button" class="content-card video-card js-content-video" data-bvid="BV1ct6CBsEAM" data-cid="35728526790" data-title="A股交易手续费全解析" data-watch-url="https://www.bilibili.com/video/BV1ct6CBsEAM" data-umami-event="content_recent_click" data-umami-props='{"type":"video","id":"BV1ct6CBsEAM"}' aria-label="播放视频：A股交易手续费全解析"><div class="video-media"><img src="images/video-covers/BV1ct6CBsEAM.webp" alt="A股交易手续费全解析视频封面" width="960" height="540" loading="lazy" decoding="async"><span class="video-play"><i class="fas fa-play"></i></span></div><div class="content-card-copy"><div class="content-meta"><span><i class="far fa-calendar"></i>2026-01-31</span><span>06:38</span></div><h3>A股交易手续费全解析</h3><p>用六分钟梳理交易成本的构成。</p></div></button>
+                <button type="button" class="content-card video-card js-content-video" data-bvid="BV1jBKEeHETt" data-cid="28362149443" data-title="什么是通识教育（二）" data-watch-url="https://www.bilibili.com/video/BV1jBKEeHETt" data-umami-event="content_recent_click" data-umami-props='{"type":"video","id":"BV1jBKEeHETt"}' aria-label="播放视频：什么是通识教育（二）"><div class="video-media"><img src="images/video-covers/BV1jBKEeHETt.webp" alt="什么是通识教育（二）视频封面" width="960" height="540" loading="lazy" decoding="async"><span class="video-play"><i class="fas fa-play"></i></span></div><div class="content-card-copy"><div class="content-meta"><span><i class="far fa-calendar"></i>2025-02-13</span><span>04:12</span></div><h3>什么是通识教育（二）</h3><p>通识教育，是一种理解知识的学习方法论。</p></div></button>
+                <button type="button" class="content-card video-card js-content-video" data-bvid="BV11h4y1R7MJ" data-cid="1147645488" data-title="什么是通识教育（一）" data-watch-url="https://www.bilibili.com/video/BV11h4y1R7MJ" data-umami-event="content_recent_click" data-umami-props='{"type":"video","id":"BV11h4y1R7MJ"}' aria-label="播放视频：什么是通识教育（一）"><div class="video-media"><img src="images/video-covers/BV11h4y1R7MJ.webp" alt="什么是通识教育（一）视频封面" width="960" height="540" loading="lazy" decoding="async"><span class="video-play"><i class="fas fa-play"></i></span></div><div class="content-card-copy"><div class="content-meta"><span><i class="far fa-calendar"></i>2023-05-31</span><span>02:37</span></div><h3>什么是通识教育（一）</h3><p>理解自由教育如何滋养独立、完整的心灵。</p></div></button>
+            </div>
+        </section>
+
+        <section class="content-category" data-word="MUSIC" aria-labelledby="musicTitle">
+            <header class="category-header">
+                <div class="category-heading"><span class="category-kicker">Original sound</span><h2 id="musicTitle">音乐</h2></div>
+                <a class="category-link" href="music.html" data-umami-event="content_category_more" data-umami-props='{"type":"music"}'><span>进入音乐页面</span><i class="fas fa-arrow-right"></i></a>
+            </header>
+            <a class="content-card music-layout" href="music.html?track=3353644885&amp;autoplay=1" data-umami-event="content_recent_click" data-umami-props='{"type":"music","id":"haikuo-yuxiang"}'>
+                <div class="music-art"><picture><source srcset="images/haikuo-yuxiang-netease.webp" type="image/webp"><img src="images/haikuo-yuxiang-netease.png" alt="原创音乐《海阔余响》封面" width="512" height="512" loading="lazy" decoding="async"></picture></div>
+                <div class="music-copy"><div class="content-meta"><span><i class="fas fa-headphones"></i>原创单曲</span><span>文鳐夜飞</span></div><h3>《海阔余响》</h3><p>文字抵达不了的地方，让旋律继续表达。关于远方、自由，以及那些仍在心里回响的声音。</p><div class="music-notes"><span>网易云音乐</span><span>在线播放</span><span>原创音乐</span></div><span class="content-action">开始聆听 <i class="fas fa-arrow-right"></i></span></div>
+            </a>
         </section>
     </main>
 
+    <div class="content-video-modal" id="contentVideoModal" hidden>
+        <div class="content-video-backdrop" id="contentVideoBackdrop"></div>
+        <div class="content-video-dialog" role="dialog" aria-modal="true" aria-labelledby="contentVideoTitle">
+            <div class="content-video-modal-header">
+                <h3 id="contentVideoTitle">视频播放</h3>
+                <div class="content-video-modal-actions">
+                    <button type="button" class="content-video-modal-btn" id="contentVideoFullscreen"><i class="fas fa-expand"></i><span>全屏</span></button>
+                    <a class="content-video-modal-btn primary" id="contentVideoOriginal" href="#" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square"></i><span>打开原视频</span></a>
+                    <button type="button" class="content-video-modal-btn" id="contentVideoClose"><i class="fas fa-xmark"></i><span>关闭</span></button>
+                </div>
+            </div>
+            <div class="content-video-stage" id="contentVideoStage">
+                <iframe id="contentVideoFrame" src="about:blank" title="视频播放器" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+        </div>
+    </div>
+
     <div class="footer"></div>
-    <script src="js/umami-config.js"></script><script src="js/analytics.js"></script><script>function toggleMobileMenu(){const n=document.getElementById('navLinks');if(n)n.classList.toggle('active')}</script>
+    <script src="js/umami-config.js"></script><script src="js/analytics.js"></script>
+    <script>
+        function toggleMobileMenu() {
+            const nav = document.getElementById('navLinks');
+            if (nav) nav.classList.toggle('active');
+        }
+
+        (function initContentVideoPlayer() {
+            const modal = document.getElementById('contentVideoModal');
+            const backdrop = document.getElementById('contentVideoBackdrop');
+            const title = document.getElementById('contentVideoTitle');
+            const frame = document.getElementById('contentVideoFrame');
+            const stage = document.getElementById('contentVideoStage');
+            const original = document.getElementById('contentVideoOriginal');
+            const closeButton = document.getElementById('contentVideoClose');
+            const fullscreenButton = document.getElementById('contentVideoFullscreen');
+            let lastTrigger = null;
+
+            function openVideo(trigger) {
+                const bvid = trigger.dataset.bvid;
+                const cid = trigger.dataset.cid;
+                const videoTitle = trigger.dataset.title;
+                lastTrigger = trigger;
+                title.textContent = videoTitle;
+                frame.title = videoTitle;
+                frame.src = 'https://player.bilibili.com/player.html?bvid=' + encodeURIComponent(bvid)
+                    + '&cid=' + encodeURIComponent(cid)
+                    + '&page=1&as_wide=1&high_quality=1&danmaku=0&autoplay=1';
+                original.href = trigger.dataset.watchUrl;
+                modal.hidden = false;
+                document.body.classList.add('content-video-open');
+                closeButton.focus();
+            }
+
+            function closeVideo() {
+                modal.hidden = true;
+                frame.src = 'about:blank';
+                document.body.classList.remove('content-video-open');
+                if (document.fullscreenElement) {
+                    document.exitFullscreen().catch(function () {});
+                }
+                if (lastTrigger) lastTrigger.focus();
+            }
+
+            document.querySelectorAll('.js-content-video').forEach(function (trigger) {
+                trigger.addEventListener('click', function () { openVideo(trigger); });
+            });
+            closeButton.addEventListener('click', closeVideo);
+            backdrop.addEventListener('click', closeVideo);
+            fullscreenButton.addEventListener('click', function () {
+                if (!document.fullscreenElement) {
+                    stage.requestFullscreen().catch(function () {});
+                } else {
+                    document.exitFullscreen().catch(function () {});
+                }
+            });
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape' && !modal.hidden) closeVideo();
+            });
+        }());
+    </script>
 </body>
 </html>

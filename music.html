@@ -819,6 +819,9 @@
 
         async function initPlayer() {
             const SONG_ID = '3353644885';
+            const playerParams = new URLSearchParams(window.location.search);
+            const shouldAutoplay = playerParams.get('autoplay') === '1'
+                && (!playerParams.get('track') || playerParams.get('track') === SONG_ID);
             let ap = null;
             let currentLrc = [];
             let isPlaying = false;
@@ -1126,6 +1129,26 @@
                         document.getElementById('musicHint').innerHTML = '<i class="fas fa-exclamation-circle"></i> 音频加载失败，该歌曲可能需要网易云音乐客户端播放';
                     }
                 });
+
+                if (shouldAutoplay) {
+                    expandPlayer();
+                    const musicCard = document.querySelector('.music-card');
+                    if (musicCard) {
+                        musicCard.scrollIntoView({
+                            behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+                            block: 'center'
+                        });
+                    }
+
+                    document.getElementById('musicHint').innerHTML = '<i class="fas fa-music"></i> 正在播放《海阔余响》';
+                    const playPromise = ap.audio.play();
+                    if (playPromise && typeof playPromise.catch === 'function') {
+                        playPromise.catch(function (error) {
+                            console.warn('自动播放失败:', error);
+                            document.getElementById('musicHint').innerHTML = '<i class="fas fa-music"></i> 已为你打开《海阔余响》播放器';
+                        });
+                    }
+                }
 
             } catch (err) {
                 console.error('播放器初始化失败:', err);

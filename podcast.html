@@ -875,6 +875,7 @@
         let filteredEpisodes = [];
         let currentFilter = 'all';
         let currentPlayer = null;
+        let requestedEpisodeHandled = false;
 
         // 苹果播客 ID（可根据需要修改）
         const APPLE_PODCAST_ID = '1825759955';
@@ -900,6 +901,7 @@
                 allEpisodes.sort((a, b) => new Date(b.date) - new Date(a.date));
                 filteredEpisodes.sort((a, b) => new Date(b.date) - new Date(a.date));
                 renderEpisodes();
+                openRequestedEpisode();
             } catch (error) {
                 console.error('加载播客失败:', error);
                 document.getElementById('contentArea').innerHTML = `
@@ -938,7 +940,7 @@
                         }
 
                         const mappedEpisodes = episodes.map((ep, index) => ({
-                            id: `apple_${index}`,
+                            id: String(ep.trackId || ep.episodeGuid || `apple_${index}`),
                             platform: 'apple',
                             platformName: '苹果播客',
                             title: ep.trackName || '未知标题',
@@ -947,7 +949,7 @@
                             duration: formatDuration(Math.round((ep.trackTimeMillis || 0) / 1000)),
                             audioUrl: ep.episodeUrl || '',
                             coverUrl: optimizeCover(ep.artworkUrl100),
-                            externalUrl: `https://podcasts.apple.com/cn/podcast/id${APPLE_PODCAST_ID}`
+                            externalUrl: ep.trackViewUrl || `https://podcasts.apple.com/cn/podcast/id${APPLE_PODCAST_ID}`
                         }));
 
                         resolve(mappedEpisodes);
@@ -1115,6 +1117,32 @@
             }
         }
 
+        function openRequestedEpisode() {
+            if (requestedEpisodeHandled) return;
+
+            const params = new URLSearchParams(window.location.search);
+            const requestedId = params.get('episode');
+            if (!requestedId) return;
+
+            const episodeIndex = filteredEpisodes.findIndex(ep => String(ep.id) === requestedId);
+            if (episodeIndex === -1) return;
+
+            requestedEpisodeHandled = true;
+            const episodeItem = document.getElementById(`episode-${episodeIndex}`);
+            const details = document.getElementById(`details-${episodeIndex}`);
+            if (details) details.classList.add('show');
+            if (episodeItem) {
+                episodeItem.scrollIntoView({
+                    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+                    block: 'center'
+                });
+            }
+
+            if (params.get('autoplay') === '1') {
+                playEpisode(episodeIndex);
+            }
+        }
+
         // 展开/收起摘要
         function toggleShowNotes(index) {
             const detailsEl = document.getElementById(`details-${index}`);
@@ -1236,9 +1264,14 @@
             if (playBtn) playBtn.innerHTML = '<i class="fas fa-pause"></i>';
             if (speedBtn) speedBtn.textContent = currentSpeed === 1 ? '1x' : currentSpeed + 'x';
 
-            audioEl.play().catch(err => {
-                console.warn('播放失败:', err);
-            });
+            const playPromise = audioEl.play();
+            if (playPromise && typeof playPromise.catch === 'function') {
+                playPromise.catch(err => {
+                    console.warn('自动播放失败:', err);
+                    clearInterval(progressTimer);
+                    if (playBtn) playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                });
+            }
 
             progressTimer = setInterval(updateInlineProgress, 250);
 
