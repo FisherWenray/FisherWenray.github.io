@@ -1641,13 +1641,27 @@
             backdrop-filter: none !important;
         }
 
+        .products-section { --home-section-accent: #c5b358; --home-section-accent-rgb: 197, 179, 88; }
+        .services-section { --home-section-accent: #6f91c8; --home-section-accent-rgb: 111, 145, 200; }
+        .home-content-section { --home-section-accent: #57a994; --home-section-accent-rgb: 87, 169, 148; }
+
         .home-section-header {
-            align-items: flex-end;
+            align-items: stretch;
+            min-height: 96px;
             margin-bottom: clamp(32px, 4vw, 48px);
+            border-bottom: 1px solid rgba(var(--home-section-accent-rgb), .26);
+            background:
+                radial-gradient(circle at 8% 5%, rgba(var(--home-section-accent-rgb), .12), transparent 32%),
+                linear-gradient(90deg, rgba(var(--home-section-accent-rgb), .045), transparent 74%);
         }
 
         .home-section-heading {
+            display: flex;
+            align-items: center;
+            align-self: stretch;
             max-width: 720px;
+            padding: 18px 0 18px 22px;
+            border-left: 6px solid var(--home-section-accent);
         }
 
         .home-section-header .products-title {
@@ -1656,13 +1670,15 @@
         }
 
         .home-section-header .products-title .header-mark {
-            width: 46px;
-            height: 46px;
+            display: none !important;
         }
 
         .home-section-header .products-more-link {
             flex: 0 0 auto;
-            margin-bottom: 4px;
+            align-self: center;
+            margin: 0 18px 0 0;
+            border-color: rgba(var(--home-section-accent-rgb), .24);
+            background: rgba(var(--home-section-accent-rgb), .06);
         }
 
         .home-product-gallery {
@@ -1988,13 +2004,19 @@
             }
 
             .home-section-header {
-                align-items: flex-start;
-                flex-direction: column;
-                gap: 22px;
+                align-items: stretch;
+                flex-direction: row;
+                min-height: 82px;
+                gap: 16px;
             }
 
             .home-section-header .products-title {
                 font-size: clamp(32px, 10vw, 42px);
+            }
+
+            .home-section-header .products-more-link {
+                align-self: center;
+                margin-right: 12px;
             }
 
             .home-product-gallery,
