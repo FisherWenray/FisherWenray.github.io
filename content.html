@@ -158,12 +158,12 @@
         .blog-feature { display: grid; grid-template-rows: 300px auto; }
         .blog-feature .content-card-copy { padding: 25px 26px 27px; }
         .blog-feature h3 { font-size: clamp(23px, 2.8vw, 31px); line-height: 1.38; }
-        .blog-rail { display: grid; grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 18px; }
-        .blog-compact { display: grid; grid-template-columns: 140px minmax(0, 1fr); }
-        .blog-compact-media { min-height: 190px; display: grid; place-items: center; overflow: hidden; background: #f1eee6; }
-        .blog-compact-media picture { display: block; width: 100%; line-height: 0; }
-        .blog-compact-media img { width: 100%; height: auto; object-fit: contain; }
-        .blog-compact .content-card-copy { align-self: center; padding: 19px; }
+        .blog-rail { display: grid; grid-template-rows: repeat(2, auto); align-content: start; gap: 18px; }
+        .blog-compact { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto; }
+        .blog-compact-media { min-height: 0; aspect-ratio: 1725 / 912; display: grid; place-items: center; overflow: hidden; background: #f1eee6; }
+        .blog-compact-media picture { display: block; width: 100%; height: 100%; line-height: 0; }
+        .blog-compact-media img { width: 100%; height: 100%; object-fit: contain; }
+        .blog-compact .content-card-copy { align-self: start; padding: 18px 20px 21px; }
         .blog-compact h3 { font-size: 17px; }
         .blog-compact p { display: none; }
 
@@ -298,9 +298,6 @@
             .category-link { width: 38px; height: 38px; justify-content: center; margin-top: 0; padding: 0; }
             .blog-feature { grid-template-rows: 190px auto; }
             .blog-rail { grid-template-columns: minmax(0, 1fr); }
-            .blog-compact { grid-template-columns: minmax(0, 1fr); }
-            .blog-compact-media { min-height: 0; aspect-ratio: 1725 / 912; }
-            .blog-compact-media picture, .blog-compact-media img { height: 100%; }
             .blog-compact .content-card-copy { padding: 15px; }
             .blog-compact h3 { font-size: 15px; }
             .chapter-list { grid-template-columns: minmax(0, 1fr); }
