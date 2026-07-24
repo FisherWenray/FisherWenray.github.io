@@ -2087,7 +2087,6 @@
             }
         }
     </style>
-    <link rel="stylesheet" href="css/product-studio.css?v=1">
 </head>
 
 <body>
@@ -2113,17 +2112,8 @@
     <main class="page home-gallery">
         <section class="panel hero reveal" style="--delay: 0s;">
             <div class="panel-content">
-                <span class="home-hero-kicker">Independent builder · 2026</span>
                 <h1 class="name">文鳐夜飞</h1>
-                <p class="hero-summary">把 AI、内容与独立产品，做成一套可持续运转的个人系统。正在建设 OneOPC，也持续记录“一人公司”的真实实践。</p>
-                <div class="home-hero-actions" aria-label="快速入口">
-                    <a class="home-hero-action" href="https://www.oneopc.ai/" target="_blank" rel="noopener" data-umami-event="homepage_hero_oneopc">
-                        探索 OneOPC <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
-                    </a>
-                    <a class="home-hero-action" href="software.html" data-umami-event="homepage_hero_products">
-                        查看我的产品 <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                    </a>
-                </div>
+<p class="hero-summary">一个有着嬉皮精神的 geek，在 AI 时代探索“一人公司”的生活方式</p>
 
 
 
@@ -2220,69 +2210,70 @@
         </section>
 
         <!-- 独立开发与产品展示板块 -->
-        <section class="section products-section home-editorial-section studio-products reveal" style="--delay: 0.1s;" aria-labelledby="productsTitle">
-            <header class="studio-section-heading">
-                <div class="studio-heading-main">
-                    <span class="studio-eyebrow">Product studio / 03 live systems</span>
-                    <h2 id="productsTitle">从方法，到工具。</h2>
+        <section class="section products-section home-editorial-section reveal" style="--delay: 0.1s;" aria-labelledby="productsTitle">
+            <div class="products-header home-section-header">
+                <div class="home-section-heading">
+                    <h2 class="products-title" id="productsTitle">
+                        <span class="header-mark" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" focusable="false">
+                                <rect x="3.5" y="4.5" width="7" height="7" rx="1.5"/>
+                                <rect x="13.5" y="4.5" width="7" height="7" rx="1.5"/>
+                                <rect x="3.5" y="14.5" width="7" height="6" rx="1.5"/>
+                                <path d="M14 15.5h6.5"/>
+                                <path d="M17.25 12.5v8"/>
+                            </svg>
+                        </span>
+                        我的产品
+                    </h2>
                 </div>
-                <div class="studio-heading-side">
-                    <p>我把真实使用中的方法做成产品：一套经营手册、一个信息入口，以及一块市场观察面板。</p>
-                    <a href="software.html" data-umami-event="homepage_products_more">
-                        查看完整产品档案 <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                    </a>
-                </div>
-            </header>
+                <a href="software.html" class="products-more-link" data-umami-event="homepage_products_more">
+                    <span>全部产品</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
 
-            <div class="studio-product-stack">
-                <a href="https://www.oneopc.ai/" target="_blank" rel="noopener" class="studio-lead-card" data-umami-event="homepage_product_click" data-umami-props='{"target":"oneopc_site"}'>
-                    <div class="studio-lead-copy">
-                        <span class="studio-lead-kicker">Flagship project · field manual</span>
-                        <h3>OneOPC</h3>
-                        <p>中文世界实用的一人公司工作流、模板、工具栈与真实案例库。从解决一个问题，到形成经营闭环。</p>
-                        <div class="studio-stats" aria-label="OneOPC 内容规模">
-                            <span class="studio-stat"><strong>05</strong><span>工作流</span></span>
-                            <span class="studio-stat"><strong>10</strong><span>模板</span></span>
-                            <span class="studio-stat"><strong>30</strong><span>工具</span></span>
-                            <span class="studio-stat"><strong>05</strong><span>案例</span></span>
-                        </div>
-                        <span class="studio-lead-action">进入 OneOPC <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
+            <div class="home-product-gallery">
+                <!-- 万象导航 -->
+                <a href="https://nav.wenyaoyefei.com" target="_blank" rel="noopener" class="product-card home-product-main" data-umami-event="homepage_product_click" data-umami-props='{"target":"bookmark_site"}'>
+                    <div class="product-cover product-screenshot-cover">
+                        <picture>
+                            <source srcset="images/zhijing-product-screenshot.webp" type="image/webp">
+                            <img class="product-screenshot" src="images/zhijing-product-screenshot.png" alt="万象导航产品界面截图" width="1440" height="900" loading="lazy" decoding="async">
+                        </picture>
                     </div>
-                    <div class="studio-lead-visual">
-                        <div class="studio-screen">
-                            <img src="images/oneopc-product-screenshot.webp" alt="OneOPC 一人公司知识库新版首页" width="1440" height="900" loading="lazy" decoding="async">
-                        </div>
+                    <div class="product-info">
+                        <span class="product-tag"><i class="fas fa-compass"></i> 核心产品 / 生产力工作台</span>
+                        <h3 class="product-name">万象导航</h3>
+                        <p class="product-desc">聚合 5000+ 精选标签与常用工具，支持智能全局检索和树状分类，为知识工作者提供清晰、高效的信息路径。</p>
                     </div>
                 </a>
-
-                <div class="studio-secondary-grid">
-                    <a href="https://nav.wenyaoyefei.com" target="_blank" rel="noopener" class="studio-mini-card" data-umami-event="homepage_product_click" data-umami-props='{"target":"bookmark_site"}'>
-                        <div class="studio-mini-copy">
-                            <span class="studio-mini-index">02 / knowledge entrance</span>
-                            <h3>万象导航</h3>
-                            <p>5000+ 精选标签与常用工具，一处完成检索、分类与信息抵达。</p>
-                            <span class="studio-mini-link">打开工作台 ↗</span>
-                        </div>
-                        <div class="studio-mini-visual">
+                <!-- 股票行情云图 -->
+                <a href="https://stock.wenyaoyefei.com/" target="_blank" rel="noopener" class="product-card home-product-secondary" data-umami-event="homepage_product_click" data-umami-props='{"target":"stock_site"}'>
+                        <div class="product-cover product-screenshot-cover">
                             <picture>
-                                <source srcset="images/zhijing-product-screenshot.webp" type="image/webp">
-                                <img src="images/zhijing-product-screenshot.png" alt="万象导航产品界面" width="1440" height="900" loading="lazy" decoding="async">
+                                <img class="product-screenshot" src="images/stock-product-screenshot.webp" alt="股票行情云图产品界面截图" width="1280" height="800" loading="lazy" decoding="async">
                             </picture>
                         </div>
-                    </a>
+                        <div class="product-info">
+                            <span class="product-tag"><i class="fas fa-chart-line"></i> 投资工具</span>
+                            <h3 class="product-name">股票行情云图</h3>
+                            <p class="product-desc">实时行情、关键指标与可视化数据云图。</p>
+                        </div>
+                </a>
 
-                    <a href="https://stock.wenyaoyefei.com/" target="_blank" rel="noopener" class="studio-mini-card" data-umami-event="homepage_product_click" data-umami-props='{"target":"stock_site"}'>
-                        <div class="studio-mini-copy">
-                            <span class="studio-mini-index">03 / market dashboard</span>
-                            <h3>股票行情云图</h3>
-                            <p>把港股与美股的实时行情、关键指标和市场结构压缩进一块观察面板。</p>
-                            <span class="studio-mini-link">查看行情 ↗</span>
+                <!-- OneOPC.ai -->
+                <a href="https://www.oneopc.ai/" target="_blank" rel="noopener" class="product-card home-product-secondary" data-umami-event="homepage_product_click" data-umami-props='{"target":"oneopc_site"}'>
+                        <div class="product-cover product-screenshot-cover">
+                            <picture>
+                                <img class="product-screenshot" src="images/oneopc-product-screenshot.webp" alt="OneOPC.ai 产品界面截图" width="1280" height="800" loading="lazy" decoding="async">
+                            </picture>
                         </div>
-                        <div class="studio-mini-visual">
-                            <img src="images/stock-product-screenshot.webp" alt="股票行情云图产品界面" width="1280" height="800" loading="lazy" decoding="async">
+                        <div class="product-info">
+                            <span class="product-tag"><i class="fas fa-robot"></i> AI 工具</span>
+                            <h3 class="product-name">OneOPC.ai</h3>
+                            <p class="product-desc">面向“一人公司”工作流的 AI 效率产品。</p>
                         </div>
-                    </a>
-                </div>
+                </a>
             </div>
         </section>
 
