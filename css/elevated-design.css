@@ -574,7 +574,7 @@ body::after {
 }
 
 .name::after {
-    content: "Follow Heart. Build Free.";
+    content: "Follow heart.Build free.";
     display: block;
     width: fit-content;
     margin-top: 18px;
@@ -585,7 +585,7 @@ body::after {
     font-weight: 600;
     color: var(--primary);
     letter-spacing: 0.08em;
-    text-transform: uppercase;
+    text-transform: none;
 }
 
 .hero-summary {
