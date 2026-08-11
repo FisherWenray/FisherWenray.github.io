@@ -49,16 +49,13 @@
         .quote-list { list-style: none; padding: 0 !important; counter-reset: quote; }
         .quote-list li { position: relative; padding: 16px 18px 16px 52px; border-left: 2px solid var(--gold); background: rgba(var(--primary-rgb), .055); border-radius: 0 var(--radius-md) var(--radius-md) 0; }
         .quote-list li::before { counter-increment: quote; content: "0" counter(quote); position: absolute; left: 17px; top: 18px; color: var(--gold); font: 600 12px/1.9 var(--font-mono); }
-        .milestones, .service-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-        .milestone, .service-card { padding: 20px; border: 1px solid rgba(var(--primary-rgb), .2); border-radius: var(--radius-md); background: rgba(var(--primary-rgb), .045); }
-        .milestone strong, .service-card strong { display: block; margin-bottom: 7px; color: var(--ink); font-size: 17px; }
-        .milestone span, .service-card p { color: var(--ink-soft); font-size: 14px; line-height: 1.75; }
-        .service-card { position: relative; padding-top: 52px; }
-        .service-card::before { content: attr(data-number); position: absolute; left: 20px; top: 18px; color: var(--gold); font: 600 12px/1 var(--font-mono); letter-spacing: .08em; }
-        .service-grid .service-card:last-child { grid-column: 1 / -1; }
+        .milestones { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+        .milestone { padding: 20px; border: 1px solid rgba(var(--primary-rgb), .2); border-radius: var(--radius-md); background: rgba(var(--primary-rgb), .045); }
+        .milestone strong { display: block; margin-bottom: 7px; color: var(--ink); font-size: 17px; }
+        .milestone span { color: var(--ink-soft); font-size: 14px; line-height: 1.75; }
         .book-link { color: var(--gold); text-underline-offset: 4px; }
         [data-theme='dark'] .about-section h2 { color: #fff; text-shadow: 0 0 12px rgba(0, 78, 140, .35); }
-        @media (max-width: 620px) { .milestones, .service-grid { grid-template-columns: 1fr; } .about-page { margin-top: 18px; } }
+        @media (max-width: 620px) { .milestones { grid-template-columns: 1fr; } .about-page { margin-top: 18px; } }
         @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
     </style>
 </head>
@@ -76,9 +73,8 @@
         <div class="about-content">
             <div class="about-sections">
                 <section class="about-section" id="who"><span class="section-number">01 / WHO I AM</span><h2>我是谁</h2><p class="about-lede"><strong>一句话总结：</strong>我是一个有着人文精神的极客，专注推动 AI 在企业真实业务中落地，探索 AI 如何让一人公司成为可能</p></section>
-                <section class="about-section" id="services"><span class="section-number">02 / SERVICES</span><h2>我的服务</h2><div class="service-grid"><article class="service-card" data-number="01"><strong>企业 AI 落地服务</strong><p>面向有 AI 转型需求的企业，提供从业务诊断、场景识别、方案设计、原型验证到生产落地的一体化服务。</p><p>重点不是简单“接入一个大模型”，而是深入企业真实业务流程，找到 AI 最能创造价值的环节，并结合大模型、Agent、知识库、自动化工作流等技术，帮助企业提升效率、降低成本、优化流程，最终形成可持续运行的 AI 业务系统。</p></article><article class="service-card" data-number="02"><strong>FDE 培训</strong><p>面向希望进入 AI 落地领域的个人、开发者、产品经理和小团队，提供系统化的 FDE（Forward Deployed Engineer）能力培训。</p><p>帮助学习者建立真正面向企业场景的 AI 落地能力，能够独立完成客户沟通、需求分析、方案设计、项目实施与持续优化，成长为能够用 AI 解决真实业务问题的 FDE。</p></article><article class="service-card" data-number="03"><strong>企业级大模型 Token 服务</strong><p>作为企业 AI 项目落地的配套能力，聚合 Claude、GPT、Gemini 等海外主流模型，以及 GLM、豆包等国内主流模型，为有需要的企业提供稳定、便捷、高性价比的 Token 服务。</p></article></div></section>
-                <section class="about-section" id="career"><span class="section-number">03 / EXPERIENCE</span><h2>职业经历</h2><ul><li>毕业于苏州大学数学系。</li><li>曾就职于多家知名 IT 公司，担任程序员、产品经理及相关管理岗位，主要面向 B 端企业交付软件及硬件。</li><li>拥有 PMP、信息系统项目管理师证书。</li><li>《投资悟道、渡人渡己》栏目专题书籍主编，已出品<a class="book-link" href="books.html">《行思无界：从见天地到见自己》</a>。</li></ul></section>
-                <section class="about-section" id="interests"><span class="section-number">04 / LIFE</span><h2>兴趣爱好</h2><h3>旅行</h3><p>我曾是一名背包客，利用工作之外的时间走遍中国，并游历了大半个东南亚。旅行对我而言，不只是抵达不同的地方，更是一种认识世界、理解他人和重新发现自己的方式。</p><h3>自行车、摩托车</h3><div class="milestones"><div class="milestone"><strong>2012 · 骑行越南</strong><span>从广西东兴出发，历时 15 天抵达胡志明市。</span></div><div class="milestone"><strong>2014 · 骑行拉萨</strong><span>从兰州出发，沿途骑行 28 天，最终抵达拉萨。</span></div><div class="milestone"><strong>2024 · 铁人三项</strong><span>完成人生中的第一场铁人三项。</span></div></div><h3>民谣摇滚</h3><p>我是民谣与摇滚乐的重度爱好者。从中国城市民谣，到美国 20 世纪 60 年代的民谣摇滚，我着迷于音乐背后的自由精神与人文关怀。</p><h3>终身学习</h3><p>我长期关注通识教育与自我成长，并保持无目的、跨领域的广泛阅读，在历史、哲学、社会、科技、商业与艺术之间不断寻找底层关系。</p></section>
+                <section class="about-section" id="career"><span class="section-number">02 / EXPERIENCE</span><h2>职业经历</h2><ul><li>毕业于苏州大学数学系。</li><li>曾就职于多家知名 IT 公司，担任程序员、产品经理及相关管理岗位，主要面向 B 端企业交付软件及硬件。</li><li>拥有 PMP、信息系统项目管理师证书。</li><li>《投资悟道、渡人渡己》栏目专题书籍主编，已出品<a class="book-link" href="books.html">《行思无界：从见天地到见自己》</a>。</li></ul></section>
+                <section class="about-section" id="interests"><span class="section-number">03 / LIFE</span><h2>兴趣爱好</h2><h3>旅行</h3><p>我曾是一名背包客，利用工作之外的时间走遍中国，并游历了大半个东南亚。旅行对我而言，不只是抵达不同的地方，更是一种认识世界、理解他人和重新发现自己的方式。</p><h3>自行车、摩托车</h3><div class="milestones"><div class="milestone"><strong>2012 · 骑行越南</strong><span>从广西东兴出发，历时 15 天抵达胡志明市。</span></div><div class="milestone"><strong>2014 · 骑行拉萨</strong><span>从兰州出发，沿途骑行 28 天，最终抵达拉萨。</span></div><div class="milestone"><strong>2024 · 铁人三项</strong><span>完成人生中的第一场铁人三项。</span></div></div><h3>民谣摇滚</h3><p>我是民谣与摇滚乐的重度爱好者。从中国城市民谣，到美国 20 世纪 60 年代的民谣摇滚，我着迷于音乐背后的自由精神与人文关怀。</p><h3>终身学习</h3><p>我长期关注通识教育与自我成长，并保持无目的、跨领域的广泛阅读，在历史、哲学、社会、科技、商业与艺术之间不断寻找底层关系。</p></section>
             </div>
         </div>
     </main>
