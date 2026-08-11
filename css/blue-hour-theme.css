@@ -1,0 +1,526 @@
+/*
+ * Blue-hour night-flight theme
+ * Loaded last on every page so the dark theme keeps its night identity
+ * without using a full-page near-black background.
+ */
+
+html[data-theme='dark'] {
+    --primary: #235b78;
+    --primary-rgb: 35, 91, 120;
+    --deep: #102f43;
+    --gold: #d3ad57;
+    --ink: #102f43;
+    --ink-soft: #566c78;
+    --paper: #d7e2e6;
+    --surface: rgba(238, 243, 243, 0.9);
+    --surface-strong: rgba(243, 247, 247, 0.96);
+    --line: rgba(42, 82, 104, 0.18);
+    --line-strong: rgba(42, 82, 104, 0.32);
+    --shadow: 0 18px 42px rgba(29, 60, 77, 0.12);
+    --shadow-hover: 0 24px 54px rgba(29, 60, 77, 0.18);
+    background: #c8d7df;
+}
+
+[data-theme='dark'] body {
+    color: var(--ink) !important;
+    background:
+        radial-gradient(900px 480px at 88% 12%, rgba(255, 255, 255, 0.48), transparent 66%),
+        radial-gradient(760px 460px at 5% 46%, rgba(93, 135, 156, 0.16), transparent 70%),
+        linear-gradient(180deg, #b7cad4 0%, #d7e2e6 34%, #e4ebed 68%, #d4e0e5 100%) !important;
+    background-size: auto !important;
+}
+
+[data-theme='dark'] body::before {
+    background:
+        radial-gradient(760px 260px at 50% 4%, rgba(255, 255, 255, 0.24), transparent 72%),
+        linear-gradient(180deg, rgba(17, 48, 68, 0.08), transparent 28%, rgba(255, 255, 255, 0.16)) !important;
+    filter: none !important;
+    opacity: 1 !important;
+}
+
+[data-theme='dark'] body::after {
+    background-image:
+        radial-gradient(circle at 18% 22%, rgba(255, 255, 255, 0.3) 0 0.6px, transparent 0.9px),
+        radial-gradient(circle at 74% 68%, rgba(23, 62, 83, 0.12) 0 0.5px, transparent 0.8px) !important;
+    background-size: 5px 5px, 7px 7px !important;
+    opacity: 0.16 !important;
+}
+
+/* Navigation keeps the night horizon on every page. */
+[data-theme='dark'] .top-nav {
+    background: linear-gradient(90deg, rgba(8, 34, 52, 0.94), rgba(25, 66, 91, 0.92)) !important;
+    border-bottom-color: rgba(211, 173, 87, 0.24) !important;
+    box-shadow: 0 10px 30px rgba(8, 34, 52, 0.18) !important;
+}
+
+[data-theme='dark'] .nav-links a {
+    color: rgba(225, 236, 241, 0.78) !important;
+}
+
+[data-theme='dark'] .nav-links a:hover,
+[data-theme='dark'] .nav-links a.active,
+[data-theme='dark'] .nav-links a:active,
+[data-theme='dark'] .nav-links a:focus-visible {
+    color: #fff !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(211, 173, 87, 0.26) !important;
+    box-shadow: inset 0 -2px 0 var(--gold) !important;
+}
+
+[data-theme='dark'] .theme-toggle,
+[data-theme='dark'] .mobile-menu-btn {
+    color: #f1cf78 !important;
+    background: rgba(255, 255, 255, 0.07) !important;
+    border-color: rgba(211, 173, 87, 0.28) !important;
+    box-shadow: none !important;
+}
+
+/* Inner-page mastheads use a compact version of the homepage sky. */
+[data-theme='dark'] :where(
+    .standard-page-header,
+    .container > .header,
+    .business-hero
+) {
+    background:
+        radial-gradient(circle at 12% 20%, rgba(255, 255, 255, 0.72) 0 1px, transparent 1.4px),
+        radial-gradient(circle at 34% 13%, rgba(255, 255, 255, 0.42) 0 0.8px, transparent 1.2px),
+        radial-gradient(circle at 68% 26%, rgba(255, 255, 255, 0.55) 0 0.8px, transparent 1.2px),
+        radial-gradient(circle at 88% 20%, rgba(235, 226, 188, 0.22), transparent 15%),
+        linear-gradient(125deg, #0d2d44 0%, #1b4a64 58%, #6f95a8 100%) !important;
+    border-color: rgba(198, 219, 228, 0.3) !important;
+    box-shadow: 0 24px 58px rgba(16, 47, 67, 0.2) !important;
+    backdrop-filter: none !important;
+}
+
+[data-theme='dark'] body .standard-page-header,
+[data-theme='dark'] body .container > .header,
+[data-theme='dark'] body .business-hero {
+    background:
+        radial-gradient(circle at 12% 20%, rgba(255, 255, 255, 0.72) 0 1px, transparent 1.4px),
+        radial-gradient(circle at 34% 13%, rgba(255, 255, 255, 0.42) 0 0.8px, transparent 1.2px),
+        radial-gradient(circle at 68% 26%, rgba(255, 255, 255, 0.55) 0 0.8px, transparent 1.2px),
+        radial-gradient(circle at 88% 20%, rgba(235, 226, 188, 0.22), transparent 15%),
+        linear-gradient(125deg, #0d2d44 0%, #1b4a64 58%, #6f95a8 100%) !important;
+    border-color: rgba(198, 219, 228, 0.3) !important;
+    box-shadow: 0 24px 58px rgba(16, 47, 67, 0.2) !important;
+    backdrop-filter: none !important;
+}
+
+[data-theme='dark'] :where(
+    .standard-page-header,
+    .container > .header,
+    .business-hero
+)::before {
+    background: linear-gradient(90deg, var(--gold), rgba(216, 229, 235, 0.72)) !important;
+}
+
+[data-theme='dark'] :where(
+    .standard-page-header,
+    .container > .header,
+    .business-hero
+) :where(h1, h2, .header-title, .products-title) {
+    color: #fff !important;
+    text-shadow: 0 8px 28px rgba(5, 25, 40, 0.26) !important;
+}
+
+[data-theme='dark'] body .standard-page-header :where(h1, h2, .header-title),
+[data-theme='dark'] body .container > .header :where(h1, h2, .header-title),
+[data-theme='dark'] body .business-hero :where(h1, h2, .header-title) {
+    color: #fff !important;
+    text-shadow: 0 8px 28px rgba(5, 25, 40, 0.26) !important;
+}
+
+[data-theme='dark'] :where(
+    .standard-page-header,
+    .container > .header,
+    .business-hero
+) :where(p, .header-subtitle) {
+    color: rgba(231, 241, 245, 0.82) !important;
+}
+
+[data-theme='dark'] .standard-page-header .header-subtitle,
+[data-theme='dark'] .standard-page-header > p,
+[data-theme='dark'] .container > .header .header-subtitle,
+[data-theme='dark'] .container > .header > p,
+[data-theme='dark'] .business-hero .header-subtitle,
+[data-theme='dark'] .business-hero > p {
+    color: rgba(231, 241, 245, 0.84) !important;
+}
+
+[data-theme='dark'] body .standard-page-header p,
+[data-theme='dark'] body .container > .header p,
+[data-theme='dark'] body .business-hero p {
+    color: rgba(231, 241, 245, 0.84) !important;
+}
+
+[data-theme='dark'] :where(
+    .standard-page-header,
+    .container > .header,
+    .business-hero
+) .header-mark {
+    color: #f0c968 !important;
+}
+
+/* Moonlit surfaces across directory, media, product and reading pages. */
+[data-theme='dark'] :where(
+    .panel:not(.hero),
+    .section:not(.home-editorial-section),
+    .about-section,
+    .service-offer,
+    .content-category,
+    .media-section,
+    .content-card,
+    .software-card,
+    .product-card,
+    .book-card,
+    .video-card,
+    .episode-card,
+    .episode-item,
+    .music-card,
+    .podcast-shell,
+    .article-card,
+    .tool-card,
+    .music-player,
+    .mini-player,
+    .custom-player,
+    .player-skeleton,
+    .book-sidebar,
+    .book-main,
+    .page > .container
+) {
+    color: var(--ink) !important;
+    background: var(--surface-strong) !important;
+    border-color: var(--line) !important;
+    box-shadow: var(--shadow) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+[data-theme='dark'] :where(
+    .panel:not(.hero),
+    .section:not(.home-editorial-section),
+    .about-section,
+    .service-offer,
+    .content-category,
+    .media-section,
+    .content-card,
+    .software-card,
+    .product-card,
+    .book-card,
+    .video-card,
+    .episode-card,
+    .episode-item,
+    .music-card,
+    .article-card,
+    .tool-card
+):hover {
+    border-color: var(--line-strong) !important;
+    box-shadow: var(--shadow-hover) !important;
+}
+
+/* Section and card typography returns to ink-blue on light surfaces. */
+[data-theme='dark'] :where(
+    .about-section h2,
+    .about-section h3,
+    .services-directory-head h2,
+    .offer-copy h3,
+    .category-header h2,
+    .content-card h3,
+    .book-copy h3,
+    .podcast-name strong,
+    .music-copy h3,
+    .media-section h2,
+    .episode-title,
+    .mini-title,
+    .section-title,
+    .card-title,
+    .product-name,
+    .channel-title,
+    .book-title,
+    .book-reader-title,
+    .book-sidebar-brand h2,
+    .home-content-entry h3
+) {
+    color: #15384d !important;
+    text-shadow: none !important;
+}
+
+[data-theme='dark'] body .about-section :where(h2, h3),
+[data-theme='dark'] body .service-offer .offer-copy h3,
+[data-theme='dark'] body .content-category :where(.category-header h2, .content-card h3, .book-copy h3, .music-copy h3),
+[data-theme='dark'] body .media-section :where(h2, .episode-title, .mini-title),
+[data-theme='dark'] body .software-card .card-title,
+[data-theme='dark'] body .product-card .product-name,
+[data-theme='dark'] body .book-card .book-title,
+[data-theme='dark'] body .podcast-shell :where(.episode-title, .podcast-name strong),
+[data-theme='dark'] body .book-main :where(.book-reader-title, .book-title),
+[data-theme='dark'] body .book-sidebar .book-sidebar-brand h2 {
+    color: #15384d !important;
+    text-shadow: none !important;
+}
+
+[data-theme='dark'] :where(
+    .about-section,
+    .service-offer,
+    .content-category,
+    .media-section,
+    .content-card,
+    .software-card,
+    .product-card,
+    .book-card,
+    .video-card,
+    .episode-card,
+    .episode-item,
+    .music-card,
+    .podcast-shell,
+    .article-card,
+    .book-main,
+    .page > .container
+) :where(p, li, .description, .card-description, .card-desc, .product-desc, .episode-summary, .channel-desc) {
+    color: #586e79 !important;
+}
+
+[data-theme='dark'] :where(
+    .about-section,
+    .service-offer,
+    .content-category,
+    .media-section,
+    .content-card,
+    .software-card,
+    .product-card,
+    .book-card,
+    .video-card,
+    .episode-card,
+    .episode-item,
+    .music-card,
+    .podcast-shell,
+    .article-card,
+    .book-main,
+    .page > .container
+) strong {
+    color: #173e55 !important;
+    text-shadow: none !important;
+}
+
+/* Controls and metadata use ocean blue; gold is reserved for active accents. */
+[data-theme='dark'] :where(
+    .tag,
+    .filter-btn,
+    .filter-tab,
+    .article-tag,
+    .article-category,
+    .card-tag,
+    .product-tag,
+    .platform-link,
+    .coming-soon,
+    .archive-link,
+    .category-link
+) {
+    color: #285c75 !important;
+    background: rgba(35, 91, 120, 0.08) !important;
+    border-color: rgba(35, 91, 120, 0.17) !important;
+    box-shadow: none !important;
+}
+
+[data-theme='dark'] :where(
+    .tag,
+    .filter-btn,
+    .filter-tab,
+    .article-category,
+    .card-tag,
+    .platform-link,
+    .category-link
+):hover,
+[data-theme='dark'] :where(.filter-btn.active, .filter-tab.active) {
+    color: #fff !important;
+    background: #235b78 !important;
+    border-color: #235b78 !important;
+    box-shadow: 0 12px 26px rgba(35, 91, 120, 0.18) !important;
+}
+
+[data-theme='dark'] :where(input, textarea, select, .search-box input) {
+    color: #17384b !important;
+    background: rgba(249, 251, 251, 0.9) !important;
+    border-color: rgba(42, 82, 104, 0.2) !important;
+}
+
+[data-theme='dark'] :where(input, textarea)::placeholder {
+    color: rgba(74, 99, 113, 0.58) !important;
+}
+
+/* Article and book reading remain bright and comfortable. */
+[data-theme='dark'] .article-header {
+    background:
+        radial-gradient(circle at 16% 18%, rgba(255, 255, 255, 0.54) 0 0.8px, transparent 1.2px),
+        radial-gradient(circle at 76% 26%, rgba(255, 255, 255, 0.4) 0 0.7px, transparent 1.1px),
+        linear-gradient(125deg, #12354b, #235b78 66%, #7096a8) !important;
+    border-bottom-color: rgba(211, 173, 87, 0.3) !important;
+}
+
+[data-theme='dark'] body .article-header {
+    background:
+        radial-gradient(circle at 16% 18%, rgba(255, 255, 255, 0.54) 0 0.8px, transparent 1.2px),
+        radial-gradient(circle at 76% 26%, rgba(255, 255, 255, 0.4) 0 0.7px, transparent 1.1px),
+        linear-gradient(125deg, #12354b, #235b78 66%, #7096a8) !important;
+    border-bottom-color: rgba(211, 173, 87, 0.3) !important;
+}
+
+[data-theme='dark'] body .article-header .article-title {
+    color: #fff !important;
+    text-shadow: 0 8px 28px rgba(5, 25, 40, 0.24) !important;
+}
+
+[data-theme='dark'] body .article-header :where(.article-meta, .article-meta span, .article-meta a) {
+    color: rgba(229, 239, 243, 0.76) !important;
+}
+
+[data-theme='dark'] :where(
+    .article-title,
+    .article-content h1,
+    .article-content h2,
+    .article-content h3,
+    .article-content h4,
+    .book-content h1,
+    .book-content h2,
+    .book-content h3,
+    .book-content h4
+) {
+    color: #15384d !important;
+    text-shadow: none !important;
+}
+
+[data-theme='dark'] :where(
+    .article-content,
+    .article-content p,
+    .article-content li,
+    .book-content,
+    .book-content p,
+    .book-content li
+) {
+    color: #3f5967 !important;
+}
+
+[data-theme='dark'] body .article-content,
+[data-theme='dark'] body .article-content p,
+[data-theme='dark'] body .article-content li,
+[data-theme='dark'] body .book-content,
+[data-theme='dark'] body .book-content p,
+[data-theme='dark'] body .book-content li {
+    color: #3f5967 !important;
+}
+
+[data-theme='dark'] body .article-content :where(h1, h2, h3, h4),
+[data-theme='dark'] body .book-content :where(h1, h2, h3, h4) {
+    color: #15384d !important;
+    text-shadow: none !important;
+}
+
+[data-theme='dark'] body :where(.article-content, .book-content) strong {
+    color: #8f681c !important;
+    text-shadow: none !important;
+}
+
+[data-theme='dark'] :where(.article-content blockquote, .book-content blockquote, blockquote) {
+    color: #4d6673 !important;
+    background: rgba(35, 91, 120, 0.08) !important;
+    border-left-color: var(--gold) !important;
+}
+
+[data-theme='dark'] :where(.article-content code, .book-content code) {
+    color: #8f681c !important;
+    background: rgba(211, 173, 87, 0.12) !important;
+}
+
+[data-theme='dark'] :where(.article-content pre, .book-content pre) {
+    color: #dfecef !important;
+    background: linear-gradient(145deg, #102f43, #1e526c) !important;
+    border-color: rgba(211, 173, 87, 0.22) !important;
+}
+
+[data-theme='dark'] .book-shell {
+    background: transparent !important;
+}
+
+[data-theme='dark'] .book-sidebar {
+    background: rgba(222, 233, 237, 0.94) !important;
+}
+
+[data-theme='dark'] .book-main {
+    background: rgba(246, 249, 249, 0.97) !important;
+}
+
+/* Players keep one controlled night accent rather than returning the whole page to black. */
+[data-theme='dark'] :where(.mini-player, .custom-player, .music-player, .player-skeleton) {
+    background: linear-gradient(145deg, #12354b, #235b78) !important;
+    border-color: rgba(211, 173, 87, 0.24) !important;
+    box-shadow: 0 20px 46px rgba(20, 53, 72, 0.22) !important;
+}
+
+[data-theme='dark'] :where(.mini-player, .custom-player, .music-player, .player-skeleton) :where(h2, h3, strong, p, span) {
+    color: #eef6f8 !important;
+}
+
+[data-theme='dark'] .aplayer {
+    color: #15384d !important;
+    background: rgba(244, 248, 248, 0.96) !important;
+    border-color: rgba(42, 82, 104, 0.18) !important;
+    box-shadow: var(--shadow) !important;
+}
+
+[data-theme='dark'] .aplayer .aplayer-info .aplayer-music .aplayer-title,
+[data-theme='dark'] .aplayer .aplayer-list ol li {
+    color: #294b5d !important;
+}
+
+[data-theme='dark'] .aplayer .aplayer-list ol li:hover,
+[data-theme='dark'] .aplayer .aplayer-list ol li.aplayer-list-light {
+    background: rgba(35, 91, 120, 0.08) !important;
+}
+
+/* Modal dialogs stay nocturnal so QR and media overlays retain focus. */
+[data-theme='dark'] :where(.modal-content, .contact-modal-panel) {
+    color: #e8f1f4 !important;
+    background: linear-gradient(145deg, #12354b, #1f526d) !important;
+    border-color: rgba(211, 173, 87, 0.28) !important;
+    box-shadow: 0 30px 76px rgba(8, 34, 52, 0.38) !important;
+}
+
+[data-theme='dark'] :where(.modal-content, .contact-modal-panel) :where(h2, h3) {
+    color: #fff !important;
+}
+
+[data-theme='dark'] :where(.modal-content, .contact-modal-panel) p {
+    color: rgba(224, 236, 241, 0.78) !important;
+}
+
+/* Footer lands on the moonlit field instead of fading back to black. */
+[data-theme='dark'] .footer {
+    color: #60737d !important;
+    border-top-color: rgba(42, 82, 104, 0.2) !important;
+}
+
+[data-theme='dark'] .footer-name,
+[data-theme='dark'] .footer-name:hover,
+[data-theme='dark'] .footer-name:focus-visible,
+[data-theme='dark'] .footer-name:active,
+[data-theme='dark'] .footer-name:visited {
+    color: #15384d !important;
+}
+
+[data-theme='dark'] .footer-nav-group > span {
+    color: #a27d2f !important;
+}
+
+[data-theme='dark'] .footer-nav-group a {
+    color: #60737d !important;
+}
+
+[data-theme='dark'] .footer-nav-group a:hover {
+    color: #235b78 !important;
+}
+
+@media (max-width: 760px) {
+    [data-theme='dark'] .nav-links {
+        background: rgba(12, 43, 63, 0.98) !important;
+        border-color: rgba(211, 173, 87, 0.2) !important;
+    }
+}
