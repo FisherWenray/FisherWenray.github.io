@@ -328,6 +328,19 @@
     </style>
     <link rel="stylesheet" href="css/blue-hour-theme.css?v=3">
     <style id="content-category-sky">
+        [data-theme='dark'] body .content-category {
+            background: transparent !important;
+            border: 0 !important;
+            box-shadow: none !important;
+            backdrop-filter: none !important;
+        }
+
+        [data-theme='dark'] body .content-category::before,
+        [data-theme='dark'] body .content-category::after {
+            content: none !important;
+            display: none !important;
+        }
+
         [data-theme='dark'] body .content-category .category-header {
             background:
                 radial-gradient(circle at 8% 19%, rgba(255, 255, 255, .82) 0 1px, transparent 1.5px),
