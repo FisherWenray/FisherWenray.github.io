@@ -108,13 +108,13 @@
 
         .hero-flying-fish {
             position: absolute;
-            top: 3%;
-            right: -4%;
+            top: 5%;
+            right: 37%;
             z-index: 0;
-            width: clamp(420px, 55vw, 720px);
+            width: clamp(150px, 18vw, 220px);
             pointer-events: none;
-            opacity: .58;
-            filter: drop-shadow(0 20px 32px rgba(5, 31, 47, .18));
+            opacity: .72;
+            filter: drop-shadow(0 12px 20px rgba(5, 31, 47, .18));
             animation: hero-fish-glide 11s ease-in-out infinite;
         }
 
@@ -127,21 +127,14 @@
 
         .hero-fish-wing {
             fill: url(#heroFishWing);
-            stroke: rgba(207, 229, 237, .7);
-            stroke-width: 1.4;
+            stroke: rgba(213, 232, 239, .58);
+            stroke-width: 1.2;
         }
 
         .hero-fish-body {
             fill: url(#heroFishBody);
-            stroke: rgba(234, 241, 238, .76);
-            stroke-width: 1.5;
-        }
-
-        .hero-fish-detail {
-            fill: none;
-            stroke: rgba(232, 239, 235, .6);
-            stroke-width: 1.2;
-            stroke-linecap: round;
+            stroke: rgba(235, 242, 240, .68);
+            stroke-width: 1.3;
         }
 
         .hero-fish-eye {
@@ -149,17 +142,9 @@
             filter: drop-shadow(0 0 6px rgba(240, 201, 104, .7));
         }
 
-        .hero-fish-trail {
-            fill: none;
-            stroke: rgba(224, 185, 96, .62);
-            stroke-width: 1.2;
-            stroke-linecap: round;
-            stroke-dasharray: 3 8;
-        }
-
         @keyframes hero-fish-glide {
             0%, 100% { transform: translate3d(0, 0, 0) rotate(-2deg); }
-            50% { transform: translate3d(-12px, 7px, 0) rotate(0deg); }
+            50% { transform: translate3d(-5px, 3px, 0) rotate(0deg); }
         }
 
         .panel::before {
@@ -771,10 +756,10 @@
                 order: -1; /* Move avatar to top on mobile */
             }
             .hero-flying-fish {
-                top: 1%;
-                right: -20%;
-                width: min(720px, 110vw);
-                opacity: .4;
+                top: 2%;
+                right: 6%;
+                width: 150px;
+                opacity: .56;
             }
             .avatar {
                 max-width: 240px;
@@ -2066,9 +2051,9 @@
             }
 
             .hero-flying-fish {
-                right: -34%;
-                width: min(660px, 138vw);
-                opacity: .34;
+                right: 2%;
+                width: 110px;
+                opacity: .48;
             }
 
             .home-section-header {
@@ -2132,13 +2117,13 @@
             }
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 560px) {
             .hero-flying-fish {
-                top: 5%;
-                right: -48%;
-                opacity: .28;
+                display: none;
             }
+        }
 
+        @media (max-width: 480px) {
             .home-product-secondary .product-info {
                 padding: 21px 17px;
             }
@@ -2528,26 +2513,22 @@
                 <svg viewBox="0 0 820 440" focusable="false">
                     <defs>
                         <linearGradient id="heroFishWing" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0" stop-color="#dcecf2" stop-opacity=".08"/>
-                            <stop offset=".5" stop-color="#a8cbd9" stop-opacity=".32"/>
-                            <stop offset="1" stop-color="#6f9db2" stop-opacity=".1"/>
+                            <stop offset="0" stop-color="#dcecf2" stop-opacity=".14"/>
+                            <stop offset=".5" stop-color="#a8cbd9" stop-opacity=".46"/>
+                            <stop offset="1" stop-color="#6f9db2" stop-opacity=".2"/>
                         </linearGradient>
                         <linearGradient id="heroFishBody" x1="0" y1="0" x2="1" y2="0">
-                            <stop offset="0" stop-color="#789fb1" stop-opacity=".18"/>
-                            <stop offset=".55" stop-color="#d5e6eb" stop-opacity=".42"/>
-                            <stop offset="1" stop-color="#eff3e8" stop-opacity=".25"/>
+                            <stop offset="0" stop-color="#789fb1" stop-opacity=".26"/>
+                            <stop offset=".55" stop-color="#d5e6eb" stop-opacity=".56"/>
+                            <stop offset="1" stop-color="#eff3e8" stop-opacity=".34"/>
                         </linearGradient>
                     </defs>
-                    <path class="hero-fish-trail" d="M35 321C164 282 252 230 335 172C434 103 548 83 776 118"/>
                     <g transform="rotate(-5 470 220)">
                         <path class="hero-fish-wing" d="M337 202C374 111 475 43 625 41C558 73 501 127 461 207C419 214 377 211 337 202Z"/>
                         <path class="hero-fish-wing" d="M344 235C399 324 511 382 655 352C576 327 514 285 467 226C424 220 384 223 344 235Z"/>
                         <path class="hero-fish-wing" d="M229 217C177 168 131 117 81 82C113 143 137 193 200 232Z"/>
                         <path class="hero-fish-wing" d="M225 228C170 263 126 308 81 360C145 334 189 295 242 244Z"/>
                         <path class="hero-fish-body" d="M196 224C299 185 412 177 542 185C623 190 693 207 758 231C690 253 617 262 538 257C408 250 294 244 196 224Z"/>
-                        <path class="hero-fish-detail" d="M239 224C366 214 503 219 674 238"/>
-                        <path class="hero-fish-detail" d="M650 206C633 218 628 239 640 255"/>
-                        <path class="hero-fish-detail" d="M747 230L766 227"/>
                         <circle class="hero-fish-eye" cx="698" cy="220" r="4.2"/>
                     </g>
                 </svg>
