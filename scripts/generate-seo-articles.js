@@ -275,7 +275,7 @@ function articleTemplate(article, htmlContent, navigation = {}) {
   <link rel="stylesheet" href="../css/site.css?v=3">
   <link rel="stylesheet" href="../css/article.css?v=1">
   <link rel="stylesheet" href="../css/elevated-design.css?v=21">
-  <link rel="stylesheet" href="../css/blue-hour-theme.css?v=1">
+  <link rel="stylesheet" href="../css/blue-hour-theme.css?v=3">
 </head>
 <body>
   <nav class="top-nav">

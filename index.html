@@ -106,6 +106,62 @@
             z-index: 1;
         }
 
+        .hero-flying-fish {
+            position: absolute;
+            top: 3%;
+            right: -4%;
+            z-index: 0;
+            width: clamp(420px, 55vw, 720px);
+            pointer-events: none;
+            opacity: .58;
+            filter: drop-shadow(0 20px 32px rgba(5, 31, 47, .18));
+            animation: hero-fish-glide 11s ease-in-out infinite;
+        }
+
+        .hero-flying-fish svg {
+            display: block;
+            width: 100%;
+            height: auto;
+            overflow: visible;
+        }
+
+        .hero-fish-wing {
+            fill: url(#heroFishWing);
+            stroke: rgba(207, 229, 237, .7);
+            stroke-width: 1.4;
+        }
+
+        .hero-fish-body {
+            fill: url(#heroFishBody);
+            stroke: rgba(234, 241, 238, .76);
+            stroke-width: 1.5;
+        }
+
+        .hero-fish-detail {
+            fill: none;
+            stroke: rgba(232, 239, 235, .6);
+            stroke-width: 1.2;
+            stroke-linecap: round;
+        }
+
+        .hero-fish-eye {
+            fill: #f0c968;
+            filter: drop-shadow(0 0 6px rgba(240, 201, 104, .7));
+        }
+
+        .hero-fish-trail {
+            fill: none;
+            stroke: rgba(224, 185, 96, .62);
+            stroke-width: 1.2;
+            stroke-linecap: round;
+            stroke-dasharray: 3 8;
+        }
+
+        @keyframes hero-fish-glide {
+            0%, 100% { transform: translate3d(0, 0, 0) rotate(-2deg); }
+            50% { transform: translate3d(-12px, 7px, 0) rotate(0deg); }
+        }
+
         .panel::before {
             content: '';
             position: absolute;
@@ -713,6 +769,12 @@
             }
             .panel-visual {
                 order: -1; /* Move avatar to top on mobile */
+            }
+            .hero-flying-fish {
+                top: 1%;
+                right: -20%;
+                width: min(720px, 110vw);
+                opacity: .4;
             }
             .avatar {
                 max-width: 240px;
@@ -2003,6 +2065,12 @@
                 gap: 64px !important;
             }
 
+            .hero-flying-fish {
+                right: -34%;
+                width: min(660px, 138vw);
+                opacity: .34;
+            }
+
             .home-section-header {
                 align-items: stretch;
                 flex-direction: row;
@@ -2065,6 +2133,12 @@
         }
 
         @media (max-width: 480px) {
+            .hero-flying-fish {
+                top: 5%;
+                right: -48%;
+                opacity: .28;
+            }
+
             .home-product-secondary .product-info {
                 padding: 21px 17px;
             }
@@ -2085,6 +2159,10 @@
             .home-service-copy p {
                 font-size: 13px;
             }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero-flying-fish { animation: none; }
         }
 
         /* Blue-hour night-flight theme: preserve the homepage layout, replace the heavy black visual layer. */
@@ -2171,35 +2249,10 @@
             backdrop-filter: none !important;
         }
 
-        [data-theme='dark'] .panel.hero::before {
-            display: block !important;
-            width: clamp(150px, 18vw, 230px) !important;
-            height: clamp(150px, 18vw, 230px) !important;
-            top: 10% !important;
-            right: 2% !important;
-            border-radius: 50% !important;
-            background:
-                radial-gradient(circle at 38% 34%, rgba(255, 252, 229, .9), rgba(236, 228, 190, .62) 46%, rgba(211, 226, 233, .15) 68%, transparent 70%) !important;
-            box-shadow: 0 0 70px rgba(240, 229, 177, .2) !important;
-            opacity: .72 !important;
-            z-index: 0;
-        }
-
+        [data-theme='dark'] .panel.hero::before,
         [data-theme='dark'] .panel.hero::after {
-            content: "";
-            display: block !important;
-            position: absolute;
-            width: 72%;
-            height: 38%;
-            left: 29%;
-            top: 32%;
-            border: 1px solid rgba(224, 185, 96, .58);
-            border-radius: 50%;
-            background: none !important;
-            transform: rotate(-9deg);
-            opacity: .72;
-            pointer-events: none;
-            z-index: 0;
+            content: none !important;
+            display: none !important;
         }
 
         [data-theme='dark'] .name {
@@ -2447,24 +2500,9 @@
                 border-color: rgba(211, 173, 87, .2) !important;
             }
 
-            [data-theme='dark'] .panel.hero::before {
-                width: 150px !important;
-                height: 150px !important;
-                top: 6% !important;
-                right: -36px !important;
-                opacity: .5 !important;
-            }
-
-            [data-theme='dark'] .panel.hero::after {
-                width: 96%;
-                height: 26%;
-                left: 12%;
-                top: 42%;
-                opacity: .46;
-            }
         }
     </style>
-    <link rel="stylesheet" href="css/blue-hour-theme.css?v=1">
+    <link rel="stylesheet" href="css/blue-hour-theme.css?v=3">
 </head>
 
 <body>
@@ -2486,6 +2524,34 @@
 
     <main class="page home-gallery">
         <section class="panel hero reveal" style="--delay: 0s;">
+            <div class="hero-flying-fish" aria-hidden="true">
+                <svg viewBox="0 0 820 440" focusable="false">
+                    <defs>
+                        <linearGradient id="heroFishWing" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0" stop-color="#dcecf2" stop-opacity=".08"/>
+                            <stop offset=".5" stop-color="#a8cbd9" stop-opacity=".32"/>
+                            <stop offset="1" stop-color="#6f9db2" stop-opacity=".1"/>
+                        </linearGradient>
+                        <linearGradient id="heroFishBody" x1="0" y1="0" x2="1" y2="0">
+                            <stop offset="0" stop-color="#789fb1" stop-opacity=".18"/>
+                            <stop offset=".55" stop-color="#d5e6eb" stop-opacity=".42"/>
+                            <stop offset="1" stop-color="#eff3e8" stop-opacity=".25"/>
+                        </linearGradient>
+                    </defs>
+                    <path class="hero-fish-trail" d="M35 321C164 282 252 230 335 172C434 103 548 83 776 118"/>
+                    <g transform="rotate(-5 470 220)">
+                        <path class="hero-fish-wing" d="M337 202C374 111 475 43 625 41C558 73 501 127 461 207C419 214 377 211 337 202Z"/>
+                        <path class="hero-fish-wing" d="M344 235C399 324 511 382 655 352C576 327 514 285 467 226C424 220 384 223 344 235Z"/>
+                        <path class="hero-fish-wing" d="M229 217C177 168 131 117 81 82C113 143 137 193 200 232Z"/>
+                        <path class="hero-fish-wing" d="M225 228C170 263 126 308 81 360C145 334 189 295 242 244Z"/>
+                        <path class="hero-fish-body" d="M196 224C299 185 412 177 542 185C623 190 693 207 758 231C690 253 617 262 538 257C408 250 294 244 196 224Z"/>
+                        <path class="hero-fish-detail" d="M239 224C366 214 503 219 674 238"/>
+                        <path class="hero-fish-detail" d="M650 206C633 218 628 239 640 255"/>
+                        <path class="hero-fish-detail" d="M747 230L766 227"/>
+                        <circle class="hero-fish-eye" cx="698" cy="220" r="4.2"/>
+                    </g>
+                </svg>
+            </div>
             <div class="panel-content">
                 <h1 class="name">文鳐夜飞</h1>
 <p class="hero-summary">推动 AI 在企业真实业务中落地，探索 AI 如何让一人公司成为可能</p>

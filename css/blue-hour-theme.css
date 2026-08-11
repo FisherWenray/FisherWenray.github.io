@@ -491,6 +491,65 @@ html[data-theme='dark'] {
     color: rgba(224, 236, 241, 0.78) !important;
 }
 
+/*
+ * Contrast guardrails for deliberately dark surfaces.
+ * These rules stay after the light-card typography rules so nested components
+ * cannot accidentally inherit ink-blue text on a night-sky background.
+ */
+[data-theme='dark'] body .home-content-lead .showcase-card .product-name,
+[data-theme='dark'] body .book-cover strong,
+[data-theme='dark'] body :where(
+    .standard-page-header,
+    .container > .header,
+    .business-hero,
+    .article-header,
+    .modal-content,
+    .contact-modal-panel,
+    .mini-player,
+    .custom-player,
+    .music-player,
+    .player-skeleton
+) :where(h1, h2, h3, h4, strong) {
+    color: #fff !important;
+    text-shadow: 0 6px 22px rgba(5, 25, 40, 0.22) !important;
+}
+
+[data-theme='dark'] body .home-content-lead .showcase-card :where(
+    .showcase-meta,
+    .showcase-meta span
+) {
+    color: rgba(255, 255, 255, 0.78) !important;
+}
+
+[data-theme='dark'] body .home-content-lead .showcase-card .product-desc,
+[data-theme='dark'] body :where(
+    .standard-page-header,
+    .container > .header,
+    .business-hero,
+    .article-header
+) :where(p, li),
+[data-theme='dark'] body .article-header :where(.article-meta, .article-meta span, .article-meta a),
+[data-theme='dark'] body :where(
+    .modal-content,
+    .contact-modal-panel
+) :where(p, li, span),
+[data-theme='dark'] body :where(
+    .mini-player,
+    .custom-player,
+    .music-player,
+    .player-skeleton
+) :where(p, li, span) {
+    color: rgba(238, 246, 249, 0.84) !important;
+}
+
+[data-theme='dark'] body .book-cover :where(small, p) {
+    color: #f3d57f !important;
+}
+
+[data-theme='dark'] body .book-cover em {
+    color: rgba(255, 255, 255, 0.78) !important;
+}
+
 /* Footer lands on the moonlit field instead of fading back to black. */
 [data-theme='dark'] .footer {
     color: #60737d !important;

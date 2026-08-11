@@ -346,7 +346,7 @@ function renderPage({ chapter, chapters, chapterIndex, description, contentHtml 
   <link rel="stylesheet" href="../../css/article.css?v=1">
   <link rel="stylesheet" href="../../css/book.css?v=11">
   <link rel="stylesheet" href="../../css/elevated-design.css?v=21">
-  <link rel="stylesheet" href="../../css/blue-hour-theme.css?v=1">
+  <link rel="stylesheet" href="../../css/blue-hour-theme.css?v=3">
   <link rel="icon" type="image/jpeg" href="../../avatar.jpg">
 </head>
 <body>
