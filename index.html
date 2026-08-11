@@ -1882,14 +1882,17 @@
         .home-content-layout {
             display: grid;
             grid-template-columns: minmax(0, 1.08fr) minmax(390px, .92fr);
+            align-items: stretch;
             gap: 20px;
         }
 
         .home-content-lead {
+            display: flex;
             min-width: 0;
         }
 
         .home-content-lead .showcase-card {
+            flex: 1 1 auto;
             min-height: 340px;
             padding: clamp(28px, 3.5vw, 38px) !important;
             justify-content: center;
@@ -2013,6 +2016,7 @@
             font: 700 19px/1.45 var(--font-serif);
         }
 
+        #homeLatestVideoTitle,
         #homeLatestPodcastTitle {
             display: -webkit-box;
             overflow: hidden;
@@ -2798,9 +2802,9 @@
                         <div><span class="home-content-entry-meta">BOOK / 书籍</span><h3>《行思无界》</h3></div>
                     </a>
 
-                    <a class="home-content-entry" href="video.html" data-umami-event="homepage_content_entry" data-umami-props='{"target":"video"}'>
+                    <a class="home-content-entry" id="homeLatestVideo" href="video.html" aria-label="查看最新视频" data-umami-event="homepage_content_entry" data-umami-props='{"target":"video"}'>
                         <span class="home-content-entry-icon" aria-hidden="true"><i class="fas fa-clapperboard"></i></span>
-                        <div><span class="home-content-entry-meta">VIDEO / 视频</span><h3>我的视频</h3></div>
+                        <div><span class="home-content-entry-meta">VIDEO / 最新一期</span><h3 id="homeLatestVideoTitle">最新视频</h3></div>
                     </a>
 
                     <a class="home-content-entry" id="homeLatestPodcast" href="podcast.html" aria-label="查看最新播客" data-umami-event="homepage_content_entry" data-umami-props='{"target":"podcast"}'>
@@ -2839,6 +2843,7 @@
 
     <script src="js/umami-config.js"></script>
     <script src="js/analytics.js"></script>
+    <script src="js/bilibili-videos-data.js"></script>
     <script>
         function escapeHTML(value) {
             return String(value ?? '').replace(/[&<>"']/g, (char) => ({
@@ -2928,6 +2933,45 @@
             document.body.appendChild(script);
         }
 
+        async function renderLatestVideo() {
+            const card = document.getElementById('homeLatestVideo');
+            const title = document.getElementById('homeLatestVideoTitle');
+            if (!card || !title) return;
+
+            const fallbackVideos = window.BILIBILI_VIDEOS_DATA && Array.isArray(window.BILIBILI_VIDEOS_DATA.videos)
+                ? window.BILIBILI_VIDEOS_DATA.videos
+                : [];
+            let videos = fallbackVideos;
+
+            if (window.location.protocol !== 'file:') {
+                try {
+                    const response = await fetch('bilibili-videos.json', { cache: 'no-store' });
+                    if (response.ok) {
+                        const payload = await response.json();
+                        if (payload && Array.isArray(payload.videos) && payload.videos.length) {
+                            videos = payload.videos;
+                        }
+                    }
+                } catch (error) {
+                    console.warn('首页最新视频加载失败，改用内置数据。', error);
+                }
+            }
+
+            const latestVideo = videos
+                .filter((video) => video && video.title)
+                .slice()
+                .sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0))[0];
+
+            if (!latestVideo) return;
+
+            title.textContent = latestVideo.title;
+            title.title = latestVideo.title;
+            card.href = latestVideo.bvid
+                ? `video.html?video=${encodeURIComponent(latestVideo.bvid)}`
+                : (latestVideo.watchUrl || 'video.html');
+            card.setAttribute('aria-label', `观看最新视频：${latestVideo.title}`);
+        }
+
         let lastModalTrigger = null;
 
         function openModal(modal) {
@@ -3012,6 +3056,7 @@
         });
 
         renderLatestArticles();
+        renderLatestVideo();
         renderLatestPodcast();
 
         const revealItems = document.querySelectorAll('.reveal');
