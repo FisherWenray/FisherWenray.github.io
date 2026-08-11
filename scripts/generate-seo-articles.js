@@ -296,9 +296,6 @@ function articleTemplate(article, htmlContent, navigation = {}) {
 
   <main class="page">
     <div class="container">
-      <nav class="article-breadcrumb" aria-label="面包屑导航">
-        <a href="../index.html">首页</a><span aria-hidden="true">/</span><a href="../articles.html">Blog</a><span aria-hidden="true">/</span><span aria-current="page">${escapeHtml(title)}</span>
-      </nav>
       <div class="article-header">
         <h1 class="article-title">${escapeHtml(title)}</h1>
         <div class="article-meta">

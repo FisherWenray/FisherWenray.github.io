@@ -359,24 +359,7 @@
 }
 
 .article-breadcrumb {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    overflow: hidden;
-    padding: 16px 24px 0;
-    color: var(--ink-soft);
-    font-size: 13px;
-    white-space: nowrap;
-}
-
-.article-breadcrumb a {
-    color: var(--primary);
-    text-decoration: none;
-}
-
-.article-breadcrumb [aria-current="page"] {
-    overflow: hidden;
-    text-overflow: ellipsis;
+    display: none;
 }
 
 .article-pagination {
@@ -499,10 +482,6 @@
 }
 
 @media (max-width: 560px) {
-    .article-breadcrumb {
-        padding-inline: 18px;
-    }
-
     .article-pagination {
         grid-template-columns: 1fr;
         padding-inline: 18px;
