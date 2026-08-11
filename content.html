@@ -378,13 +378,8 @@
 
         @media (min-width: 681px) {
             [data-theme='dark'] body .content-category .category-header {
-                display: grid;
-                grid-template-columns: minmax(0, 1.28fr) minmax(220px, .72fr);
-                gap: 18px;
-            }
-
-            [data-theme='dark'] body .content-category .category-header .category-link {
-                justify-self: start;
+                display: flex;
+                padding-right: clamp(32px, 2.5vw, 48px);
             }
         }
     </style>
