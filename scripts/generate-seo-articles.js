@@ -248,7 +248,7 @@ function articleTemplate(article, htmlContent, navigation = {}) {
       </nav>`;
 
   return `<!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -270,11 +270,12 @@ function articleTemplate(article, htmlContent, navigation = {}) {
   <link rel="canonical" href="${canonical}">
   ${relLinks}
   <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
-  <script src="../js/theme.js?v=5" defer></script>
+  <script src="../js/theme.js?v=6" defer></script>
   <link rel="icon" type="image/jpeg" href="../avatar.jpg">
   <link rel="stylesheet" href="../css/site.css?v=3">
   <link rel="stylesheet" href="../css/article.css?v=1">
   <link rel="stylesheet" href="../css/elevated-design.css?v=21">
+  <link rel="stylesheet" href="../css/blue-hour-theme.css?v=1">
 </head>
 <body>
   <nav class="top-nav">
@@ -286,9 +287,6 @@ function articleTemplate(article, htmlContent, navigation = {}) {
         <li><a href="../content.html" class="active">内容</a></li>
         <li><a href="../about.html">关于</a></li>      </ul>
             <div style="display: flex; align-items: center;">
-                <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
-                    <i class="fas fa-moon"></i>
-                </button>
                 <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="菜单">
                     <i class="fas fa-bars"></i>
                 </button>

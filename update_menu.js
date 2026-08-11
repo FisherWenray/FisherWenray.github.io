@@ -103,9 +103,6 @@ for (const file of files) {
         <div class="nav-container">
             <ul class="nav-links" id="navLinks">${liItems}</ul>
             <div style="display: flex; align-items: center;">
-                <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
-                    <i class="fas fa-moon"></i>
-                </button>
                 <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="菜单">
                     <i class="fas fa-bars"></i>
                 </button>

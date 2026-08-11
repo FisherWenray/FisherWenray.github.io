@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -46,8 +46,8 @@
       ]
     }
     </script>
-    <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
-    <script src="js/theme.js?v=5" defer></script>
+    <script>document.documentElement.setAttribute('data-theme', 'dark');</script>
+    <script src="js/theme.js?v=6" defer></script>
     <link rel="stylesheet" href="css/site.css?v=3">
     <link rel="icon" type="image/jpeg" href="avatar.jpg">
     <style>
@@ -129,34 +129,6 @@
             align-items: center;
             width: min(1200px, 94vw);
             margin: 0 auto;
-        }
-
-        .theme-toggle {
-            background: rgba(var(--primary-rgb), 0.08);
-            border: 1px solid var(--line);
-            color: #c5b358;
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            flex-shrink: 0;
-            margin-left: 10px;
-        }
-
-        .theme-toggle:hover {
-            background: var(--primary);
-            color: #fff;
-            transform: rotate(30deg);
-        }
-
-        [data-theme='dark'] .theme-toggle {
-            color: var(--gold);
-            border-color: var(--line);
-            background: rgba(255, 255, 255, 0.05);
         }
 
         .nav-links {
@@ -758,9 +730,6 @@
                 <li><a href="content.html" class="active">内容</a></li><li><a href="about.html">关于</a></li>
             </ul>
             <div style="display: flex; align-items: center;">
-                <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
-                    <i class="fas fa-moon"></i>
-                </button>
                 <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="菜单">
                     <i class="fas fa-bars"></i>
                 </button>

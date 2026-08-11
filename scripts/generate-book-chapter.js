@@ -323,7 +323,7 @@ function renderPage({ chapter, chapters, chapterIndex, description, contentHtml 
   ].join('\n        ');
 
   return `<!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -341,12 +341,12 @@ function renderPage({ chapter, chapters, chapterIndex, description, contentHtml 
   <meta name="twitter:image" content="https://wenyaoyefei.com/avatar.jpg">
   <link rel="canonical" href="${canonical}">
   <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
-  <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
-  <script src="../../js/theme.js?v=5" defer></script>
+  <script src="../../js/theme.js?v=6" defer></script>
   <link rel="stylesheet" href="../../css/site.css?v=3">
   <link rel="stylesheet" href="../../css/article.css?v=1">
   <link rel="stylesheet" href="../../css/book.css?v=11">
   <link rel="stylesheet" href="../../css/elevated-design.css?v=21">
+  <link rel="stylesheet" href="../../css/blue-hour-theme.css?v=1">
   <link rel="icon" type="image/jpeg" href="../../avatar.jpg">
 </head>
 <body>
@@ -360,9 +360,6 @@ function renderPage({ chapter, chapters, chapterIndex, description, contentHtml 
         <li><a href="../../about.html">关于</a></li>
       </ul>
       <div style="display: flex; align-items: center;">
-        <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
-          <i class="fas fa-moon"></i>
-        </button>
         <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="菜单">
           <i class="fas fa-bars"></i>
         </button>

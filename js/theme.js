@@ -1,24 +1,9 @@
 (function() {
-    const LIGHT_THEME_ICON = 'theme-icon theme-icon-sun';
-    const DARK_THEME_ICON = 'fas fa-moon';
-
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-
-    window.toggleTheme = function() {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        updateToggleIcon();
-    };
-
-    function updateToggleIcon() {
-        const icon = document.querySelector('.theme-toggle i');
-        if (icon) {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            icon.className = currentTheme === 'dark' ? LIGHT_THEME_ICON : DARK_THEME_ICON;
-        }
+    document.documentElement.setAttribute('data-theme', 'dark');
+    try {
+        localStorage.setItem('theme', 'dark');
+    } catch (error) {
+        // The theme still works when storage is unavailable.
     }
 
     function renderSiteFooter() {
@@ -59,7 +44,6 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-        updateToggleIcon();
         renderSiteFooter();
     });
 

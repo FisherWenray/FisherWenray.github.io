@@ -182,28 +182,6 @@ body::after {
     margin: 0 auto;
 }
 
-.theme-toggle {
-    background: rgba(var(--primary-rgb), 0.08);
-    border: 1px solid var(--line);
-    color: #c5b358;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-    margin-left: 10px;
-}
-
-.theme-toggle:hover {
-    background: var(--primary);
-    color: #fff;
-    transform: rotate(30deg);
-}
-
 button,
 [type="button"] {
     font: inherit;
@@ -212,34 +190,6 @@ button,
 :where(a, button, [tabindex]):focus-visible {
     outline: 2px solid var(--gold);
     outline-offset: 3px;
-}
-
-.theme-toggle .theme-icon {
-    width: 18px;
-    height: 18px;
-    display: block;
-    position: relative;
-    flex-shrink: 0;
-}
-
-.theme-icon-sun {
-    border-radius: 50%;
-    background: var(--gold);
-    box-shadow: 0 0 0 2px rgba(197, 179, 88, 0.18);
-}
-
-.theme-icon-sun::before {
-    content: none;
-}
-
-.theme-icon-sun::after {
-    content: none;
-}
-
-[data-theme='dark'] .theme-toggle {
-    color: var(--gold);
-    border-color: var(--line);
-    background: rgba(255, 255, 255, 0.05);
 }
 
 .nav-links {

@@ -98,7 +98,6 @@ body::after {
     outline: none;
 }
 
-.theme-toggle,
 .mobile-menu-btn {
     width: 38px !important;
     height: 38px !important;
@@ -109,7 +108,6 @@ body::after {
     box-shadow: 0 8px 20px rgba(28, 39, 50, 0.06);
 }
 
-.theme-toggle:hover,
 .mobile-menu-btn:hover {
     background: var(--primary) !important;
     color: #fff !important;
@@ -962,7 +960,6 @@ body::after {
     outline: none;
 }
 
-[data-theme='dark'] .theme-toggle,
 [data-theme='dark'] .mobile-menu-btn {
     color: var(--gold) !important;
     background: rgba(255, 255, 255, 0.04) !important;
