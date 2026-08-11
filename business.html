@@ -43,10 +43,15 @@
         .offer-meta { min-height: 64px; padding: 2px 64px 0 0; }
         .offer-number { display: block; color: var(--gold); font: 600 12px/1 var(--font-mono); letter-spacing: .1em; }
         .offer-type { display: block; margin-top: 13px; color: var(--ink-soft); font: 600 9px/1.5 var(--font-mono); letter-spacing: .08em; }
-        .offer-copy { margin-top: auto; min-width: 0; }
-        .offer-copy h3 { margin: 0 0 12px; color: var(--ink); font: 700 clamp(18px, 1.8vw, 22px)/1.45 var(--font-serif); }
+        .offer-copy { display: flex; flex: 1; flex-direction: column; width: 100%; min-width: 0; margin-top: 18px; }
+        .offer-copy h3 { margin: 0 0 14px; color: var(--ink); font: 700 clamp(18px, 1.8vw, 22px)/1.45 var(--font-serif); }
         .offer-copy p { margin: 0; color: var(--ink-soft); font-size: 14px; line-height: 1.75; }
-        .offer-copy p + p { margin-top: 10px; }
+        .offer-summary { min-height: 74px; }
+        .offer-capabilities { display: flex; flex-wrap: wrap; gap: 7px; margin: 18px 0 22px; padding: 0; list-style: none; }
+        .offer-capabilities li { padding: 6px 9px; border: 1px solid rgba(var(--primary-rgb), .22); border-radius: 5px; color: var(--ink); background: rgba(var(--primary-rgb), .06); font: 600 11px/1 var(--font-sans); letter-spacing: .02em; }
+        .offer-outcome { margin-top: auto !important; padding: 13px 14px 14px; border-left: 2px solid var(--gold); background: linear-gradient(90deg, rgba(202, 175, 78, .09), rgba(var(--primary-rgb), .025)); }
+        .offer-outcome-label { display: block; margin-bottom: 7px; color: var(--gold); font: 600 10px/1 var(--font-mono); letter-spacing: .12em; }
+        .offer-outcome strong { color: var(--ink); font-weight: 650; }
         .offer-copy .service-price { display: block; margin-top: 7px; color: var(--gold); font: 600 12px/1.4 var(--font-sans); }
         .offer-icon { position: absolute; top: 24px; right: 24px; width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid rgba(var(--primary-rgb), .24); border-radius: 50%; color: var(--gold); background: rgba(var(--primary-rgb), .08); font-size: 18px; transition: transform .3s ease, background .3s ease, color .3s ease; }
         .service-offer:hover .offer-icon { transform: rotate(-6deg) scale(1.04); color: #fff; background: var(--primary); }
@@ -64,11 +69,12 @@
         .contact-modal-close { position: absolute; top: 14px; right: 14px; width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid rgba(var(--primary-rgb), .18); border-radius: 50%; color: var(--ink-soft); background: rgba(var(--primary-rgb), .06); cursor: pointer; transition: color .2s ease, background .2s ease, transform .2s ease; }
         .contact-modal-close:hover { color: #fff; background: var(--primary); transform: rotate(6deg); }
         [data-theme='dark'] .services-directory-head h2, [data-theme='dark'] .offer-copy h3 { color: #fff; text-shadow: 0 0 12px rgba(0, 78, 140, .35); }
+        [data-theme='dark'] .offer-capabilities li, [data-theme='dark'] .offer-outcome strong { color: #e9f0f7; }
         [data-theme='dark'] .contact-modal-panel h2 { color: #fff; }
         @keyframes contact-fade-in { from { opacity: 0; } to { opacity: 1; } }
         @keyframes contact-panel-in { from { opacity: 0; transform: translateY(10px) scale(.98); } to { opacity: 1; transform: none; } }
         @media (max-width: 960px) { .service-offer-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } .service-offer, .service-offer:nth-child(n + 4) { grid-column: span 1; min-height: 270px; } }
-        @media (max-width: 680px) { .business-page { margin-top: 18px; } .services-directory { margin-top: 24px; min-width: 0; } .services-directory-head { padding: 4px 2px 20px; } .service-offer-list { min-width: 0; grid-template-columns: minmax(0, 1fr); gap: 16px; } .service-offer, .service-offer:nth-child(n + 4) { width: 100%; max-width: 100%; min-width: 0; min-height: 230px; grid-column: 1; padding: 22px 20px; } .offer-meta { min-height: 58px; padding-right: 54px; } .offer-copy { min-width: 0; } .offer-icon { top: 18px; right: 18px; width: 42px; height: 42px; font-size: 16px; } .service-contact { margin-top: 32px; } .service-contact-button { width: min(100%, 320px); } .contact-modal-panel { padding: 22px 18px 18px; } }
+        @media (max-width: 680px) { .business-page { margin-top: 18px; } .services-directory { margin-top: 24px; min-width: 0; } .services-directory-head { padding: 4px 2px 20px; } .service-offer-list { min-width: 0; grid-template-columns: minmax(0, 1fr); gap: 16px; } .service-offer, .service-offer:nth-child(n + 4) { width: 100%; max-width: 100%; min-width: 0; min-height: 230px; grid-column: 1; padding: 22px 20px; } .offer-meta { min-height: 58px; padding-right: 54px; } .offer-copy { min-width: 0; margin-top: 16px; } .offer-summary { min-height: 0; } .offer-capabilities { margin: 15px 0 18px; } .offer-icon { top: 18px; right: 18px; width: 42px; height: 42px; font-size: 16px; } .service-contact { margin-top: 32px; } .service-contact-button { width: min(100%, 320px); } .contact-modal-panel { padding: 22px 18px 18px; } }
         @media (prefers-reduced-motion: reduce) { .service-offer, .offer-icon, .service-contact-button, .contact-modal-close { transition: none; } .contact-modal.is-open, .contact-modal-panel { animation: none; } }
     </style>
 </head>
@@ -111,19 +117,34 @@
             <div class="service-offer-list">
                 <article class="service-offer">
                     <div class="offer-meta"><span class="offer-number">01</span><span class="offer-type">ENTERPRISE AI<br>DELIVERY</span></div>
-                    <div class="offer-copy"><h3>企业 AI 落地服务</h3><p>面向有 AI 转型需求的企业，提供从业务诊断、场景识别、方案设计、原型验证到生产落地的一体化服务。</p><p>深入企业真实业务流程，找到 AI 最能创造价值的环节，并结合大模型、Agent、知识库、自动化工作流等技术，帮助企业提升效率、降低成本、优化流程，最终形成可持续运行的 AI 业务系统。</p></div>
+                    <div class="offer-copy">
+                        <h3>企业 AI 落地服务</h3>
+                        <p class="offer-summary">面向有 AI 转型需求的企业，深入真实业务流程，提供从诊断到生产落地的一体化服务。</p>
+                        <ul class="offer-capabilities" aria-label="企业 AI 落地服务内容"><li>业务诊断</li><li>场景识别</li><li>方案设计</li><li>原型验证</li><li>生产落地</li></ul>
+                        <p class="offer-outcome"><span class="offer-outcome-label">BUSINESS VALUE</span><strong>提升效率 · 降低成本 · 优化流程</strong><br>最终形成可持续运行的 AI 业务系统</p>
+                    </div>
                     <span class="offer-icon" aria-hidden="true"><i class="fas fa-diagram-project"></i></span>
                 </article>
 
                 <article class="service-offer">
                     <div class="offer-meta"><span class="offer-number">02</span><span class="offer-type">FDE<br>TRAINING</span></div>
-                    <div class="offer-copy"><h3>FDE 培训</h3><p>面向希望进入 AI 落地领域的个人、开发者、产品经理和小团队，提供系统化的 FDE（Forward Deployed Engineer）能力培训。</p><p>帮助学习者建立真正面向企业场景的 AI 落地能力，能够独立完成客户沟通、需求分析、方案设计、项目实施与持续优化，成长为能够用 AI 解决真实业务问题的 FDE。</p></div>
+                    <div class="offer-copy">
+                        <h3>FDE 培训</h3>
+                        <p class="offer-summary">面向个人、开发者、产品经理和小团队，提供系统化的 FDE（Forward Deployed Engineer）能力培训。</p>
+                        <ul class="offer-capabilities" aria-label="FDE 培训内容"><li>客户沟通</li><li>需求分析</li><li>方案设计</li><li>项目实施</li><li>持续优化</li></ul>
+                        <p class="offer-outcome"><span class="offer-outcome-label">LEARNING OUTCOME</span><strong>建立面向企业场景的 AI 落地能力</strong><br>成长为能独立解决真实业务问题的 FDE</p>
+                    </div>
                     <span class="offer-icon" aria-hidden="true"><i class="fas fa-chalkboard-user"></i></span>
                 </article>
 
                 <article class="service-offer">
                     <div class="offer-meta"><span class="offer-number">03</span><span class="offer-type">MODEL<br>TOKEN</span></div>
-                    <div class="offer-copy"><h3>企业级大模型 Token 服务</h3><p>作为企业 AI 项目落地的配套能力，聚合 Claude、GPT、Gemini 等海外主流模型，以及 GLM、豆包等国内主流模型，为有需要的企业提供稳定、便捷、高性价比的 Token 服务。</p></div>
+                    <div class="offer-copy">
+                        <h3>企业级大模型 Token 服务</h3>
+                        <p class="offer-summary">作为企业 AI 项目落地的配套能力，统一聚合国内外主流大模型，为企业提供便捷的调用支持。</p>
+                        <ul class="offer-capabilities" aria-label="支持的大模型"><li>Claude</li><li>GPT</li><li>Gemini</li><li>GLM</li><li>豆包</li></ul>
+                        <p class="offer-outcome"><span class="offer-outcome-label">SERVICE VALUE</span><strong>稳定 · 便捷 · 高性价比</strong><br>降低企业使用主流大模型的接入门槛</p>
+                    </div>
                     <span class="offer-icon" aria-hidden="true"><i class="fas fa-key"></i></span>
                 </article>
             </div>
