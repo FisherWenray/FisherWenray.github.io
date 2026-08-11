@@ -59,8 +59,8 @@
         @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
     </style>
     <link rel="stylesheet" href="css/blue-hour-theme.css?v=3">
-    <style id="about-intro-sky">
-        [data-theme='dark'] body .about-section.about-intro {
+    <style id="about-section-sky">
+        [data-theme='dark'] body .about-section {
             background:
                 radial-gradient(circle at 11% 18%, rgba(255, 255, 255, .78) 0 1px, transparent 1.45px),
                 radial-gradient(circle at 34% 12%, rgba(255, 255, 255, .46) 0 .8px, transparent 1.2px),
@@ -71,19 +71,35 @@
             box-shadow: 0 24px 58px rgba(16, 47, 67, .2) !important;
         }
 
-        [data-theme='dark'] body .about-section.about-intro h2 {
+        [data-theme='dark'] body .about-section h2,
+        [data-theme='dark'] body .about-section h3 {
             color: #fff !important;
             text-shadow: 0 8px 28px rgba(5, 25, 40, .26) !important;
         }
 
-        [data-theme='dark'] body .about-section.about-intro .about-lede {
+        [data-theme='dark'] body .about-section :where(.about-lede, p, li) {
             color: rgba(231, 241, 245, .88) !important;
             text-shadow: 0 3px 18px rgba(5, 25, 40, .18);
         }
 
-        [data-theme='dark'] body .about-section.about-intro .about-lede strong {
+        [data-theme='dark'] body .about-section :where(.section-number, .book-link),
+        [data-theme='dark'] body .about-section .about-lede strong {
             color: #f0c968 !important;
             text-shadow: none !important;
+        }
+
+        [data-theme='dark'] body .about-section .milestone {
+            background: rgba(8, 34, 52, .28) !important;
+            border-color: rgba(211, 173, 87, .24) !important;
+        }
+
+        [data-theme='dark'] body .about-section .milestone strong {
+            color: #fff !important;
+            text-shadow: none !important;
+        }
+
+        [data-theme='dark'] body .about-section .milestone span {
+            color: rgba(231, 241, 245, .78) !important;
         }
     </style>
 </head>

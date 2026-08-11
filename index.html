@@ -2013,6 +2013,13 @@
             font: 700 19px/1.45 var(--font-serif);
         }
 
+        #homeLatestPodcastTitle {
+            display: -webkit-box;
+            overflow: hidden;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+        }
+
         [data-theme='dark'] .home-product-main.product-card,
         [data-theme='dark'] .home-product-secondary.product-card,
         [data-theme='dark'] .home-content-lead .showcase-card {
@@ -2796,9 +2803,9 @@
                         <div><span class="home-content-entry-meta">VIDEO / 视频</span><h3>我的视频</h3></div>
                     </a>
 
-                    <a class="home-content-entry" href="podcast.html" data-umami-event="homepage_content_entry" data-umami-props='{"target":"podcast"}'>
+                    <a class="home-content-entry" id="homeLatestPodcast" href="podcast.html" aria-label="查看最新播客" data-umami-event="homepage_content_entry" data-umami-props='{"target":"podcast"}'>
                         <span class="home-content-entry-icon" aria-hidden="true"><i class="fas fa-podcast"></i></span>
-                        <div><span class="home-content-entry-meta">PODCAST / 播客</span><h3>文鳐夜飞播客</h3></div>
+                        <div><span class="home-content-entry-meta">PODCAST / 最新一期</span><h3 id="homeLatestPodcastTitle">最新播客</h3></div>
                     </a>
 
                     <a class="home-content-entry" href="music.html" data-umami-event="homepage_content_entry" data-umami-props='{"target":"music"}'>
@@ -2878,6 +2885,47 @@
             } catch (error) {
                 console.warn('最新文章加载失败:', error);
             }
+        }
+
+        function renderLatestPodcast() {
+            const card = document.getElementById('homeLatestPodcast');
+            const title = document.getElementById('homeLatestPodcastTitle');
+            if (!card || !title) return;
+
+            const callbackName = `homeLatestPodcastCallback_${Date.now()}`;
+            const script = document.createElement('script');
+            let timeoutId;
+
+            function cleanup() {
+                clearTimeout(timeoutId);
+                delete window[callbackName];
+                if (script.parentNode) script.parentNode.removeChild(script);
+            }
+
+            window[callbackName] = function (data) {
+                const episodes = (data.results || [])
+                    .slice(1)
+                    .filter((episode) => episode.trackName && episode.releaseDate)
+                    .sort((a, b) => new Date(b.releaseDate) - new Date(a.releaseDate));
+                const latestEpisode = episodes[0];
+
+                if (latestEpisode) {
+                    const episodeId = latestEpisode.trackId || latestEpisode.episodeGuid;
+                    title.textContent = latestEpisode.trackName;
+                    title.title = latestEpisode.trackName;
+                    card.href = episodeId
+                        ? `podcast.html?episode=${encodeURIComponent(String(episodeId))}`
+                        : 'podcast.html';
+                    card.setAttribute('aria-label', `收听最新播客：${latestEpisode.trackName}`);
+                }
+
+                cleanup();
+            };
+
+            script.src = `https://itunes.apple.com/lookup?id=1825759955&country=CN&media=podcast&entity=podcastEpisode&limit=200&callback=${callbackName}`;
+            script.onerror = cleanup;
+            timeoutId = window.setTimeout(cleanup, 10000);
+            document.body.appendChild(script);
         }
 
         let lastModalTrigger = null;
@@ -2964,6 +3012,7 @@
         });
 
         renderLatestArticles();
+        renderLatestPodcast();
 
         const revealItems = document.querySelectorAll('.reveal');
         const observer = new IntersectionObserver(
