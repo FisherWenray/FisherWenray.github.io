@@ -418,18 +418,22 @@ html[data-theme='dark'] {
     text-shadow: none !important;
 }
 
-[data-theme='dark'] :where(.article-content blockquote, .book-content blockquote, blockquote) {
+[data-theme='dark'] body .article-content blockquote, 
+[data-theme='dark'] body .book-content blockquote, 
+[data-theme='dark'] blockquote {
     color: #4d6673 !important;
     background: rgba(35, 91, 120, 0.08) !important;
     border-left-color: var(--gold) !important;
 }
 
-[data-theme='dark'] :where(.article-content code, .book-content code) {
+[data-theme='dark'] body .article-content code, 
+[data-theme='dark'] body .book-content code {
     color: #c5b358 !important;
     background: rgba(197, 179, 88, 0.12) !important;
 }
 
-[data-theme='dark'] :where(.article-content pre, .book-content pre) {
+[data-theme='dark'] body .article-content pre, 
+[data-theme='dark'] body .book-content pre {
     color: #dfecef !important;
     background: linear-gradient(145deg, #102f43, #1e526c) !important;
     border-color: rgba(197, 179, 88, 0.22) !important;
