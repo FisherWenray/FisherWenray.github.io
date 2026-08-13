@@ -15,7 +15,7 @@
             <div class="footer-main">
                 <div class="footer-brand">
                     <a class="footer-name" href="/index.html">文鳐夜飞</a>
-                    <p>一个有着嬉皮精神的 geek</p>
+                    <p>一个有着人文精神的极客</p>
                 </div>
                 <nav class="footer-nav" aria-label="页脚导航">
                     <div class="footer-nav-group footer-nav-group--site">
