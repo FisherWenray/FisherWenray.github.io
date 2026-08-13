@@ -1809,6 +1809,192 @@
             font-size: 12px;
         }
 
+        .home-product-gallery.oneopc-only {
+            display: block;
+        }
+
+        .oneopc-feature {
+            position: relative;
+            isolation: isolate;
+            min-height: 500px;
+            display: grid;
+            grid-template-columns: minmax(320px, .78fr) minmax(0, 1.22fr);
+            overflow: hidden;
+            border: 1px solid rgba(183, 227, 51, .2);
+            border-radius: 24px;
+            color: #f4f7ee;
+            text-decoration: none;
+            background:
+                radial-gradient(circle at 16% 12%, rgba(183, 227, 51, .11), transparent 25%),
+                radial-gradient(circle at 78% 74%, rgba(67, 116, 142, .22), transparent 36%),
+                linear-gradient(135deg, #07131b 0%, #09181f 48%, #0c202a 100%);
+            box-shadow: 0 28px 68px rgba(23, 58, 77, .22);
+            transition: transform .5s cubic-bezier(.19, 1, .22, 1), border-color .5s ease, box-shadow .5s ease;
+        }
+
+        .oneopc-feature::before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            inset: 0;
+            opacity: .16;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, .045) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, .045) 1px, transparent 1px);
+            background-size: 42px 42px;
+            mask-image: linear-gradient(90deg, #000, transparent 66%);
+        }
+
+        .oneopc-feature::after {
+            content: "";
+            position: absolute;
+            z-index: 3;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, #d8ff45, #8bad19);
+            box-shadow: 0 0 28px rgba(190, 239, 48, .48);
+        }
+
+        .oneopc-feature:hover {
+            transform: translateY(-7px);
+            border-color: rgba(201, 244, 73, .42);
+            box-shadow: 0 38px 82px rgba(18, 52, 71, .32);
+        }
+
+        .oneopc-feature-copy {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: clamp(38px, 5vw, 72px);
+        }
+
+        .oneopc-feature-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 28px;
+            color: #c9f044;
+            font: 700 11px/1 var(--font-mono);
+            letter-spacing: .16em;
+            text-transform: uppercase;
+        }
+
+        .oneopc-feature-kicker::before {
+            content: "";
+            width: 30px;
+            height: 1px;
+            background: currentColor;
+        }
+
+        .oneopc-feature h3 {
+            margin: 0;
+            color: #fff;
+            font: 700 clamp(42px, 5.2vw, 72px)/.98 var(--font-serif);
+            letter-spacing: -.04em;
+        }
+
+        .oneopc-feature h3 span {
+            color: #c9f044;
+        }
+
+        .oneopc-feature-lead {
+            max-width: 520px;
+            margin: 24px 0 0;
+            color: rgba(226, 237, 238, .78);
+            font-size: clamp(15px, 1.45vw, 18px);
+            line-height: 1.9;
+        }
+
+        .oneopc-feature-points {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 28px 0 34px;
+        }
+
+        .oneopc-feature-points span {
+            padding: 8px 12px;
+            border: 1px solid rgba(209, 235, 219, .13);
+            border-radius: 999px;
+            color: rgba(235, 242, 240, .74);
+            background: rgba(255, 255, 255, .045);
+            font: 600 11px/1 var(--font-sans);
+        }
+
+        .oneopc-feature-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            min-height: 48px;
+            padding: 0 20px;
+            border-radius: 4px;
+            color: #0a171b;
+            background: #c9f044;
+            font: 800 13px/1 var(--font-sans);
+            box-shadow: 0 14px 32px rgba(168, 205, 47, .18);
+            transition: gap .3s ease, background .3s ease, transform .3s ease;
+        }
+
+        .oneopc-feature:hover .oneopc-feature-action {
+            gap: 19px;
+            background: #dcff62;
+            transform: translateY(-2px);
+        }
+
+        .oneopc-feature-visual {
+            position: relative;
+            min-width: 0;
+            display: flex;
+            align-items: center;
+            padding: clamp(32px, 4vw, 58px) clamp(28px, 4vw, 62px) clamp(32px, 4vw, 58px) 10px;
+        }
+
+        .oneopc-feature-visual::before {
+            content: "ONE / OPC";
+            position: absolute;
+            top: 31px;
+            right: 42px;
+            color: rgba(201, 240, 68, .28);
+            font: 700 10px/1 var(--font-mono);
+            letter-spacing: .2em;
+        }
+
+        .oneopc-feature-screen {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border: 1px solid rgba(220, 244, 228, .18);
+            border-radius: 16px;
+            background: #070b0a;
+            box-shadow: 0 32px 72px rgba(0, 0, 0, .48), 0 0 0 8px rgba(255, 255, 255, .025);
+            transform: perspective(1100px) rotateY(-3deg) rotateX(1deg);
+            transition: transform .65s cubic-bezier(.19, 1, .22, 1), box-shadow .65s ease;
+        }
+
+        .oneopc-feature:hover .oneopc-feature-screen {
+            transform: perspective(1100px) rotateY(0) rotateX(0) scale(1.015);
+            box-shadow: 0 38px 88px rgba(0, 0, 0, .56), 0 0 0 8px rgba(201, 240, 68, .035);
+        }
+
+        .oneopc-feature-screen img {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+            object-position: top center;
+            transition: transform .65s cubic-bezier(.19, 1, .22, 1);
+        }
+
+        .oneopc-feature:hover .oneopc-feature-screen img {
+            transform: scale(1.018);
+        }
+
         .home-service-list {
             position: relative;
             border-top: 1px solid rgba(var(--primary-rgb), .22);
@@ -2052,6 +2238,14 @@
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
 
+            .oneopc-feature {
+                grid-template-columns: minmax(280px, .82fr) minmax(0, 1.18fr);
+            }
+
+            .oneopc-feature-copy {
+                padding: 42px 34px;
+            }
+
             .home-content-layout {
                 grid-template-columns: minmax(0, 1fr);
             }
@@ -2091,6 +2285,27 @@
             .home-product-gallery,
             .home-content-rail {
                 grid-template-columns: minmax(0, 1fr);
+            }
+
+            .oneopc-feature {
+                min-height: 0;
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .oneopc-feature-copy {
+                padding: 42px 30px 26px;
+            }
+
+            .oneopc-feature-lead {
+                max-width: 620px;
+            }
+
+            .oneopc-feature-visual {
+                padding: 20px 30px 38px;
+            }
+
+            .oneopc-feature-screen {
+                transform: none;
             }
 
             .home-product-main.product-card,
@@ -2140,6 +2355,26 @@
         }
 
         @media (max-width: 480px) {
+            .oneopc-feature {
+                border-radius: 18px;
+            }
+
+            .oneopc-feature-copy {
+                padding: 34px 22px 22px;
+            }
+
+            .oneopc-feature-kicker {
+                margin-bottom: 20px;
+            }
+
+            .oneopc-feature-points {
+                margin: 22px 0 28px;
+            }
+
+            .oneopc-feature-visual {
+                padding: 12px 22px 28px;
+            }
+
             .home-product-secondary .product-info {
                 padding: 21px 17px;
             }
@@ -2671,53 +2906,31 @@
                         我的产品
                     </h2>
                 </div>
-                <a href="software.html" class="products-more-link" data-umami-event="homepage_products_more">
-                    <span>全部产品</span>
+                <a href="https://www.oneopc.ai/" target="_blank" rel="noopener" class="products-more-link" data-umami-event="homepage_products_more">
+                    <span>访问 OneOPC</span>
                     <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
 
-            <div class="home-product-gallery">
-                <!-- 万象导航 -->
-                <a href="https://nav.wenyaoyefei.com" target="_blank" rel="noopener" class="product-card home-product-main" data-umami-event="homepage_product_click" data-umami-props='{"target":"bookmark_site"}'>
-                    <div class="product-cover product-screenshot-cover">
-                        <picture>
-                            <source srcset="images/zhijing-product-screenshot.webp" type="image/webp">
-                            <img class="product-screenshot" src="images/zhijing-product-screenshot.png" alt="万象导航产品界面截图" width="1440" height="900" loading="lazy" decoding="async">
-                        </picture>
+            <div class="home-product-gallery oneopc-only">
+                <a href="https://www.oneopc.ai/" target="_blank" rel="noopener" class="oneopc-feature" data-umami-event="homepage_product_click" data-umami-props='{"target":"oneopc_site"}' aria-label="访问 OneOPC 一人公司知识库">
+                    <div class="oneopc-feature-copy">
+                        <span class="oneopc-feature-kicker">Open Knowledge Base / 开放知识库</span>
+                        <h3>OneOPC<span>.</span></h3>
+                        <p class="oneopc-feature-lead">写给独立价值创造者的开放知识库：以 OPC 构建可持续的经营结构，以 FDE 贴近真实现场解决问题，在终身学习中持续进化，并以数字游民的方式重新选择工作与生活。</p>
+                        <div class="oneopc-feature-points" aria-label="OneOPC 核心内容">
+                            <span>OPC · 一人公司</span>
+                            <span>FDE · 现场解决问题</span>
+                            <span>终身学习 · 持续进化</span>
+                            <span>数字游民 · 自由生活</span>
+                        </div>
+                        <span class="oneopc-feature-action">探索 OneOPC <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
                     </div>
-                    <div class="product-info">
-                        <span class="product-tag"><i class="fas fa-compass"></i> 核心产品 / 生产力工作台</span>
-                        <h3 class="product-name">万象导航</h3>
-                        <p class="product-desc">聚合 5000+ 精选标签与常用工具，支持智能全局检索和树状分类，为知识工作者提供清晰、高效的信息路径。</p>
+                    <div class="oneopc-feature-visual" aria-hidden="true">
+                        <div class="oneopc-feature-screen">
+                            <img src="images/oneopc-product-screenshot.webp" alt="" width="1280" height="800" loading="lazy" decoding="async">
+                        </div>
                     </div>
-                </a>
-                <!-- 股票行情云图 -->
-                <a href="https://stock.wenyaoyefei.com/" target="_blank" rel="noopener" class="product-card home-product-secondary" data-umami-event="homepage_product_click" data-umami-props='{"target":"stock_site"}'>
-                        <div class="product-cover product-screenshot-cover">
-                            <picture>
-                                <img class="product-screenshot" src="images/stock-product-screenshot.webp" alt="股票行情云图产品界面截图" width="1280" height="800" loading="lazy" decoding="async">
-                            </picture>
-                        </div>
-                        <div class="product-info">
-                            <span class="product-tag"><i class="fas fa-chart-line"></i> 投资工具</span>
-                            <h3 class="product-name">股票行情云图</h3>
-                            <p class="product-desc">实时行情、关键指标与可视化数据云图。</p>
-                        </div>
-                </a>
-
-                <!-- OneOPC.ai -->
-                <a href="https://www.oneopc.ai/" target="_blank" rel="noopener" class="product-card home-product-secondary" data-umami-event="homepage_product_click" data-umami-props='{"target":"oneopc_site"}'>
-                        <div class="product-cover product-screenshot-cover">
-                            <picture>
-                                <img class="product-screenshot" src="images/oneopc-product-screenshot.webp" alt="OneOPC 一人公司知识库新版首页截图" width="1280" height="800" loading="lazy" decoding="async">
-                            </picture>
-                        </div>
-                        <div class="product-info">
-                            <span class="product-tag"><i class="fas fa-robot"></i> 一人公司知识库</span>
-                            <h3 class="product-name">OneOPC.ai</h3>
-                            <p class="product-desc">一人公司工作流、实用模板、工具栈与真实经营案例库。</p>
-                        </div>
                 </a>
             </div>
         </section>
