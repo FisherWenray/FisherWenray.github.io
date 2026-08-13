@@ -10,11 +10,11 @@ def process_file(filepath):
 
     original_content = content
 
-    # Replace color: #c5b358 with color: #c5b358
-    content = re.sub(r'color:\s*var\(--primary\)', 'color: #c5b358', content)
+    # Replace primary-colored text with the site's standard gold.
+    content = re.sub(r'color:\s*var\(--primary\)', 'color: #f0c968', content)
     
-    # Replace color: #c5b358 with color: #c5b358 (case insensitive)
-    content = re.sub(r'color:\s*#004e8c', 'color: #c5b358', content, flags=re.IGNORECASE)
+    # Replace explicitly blue text with the site's standard gold (case insensitive).
+    content = re.sub(r'color:\s*#004e8c', 'color: #f0c968', content, flags=re.IGNORECASE)
 
     # What about HTML elements that might have 'text-primary' class or something?
     # If there are explicit blue text colors.

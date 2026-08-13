@@ -36,8 +36,8 @@
         .content-header-icon .content-icon-dot { fill: var(--gold); stroke: none; }
 
         .content-category {
-            --section-accent: #c5b358;
-            --section-accent-rgb: 197, 179, 88;
+            --section-accent: #f0c968;
+            --section-accent-rgb: 240, 201, 104;
             position: relative;
             isolation: isolate;
             margin-top: clamp(56px, 7vw, 88px);
@@ -53,7 +53,7 @@
             animation: content-reveal .72s cubic-bezier(.19, 1, .22, 1) forwards;
         }
 
-        .content-category[data-word="BLOG"] { --section-accent: #c5b358; --section-accent-rgb: 197, 179, 88; }
+        .content-category[data-word="BLOG"] { --section-accent: #f0c968; --section-accent-rgb: 240, 201, 104; }
         .content-category[data-word="BOOK"] { --section-accent: #6f91c8; --section-accent-rgb: 111, 145, 200; }
         .content-category[data-word="PODCAST"] { --section-accent: #57a994; --section-accent-rgb: 87, 169, 148; }
         .content-category[data-word="VIDEO"] { --section-accent: #c77b59; --section-accent-rgb: 199, 123, 89; }
@@ -122,7 +122,7 @@
             transition: gap .25s ease, color .25s ease;
         }
 
-        .category-link { align-self: center; margin-top: 0; padding: 9px 14px; border: 1px solid rgba(var(--section-accent-rgb), .24); border-radius: 999px; color: #c5b358; background: rgba(var(--section-accent-rgb), .06); }
+        .category-link { align-self: center; margin-top: 0; padding: 9px 14px; border: 1px solid rgba(var(--section-accent-rgb), .24); border-radius: 999px; color: #f0c968; background: rgba(var(--section-accent-rgb), .06); }
         .category-link:hover, .content-card:hover .content-action { gap: 13px; color: var(--gold); }
 
         .content-card {
@@ -152,7 +152,7 @@
         .content-meta i { color: var(--section-accent); }
         .content-card h3 { margin: 0; color: var(--ink); font: 700 20px/1.45 var(--font-serif); }
         .content-card p { margin: 10px 0 0; color: var(--ink-soft); font-size: 13px; line-height: 1.75; }
-        .content-action { margin-top: 19px; color: #c5b358; }
+        .content-action { margin-top: 19px; color: #f0c968; }
 
         .blog-layout { display: grid; grid-template-columns: minmax(0, 1.28fr) minmax(320px, .72fr); gap: 18px; }
         .blog-feature { display: grid; grid-template-rows: 300px auto; }
@@ -179,7 +179,7 @@
             background: radial-gradient(circle at 50% 44%, rgba(var(--section-accent-rgb), .18), transparent 42%), linear-gradient(145deg, rgba(var(--section-accent-rgb), .11), rgba(var(--primary-rgb), .025));
         }
 
-        .book-visual::before { content: ""; position: absolute; inset: 28px; border: 1px solid rgba(197,179,88,.14); border-radius: 50%; }
+        .book-visual::before { content: ""; position: absolute; inset: 28px; border: 1px solid rgba(240,201,104,.14); border-radius: 50%; }
         .book-cover {
             position: relative;
             z-index: 1;
@@ -190,16 +190,16 @@
             justify-content: flex-end;
             padding: 26px 22px;
             overflow: hidden;
-            border: 1px solid rgba(239,224,143,.42);
+            border: 1px solid rgba(240,201,104,.42);
             border-radius: 6px 14px 14px 6px;
-            background: radial-gradient(circle at 76% 18%, rgba(239,224,143,.95) 0 16px, rgba(239,224,143,.12) 17px 40px, transparent 41px), linear-gradient(155deg, #075891, #031a2d 54%, #072d46);
+            background: radial-gradient(circle at 76% 18%, rgba(240,201,104,.95) 0 16px, rgba(240,201,104,.12) 17px 40px, transparent 41px), linear-gradient(155deg, #075891, #031a2d 54%, #072d46);
             box-shadow: -9px 16px 0 rgba(1, 18, 31, .18), 0 32px 54px rgba(0, 0, 0, .34);
             transform: rotate(-2deg);
             transition: transform .4s cubic-bezier(.19, 1, .22, 1);
         }
 
         .book-visual:hover .book-cover { transform: rotate(0) translateY(-5px); }
-        .book-cover small { color: rgba(239,224,143,.84); font: 700 8px/1 var(--font-mono); letter-spacing: .12em; }
+        .book-cover small { color: rgba(240,201,104,.84); font: 700 8px/1 var(--font-mono); letter-spacing: .12em; }
         .book-cover strong { margin-top: 12px; color: #fff; font: 700 29px/1.18 var(--font-serif); }
         .book-cover em { margin-top: 9px; color: rgba(255,255,255,.72); font-size: 11px; font-style: normal; line-height: 1.5; }
         .book-copy { display: flex; flex-direction: column; justify-content: center; }

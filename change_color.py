@@ -1,10 +1,10 @@
 import os
 
-old_hex = ["#c5b358", "#c5b358"]
-new_hex = "#c5b358"
+old_hex = ["#f0c968"]
+new_hex = "#f0c968"
 
-old_rgb = ["197, 179, 88", "197, 179, 88"]
-new_rgb = "197, 179, 88"
+old_rgb = ["240, 201, 104"]
+new_rgb = "240, 201, 104"
 
 def process_file(filepath):
     try:
