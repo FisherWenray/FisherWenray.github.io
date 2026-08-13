@@ -1820,15 +1820,15 @@
             display: grid;
             grid-template-columns: minmax(320px, .78fr) minmax(0, 1.22fr);
             overflow: hidden;
-            border: 1px solid rgba(183, 227, 51, .2);
+            border: 1px solid rgba(222, 236, 242, .24);
             border-radius: 24px;
             color: #f4f7ee;
             text-decoration: none;
             background:
-                radial-gradient(circle at 16% 12%, rgba(183, 227, 51, .11), transparent 25%),
-                radial-gradient(circle at 78% 74%, rgba(67, 116, 142, .22), transparent 36%),
-                linear-gradient(135deg, #07131b 0%, #09181f 48%, #0c202a 100%);
-            box-shadow: 0 28px 68px rgba(23, 58, 77, .22);
+                radial-gradient(circle at 14% 10%, rgba(237, 200, 109, .1), transparent 26%),
+                radial-gradient(circle at 78% 74%, rgba(199, 218, 226, .18), transparent 36%),
+                linear-gradient(135deg, #12354b 0%, #235b78 62%, #517d93 100%);
+            box-shadow: 0 28px 68px rgba(22, 55, 73, .24);
             transition: transform .5s cubic-bezier(.19, 1, .22, 1), border-color .5s ease, box-shadow .5s ease;
         }
 
@@ -1845,22 +1845,12 @@
             mask-image: linear-gradient(90deg, #000, transparent 66%);
         }
 
-        .oneopc-feature::after {
-            content: "";
-            position: absolute;
-            z-index: 3;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background: linear-gradient(180deg, #d8ff45, #8bad19);
-            box-shadow: 0 0 28px rgba(190, 239, 48, .48);
-        }
+        .oneopc-feature::after { content: none; }
 
         .oneopc-feature:hover {
             transform: translateY(-7px);
-            border-color: rgba(201, 244, 73, .42);
-            box-shadow: 0 38px 82px rgba(18, 52, 71, .32);
+            border-color: rgba(232, 243, 247, .42);
+            box-shadow: 0 38px 82px rgba(22, 55, 73, .32);
         }
 
         .oneopc-feature-copy {
@@ -1878,7 +1868,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 28px;
-            color: #c9f044;
+            color: #edc86d;
             font: 700 11px/1 var(--font-mono);
             letter-spacing: .16em;
             text-transform: uppercase;
@@ -1899,7 +1889,7 @@
         }
 
         .oneopc-feature h3 span {
-            color: #c9f044;
+            color: #edc86d;
         }
 
         .oneopc-feature-lead {
@@ -1919,10 +1909,10 @@
 
         .oneopc-feature-points span {
             padding: 8px 12px;
-            border: 1px solid rgba(209, 235, 219, .13);
+            border: 1px solid rgba(226, 237, 242, .2);
             border-radius: 999px;
-            color: rgba(235, 242, 240, .74);
-            background: rgba(255, 255, 255, .045);
+            color: rgba(235, 243, 246, .82);
+            background: rgba(7, 31, 47, .18);
             font: 600 11px/1 var(--font-sans);
         }
 
@@ -1933,16 +1923,16 @@
             min-height: 48px;
             padding: 0 20px;
             border-radius: 4px;
-            color: #0a171b;
-            background: #c9f044;
+            color: #102f43;
+            background: #edc86d;
             font: 800 13px/1 var(--font-sans);
-            box-shadow: 0 14px 32px rgba(168, 205, 47, .18);
+            box-shadow: 0 14px 32px rgba(41, 71, 88, .22);
             transition: gap .3s ease, background .3s ease, transform .3s ease;
         }
 
         .oneopc-feature:hover .oneopc-feature-action {
             gap: 19px;
-            background: #dcff62;
+            background: #f4d786;
             transform: translateY(-2px);
         }
 
@@ -1959,7 +1949,7 @@
             position: absolute;
             top: 31px;
             right: 42px;
-            color: rgba(201, 240, 68, .28);
+            color: rgba(237, 200, 109, .48);
             font: 700 10px/1 var(--font-mono);
             letter-spacing: .2em;
         }
@@ -1968,7 +1958,7 @@
             position: relative;
             width: 100%;
             overflow: hidden;
-            border: 1px solid rgba(220, 244, 228, .18);
+            border: 1px solid rgba(222, 236, 242, .22);
             border-radius: 16px;
             background: #070b0a;
             box-shadow: 0 32px 72px rgba(0, 0, 0, .48), 0 0 0 8px rgba(255, 255, 255, .025);
@@ -1978,7 +1968,7 @@
 
         .oneopc-feature:hover .oneopc-feature-screen {
             transform: perspective(1100px) rotateY(0) rotateX(0) scale(1.015);
-            box-shadow: 0 38px 88px rgba(0, 0, 0, .56), 0 0 0 8px rgba(201, 240, 68, .035);
+            box-shadow: 0 38px 88px rgba(0, 0, 0, .56), 0 0 0 8px rgba(222, 236, 242, .04);
         }
 
         .oneopc-feature-screen img {
