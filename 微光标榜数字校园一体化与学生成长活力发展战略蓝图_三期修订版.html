@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="微光标榜数字校园一体化与学生成长活力发展战略蓝图。">
+  <title>微光标榜 | 数字校园一体化战略蓝图</title>
+  <style>
+    :root {
+      --ink: #102a3b;
+      --ink-2: #24495b;
+      --paper: #f4f5f1;
+      --paper-2: #e9eee9;
+      --white: #fff;
+      --line: #cbd7d0;
+      --muted: #61757b;
+      --growth: #13856f;
+      --growth-2: #bfe4d4;
+      --sky: #14789f;
+      --gold: #b78124;
+      --red: #a94b43;
+      --shadow: 0 22px 60px rgba(16, 42, 59, .14);
+      --max: 1260px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      overflow: hidden;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+      letter-spacing: 0;
+    }
+    button { font: inherit; }
+    button:focus-visible { outline: 3px solid #e7ad43; outline-offset: 3px; }
+    .skip-link { position: fixed; z-index: 20; top: 8px; left: 12px; transform: translateY(-150%); padding: 8px 12px; background: var(--white); color: var(--ink); }
+    .skip-link:focus { transform: translateY(0); }
+
+    .topbar {
+      position: fixed;
+      z-index: 10;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      padding: 0 28px;
+      color: var(--ink);
+      background: rgba(244,245,241,.92);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(16px);
+    }
+    .brand { flex: 0 0 auto; font-size: 14px; font-weight: 850; letter-spacing: .04em; white-space: nowrap; }
+    .chapter-nav { display: flex; min-width: 0; flex: 1; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+    .chapter-nav::-webkit-scrollbar { display: none; }
+    .chapter-nav button {
+      flex: 0 0 auto;
+      border: 0;
+      border-bottom: 3px solid transparent;
+      padding: 22px 10px 19px;
+      color: var(--muted);
+      background: transparent;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .chapter-nav button[aria-current="true"] { color: var(--ink); border-bottom-color: var(--growth); }
+    .page-tools { flex: 0 0 auto; display: flex; align-items: center; gap: 10px; }
+    .page-count { min-width: 60px; color: var(--muted); font-size: 12px; text-align: center; font-variant-numeric: tabular-nums; }
+    .icon-btn { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: var(--ink); background: var(--white); cursor: pointer; }
+    .icon-btn:hover:not(:disabled) { color: var(--white); background: var(--growth); border-color: var(--growth); }
+    .icon-btn:disabled { cursor: not-allowed; opacity: .35; }
+
+    .deck { position: relative; width: 100vw; height: 100svh; min-height: 560px; touch-action: pan-y; }
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      align-items: center;
+      padding: 104px 7vw 50px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(38px);
+      transition: opacity .28s ease, transform .28s ease;
+      overflow: hidden;
+    }
+    .slide.is-active { opacity: 1; pointer-events: auto; transform: translateX(0); }
+    .slide-inner { width: min(var(--max), 100%); max-height: 100%; margin: 0 auto; }
+    .slide.dark { color: var(--white); background: var(--ink); }
+    .slide.green { color: var(--white); background: var(--growth); }
+    .slide.soft { background: var(--paper-2); }
+    .slide-image { background: #061b2e; color: var(--white); }
+    .slide-image::before { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, #061b2e 0%, #08253b 52%, #0b3049 100%); }
+    .slide-image > * { position: relative; z-index: 1; }
+    .kicker { display: flex; align-items: center; gap: 10px; color: var(--growth); font-size: 12px; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+    .dark .kicker, .green .kicker, .slide-image .kicker { color: var(--growth-2); }
+    .kicker::before { content: ""; width: 26px; height: 2px; background: currentColor; }
+    h1, h2, h3, p { margin: 0; }
+    h1 { max-width: 980px; margin-top: 20px; font-size: clamp(42px, 5.2vw, 78px); line-height: 1.12; letter-spacing: -.02em; overflow-wrap: anywhere; word-break: break-all; }
+    h1 em { color: #d0b268; font-style: normal; }
+    .cover-title { display: grid; gap: 6px; }
+    .cover-title span { display: block; }
+    .cover-title .title-main { color: #fff; }
+    .cover-title .title-accent { color: #d0b268; }
+    h2 { max-width: 900px; margin-top: 14px; font-size: clamp(31px, 4vw, 58px); line-height: 1.16; letter-spacing: -.02em; overflow-wrap: anywhere; word-break: break-all; }
+    h3 { font-size: clamp(17px, 1.8vw, 24px); line-height: 1.28; }
+    .lead { max-width: 780px; margin-top: 20px; color: var(--ink-2); font-size: clamp(16px, 1.6vw, 21px); line-height: 1.65; overflow-wrap: anywhere; word-break: break-all; }
+    .dark .lead, .green .lead, .slide-image .lead { color: rgba(255,255,255,.78); }
+    .micro { color: var(--muted); font-size: 13px; }
+    .dark .micro, .green .micro, .slide-image .micro { color: rgba(255,255,255,.7); }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0; max-width: 800px; margin-top: 48px; border-top: 1px solid rgba(255,255,255,.3); }
+    .hero-meta div { min-width: 180px; padding: 16px 24px 0 0; margin-right: 24px; border-right: 1px solid rgba(255,255,255,.24); }
+    .hero-meta div:last-child { border-right: 0; }
+    .hero-meta b { display: block; font-size: 20px; }
+    .hero-meta span { display: block; margin-top: 4px; color: rgba(255,255,255,.66); font-size: 12px; }
+
+    .split { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(28px, 5vw, 76px); align-items: center; }
+    .quote { padding: 30px; color: var(--white); background: var(--ink); border-top: 5px solid var(--gold); box-shadow: var(--shadow); }
+    .quote strong { display: block; margin-bottom: 18px; font-size: clamp(25px, 3vw, 42px); line-height: 1.35; }
+    .quote p { color: rgba(255,255,255,.72); font-size: 15px; }
+    .compare { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .compare-row { display: grid; grid-template-columns: 110px 1fr; gap: 18px; padding: 18px; background: var(--white); }
+    .compare-row b { color: var(--red); font-size: 12px; }
+    .compare-row span { color: var(--ink-2); font-size: 14px; }
+    .cards { display: grid; gap: 14px; }
+    .cards.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .cards.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .cards.cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .card { min-width: 0; padding: 22px; background: var(--white); border: 1px solid var(--line); box-shadow: 0 8px 22px rgba(16,42,59,.05); }
+    .dark .card { color: var(--ink); }
+    .card b { display: block; margin-bottom: 9px; color: var(--growth); font-size: 12px; letter-spacing: .08em; }
+    .card p { margin-top: 8px; color: var(--muted); font-size: 14px; }
+    .number { color: var(--gold); font-size: 26px; font-weight: 850; }
+    .chain { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0; margin-top: 32px; }
+    .chain-item { position: relative; min-height: 150px; padding: 20px 18px; background: var(--white); border: 1px solid var(--line); }
+    .chain-item + .chain-item { border-left: 0; }
+    .chain-item:not(:last-child)::after { content: "→"; position: absolute; z-index: 1; top: 50%; right: -12px; transform: translateY(-50%); color: var(--gold); font-size: 20px; font-weight: 900; }
+    .chain-item b { display: block; margin-bottom: 10px; color: var(--growth); font-size: 14px; }
+    .chain-item span { color: var(--muted); font-size: 13px; }
+    .flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 34px; }
+    .flow-item { position: relative; padding: 22px; color: var(--ink); background: var(--white); border-top: 4px solid var(--growth); }
+    .flow-item:not(:last-child)::after { content: "→"; position: absolute; top: 50%; right: -18px; color: var(--gold); font-size: 22px; font-weight: 900; }
+    .flow-item p { margin-top: 9px; color: var(--muted); font-size: 14px; }
+    .pulses { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 30px; background: rgba(255,255,255,.2); }
+    .pulse { padding: 24px; background: rgba(255,255,255,.08); }
+    .pulse b { color: var(--growth-2); font-size: 12px; }
+    .pulse h3 { margin-top: 10px; }
+    .pulse p { margin-top: 8px; color: rgba(255,255,255,.72); font-size: 14px; }
+    .teacher-work-grid, .teacher-entry-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .teacher-work-grid { margin-top: 26px; }
+    .teacher-work-card { min-width: 0; padding: 19px 20px; background: rgba(255,255,255,.09); border: 1px solid rgba(255,255,255,.2); border-top: 4px solid var(--growth-2); }
+    .teacher-work-card:nth-child(2) { border-top-color: var(--gold); }
+    .teacher-work-card:nth-child(3) { border-top-color: var(--sky); }
+    .teacher-work-card b { color: var(--growth-2); font-size: 12px; letter-spacing: .06em; }
+    .teacher-work-card:nth-child(2) b { color: #e4c77f; }
+    .teacher-work-card:nth-child(3) b { color: #8bd0e5; }
+    .teacher-work-card h3 { margin-top: 8px; color: var(--white); font-size: 20px; }
+    .teacher-work-card p { margin-top: 9px; color: rgba(255,255,255,.74); font-size: 13px; line-height: 1.55; }
+    .teacher-entry-title { margin-top: 24px; color: var(--growth-2); font-size: 12px; font-weight: 850; letter-spacing: .08em; }
+    .teacher-entry-grid { margin-top: 10px; }
+    .teacher-entry { min-width: 0; padding: 16px 18px; color: var(--ink); background: var(--white); border-top: 4px solid var(--growth); }
+    .teacher-entry:nth-child(2) { border-top-color: var(--gold); }
+    .teacher-entry:nth-child(3) { border-top-color: var(--sky); }
+    .teacher-entry h3 { font-size: 18px; }
+    .teacher-entry p { margin-top: 7px; color: var(--muted); font-size: 12px; line-height: 1.55; }
+    .teacher-conclusion { margin-top: 16px; color: rgba(255,255,255,.78); font-size: 13px; }
+    .dimension { padding: 22px; background: var(--white); border-bottom: 4px solid var(--growth); }
+    .dimension p { margin-top: 9px; color: var(--muted); font-size: 14px; }
+    .dimension small { display: block; margin-bottom: 12px; color: var(--growth); font-weight: 850; }
+    .risk-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 26px; }
+    .risk { min-height: 122px; padding: 16px; background: var(--white); border-top: 4px solid var(--growth); }
+    .risk:nth-child(5) { border-top-color: #c79b3b; }
+    .risk:nth-child(6) { border-top-color: var(--gold); }
+    .risk:nth-child(7) { border-top-color: var(--red); }
+    .risk b { display: block; color: var(--ink); font-size: 15px; }
+    .risk p { margin-top: 8px; color: var(--muted); font-size: 12px; }
+    .support-route { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-top: 22px; }
+    .support-route-item { min-width: 0; padding: 13px 14px; color: var(--ink); background: rgba(255,255,255,.92); border-left: 4px solid var(--growth); }
+    .support-route-item:nth-child(2) { border-left-color: #c79b3b; }
+    .support-route-item:nth-child(3) { border-left-color: var(--gold); }
+    .support-route-item:nth-child(4) { border-left-color: var(--red); }
+    .support-route-item b { display: block; font-size: 13px; }
+    .support-route-item span { display: block; margin-top: 5px; color: var(--muted); font-size: 12px; }
+    .support-note { margin-top: 16px; color: rgba(255,255,255,.76); font-size: 13px; }
+    .tracks { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 30px; }
+    .track { padding: 20px; color: var(--white); background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.25); }
+    .track b { color: var(--growth-2); font-size: 12px; }
+    .track h3 { margin-top: 9px; }
+    .track p { margin-top: 8px; color: rgba(255,255,255,.7); font-size: 13px; }
+    .tech-stack { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 30px; }
+    .tech { padding: 24px; background: var(--white); border-left: 5px solid var(--sky); }
+    .tech b { color: var(--sky); font-size: 12px; }
+    .tech h3 { margin-top: 9px; }
+    .tech p { margin-top: 8px; color: var(--muted); font-size: 14px; }
+    .agent-flow { display: grid; grid-template-columns: 1fr 1.15fr 1.2fr; gap: 12px; margin-top: 26px; }
+    .agent-stage { min-width: 0; padding: 20px; background: var(--white); border-top: 4px solid var(--growth); }
+    .agent-stage:nth-child(2) { border-top-color: var(--gold); }
+    .agent-stage:nth-child(3) { border-top-color: var(--sky); }
+    .agent-stage b, .notify-stage b { color: var(--growth); font-size: 12px; letter-spacing: .06em; }
+    .agent-stage:nth-child(2) b { color: var(--gold); }
+    .agent-stage:nth-child(3) b { color: var(--sky); }
+    .agent-stage h3 { margin-top: 8px; color: var(--ink); }
+    .agent-stage p { margin-top: 8px; color: var(--muted); font-size: 13px; line-height: 1.55; }
+    .agent-example { margin-top: 12px; padding: 11px 12px; color: var(--ink-2); background: var(--paper-2); border-left: 3px solid var(--growth); font-size: 12px; line-height: 1.55; }
+    .agent-output { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .agent-output div { padding: 11px 12px; background: var(--paper-2); border-left: 3px solid var(--growth); }
+    .agent-output div:last-child { border-left-color: var(--sky); }
+    .agent-output strong { display: block; color: var(--ink); font-size: 13px; }
+    .agent-output span { display: block; margin-top: 5px; color: var(--muted); font-size: 11px; line-height: 1.45; }
+    .agent-note { margin-top: 14px; color: var(--muted); font-size: 12px; }
+    .notify-title { margin-top: 24px; color: var(--growth-2); font-size: 12px; font-weight: 850; letter-spacing: .08em; }
+    .notify-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px; }
+    .notify-stage { min-width: 0; padding: 16px 18px; color: var(--white); background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.2); }
+    .notify-stage:nth-child(2) b { color: #e4c77f; }
+    .notify-stage:nth-child(3) b { color: #8bd0e5; }
+    .notify-stage h3 { margin-top: 7px; color: var(--white); font-size: 18px; }
+    .notify-stage p { margin-top: 7px; color: rgba(255,255,255,.72); font-size: 12px; line-height: 1.55; }
+    .service-list { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 30px; }
+    .service { padding: 20px; background: var(--white); border: 1px solid var(--line); }
+    .service b { display: block; color: var(--gold); font-size: 24px; }
+    .service h3 { margin-top: 8px; font-size: 18px; }
+    .service p { margin-top: 8px; color: var(--muted); font-size: 13px; }
+    .timeline { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; margin-top: 34px; border-top: 2px solid var(--growth); }
+    .month { min-height: 210px; padding: 20px; background: var(--white); border-right: 1px solid var(--line); }
+    .month:last-child { border-right: 0; }
+    .month b { color: var(--growth); font-size: 20px; }
+    .month h3 { margin-top: 12px; font-size: 17px; }
+    .month p { margin-top: 9px; color: var(--muted); font-size: 13px; }
+    .accept { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 30px; }
+    .accept .card { padding: 18px; }
+    .accept .card p { font-size: 13px; }
+    .iteration { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 30px; }
+    .iteration span { padding: 13px 16px; color: var(--ink); background: var(--white); border: 1px solid var(--line); font-size: 13px; font-weight: 750; }
+    .iteration i { color: var(--gold); font-style: normal; font-weight: 900; }
+    .decision { margin-top: 34px; padding: 26px 30px; color: var(--white); background: var(--ink); border-left: 5px solid var(--gold); }
+    .decision strong { display: block; font-size: clamp(22px, 2.4vw, 34px); }
+    .decision p { margin-top: 8px; color: rgba(255,255,255,.72); }
+    .phase-roadmap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 28px; }
+    .phase-panel { min-width: 0; padding: 24px; background: var(--white); border-top: 5px solid var(--growth); box-shadow: 0 10px 28px rgba(16,42,59,.06); }
+    .phase-panel:nth-child(2) { border-top-color: var(--sky); }
+    .phase-panel:nth-child(3) { border-top-color: var(--gold); }
+    .phase-panel small { color: var(--growth); font-size: 12px; font-weight: 850; letter-spacing: .08em; }
+    .phase-panel:nth-child(2) small { color: var(--sky); }
+    .phase-panel:nth-child(3) small { color: var(--gold); }
+    .phase-panel h3 { margin-top: 8px; }
+    .phase-panel p { margin-top: 9px; color: var(--muted); font-size: 13px; }
+    .phase-panel ul, .delivery-block ul, .coop-block ul { margin: 13px 0 0; padding-left: 18px; color: var(--ink-2); font-size: 13px; line-height: 1.72; }
+    .data-lanes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 24px; }
+    .data-lane { min-width: 0; padding: 18px; background: var(--white); border-left: 4px solid var(--growth); }
+    .data-lane:nth-child(2) { border-left-color: var(--sky); }
+    .data-lane:nth-child(3) { border-left-color: var(--gold); }
+    .data-lane:nth-child(4) { border-left-color: var(--red); }
+    .data-lane b { display: block; font-size: 15px; }
+    .data-lane span { display: block; margin-top: 7px; color: var(--muted); font-size: 12px; line-height: 1.55; }
+    .phase-layout { display: grid; grid-template-columns: .92fr 1.08fr; gap: 22px; margin-top: 24px; align-items: stretch; }
+    .phase-data, .phase-actions { padding: 22px; background: var(--white); border: 1px solid var(--line); }
+    .phase-data { border-top: 5px solid var(--sky); }
+    .phase-actions { border-top: 5px solid var(--growth); }
+    .phase-data h3, .phase-actions h3 { font-size: 20px; }
+    .phase-data ul, .phase-actions ul { margin: 12px 0 0; padding-left: 18px; color: var(--ink-2); font-size: 13px; line-height: 1.74; }
+    .action-flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 22px; }
+    .action-step { min-width: 0; padding: 15px 13px; color: var(--white); background: var(--ink); border-bottom: 4px solid var(--growth); }
+    .action-step b { color: var(--growth-2); font-size: 11px; }
+    .action-step span { display: block; margin-top: 7px; font-size: 13px; font-weight: 750; }
+    .delivery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 26px; }
+    .delivery-block { min-width: 0; padding: 22px; background: var(--white); border: 1px solid var(--line); }
+    .delivery-block h3 { color: var(--growth); font-size: 20px; }
+    .metric-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 20px; }
+    .metric-box { padding: 15px; color: var(--white); background: var(--ink); border-bottom: 4px solid var(--gold); }
+    .metric-box b { display: block; color: var(--growth-2); font-size: 12px; }
+    .metric-box span { display: block; margin-top: 6px; font-size: 13px; }
+    .coop-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 26px; }
+    .coop-block { min-width: 0; padding: 20px; background: var(--white); border-top: 4px solid var(--growth); }
+    .coop-block:nth-child(2) { border-top-color: var(--sky); }
+    .coop-block:nth-child(3) { border-top-color: var(--gold); }
+    .coop-block:nth-child(4) { border-top-color: var(--red); }
+    .coop-block h3 { font-size: 18px; }
+    .coop-block ul { font-size: 12px; }
+    .gate-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 28px; }
+    .gate { min-width: 0; padding: 22px; background: var(--white); border-left: 5px solid var(--growth); }
+    .gate:nth-child(2) { border-left-color: var(--sky); }
+    .gate:nth-child(3) { border-left-color: var(--gold); }
+    .gate b { color: var(--growth); font-size: 12px; }
+    .gate:nth-child(2) b { color: var(--sky); }
+    .gate:nth-child(3) b { color: var(--gold); }
+    .gate h3 { margin-top: 8px; font-size: 20px; }
+    .gate p { margin-top: 8px; color: var(--muted); font-size: 13px; }
+    .framework { display: grid; grid-template-columns: .72fr 1.28fr; gap: 42px; align-items: center; }
+    .framework img { display: block; width: 100%; max-height: 66vh; object-fit: contain; object-position: center; background: var(--white); }
+    .framework-copy { display: grid; gap: 14px; }
+    .framework-copy .card { background: rgba(255,255,255,.92); }
+    .blueprint-overview { display: grid; gap: 18px; }
+    .blueprint-core { display: grid; grid-template-columns: .85fr 1.15fr; gap: 16px; align-items: stretch; }
+    .blueprint-core-main { padding: 22px 24px; color: var(--white); background: var(--ink); border-left: 5px solid var(--gold); }
+    .blueprint-core-main b, .blueprint-support-title b, .blueprint-value-title b { color: var(--growth-2); font-size: 12px; letter-spacing: .08em; }
+    .blueprint-core-main h3 { margin-top: 8px; font-size: 25px; }
+    .blueprint-core-main p { margin-top: 8px; color: rgba(255,255,255,.72); font-size: 13px; }
+    .blueprint-purposes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .blueprint-purpose { min-width: 0; padding: 16px 15px; background: var(--white); border-top: 3px solid var(--gold); }
+    .blueprint-purpose b { display: block; color: var(--growth); font-size: 14px; }
+    .blueprint-purpose span { display: block; margin-top: 6px; color: var(--muted); font-size: 12px; }
+    .blueprint-support-title, .blueprint-value-title { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+    .blueprint-support-title { padding: 13px 16px; background: var(--ink); }
+    .blueprint-support-title b { color: var(--growth-2); font-size: 15px; letter-spacing: .04em; }
+    .blueprint-support-title span { color: rgba(255,255,255,.72); }
+    .blueprint-value-title b { color: var(--growth); }
+    .blueprint-support-title span, .blueprint-value-title span { color: var(--muted); font-size: 12px; }
+    .blueprint-support-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .blueprint-support { min-width: 0; min-height: 70px; padding: 16px 15px; background: var(--white); border: 1px solid var(--line); border-top: 3px solid var(--growth); overflow-wrap: anywhere; word-break: break-all; }
+    .blueprint-support b { display: block; color: var(--ink); font-size: 14px; }
+    .blueprint-support span { display: block; margin-top: 6px; color: var(--muted); font-size: 11px; }
+    .blueprint-value { display: grid; gap: 9px; }
+    .blueprint-value-chain { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; }
+    .blueprint-value-chain span { position: relative; padding: 12px 14px; color: var(--white); background: var(--growth); font-size: 12px; font-weight: 750; text-align: center; }
+    .blueprint-value-chain span:nth-child(even) { background: #116f5d; }
+    .blueprint-value-chain span:not(:last-child)::after { content: "→"; position: absolute; z-index: 1; top: 50%; right: -8px; transform: translateY(-50%); color: var(--gold); font-size: 16px; }
+    .slide[data-title="顶层蓝图总览"] h2 { max-width: none; white-space: nowrap; font-size: clamp(38px, 4.15vw, 54px); }
+    .slide[data-title="价值传导链"] h2 { max-width: none; white-space: nowrap; font-size: clamp(32px, 4vw, 58px); }
+    .slide[data-title="SGVI 一期核心闭环"] h2 { max-width: none; white-space: nowrap; }
+    .slide[data-title="SGVI 一期核心闭环"] .kicker { white-space: nowrap; letter-spacing: .04em; font-size: clamp(8px, 1vw, 12px); }
+    .slide[data-title="SGVI 一期核心闭环"] .sgvi-principle { max-width: none; width: 100%; white-space: nowrap; font-size: clamp(8px, 1.25vw, 18px); letter-spacing: 0; }
+    .progress { position: fixed; z-index: 11; right: 28px; bottom: 20px; width: 130px; height: 3px; background: var(--line); }
+    .progress span { display: block; height: 100%; width: 0; background: var(--growth); transition: width .25s ease; }
+
+    @media (max-width: 900px) {
+      body { overflow: hidden; }
+      .topbar { height: 62px; gap: 7px; padding: 0 10px; }
+      .brand { font-size: 12px; }
+      .chapter-nav button { padding: 19px 8px 16px; font-size: 11px; }
+      .page-tools { gap: 6px; }
+      .page-count { min-width: 48px; }
+      .slide { padding: 88px 24px 38px; overflow-y: auto; }
+      .slide-inner { padding-bottom: 10px; }
+      .split, .framework, .blueprint-core { grid-template-columns: 1fr; gap: 22px; }
+      .chain { grid-template-columns: repeat(3, 1fr); }
+      .agent-flow { grid-template-columns: 1fr 1fr; }
+      .agent-stage:last-child { grid-column: 1 / -1; }
+      .notify-grid { grid-template-columns: 1fr 1fr; }
+      .teacher-work-grid, .teacher-entry-grid { grid-template-columns: repeat(2, 1fr); }
+      .chain-item:nth-child(4) { border-left: 1px solid var(--line); }
+      .chain-item:nth-child(3)::after, .chain-item:nth-child(6)::after { display: none; }
+      .flow { grid-template-columns: repeat(2, 1fr); }
+      .flow-item:nth-child(2)::after { display: none; }
+      .risk-grid { grid-template-columns: repeat(4, 1fr); }
+      .support-route { grid-template-columns: repeat(2, 1fr); }
+      .tracks, .service-list { grid-template-columns: repeat(2, 1fr); }
+      .phase-roadmap, .gate-grid { grid-template-columns: 1fr 1fr; }
+      .phase-panel:last-child, .gate:last-child { grid-column: 1 / -1; }
+      .data-lanes { grid-template-columns: repeat(2, 1fr); }
+      .phase-layout { grid-template-columns: 1fr; }
+      .action-flow { grid-template-columns: repeat(5, minmax(130px, 1fr)); overflow-x: auto; }
+      .coop-grid { grid-template-columns: repeat(2, 1fr); }
+      .accept { grid-template-columns: repeat(2, 1fr); }
+      .timeline { grid-template-columns: repeat(5, minmax(145px, 1fr)); overflow-x: auto; }
+      .month { min-height: 185px; }
+      .framework img { max-height: 42vh; }
+      .blueprint-support-grid { grid-template-columns: repeat(2, 1fr); }
+      .blueprint-value-chain { grid-template-columns: repeat(3, 1fr); }
+      .blueprint-value-chain span:nth-child(4) { border-top: 1px solid rgba(255,255,255,.25); }
+      .blueprint-value-chain span:nth-child(4)::after, .blueprint-value-chain span:nth-child(6)::after { display: none; }
+    }
+    @media (max-width: 560px) {
+      .topbar { align-items: center; }
+      .brand { max-width: 78px; white-space: normal; line-height: 1.15; }
+      .chapter-nav { order: 3; position: absolute; top: 62px; left: 0; right: 0; height: 42px; padding: 0 14px; background: rgba(244,245,241,.96); border-bottom: 1px solid var(--line); }
+      .chapter-nav button { padding: 10px 8px 8px; }
+      .page-tools { margin-left: auto; gap: 4px; }
+      .page-count { min-width: 42px; font-size: 11px; }
+      .icon-btn { width: 30px; height: 30px; }
+      .deck { height: 100svh; }
+      .slide { padding: 122px 18px 28px; }
+      h1 { max-width: 100%; font-size: clamp(30px, 8.5vw, 43px); }
+      .slide-image .cover-title { width: 100%; max-width: 100%; font-size: 28px; line-height: 1.2; letter-spacing: 0; }
+      .slide-image .cover-title span { max-width: 100%; white-space: nowrap; }
+      h2 { font-size: clamp(28px, 9vw, 40px); }
+      .lead { font-size: 15px; }
+      .hero-meta { margin-top: 28px; }
+      .hero-meta div { min-width: 0; flex: 1 1 115px; padding-top: 12px; margin-right: 14px; }
+      .hero-meta b { font-size: 16px; }
+      .cards.cols-2, .cards.cols-3, .cards.cols-4, .pulses, .flow, .risk-grid, .tracks, .tech-stack, .service-list, .accept, .support-route { grid-template-columns: 1fr; }
+      .phase-roadmap, .data-lanes, .delivery-grid, .metric-strip, .coop-grid, .gate-grid { grid-template-columns: 1fr; }
+      .phase-panel:last-child, .gate:last-child { grid-column: auto; }
+      .agent-flow, .notify-grid { grid-template-columns: 1fr; }
+      .agent-stage:last-child { grid-column: auto; }
+      .teacher-work-grid, .teacher-entry-grid { grid-template-columns: 1fr; }
+      .chain { grid-template-columns: 1fr 1fr; }
+      .chain-item:nth-child(odd) { border-left: 1px solid var(--line); }
+      .chain-item::after { display: none !important; }
+      .compare-row { grid-template-columns: 82px 1fr; gap: 10px; padding: 14px; }
+      .quote { padding: 24px; }
+      .flow-item::after { display: none !important; }
+      .timeline { margin-right: -18px; }
+      .framework img { max-height: 34vh; }
+      .blueprint-purposes { grid-template-columns: 1fr; }
+      .blueprint-support-grid, .blueprint-value-chain { grid-template-columns: 1fr 1fr; }
+      .slide-image + .slide, .slide { min-width: 0; }
+      .slide[data-title="顶层蓝图总览"] h2 { max-width: 100%; font-size: 30px; line-height: 1.18; }
+      .slide[data-title="顶层蓝图总览"] h2 { white-space: normal; }
+      .slide[data-title="价值传导链"] h2 { max-width: 100%; font-size: 20px; line-height: 1.25; white-space: nowrap; }
+      .slide[data-title="SGVI 一期核心闭环"] h2 { max-width: 100%; font-size: 28px; line-height: 1.2; white-space: nowrap; }
+      .slide[data-title="SGVI 一期核心闭环"] .kicker { font-size: 8px; letter-spacing: 0; }
+      .slide[data-title="SGVI 一期核心闭环"] .sgvi-principle { font-size: 8px; }
+      .blueprint-support-title, .blueprint-value-title { display: block; }
+      .blueprint-support-title span, .blueprint-value-title span { display: block; margin-top: 4px; }
+      .blueprint-value-chain span:nth-child(odd) { border-left: 1px solid rgba(255,255,255,.18); }
+      .blueprint-value-chain span:nth-child(n)::after { display: none; }
+      .progress { right: 18px; bottom: 12px; width: 90px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .slide, .progress span { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#deck">跳到演示内容</a>
+  <header class="topbar" aria-label="演示导航">
+    <div class="brand">微光标榜<br>战略蓝图</div>
+    <nav class="chapter-nav" aria-label="章节导航">
+      <button type="button" data-chapter="0">封面</button>
+      <button type="button" data-chapter="1">为什么 FDE</button>
+      <button type="button" data-chapter="4">顶层蓝图</button>
+      <button type="button" data-chapter="6">三期路线</button>
+      <button type="button" data-chapter="7">一期：看见</button>
+      <button type="button" data-chapter="17">二期：成长</button>
+      <button type="button" data-chapter="19">三期：发展</button>
+      <button type="button" data-chapter="21">陪跑与验收</button>
+    </nav>
+    <div class="page-tools">
+      <button class="icon-btn" id="prev" type="button" aria-label="上一页">←</button>
+      <span class="page-count" id="page-count" aria-live="polite">01 / 24</span>
+      <button class="icon-btn" id="next" type="button" aria-label="下一页">→</button>
+    </div>
+  </header>
+
+  <main id="deck" class="deck" aria-label="战略蓝图演示文稿">
+    <section class="slide slide-image is-active" data-chapter="0" data-title="封面" aria-label="第 1 页：封面">
+      <div class="slide-inner">
+        <div class="kicker">年度 FDE 共创提案</div>
+        <h1 class="cover-title"><span class="title-main">微光标榜｜校园一体化</span><span class="title-accent">与学生活力发展战略蓝图</span></h1>
+        <p class="lead">以“看见—成长—发展”三期闭环，把校内已有数据转化为每个学生可感知的成长支持。</p>
+        <div class="hero-meta"><div><b>3 期 · 12 个月</b><span>分阶段建设与验收</span></div><div><b>SGVI</b><span>学生成长活力发展计划</span></div><div><b>FDE</b><span>数字化运营共创伙伴</span></div></div>
+      </div>
+    </section>
+
+    <section class="slide" data-chapter="1" data-title="为什么需要 FDE" aria-label="第 2 页：为什么需要 FDE">
+      <div class="slide-inner"><div class="kicker">第一部分 · 为什么需要 FDE</div><h2>买软件，不等于解决问题。</h2><p class="lead">过去人适配软件；AI 时代软件适配人的工作语境，FDE 由此从软件交付转向运营能力交付。</p><div class="cards cols-3" style="margin-top:30px"><div class="card"><b>过去 · 软件是解决方案中心</b><h3>人去适配软件</h3><p>采购产品、固化流程，要求一线按系统字段和页面重新表达问题。</p></div><div class="card"><b>变化 · AI 降低成本</b><h3>软件适配人</h3><p>AI Agent、低代码和自动化工具可以快速搭建页面、表单与流程。</p></div><div class="card"><b>现在 · FDE 是问题解决中心</b><h3>交付持续运营能力</h3><p>围绕真实问题搭建 SOP，并交付数据口径、角色分工、工具、培训和复盘机制。</p></div></div></div>
+    </section>
+
+    <section class="slide dark" data-chapter="1" data-title="FDE 共创伙伴" aria-label="第 3 页：FDE 共创伙伴">
+      <div class="slide-inner"><div class="kicker">第一部分 · 合作关系</div><h2>FDE 不是外部供应商，<br>而是数字化运营共创伙伴。</h2><div class="cards cols-4" style="margin-top:34px"><div class="card"><b>01</b><h3>共同进入战略</h3><p>一起判断最值得优先解决的问题。</p></div><div class="card"><b>02</b><h3>共同进入业务</h3><p>理解标榜的组织、习惯和工作节奏。</p></div><div class="card"><b>03</b><h3>共同进入落地</h3><p>把目标变成 SOP、角色和日常动作。</p></div><div class="card"><b>04</b><h3>共同进入长期</h3><p>持续观察、复盘、调整和确认下一步。</p></div></div><p class="lead">以共创方式，为标榜打造一套与学校自身 DNA 完全契合的数字化运营能力。</p></div>
+    </section>
+
+    <section class="slide" data-chapter="1" data-title="FDE 对学校的意义" aria-label="第 4 页：FDE 对学校的意义">
+      <div class="slide-inner"><div class="kicker">第一部分 · 对学校的意义</div><h2>从一次性技术采购，<br>转为学校自己的持续能力。</h2><div class="quote" style="margin-top:34px"><strong>学校获得的不是某个软件，而是一套能在校内持续运行、不断改进的数字化运营机制。</strong><p>它帮助标榜解决当前的学生成长与流失问题，也让学校今后更快识别问题、组织协同、验证效果并持续进化。</p></div></div>
+    </section>
+
+    <section class="slide soft" data-chapter="2" data-title="顶层蓝图总览" aria-label="第 5 页：顶层蓝图总览">
+      <div class="slide-inner blueprint-overview"><div><div class="kicker">第二部分 · 顶层蓝图</div><h2>以学生成长活力为核心的数字校园顶层蓝图</h2><p class="lead">学生成长活力是起点，学校长期办学收益是结果。</p></div><div class="blueprint-core"><div class="blueprint-core-main"><b>核心主线</b><h3>学生成长活力评估</h3><p>不筛选、不贴标签，让每一个学生获得积极的“净增量”。</p></div><div class="blueprint-purposes"><div class="blueprint-purpose"><b>感知状态</b><span>更早理解学生正在经历什么。</span></div><div class="blueprint-purpose"><b>精准匹配</b><span>把学校资源匹配到需要的节点。</span></div><div class="blueprint-purpose"><b>驱动转轨</b><span>帮助学生恢复参与、建立能力，进入适合自己的成长路径。</span></div></div></div><div class="blueprint-support-title"><b>八项数字化支撑</b><span>围绕主线逐步建设，可按学校问题持续插入</span></div><div class="blueprint-support-grid"><div class="blueprint-support"><b>教师工作评估与激励</b><span>沉淀教师关怀与工作价值</span></div><div class="blueprint-support"><b>校园硬件与后勤响应</b><span>快速响应学生生活诉求</span></div><div class="blueprint-support"><b>学业与成长资源配置</b><span>精准调度学业与支持资源</span></div><div class="blueprint-support"><b>跨专业协同工作流</b><span>打破部门壁垒形成协作</span></div><div class="blueprint-support"><b>数据治理与安全审计</b><span>让数据流动守住安全底线</span></div><div class="blueprint-support"><b>产教融合与就业匹配</b><span>把能力成果连接企业岗位</span></div><div class="blueprint-support"><b>教职工减负型能力建设</b><span>AI 辅助降低行政负担</span></div><div class="blueprint-support"><b>实施质量与过程审计</b><span>确保育人动作真正发生</span></div></div></div>
+    </section>
+
+    <section class="slide" data-chapter="2" data-title="价值传导链" aria-label="第 6 页：价值传导链">
+      <div class="slide-inner"><div class="kicker">第二部分 · 办学价值</div><h2>学生状态，是学校经营结果的起点。</h2><p class="lead">先了解学生处于什么状态，再把有限资源精准匹配到需要的节点，最终形成留存、就业、招生和品牌的正向传导。</p><div class="chain"><div class="chain-item"><b>学生状态洞察</b><span>更早看见成长活力、参与变化和风险趋势。</span></div><div class="chain-item"><b>资源精准匹配</b><span>调度教师、课程、实训、心理和替代性支持。</span></div><div class="chain-item"><b>留存与运营改善</b><span>减少流失，形成积极的学生运营策略。</span></div><div class="chain-item"><b>就业质量与 ROI</b><span>稳定学习和实训，沉淀能力成果。</span></div><div class="chain-item"><b>招生 CAX 下降</b><span>真实留存、就业和成长案例降低获客成本。</span></div><div class="chain-item"><b>学校品牌增强</b><span>把可解释的办学成果变成长期品牌资产。</span></div></div><div class="decision" style="margin-top:30px"><strong>核心逻辑</strong><p>看见状态，才能匹配资源；资源匹配有效，才能改善留存和就业；留存与就业形成证据，才能反哺招生和品牌。</p></div></div>
+    </section>
+
+    <section class="slide soft" data-chapter="3" data-title="三期建设路线" aria-label="第 7 页：三期建设路线">
+      <div class="slide-inner"><div class="kicker">第三部分 · 12 个月建设路线</div><h2>三期递进：先守住学生，再激活成长，最后连接未来。</h2><p class="lead">每一期都使用学校能够稳定获得的数据，先小范围验证，再以阶段验收决定扩面。</p><div class="phase-roadmap"><article class="phase-panel"><small>第一期 · 第 1—4 月</small><h3>看见：防流失与及时支持</h3><p>参考防退学系统，建立客观信号、活力状态、分层支持和四条转轨路径。</p><ul><li>考勤 / 成绩 / 学籍 / 心理授权数据</li><li>每日脉搏与风险任务闭环</li><li>工学交替 / 技能 / 线上 / 心理支持</li></ul></article><article class="phase-panel"><small>第二期 · 第 5—8 月</small><h3>成长：机会与资源精准匹配</h3><p>把课程、社团、竞赛、实训、导师等资源送到适合的学生，并验证资源是否有效。</p><ul><li>学习参与与校园参与数据</li><li>成长机会推荐和 4—6 周复盘</li><li>院系资源供需与成效分析</li></ul></article><article class="phase-panel"><small>第三期 · 第 9—12 月</small><h3>发展：能力证据与就业衔接</h3><p>沉淀学生真实能力证据，识别能力缺口，连接实习岗位并反哺专业建设。</p><ul><li>项目 / 作品 / 证书 / 实习评价</li><li>个人能力护照与岗位匹配</li><li>专业培养质量年度改进</li></ul></article></div></div>
+    </section>
+
+    <section class="slide green" data-chapter="4" data-title="SGVI 一期核心闭环" aria-label="第 8 页：SGVI 一期核心闭环">
+      <div class="slide-inner"><div class="kicker">第三部分 · SGVI(Student Growth &amp; Vitality Initiative，学生成长活力发展计划)</div><h2>先把第一个真实闭环跑通。</h2><p class="lead sgvi-principle">SGVI 不是从考勤数据直接计算“问题学生”，而是把事实、状态、风险和支持严格分开。</p><div class="flow"><div class="flow-item"><b>01</b><h3>客观事实记录</h3><p>考勤、门禁、请假、突发事件。</p></div><div class="flow-item"><b>02</b><h3>学生活力四维状态</h3><p>教师基于沟通和观察确认状态。</p></div><div class="flow-item"><b>03</b><h3>风险等级计算</h3><p>系统依据状态和参考数据计算。</p></div><div class="flow-item"><b>04</b><h3>资源匹配跟进</h3><p>把正确行动送到责任人手中。</p></div></div></div>
+    </section>
+
+    <section class="slide soft" data-chapter="4" data-title="一期四类数据" aria-label="第 9 页：一期四类数据">
+      <div class="slide-inner"><div class="kicker">第一期 · 普惠筛查的数据基础</div><h2>不靠单一考勤下结论，用四类数据发现变化。</h2><p class="lead">系统只提示“需要关注的事实”，教师沟通确认后才形成状态判断；心理数据仅在授权范围内使用。</p><div class="data-lanes"><div class="data-lane"><b>考勤与到校</b><span>课堂缺勤、连续迟到、请假变化、门禁异常。来源：教务、门禁和请假系统。</span></div><div class="data-lane"><b>学业表现</b><span>成绩波动、补考重修、作业提交、课程参与。来源：教务与学习平台。</span></div><div class="data-lane"><b>学籍与异动</b><span>注册、休复学、欠费状态、专业异动申请。来源：教务、学工和财务授权字段。</span></div><div class="data-lane"><b>心理与沟通</b><span>心理中心授权等级、辅导员沟通事实、学生主动求助。敏感原文不进入通用学生档案。</span></div></div><div class="decision" style="margin-top:22px"><strong>第一期输出不是“问题学生名单”。</strong><p>输出的是可解释的关注信号、明确的责任人、完成时限和可选择的支持动作。</p></div></div>
+    </section>
+
+    <section class="slide dark" data-chapter="4" data-title="老师如何参与 SGVI" aria-label="第 10 页：老师如何参与 SGVI">
+      <div class="slide-inner"><div class="kicker">第三部分 · 教师工作入口</div><h2>老师如何参与 SGVI</h2><p class="lead">学生成长活力有三个需要持续关注的方面；老师可以从任一入口开始参与。</p><div class="teacher-entry-title" style="margin-top:24px">学生成长活力的三个关注方面</div><div class="teacher-work-grid"><article class="teacher-work-card"><b>关注方面 01</b><h3>即时脉搏</h3><p>关注正在发生的客观事实：考勤数据准实时反映，突发事件由现场教师上报，重大异常触发最高级别推送。</p></article><article class="teacher-work-card"><b>关注方面 02</b><h3>每日脉搏</h3><p>关注管辖范围学生的昨日异常与变化趋势：每日 08:00 汇总推送，呈现异常事实、趋势和跟进状态，不直接生成学生评价或风险标签。</p></article><article class="teacher-work-card"><b>关注方面 03</b><h3>活力评估</h3><p>关注学生当前的成长状态：汇总沟通片段，AI Agent 生成四维状态判断建议，教师确认后状态生效。</p></article></div><div class="teacher-entry-title">老师参与关注工作的三个入口</div><div class="teacher-entry-grid"><article class="teacher-entry"><h3>卡片通知</h3><p>主动接收异常、日报和高优先级提醒；可直接查看详情、补充信息、确认或处理任务。</p></article><article class="teacher-entry"><h3>AI Agent</h3><p>独立记录文字、语音或聊天片段，汇总学生信息，生成四维状态建议，协助完成沟通和跟进动作。</p></article><article class="teacher-entry"><h3>教师工作台</h3><p>主动查询管辖范围学生，查看历史记录和数据趋势，整理不同来源信息，发起支持或协同申请。</p></article></div><p class="teacher-conclusion">三个入口都可以参与三个关注方面，按实际场景任选，也可以互相配合。</p></div>
+    </section>
+
+    <section class="slide soft" data-chapter="4" data-title="感知状态" aria-label="第 11 页：感知状态">
+      <div class="slide-inner"><div class="kicker">第三部分 · 感知状态</div><h2>四维状态模型：<br>教师具体观察和上报什么。</h2><p class="lead">顶层蓝图定义评估要解决什么问题；本页定义教师如何把沟通、观察和事件转化为可用状态。</p><div class="cards cols-4" style="margin-top:26px"><div class="dimension"><small>维度 01</small><h3>自我认同感</h3><p>从自我否定走向接纳自我。</p></div><div class="dimension"><small>维度 02</small><h3>关系信任感</h3><p>从戒备对抗走向建立信任。</p></div><div class="dimension"><small>维度 03</small><h3>行动参与度</h3><p>从被动游离走向主动融入。</p></div><div class="dimension"><small>维度 04</small><h3>自我效能感</h3><p>从畏难放弃走向掌控和解决。</p></div></div><p class="lead">教师确认后状态生效；AI Agent 只负责把沟通内容变成低负担的回写，不替代老师判断。</p></div>
+    </section>
+
+    <section class="slide" data-chapter="4" data-title="精准匹配" aria-label="第 12 页：精准匹配">
+      <div class="slide-inner"><div class="kicker">第三部分 · 精准匹配</div><h2>评估结果决定支持的及时性与协同范围。</h2><p class="lead">以学生活力四维状态为核心，结合必要参考数据，评估结果只用于资源路由，不是对学生的固定标签。</p><div class="risk-grid"><div class="risk"><b>未评估</b><p>仪表盘单列，不触发提醒；在约定周期内完成基础数据收集和初步沟通。</p></div><div class="risk"><b>优秀</b><p>保持日常观察，提供正向参与、同伴互助、实训和产教融合资源。</p></div><div class="risk"><b>良</b><p>保持日常观察，根据学生状态提供成长资源和正向参与机会。</p></div><div class="risk"><b>普通</b><p>保持日常观察，通过日常参与、实训和成长资源维持积极变化。</p></div><div class="risk"><b>偏低 · MTSS Tier 1</b><p>主动推荐校内资源、社团和外展网络，重点建立兴趣、信心和信任。</p></div><div class="risk"><b>中风险 · MTSS Tier 2</b><p>向辅导员提供每日报告，启动针对性关怀、问题定位和跨部门协作。</p></div><div class="risk"><b>高风险 · MTSS Tier 3</b><p>卡片推送相关责任人，启动挽留、替代性考核和弹性转轨流程。</p></div></div></div>
+    </section>
+
+    <section class="slide dark" data-chapter="4" data-title="评估结果如何驱动支持与转轨" aria-label="第 13 页：评估结果如何驱动支持与转轨">
+      <div class="slide-inner"><div class="kicker">第三部分 · 驱动转轨</div><h2>评估结果如何驱动支持与转轨。</h2><p class="lead">不同评估结果对应不同的支持强度，不把所有学生推入同一条风险流程。</p><div class="support-route"><div class="support-route-item"><b>优秀 / 良 / 普通</b><span>日常观察与成长资源</span></div><div class="support-route-item"><b>偏低</b><span>Tier 1 主动支持</span></div><div class="support-route-item"><b>中风险</b><span>Tier 2 针对性支持与跨部门协同</span></div><div class="support-route-item"><b>高风险</b><span>Tier 3 托底与转轨评估</span></div></div><div class="teacher-entry-title">高风险阶段：四大支持路径</div><div class="tracks"><div class="track"><b>明确方向 · 暂时无法在校</b><h3>工学交替</h3><p>通过企业实践、成长汇报和双导师评价承认学习价值。</p></div><div class="track"><b>可以在校 · 课堂适配困难</b><h3>技能强化</h3><p>通过实训、技能证书和项目投入建立成就感。</p></div><div class="track"><b>暂时无法在校 · 方向未明确</b><h3>线上修读</h3><p>提供有节奏的学业缓冲，等待下一步方向形成。</p></div><div class="track"><b>需要高关怀支持</b><h3>心理重建</h3><p>由专业力量介入，重建安全感、关系和校园归属。</p></div></div><p class="lead">进入新路径后的首个 30 天为保护期，再通过混合过渡平滑重返常规学业轨道。</p><p class="support-note">支持路径结果和后续反馈需要回写系统，参与下一次状态更新和资源调整，避免学生被单一退学选项推走。</p></div>
+    </section>
+
+    <section class="slide soft" data-chapter="4" data-title="安全与隐私底线" aria-label="第 14 页：安全与隐私底线">
+      <div class="slide-inner"><div class="kicker">第三部分 · 底线</div><h2>支持学生，也保护学生。</h2><div class="cards cols-3" style="margin-top:34px"><div class="card"><b>急性危机</b><h3>单独进入应急责任链</h3><p>打架、重大意外、自伤倾向等不被日常流程延误。</p></div><div class="card"><b>数据隔离</b><h3>主观谈心不进入就业档案</h3><p>心理敏感数据、谈心摘要和主观评价严格隔离。</p></div><div class="card"><b>就业成果</b><h3>只展示客观能力证据</h3><p>实训成果、证书、作品和经授权的双导师评价。</p></div></div></div>
+    </section>
+
+    <section class="slide" data-chapter="4" data-title="技术方案" aria-label="第 15 页：技术方案">
+      <div class="slide-inner"><div class="kicker">第四部分 · 技术方案</div><h2>技术的目标不是增加后台，<br>而是让老师愿意使用。</h2><div class="tech-stack"><div class="tech"><b>01 · 数据底座</b><h3>飞书多维表格</h3><p>承接学生主表、客观事实、支持案件和审计记录。</p></div><div class="tech"><b>02 · 角色工作台</b><h3>11种角色，11种视角</h3><p>辅导员看待办，任课教师看参与，系主任看审批，校领导看脱敏结果。</p></div><div class="tech"><b>03 · AI Agent</b><h3>聊天即录入</h3><p>语音或文字记录谈心，AI 提炼字段并回写流程。</p></div><div class="tech"><b>04 · 主动运营</b><h3>从人找数据到数据找人</h3><p>卡片把正确的下一步行动送到责任人。</p></div></div></div>
+    </section>
+
+    <section class="slide dark" data-chapter="4" data-title="AI Agent 与卡片通知" aria-label="第 16 页：AI Agent 与卡片通知">
+      <div class="slide-inner"><div class="kicker">第四部分 · 技术细节</div><h2>从极简输入，到可执行的支持动作。</h2><div class="agent-flow"><article class="agent-stage"><b>01 · 极简输入</b><h3>老师与 AI 对话沟通工作</h3><p>语音、文字、聊天片段或谈心后的简短记录，都可以直接提交，不要求打开复杂表单，也不要求一次填写完整字段。</p><div class="agent-example">“与小李沟通，他认为理想与现实差距较大，暂时不想继续当前方向。”</div></article><article class="agent-stage"><b>02 · AI Agent 解析</b><h3>从自然语言提炼结构化信息</h3><p>识别学生、时间和沟通事实，提炼当前状态，对照四维成长状态生成判断建议，并识别建议动作与协同责任角色。</p><p class="agent-note">AI 负责提炼和建议，不替代老师判断；涉及四维状态的建议必须由教师确认后生效。权限规则决定哪些内容可回写、可派单或必须人工确认。</p></article><article class="agent-stage"><b>03 · 输出与执行</b><h3>回写数据，触发下一步动作</h3><div class="agent-output"><div><strong>跨表回写</strong><span>权限校验后写入学生关联表，保留来源、时间和操作者。</span></div><div><strong>自动派单</strong><span>需要额外干预时派给责任人，支持后续回写和闭环追踪。</span></div></div></article></div><div class="notify-title">卡片通知：把正确的下一步送到正确的人</div><div class="notify-grid"><article class="notify-stage"><b>01 · 触发</b><h3>什么情况下发出</h3><p>考勤异常、突发事件、每日脉搏日报、支持风险变化、协同审批待办和高优先级危机提醒。</p></article><article class="notify-stage"><b>02 · 通知内容</b><h3>让责任人快速理解</h3><p>学生与事件摘要、来源和发生时间、当前状态或风险路由、建议动作、责任人、截止时间和历史记录入口。</p></article><article class="notify-stage"><b>03 · 可执行动作</b><h3>点开就能处理</h3><p>直接确认、补充事实、发起沟通、转交责任人、发起支持申请，或标记已处理并回写结果。</p></article></div></div>
+    </section>
+
+    <section class="slide" data-chapter="4" data-title="第一期交付与验收" aria-label="第 17 页：第一期交付与验收">
+      <div class="slide-inner"><div class="kicker">第一期 · 4 个月落地清单</div><h2>四个月跑通“发现—确认—支持—回写”闭环。</h2><div class="delivery-grid"><article class="delivery-block"><h3>实施节奏</h3><ul><li><b>第 1 月：</b>四类数据盘点、字段授权、风险信号和责任链共创</li><li><b>第 2 月：</b>上线学生主表、每日脉搏、辅导员工作台和卡片任务</li><li><b>第 3 月：</b>试点运行，验证四维状态、分层支持和四条转轨路径</li><li><b>第 4 月：</b>扩面运行，校准规则，完成案例复盘与一期验收</li></ul></article><article class="delivery-block"><h3>学校拿走的交付物</h3><ul><li>四类数据字典、授权清单与敏感数据隔离规则</li><li>每日脉搏、教师工作台和风险任务闭环</li><li>分层支持规则与四条转轨路径 SOP</li><li>一期运行报告、典型案例和规则校准记录</li></ul></article></div><div class="metric-strip"><div class="metric-box"><b>数据</b><span>信号来源可用与可追溯率</span></div><div class="metric-box"><b>响应</b><span>关注信号及时沟通率</span></div><div class="metric-box"><b>闭环</b><span>支持任务按期完成率</span></div><div class="metric-box"><b>安全</b><span>权限、审计与隔离有效性</span></div></div></div>
+    </section>
+
+    <section class="slide soft" data-chapter="5" data-title="第二期成长资源引擎" aria-label="第 18 页：第二期成长资源引擎">
+      <div class="slide-inner"><div class="kicker">第二期 · 成长机会与资源精准匹配</div><h2>从“发现风险”升级为“主动创造成长机会”。</h2><p class="lead">学校已有的数据足以判断学生参与了什么、缺少什么，再把真实可用的课程、导师和活动匹配过去。</p><div class="phase-layout"><article class="phase-data"><h3>学校可获得的数据</h3><ul><li><b>学习参与：</b>考勤趋势、作业提交、课程平台活跃、成绩增量</li><li><b>校园参与：</b>社团、竞赛、志愿服务、讲座、图书馆与实训室预约</li><li><b>学生意愿：</b>兴趣、目标、资源偏好、阶段反馈与主动报名</li><li><b>资源供给：</b>课程、导师、社团、场地、项目的名额与时间</li></ul></article><article class="phase-actions"><h3>落地业务动作</h3><ul><li>建立“成长机会资源库”，为每项资源标注适合人群、能力目标和容量</li><li>按学生状态推荐 1—3 个可选择机会，学生自愿确认后生成行动计划</li><li>卡片提醒学生与指导老师，自动记录参与、完成和反馈</li><li>每 4—6 周复盘活力变化，保留、调整或停止推荐</li></ul></article></div><div class="action-flow"><div class="action-step"><b>01</b><span>状态与意愿</span></div><div class="action-step"><b>02</b><span>资源供给盘点</span></div><div class="action-step"><b>03</b><span>学生自主选择</span></div><div class="action-step"><b>04</b><span>参与过程回写</span></div><div class="action-step"><b>05</b><span>4—6 周复盘</span></div></div></div>
+    </section>
+
+    <section class="slide" data-chapter="5" data-title="第二期交付与验收" aria-label="第 19 页：第二期交付与验收">
+      <div class="slide-inner"><div class="kicker">第二期 · 4 个月落地清单</div><h2>先在一个院系跑通，再扩展到全校资源网络。</h2><div class="delivery-grid"><article class="delivery-block"><h3>实施节奏</h3><ul><li><b>第 5 月：</b>选择试点院系，完成数据和资源盘点</li><li><b>第 6 月：</b>上线资源库、推荐规则与学生确认入口</li><li><b>第 7 月：</b>运行首个 4—6 周成长周期，修正规则</li><li><b>第 8 月：</b>扩展到 2—3 个院系，形成推广手册</li></ul></article><article class="delivery-block"><h3>学校拿走的交付物</h3><ul><li>成长机会资源库与运营责任表</li><li>学生成长计划、提醒和过程回写工作流</li><li>院系资源供需看板与低利用资源清单</li><li>成长推荐规则 v1、案例集和推广 SOP</li></ul></article></div><div class="metric-strip"><div class="metric-box"><b>覆盖</b><span>目标学生触达与自主确认率</span></div><div class="metric-box"><b>行动</b><span>成长计划按期完成率</span></div><div class="metric-box"><b>变化</b><span>参与度与四维活力净增量</span></div><div class="metric-box"><b>资源</b><span>资源利用率与学生满意度</span></div></div><p class="micro" style="margin-top:12px">验收目标值在试点启动时按历史基线共同确定，不预设无法验证的数字。</p></div>
+    </section>
+
+    <section class="slide soft" data-chapter="6" data-title="第三期能力与发展引擎" aria-label="第 20 页：第三期能力与发展引擎">
+      <div class="slide-inner"><div class="kicker">第三期 · 能力证据与发展衔接</div><h2>把“参加过”变成可验证的能力，把能力连接到真实岗位。</h2><p class="lead">第三期不使用心理与谈心信息做就业判断，只沉淀学生授权的客观能力证据。</p><div class="phase-layout"><article class="phase-data"><h3>学校可获得的数据</h3><ul><li><b>课程成果：</b>项目、作品、实训成绩、教师评价</li><li><b>能力凭证：</b>技能证书、竞赛、志愿与社团成果</li><li><b>实践反馈：</b>实习过程、企业导师评价、岗位任务完成</li><li><b>发展意愿：</b>就业方向、岗位偏好、升学或创业选择</li><li><b>岗位需求：</b>合作企业岗位、技能要求、地点与档期</li></ul></article><article class="phase-actions"><h3>落地业务动作</h3><ul><li>建立学生能力护照：证据可追溯、学生可确认、对外展示需授权</li><li>将专业培养目标拆成能力项，自动提示“已有证据”和“待补缺口”</li><li>根据能力、意愿和约束推荐实习岗位，保留人工复核</li><li>回收企业评价，反哺课程、实训项目与成长资源设计</li></ul></article></div><div class="action-flow"><div class="action-step"><b>01</b><span>证据归集</span></div><div class="action-step"><b>02</b><span>学生确认</span></div><div class="action-step"><b>03</b><span>能力缺口</span></div><div class="action-step"><b>04</b><span>岗位匹配</span></div><div class="action-step"><b>05</b><span>反馈反哺教学</span></div></div></div>
+    </section>
+
+    <section class="slide" data-chapter="6" data-title="第三期交付与验收" aria-label="第 21 页：第三期交付与验收">
+      <div class="slide-inner"><div class="kicker">第三期 · 4 个月落地清单</div><h2>形成学生、教师、企业都能使用的发展闭环。</h2><div class="delivery-grid"><article class="delivery-block"><h3>实施节奏</h3><ul><li><b>第 9 月：</b>选定 1—2 个专业，定义能力项和证据标准</li><li><b>第 10 月：</b>归集项目、证书、竞赛和实训证据，学生确认</li><li><b>第 11 月：</b>接入合作企业岗位，试运行人岗匹配与企业反馈</li><li><b>第 12 月：</b>完成效果评估、专业改进清单和知识转移</li></ul></article><article class="delivery-block"><h3>学校拿走的交付物</h3><ul><li>学生能力护照与授权展示页</li><li>专业能力字典、证据标准和缺口规则</li><li>岗位库、人岗匹配工作台与人工复核流程</li><li>企业反馈看板、专业改进清单与年度成长报告</li></ul></article></div><div class="metric-strip"><div class="metric-box"><b>证据</b><span>能力证据完整与学生确认率</span></div><div class="metric-box"><b>成长</b><span>关键能力缺口改善率</span></div><div class="metric-box"><b>匹配</b><span>实习推荐接受与到岗率</span></div><div class="metric-box"><b>质量</b><span>企业评价与课程改进闭环率</span></div></div></div>
+    </section>
+
+    <section class="slide soft" data-chapter="7" data-title="三期验收闸门" aria-label="第 22 页：三期验收闸门">
+      <div class="slide-inner"><div class="kicker">第七部分 · 分期验收与扩面条件</div><h2>每一期通过验收，才进入下一期扩面。</h2><div class="gate-grid"><article class="gate"><b>一期闸门 · 看得见</b><h3>信号能解释，支持有闭环</h3><p>四类数据来源稳定；每日脉搏可运行；风险由教师确认；支持任务有责任人、时限和结果；敏感信息隔离有效。</p></article><article class="gate"><b>二期闸门 · 有成长</b><h3>资源真正到人并产生变化</h3><p>资源库有人维护；学生自主选择；过程可追踪；完成一个 4—6 周复盘周期；能判断哪些资源对哪些学生有效。</p></article><article class="gate"><b>三期闸门 · 能发展</b><h3>能力有证据，岗位可衔接</h3><p>能力证据可追溯并经学生确认；匹配规则有人审；企业反馈能回流；专业形成下一年度可执行的改进清单。</p></article></div><div class="decision"><strong>共同基线：不以“系统上线”代替育人成效。</strong><p>按数据可用、动作发生、结果回写和学生净增量四类证据验收。</p></div></div>
+    </section>
+
+    <section class="slide" data-chapter="7" data-title="年度陪跑合作机制" aria-label="第 23 页：年度陪跑合作机制">
+      <div class="slide-inner"><div class="kicker">第七部分 · 年度合作方式</div><h2>陪跑，不是交付完就走。</h2><p class="lead">整合防退学方案的服务模式，以驻场启动、远程支持和定期复盘确保三期真正运行。</p><div class="coop-grid"><article class="coop-block"><h3>服务模式</h3><ul><li>每期启动与扩面关键阶段驻场</li><li>日常远程响应与专属服务群</li><li>异常处理、规则校准和系统迭代</li><li>一线使用问题持续收集优化</li></ul></article><article class="coop-block"><h3>沟通机制</h3><ul><li>双周复盘：进展、问题、下一步</li><li>月度报告：数据、动作、风险提示</li><li>季度评审：阶段验收与目标校准</li><li>年度总结：效果评估和来年计划</li></ul></article><article class="coop-block"><h3>联合团队</h3><ul><li>校方项目负责人和数据责任人</li><li>学工、教务、心理、就业代表</li><li>FDE 项目负责人和实施顾问</li><li>数据模型顾问与推广培训支持</li></ul></article><article class="coop-block"><h3>合作条款</h3><ul><li>建议签订一年期三阶段协议</li><li>按三期里程碑验收和付款</li><li>每期范围、基线和目标书面确认</li><li>报价依据学校规模与接入复杂度</li></ul></article></div></div>
+    </section>
+
+    <section class="slide green" data-chapter="7" data-title="年度合作启动" aria-label="第 24 页：年度合作启动">
+      <div class="slide-inner"><div class="kicker">第七部分 · 启动建议</div><h2>用一年时间，建立一套学校自己能持续运营的学生成长系统。</h2><p class="lead">先用第一期守住学生，再用第二期创造成长机会，最终通过第三期把能力连接到未来发展。</p><div class="iteration"><span>一期：看见与支持</span><i>→</i><span>二期：机会与成长</span><i>→</i><span>三期：能力与发展</span><i>→</i><span>年度复盘与持续迭代</span></div><div class="decision"><strong>建议下一步：启动一期共创与数据盘点。</strong><p>两周内确认试点范围、四类数据可用性、责任角色、安全边界和一期验收基线。</p></div></div>
+    </section>
+  </main>
+  <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+
+  <script>
+    (() => {
+      const slides = [...document.querySelectorAll('.slide')];
+      const chapterButtons = [...document.querySelectorAll('[data-chapter]')].filter((item) => item.matches('nav button'));
+      const prev = document.getElementById('prev');
+      const next = document.getElementById('next');
+      const count = document.getElementById('page-count');
+      const progress = document.getElementById('progress-bar');
+      let current = 0;
+      let pointerStart = null;
+
+      const clamp = (value) => Math.max(0, Math.min(slides.length - 1, value));
+      const render = (index, writeHash = true) => {
+        current = clamp(index);
+        slides.forEach((slide, i) => {
+          slide.classList.toggle('is-active', i === current);
+          slide.setAttribute('aria-hidden', String(i !== current));
+        });
+        chapterButtons.forEach((button, buttonIndex) => {
+          const start = Number(button.dataset.chapter);
+          const end = buttonIndex + 1 < chapterButtons.length ? Number(chapterButtons[buttonIndex + 1].dataset.chapter) : slides.length;
+          button.setAttribute('aria-current', String(current >= start && current < end));
+        });
+        count.textContent = `${String(current + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+        progress.style.width = `${((current + 1) / slides.length) * 100}%`;
+        prev.disabled = current === 0;
+        next.disabled = current === slides.length - 1;
+        if (writeHash) history.replaceState(null, '', `#slide-${current + 1}`);
+      };
+      const move = (delta) => render(current + delta);
+      chapterButtons.forEach((button) => button.addEventListener('click', () => render(Number(button.dataset.chapter))));
+      prev.addEventListener('click', () => move(-1));
+      next.addEventListener('click', () => move(1));
+      document.addEventListener('keydown', (event) => {
+        if (['ArrowRight', 'PageDown', ' '].includes(event.key)) { event.preventDefault(); move(1); }
+        if (['ArrowLeft', 'PageUp'].includes(event.key)) { event.preventDefault(); move(-1); }
+        if (event.key === 'Home') { event.preventDefault(); render(0); }
+        if (event.key === 'End') { event.preventDefault(); render(slides.length - 1); }
+      });
+      const deck = document.getElementById('deck');
+      deck.addEventListener('pointerdown', (event) => {
+        if (event.pointerType === 'mouse' && event.button !== 0) return;
+        pointerStart = { id: event.pointerId, x: event.clientX, y: event.clientY };
+      }, { passive: true });
+      deck.addEventListener('pointerup', (event) => {
+        if (!pointerStart || event.pointerId !== pointerStart.id) return;
+        const distanceX = event.clientX - pointerStart.x;
+        const distanceY = event.clientY - pointerStart.y;
+        pointerStart = null;
+        if (Math.abs(distanceX) < 45 || Math.abs(distanceX) <= Math.abs(distanceY)) return;
+        move(distanceX < 0 ? 1 : -1);
+      }, { passive: true });
+      deck.addEventListener('pointercancel', () => { pointerStart = null; }, { passive: true });
+      const hashMatch = location.hash.match(/^#slide-(\d+)$/);
+      render(hashMatch ? Number(hashMatch[1]) - 1 : 0, false);
+    })();
+  </script>
+</body>
+</html>

@@ -466,10 +466,10 @@
                     <div><div class="podcast-cover-row"><span class="podcast-cover"><img src="images/xiaoyuzhou-apple-touch-icon.png" alt="文鳐夜飞播客封面" width="180" height="180" loading="lazy" decoding="async"></span><span class="podcast-name"><small>WENYAO PODCAST</small><strong>文鳐夜飞</strong></span></div><p>关于技术、商业、个人成长与自由生活的声音记录。用更接近谈话的方式，延伸文字之外的思考。</p></div>
                     <span class="content-action">进入播客 <i class="fas fa-arrow-right"></i></span>
                 </a>
-                <div class="episode-list">
-                    <a class="content-card episode-row" href="podcast.html?episode=1000722825483&amp;autoplay=1" data-umami-event="content_recent_click" data-umami-props='{"type":"podcast","id":"004"}'><span class="episode-index">004</span><div><div class="content-meta"><span>2025-08-20</span></div><h3>AI 时代，做一个野生知识分子</h3><p>独立思考、跨领域探索与非学院化的自我学习。</p></div><span class="episode-duration">03:54</span></a>
-                    <a class="content-card episode-row" href="podcast.html?episode=1000717203674&amp;autoplay=1" data-umami-event="content_recent_click" data-umami-props='{"type":"podcast","id":"003"}'><span class="episode-index">003</span><div><div class="content-meta"><span>2025-07-14</span></div><h3>密码朋克的理想主义与 Web3</h3><p>从密码朋克精神，理解区块链与下一代互联网。</p></div><span class="episode-duration">03:36</span></a>
-                    <a class="content-card episode-row" href="podcast.html?episode=1000716932469&amp;autoplay=1" data-umami-event="content_recent_click" data-umami-props='{"type":"podcast","id":"002"}'><span class="episode-index">002</span><div><div class="content-meta"><span>2025-07-12</span></div><h3>什么是通识教育（二）</h3><p>把通识教育理解为一种学习的方法论。</p></div><span class="episode-duration">05:36</span></a>
+                <div class="episode-list" id="latestPodcastEpisodes" aria-live="polite">
+                    <a class="content-card episode-row" href="podcast.html?episode=1000779294165&amp;autoplay=1" data-umami-event="content_recent_click" data-umami-props='{"type":"podcast","id":"1000779294165"}'><span class="episode-index">005</span><div><div class="content-meta"><span>2026-07-31</span></div><h3>与渡见柒柒对谈：行思无界—见天见地见自己</h3><p>从间隔年、通识教育到一人公司，回望一场持续发生的自我重塑。</p></div><span class="episode-duration">01:11:41</span></a>
+                    <a class="content-card episode-row" href="podcast.html?episode=1000722825483&amp;autoplay=1" data-umami-event="content_recent_click" data-umami-props='{"type":"podcast","id":"1000722825483"}'><span class="episode-index">004</span><div><div class="content-meta"><span>2025-08-20</span></div><h3>AI 时代，做一个野生知识分子</h3><p>独立思考、跨领域探索与非学院化的自我学习。</p></div><span class="episode-duration">03:54</span></a>
+                    <a class="content-card episode-row" href="podcast.html?episode=1000717203674&amp;autoplay=1" data-umami-event="content_recent_click" data-umami-props='{"type":"podcast","id":"1000717203674"}'><span class="episode-index">003</span><div><div class="content-meta"><span>2025-07-14</span></div><h3>密码朋克的理想主义与 Web3</h3><p>从密码朋克精神，理解区块链与下一代互联网。</p></div><span class="episode-duration">03:36</span></a>
                 </div>
             </div>
         </section>
@@ -522,6 +522,110 @@
             const nav = document.getElementById('navLinks');
             if (nav) nav.classList.toggle('active');
         }
+
+        (function loadLatestPodcastEpisodes() {
+            const list = document.getElementById('latestPodcastEpisodes');
+            if (!list) return;
+
+            const podcastId = '1825759955';
+            const callbackName = 'contentLatestPodcastCallback_' + Date.now();
+            const script = document.createElement('script');
+            let timeoutId;
+
+            function escapeHtml(value) {
+                return String(value || '').replace(/[&<>"']/g, function (character) {
+                    return {
+                        '&': '&amp;',
+                        '<': '&lt;',
+                        '>': '&gt;',
+                        '"': '&quot;',
+                        "'": '&#39;'
+                    }[character];
+                });
+            }
+
+            function plainText(value) {
+                const element = document.createElement('div');
+                element.innerHTML = String(value || '');
+                return (element.textContent || '').replace(/\s+/g, ' ').trim();
+            }
+
+            function truncate(value, maximumLength) {
+                const text = plainText(value);
+                return text.length > maximumLength ? text.slice(0, maximumLength - 1) + '…' : text;
+            }
+
+            function formatDate(value) {
+                const date = new Date(value);
+                if (Number.isNaN(date.getTime())) return '';
+                return date.toISOString().slice(0, 10);
+            }
+
+            function formatDuration(milliseconds) {
+                const totalSeconds = Math.round(Number(milliseconds || 0) / 1000);
+                if (!totalSeconds) return '--:--';
+                const hours = Math.floor(totalSeconds / 3600);
+                const minutes = Math.floor((totalSeconds % 3600) / 60);
+                const seconds = totalSeconds % 60;
+                return hours
+                    ? [hours, minutes, seconds].map(function (part) { return String(part).padStart(2, '0'); }).join(':')
+                    : [minutes, seconds].map(function (part) { return String(part).padStart(2, '0'); }).join(':');
+            }
+
+            function cleanup() {
+                window.clearTimeout(timeoutId);
+                delete window[callbackName];
+                if (script.parentNode) script.parentNode.removeChild(script);
+            }
+
+            window[callbackName] = function (data) {
+                const allEpisodes = (data.results || [])
+                    .filter(function (episode) {
+                        return episode
+                            && episode.trackName
+                            && episode.releaseDate
+                            && (episode.kind === 'podcast-episode' || episode.wrapperType === 'podcastEpisode');
+                    })
+                    .sort(function (first, second) {
+                        return new Date(first.releaseDate) - new Date(second.releaseDate);
+                    });
+
+                const totalEpisodes = allEpisodes.length;
+                const latestEpisodes = allEpisodes.slice(-3).reverse();
+
+                if (latestEpisodes.length) {
+                    list.innerHTML = latestEpisodes.map(function (episode, position) {
+                        const episodeId = String(episode.trackId || episode.episodeGuid || '');
+                        const originalTitle = plainText(episode.trackName) || '未命名节目';
+                        const titleMatch = originalTitle.match(/^(\d{1,4})\s*[-—–:：]\s*(.+)$/);
+                        const episodeNumber = titleMatch
+                            ? titleMatch[1].padStart(3, '0')
+                            : String(totalEpisodes - position).padStart(3, '0');
+                        const title = titleMatch ? titleMatch[2] : originalTitle;
+                        const description = truncate(episode.description || episode.shortDescription || '点击进入播客页面收听本期节目。', 62);
+                        const href = episodeId
+                            ? 'podcast.html?episode=' + encodeURIComponent(episodeId) + '&amp;autoplay=1'
+                            : 'podcast.html';
+
+                        return '<a class="content-card episode-row" href="' + href + '"'
+                            + ' data-umami-event="content_recent_click" data-umami-props=\'{"type":"podcast","id":"' + escapeHtml(episodeId) + '"}\''
+                            + ' aria-label="收听播客：' + escapeHtml(title) + '">'
+                            + '<span class="episode-index">' + episodeNumber + '</span>'
+                            + '<div><div class="content-meta"><span>' + escapeHtml(formatDate(episode.releaseDate)) + '</span></div>'
+                            + '<h3>' + escapeHtml(title) + '</h3><p>' + escapeHtml(description) + '</p></div>'
+                            + '<span class="episode-duration">' + escapeHtml(formatDuration(episode.trackTimeMillis)) + '</span></a>';
+                    }).join('');
+                }
+
+                cleanup();
+            };
+
+            script.src = 'https://itunes.apple.com/lookup?id=' + podcastId
+                + '&country=CN&media=podcast&entity=podcastEpisode&limit=200&callback=' + callbackName;
+            script.onerror = cleanup;
+            timeoutId = window.setTimeout(cleanup, 10000);
+            document.body.appendChild(script);
+        }());
 
         (function initContentVideoPlayer() {
             const modal = document.getElementById('contentVideoModal');
