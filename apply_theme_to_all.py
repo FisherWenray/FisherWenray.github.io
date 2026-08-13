@@ -11,22 +11,22 @@ def process_file(filepath):
     content = re.sub(r'--deep:\s*#000814;', '--deep: #000000;', content)
     content = re.sub(r'--paper:\s*#000814;', '--paper: #000000;', content)
     # Be careful not to replace it if it already uses the site gold.
-    if '--gold: #f0c968;' not in content:
-        content = re.sub(r'--gold:\s*#[0-9a-fA-F]{6};\s*([^\s]*)\s*--ink:', '--gold: #f0c968;\n            --ink:', content)
+    if '--gold: #c5b358;' not in content:
+        content = re.sub(r'--gold:\s*#[0-9a-fA-F]{6};\s*([^\s]*)\s*--ink:', '--gold: #c5b358;\n            --ink:', content)
 
     # 2. Update body background
     old_body_regex = r'\[data-theme=\'dark\'\]\s+body\s*\{\s*background:\s*radial-gradient\(circle at 50% -20%, rgba\(0, 78, 140, 0.3\) 0%, transparent 50%\),\s*radial-gradient\(circle at 100% 100%, rgba\(0, 78, 140, 0.1\) 0%, transparent 50%\),\s*var\(--paper\) !important;'
-    new_body = r"[data-theme='dark'] body {\n            background:\n                radial-gradient(circle at 50% -20%, rgba(240, 201, 104, 0.15) 0%, transparent 50%),\n                radial-gradient(circle at 100% 100%, rgba(240, 201, 104, 0.05) 0%, transparent 50%),\n                var(--paper) !important;"
+    new_body = r"[data-theme='dark'] body {\n            background:\n                radial-gradient(circle at 50% -20%, rgba(197, 179, 88, 0.15) 0%, transparent 50%),\n                radial-gradient(circle at 100% 100%, rgba(197, 179, 88, 0.05) 0%, transparent 50%),\n                var(--paper) !important;"
     content = re.sub(old_body_regex, new_body, content)
 
     # 3. Update nav active links
     old_nav_regex = r'\[data-theme=\'dark\'\]\s+\.nav-links\s+a:hover,\s*\[data-theme=\'dark\'\]\s+\.nav-links\s+a\.active\s*\{\s*color:\s*#FFFFFF\s*!important;\s*background:\s*var\(--primary\)\s*!important;\s*box-shadow:\s*0\s*0\s*20px\s*rgba\(0,\s*78,\s*140,\s*0\.5\)\s*!important;\s*border-color:\s*rgba\(255,\s*255,\s*255,\s*0\.3\)\s*!important;\s*\}'
-    new_nav = r"[data-theme='dark'] .nav-links a:hover,\n        [data-theme='dark'] .nav-links a.active {\n            color: var(--gold) !important;\n            background: rgba(240, 201, 104, 0.1) !important;\n            box-shadow: 0 0 20px rgba(240, 201, 104, 0.2) !important;\n            border-color: rgba(240, 201, 104, 0.4) !important;\n        }"
+    new_nav = r"[data-theme='dark'] .nav-links a:hover,\n        [data-theme='dark'] .nav-links a.active {\n            color: var(--gold) !important;\n            background: rgba(197, 179, 88, 0.1) !important;\n            box-shadow: 0 0 20px rgba(197, 179, 88, 0.2) !important;\n            border-color: rgba(197, 179, 88, 0.4) !important;\n        }"
     content = re.sub(old_nav_regex, new_nav, content)
 
     # 4. Update strong tags
     old_strong_regex = r'\[data-theme=\'dark\'\]\s+strong,\s*\[data-theme=\'dark\'\]\s+\.article-content\s+strong,\s*\[data-theme=\'dark\'\]\s+\.hero-point-text\s+strong\s*\{\s*color:\s*#FFFFFF\s*!important;\s*text-shadow:\s*none\s*!important;\s*font-weight:\s*700\s*!important;\s*\}'
-    new_strong = r"[data-theme='dark'] strong,\n        [data-theme='dark'] .article-content strong,\n        [data-theme='dark'] .hero-point-text strong {\n            color: var(--gold) !important;\n            text-shadow: 0 0 10px rgba(240, 201, 104, 0.3) !important;\n            font-weight: 700 !important;\n        }"
+    new_strong = r"[data-theme='dark'] strong,\n        [data-theme='dark'] .article-content strong,\n        [data-theme='dark'] .hero-point-text strong {\n            color: var(--gold) !important;\n            text-shadow: 0 0 10px rgba(197, 179, 88, 0.3) !important;\n            font-weight: 700 !important;\n        }"
     content = re.sub(old_strong_regex, new_strong, content)
 
     # 5. Fix icons

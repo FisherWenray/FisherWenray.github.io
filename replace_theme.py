@@ -6,7 +6,7 @@ with open('index.html', 'r') as f:
 # Replace variables in [data-theme='dark']
 content = re.sub(r'--deep:\s*#000814;', '--deep: #000000;', content)
 content = re.sub(r'--paper:\s*#000814;', '--paper: #000000;', content)
-content = re.sub(r'--gold:\s*#[0-9a-fA-F]{6};\s*([^\s]*)\s*--ink:', '--gold: #f0c968;\n            --ink:', content)
+content = re.sub(r'--gold:\s*#[0-9a-fA-F]{6};\s*([^\s]*)\s*--ink:', '--gold: #c5b358;\n            --ink:', content)
 
 # Replace dark mode body background
 old_body = """        [data-theme='dark'] body {
@@ -19,8 +19,8 @@ old_body = """        [data-theme='dark'] body {
         }"""
 new_body = """        [data-theme='dark'] body {
             background:
-                radial-gradient(circle at 50% -20%, rgba(240, 201, 104, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 100% 100%, rgba(240, 201, 104, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 50% -20%, rgba(197, 179, 88, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(197, 179, 88, 0.05) 0%, transparent 50%),
                 var(--paper) !important;
             color: var(--ink) !important;
             position: relative;
@@ -38,9 +38,9 @@ old_nav = """        [data-theme='dark'] .nav-links a:hover,
 new_nav = """        [data-theme='dark'] .nav-links a:hover,
         [data-theme='dark'] .nav-links a.active {
             color: var(--gold) !important;
-            background: rgba(240, 201, 104, 0.1) !important;
-            box-shadow: 0 0 20px rgba(240, 201, 104, 0.2) !important;
-            border-color: rgba(240, 201, 104, 0.4) !important;
+            background: rgba(197, 179, 88, 0.1) !important;
+            box-shadow: 0 0 20px rgba(197, 179, 88, 0.2) !important;
+            border-color: rgba(197, 179, 88, 0.4) !important;
         }"""
 content = content.replace(old_nav, new_nav)
 
@@ -63,7 +63,7 @@ new_titles = """        [data-theme='dark'] .section-title,
         [data-theme='dark'] .teaser-title {
             color: var(--gold) !important;
             font-weight: 700 !important;
-            text-shadow: 0 0 15px rgba(240, 201, 104, 0.4);
+            text-shadow: 0 0 15px rgba(197, 179, 88, 0.4);
         }"""
 content = content.replace(old_titles, new_titles)
 
@@ -79,7 +79,7 @@ new_strong = """        [data-theme='dark'] strong,
         [data-theme='dark'] .article-content strong,
         [data-theme='dark'] .hero-point-text strong {
             color: var(--gold) !important;
-            text-shadow: 0 0 10px rgba(240, 201, 104, 0.3) !important;
+            text-shadow: 0 0 10px rgba(197, 179, 88, 0.3) !important;
             font-weight: 700 !important;
         }"""
 content = content.replace(old_strong, new_strong)
@@ -117,8 +117,8 @@ old_prod_icon = """        [data-theme='dark'] .product-tag {
         }"""
 new_prod_icon = """        [data-theme='dark'] .product-tag {
             color: var(--gold) !important;
-            border: 1px solid rgba(240, 201, 104, 0.3) !important;
-            background: rgba(240, 201, 104, 0.1) !important;
+            border: 1px solid rgba(197, 179, 88, 0.3) !important;
+            background: rgba(197, 179, 88, 0.1) !important;
         }"""
 content = content.replace(old_prod_icon, new_prod_icon)
 
@@ -131,10 +131,10 @@ old_feat_hover = """        [data-theme='dark'] .product-card.featured:hover {
                 inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
         }"""
 new_feat_hover = """        [data-theme='dark'] .product-card.featured:hover {
-            border-color: rgba(240, 201, 104, 0.6) !important;
+            border-color: rgba(197, 179, 88, 0.6) !important;
             box-shadow: 
-                0 32px 64px rgba(240, 201, 104, 0.2),
-                0 0 30px rgba(240, 201, 104, 0.3),
+                0 32px 64px rgba(197, 179, 88, 0.2),
+                0 0 30px rgba(197, 179, 88, 0.3),
                 inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
         }"""
 content = content.replace(old_feat_hover, new_feat_hover)

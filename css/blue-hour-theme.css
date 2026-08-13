@@ -8,7 +8,7 @@ html[data-theme='dark'] {
     --primary: #235b78;
     --primary-rgb: 35, 91, 120;
     --deep: #102f43;
-    --gold: #f0c968;
+    --gold: #c5b358;
     --ink: #102f43;
     --ink-soft: #566c78;
     --paper: #d7e2e6;
@@ -49,7 +49,7 @@ html[data-theme='dark'] {
 /* Navigation keeps the night horizon on every page. */
 [data-theme='dark'] .top-nav {
     background: linear-gradient(90deg, rgba(8, 34, 52, 0.94), rgba(25, 66, 91, 0.92)) !important;
-    border-bottom-color: rgba(240, 201, 104, 0.24) !important;
+    border-bottom-color: rgba(197, 179, 88, 0.24) !important;
     box-shadow: 0 10px 30px rgba(8, 34, 52, 0.18) !important;
 }
 
@@ -63,14 +63,14 @@ html[data-theme='dark'] {
 [data-theme='dark'] .nav-links a:focus-visible {
     color: #fff !important;
     background: rgba(255, 255, 255, 0.08) !important;
-    border-color: rgba(240, 201, 104, 0.26) !important;
+    border-color: rgba(197, 179, 88, 0.26) !important;
     box-shadow: none !important;
 }
 
 [data-theme='dark'] .mobile-menu-btn {
     color: var(--gold) !important;
     background: rgba(255, 255, 255, 0.07) !important;
-    border-color: rgba(240, 201, 104, 0.28) !important;
+    border-color: rgba(197, 179, 88, 0.28) !important;
     box-shadow: none !important;
 }
 
@@ -352,7 +352,7 @@ html[data-theme='dark'] {
         radial-gradient(circle at 16% 18%, rgba(255, 255, 255, 0.54) 0 0.8px, transparent 1.2px),
         radial-gradient(circle at 76% 26%, rgba(255, 255, 255, 0.4) 0 0.7px, transparent 1.1px),
         linear-gradient(125deg, #12354b, #235b78 66%, #7096a8) !important;
-    border-bottom-color: rgba(240, 201, 104, 0.3) !important;
+    border-bottom-color: rgba(197, 179, 88, 0.3) !important;
 }
 
 [data-theme='dark'] body .article-header {
@@ -360,7 +360,7 @@ html[data-theme='dark'] {
         radial-gradient(circle at 16% 18%, rgba(255, 255, 255, 0.54) 0 0.8px, transparent 1.2px),
         radial-gradient(circle at 76% 26%, rgba(255, 255, 255, 0.4) 0 0.7px, transparent 1.1px),
         linear-gradient(125deg, #12354b, #235b78 66%, #7096a8) !important;
-    border-bottom-color: rgba(240, 201, 104, 0.3) !important;
+    border-bottom-color: rgba(197, 179, 88, 0.3) !important;
 }
 
 [data-theme='dark'] body .article-header .article-title {
@@ -414,7 +414,7 @@ html[data-theme='dark'] {
 }
 
 [data-theme='dark'] body :where(.article-content, .book-content) strong {
-    color: #f0c968 !important;
+    color: #c5b358 !important;
     text-shadow: none !important;
 }
 
@@ -425,14 +425,14 @@ html[data-theme='dark'] {
 }
 
 [data-theme='dark'] :where(.article-content code, .book-content code) {
-    color: #f0c968 !important;
-    background: rgba(240, 201, 104, 0.12) !important;
+    color: #c5b358 !important;
+    background: rgba(197, 179, 88, 0.12) !important;
 }
 
 [data-theme='dark'] :where(.article-content pre, .book-content pre) {
     color: #dfecef !important;
     background: linear-gradient(145deg, #102f43, #1e526c) !important;
-    border-color: rgba(240, 201, 104, 0.22) !important;
+    border-color: rgba(197, 179, 88, 0.22) !important;
 }
 
 [data-theme='dark'] .book-shell {
@@ -450,7 +450,7 @@ html[data-theme='dark'] {
 /* Players keep one controlled night accent rather than returning the whole page to black. */
 [data-theme='dark'] :where(.mini-player, .custom-player, .music-player, .player-skeleton) {
     background: linear-gradient(145deg, #12354b, #235b78) !important;
-    border-color: rgba(240, 201, 104, 0.24) !important;
+    border-color: rgba(197, 179, 88, 0.24) !important;
     box-shadow: 0 20px 46px rgba(20, 53, 72, 0.22) !important;
 }
 
@@ -479,7 +479,7 @@ html[data-theme='dark'] {
 [data-theme='dark'] :where(.modal-content, .contact-modal-panel) {
     color: #e8f1f4 !important;
     background: linear-gradient(145deg, #12354b, #1f526d) !important;
-    border-color: rgba(240, 201, 104, 0.28) !important;
+    border-color: rgba(197, 179, 88, 0.28) !important;
     box-shadow: 0 30px 76px rgba(8, 34, 52, 0.38) !important;
 }
 
@@ -543,7 +543,7 @@ html[data-theme='dark'] {
 }
 
 [data-theme='dark'] body .book-cover :where(small, p) {
-    color: #f0c968 !important;
+    color: #c5b358 !important;
 }
 
 [data-theme='dark'] body .book-cover em {
@@ -565,7 +565,7 @@ html[data-theme='dark'] {
 }
 
 [data-theme='dark'] .footer-nav-group > span {
-    color: #f0c968 !important;
+    color: #c5b358 !important;
 }
 
 [data-theme='dark'] .footer-nav-group a {
@@ -579,6 +579,6 @@ html[data-theme='dark'] {
 @media (max-width: 760px) {
     [data-theme='dark'] .nav-links {
         background: rgba(12, 43, 63, 0.98) !important;
-        border-color: rgba(240, 201, 104, 0.2) !important;
+        border-color: rgba(197, 179, 88, 0.2) !important;
     }
 }

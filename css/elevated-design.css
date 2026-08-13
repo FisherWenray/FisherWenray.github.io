@@ -3,7 +3,7 @@
     --primary: #004E8C;
     --primary-rgb: 0, 78, 140;
     --deep: #2A3645;
-    --gold: #f0c968;
+    --gold: #c5b358;
     --ink: #273039;
     --ink-soft: #5f6a75;
     --paper: #f4f6f8;
@@ -912,7 +912,7 @@ body::after {
     --surface: rgba(0, 22, 40, 0.72);
     --surface-strong: rgba(0, 22, 40, 0.82);
     --line: rgba(124, 164, 199, 0.2);
-    --line-strong: rgba(240, 201, 104, 0.34);
+    --line-strong: rgba(197, 179, 88, 0.34);
     --shadow: 0 20px 50px rgba(0, 0, 0, 0.34);
     --shadow-hover: 0 26px 58px rgba(0, 0, 0, 0.42);
 }
@@ -927,7 +927,7 @@ body::after {
 
 [data-theme='dark'] body::before {
     background:
-        linear-gradient(90deg, rgba(var(--primary-rgb), 0.18), transparent 26%, transparent 76%, rgba(240, 201, 104, 0.08)),
+        linear-gradient(90deg, rgba(var(--primary-rgb), 0.18), transparent 26%, transparent 76%, rgba(197, 179, 88, 0.08)),
         linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 36%) !important;
     opacity: 1 !important;
 }
@@ -949,21 +949,21 @@ body::after {
 [data-theme='dark'] .nav-links a.active {
     color: #fff !important;
     background: rgba(var(--primary-rgb), 0.28) !important;
-    border-color: rgba(240, 201, 104, 0.22) !important;
+    border-color: rgba(197, 179, 88, 0.22) !important;
 }
 
 [data-theme='dark'] .nav-links a:active,
 [data-theme='dark'] .nav-links a:focus-visible {
     color: #fff !important;
     background: rgba(var(--primary-rgb), 0.28) !important;
-    border-color: rgba(240, 201, 104, 0.22) !important;
+    border-color: rgba(197, 179, 88, 0.22) !important;
     outline: none;
 }
 
 [data-theme='dark'] .mobile-menu-btn {
     color: var(--gold) !important;
     background: rgba(255, 255, 255, 0.04) !important;
-    border-color: rgba(240, 201, 104, 0.22) !important;
+    border-color: rgba(197, 179, 88, 0.22) !important;
 }
 
 [data-theme='dark'] .header-title,
@@ -1005,7 +1005,7 @@ body::after {
 [data-theme='dark'] .product-card.featured .product-tag {
     color: var(--gold) !important;
     background: rgba(var(--primary-rgb), 0.14) !important;
-    border-color: rgba(240, 201, 104, 0.18) !important;
+    border-color: rgba(197, 179, 88, 0.18) !important;
 }
 
 [data-theme='dark'] .product-cover,
@@ -1014,7 +1014,7 @@ body::after {
 [data-theme='dark'] .douyin-banner,
 [data-theme='dark'] .youtube-banner {
     background:
-        radial-gradient(circle at 18% 22%, rgba(240, 201, 104, 0.04), transparent 20%),
+        radial-gradient(circle at 18% 22%, rgba(197, 179, 88, 0.04), transparent 20%),
         radial-gradient(circle at 82% 18%, rgba(var(--primary-rgb), 0.16), transparent 24%),
         linear-gradient(135deg, rgba(5, 32, 54, 0.98), rgba(4, 28, 48, 0.96)) !important;
     border-color: rgba(124, 164, 199, 0.16) !important;
@@ -1032,7 +1032,7 @@ body::after {
 [data-theme='dark'] .mini-player,
 [data-theme='dark'] .custom-player {
     background:
-        radial-gradient(circle at 16% 22%, rgba(240, 201, 104, 0.04), transparent 18%),
+        radial-gradient(circle at 16% 22%, rgba(197, 179, 88, 0.04), transparent 18%),
         radial-gradient(circle at 84% 18%, rgba(var(--primary-rgb), 0.16), transparent 24%),
         linear-gradient(135deg, rgba(5, 32, 54, 0.98), rgba(4, 28, 48, 0.96)) !important;
     border-color: rgba(124, 164, 199, 0.16) !important;

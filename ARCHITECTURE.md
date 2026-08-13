@@ -312,7 +312,7 @@ https://yourdomain.com/
 │ 主色：#004E8C        ████████        │
 │ 蓝灰色，用于标题、按钮、链接           │
 │                                         │
-│ 辅助色：#f0c968      ████████        │
+│ 辅助色：#c5b358      ████████        │
 │ 金色，用于强调、分隔线                 │
 │                                         │
 │ 深色：#2A3645        ████████        │
@@ -329,7 +329,7 @@ https://yourdomain.com/
   背景：linear-gradient(135deg, #004E8C 80%, #2A3645 100%)
   按钮：background: #004E8C; color: white;
   卡片：background: white; border-radius: 16px;
-  强调：border-left: 4px solid #f0c968;
+  强调：border-left: 4px solid #c5b358;
 ```
 
 ## 🔟 部署流程

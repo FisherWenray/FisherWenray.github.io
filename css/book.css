@@ -37,7 +37,7 @@
     overflow: hidden;
     border-bottom: 1px solid rgba(var(--primary-rgb), 0.12);
     background:
-        radial-gradient(circle at 78% 16%, rgba(240, 201, 104, 0.78) 0 34px, rgba(240, 201, 104, 0.12) 35px 74px, transparent 75px),
+        radial-gradient(circle at 78% 16%, rgba(197, 179, 88, 0.78) 0 34px, rgba(197, 179, 88, 0.12) 35px 74px, transparent 75px),
         linear-gradient(155deg, rgba(0, 78, 140, 0.92), rgba(2, 20, 34, 0.98) 54%, rgba(3, 32, 52, 0.96));
 }
 
@@ -69,8 +69,8 @@
     width: 74px;
     height: 74px;
     border-radius: 50%;
-    background: #f0c968;
-    box-shadow: 0 0 38px rgba(240, 201, 104, 0.48);
+    background: #c5b358;
+    box-shadow: 0 0 38px rgba(197, 179, 88, 0.48);
 }
 
 .book-cover-lines {
@@ -108,7 +108,7 @@
 
 .book-cover-content p {
     margin: 0 0 12px;
-    color: rgba(240, 201, 104, 0.88);
+    color: rgba(197, 179, 88, 0.88);
     font-family: var(--font-mono);
     font-size: 12px;
     font-weight: 700;

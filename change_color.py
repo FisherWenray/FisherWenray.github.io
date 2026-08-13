@@ -1,10 +1,10 @@
 import os
 
-old_hex = ["#f0c968"]
-new_hex = "#f0c968"
+old_hex = ["#c5b358", "#c5b358"]
+new_hex = "#c5b358"
 
-old_rgb = ["240, 201, 104"]
-new_rgb = "240, 201, 104"
+old_rgb = ["197, 179, 88", "197,179,88"]
+new_rgb = ["197, 179, 88", "197,179,88"]
 
 def process_file(filepath):
     try:
@@ -16,8 +16,8 @@ def process_file(filepath):
     original_content = content
     for h in old_hex:
         content = content.replace(h, new_hex)
-    for r in old_rgb:
-        content = content.replace(r, new_rgb)
+    for i in range(len(old_rgb)):
+        content = content.replace(old_rgb[i], new_rgb[i])
     
     if content != original_content:
         with open(filepath, 'w', encoding='utf-8') as f:
