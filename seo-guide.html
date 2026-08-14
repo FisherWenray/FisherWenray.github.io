@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO 优化指南 | 文鳐夜飞网站</title>
+    <meta name="robots" content="noindex,nofollow">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
+            background: #f5f7fa;
+            color: #1a2332;
+            line-height: 1.8;
+            padding: 0;
+        }
+        .container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+        h1 {
+            font-size: 32px;
+            color: #004E8C;
+            margin-bottom: 8px;
+            padding-bottom: 16px;
+            border-bottom: 3px solid #c5b358;
+        }
+        .subtitle { color: #5f6a75; font-size: 15px; margin-bottom: 40px; }
+        h2 {
+            font-size: 24px;
+            color: #004E8C;
+            margin: 40px 0 16px;
+            padding-left: 14px;
+            border-left: 4px solid #c5b358;
+        }
+        h3 { font-size: 18px; color: #1a2332; margin: 24px 0 12px; }
+        p { margin-bottom: 14px; color: #333; }
+        ul, ol { margin: 12px 0 20px 24px; }
+        li { margin-bottom: 8px; color: #333; }
+        code {
+            background: #e8edf3;
+            color: #c41e3a;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: "SF Mono", Consolas, monospace;
+        }
+        pre {
+            background: #1a2332;
+            color: #e0e6ed;
+            padding: 18px 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 16px 0;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+        pre code { background: none; color: inherit; padding: 0; }
+        .alert {
+            padding: 16px 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        .alert-critical {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            color: #856404;
+        }
+        .alert-done {
+            background: #d4edda;
+            border: 1px solid #28a745;
+            color: #155724;
+        }
+        .alert-info {
+            background: #d1ecf1;
+            border: 1px solid #17a2b8;
+            color: #0c5460;
+        }
+        .alert strong { font-weight: 700; }
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: #004E8C;
+            color: #fff;
+            border-radius: 50%;
+            font-size: 14px;
+            font-weight: 700;
+            margin-right: 8px;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-left: 8px;
+        }
+        .badge-done { background: #28a745; color: #fff; }
+        .badge-todo { background: #ffc107; color: #333; }
+        .checklist {
+            background: #fff;
+            border: 1px solid #e0e6ed;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+        }
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f3f7;
+        }
+        .checklist-item:last-child { border-bottom: none; }
+        .check-icon {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .check-yes { background: #28a745; color: #fff; }
+        .check-no { background: #ffc107; color: #333; }
+        .checklist-text { flex: 1; }
+        .checklist-text strong { display: block; margin-bottom: 2px; }
+        .checklist-text span { color: #5f6a75; font-size: 14px; }
+        .toc {
+            background: #fff;
+            border: 1px solid #e0e6ed;
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 32px;
+        }
+        .toc-title { font-weight: 700; margin-bottom: 10px; color: #004E8C; }
+        .toc ul { list-style: none; margin: 0; padding: 0; }
+        .toc li { padding: 4px 0; }
+        .toc a { color: #004E8C; text-decoration: none; font-size: 14px; }
+        .toc a:hover { text-decoration: underline; }
+        .footer-note {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e6ed;
+            color: #5f6a75;
+            font-size: 13px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>SEO 优化指南</h1>
+    <p class="subtitle">文鳐夜飞网站 (wenyaoyefei.com) — 2026-08-14 生成</p>
+
+    <div class="alert alert-critical">
+        <strong>核心问题：网站缺少 Google Search Console 验证。</strong>
+        当前只有百度站长验证（baidu-site-verification），从未向 Google Search Console 注册。
+        这意味着 Google 不知道你的 sitemap，无法监控索引状态，也无法收到爬取异常通知。
+        这几乎肯定是"搜不到文鳐夜飞"的最主要原因。
+    </div>
+
+    <div class="toc">
+        <div class="toc-title">目录</div>
+        <ul>
+            <li><a href="#diagnosis">一、诊断结果：已修复 vs 待手动处理</a></li>
+            <li><a href="#gsc">二、注册 Google Search Console（最关键）</a></li>
+            <li><a href="#submit">三、提交 Sitemap 并请求索引</a></li>
+            <li><a href="#verify">四、替换 Google 验证码</a></li>
+            <li><a href="#content">五、内容层面的 SEO 建议</a></li>
+            <li><a href="#ongoing">六、持续维护清单</a></li>
+        </ul>
+    </div>
+
+    <h2 id="diagnosis">一、诊断结果</h2>
+
+    <div class="checklist">
+        <div class="checklist-item">
+            <div class="check-icon check-yes">✓</div>
+            <div class="checklist-text">
+                <strong>robots.txt — 正常</strong>
+                <span>允许所有爬虫，已引用 sitemap。无需修改。</span>
+            </div>
+        </div>
+        <div class="checklist-item">
+            <div class="check-icon check-yes">✓</div>
+            <div class="checklist-text">
+                <strong>sitemap.xml — 已优化</strong>
+                <span>已添加 priority、changefreq，修正 lastmod 为实际 git 提交日期，文章按时间倒序排列。</span>
+            </div>
+        </div>
+        <div class="checklist-item">
+            <div class="check-icon check-yes">✓</div>
+            <div class="checklist-text">
+                <strong>meta 标签 — 已补全</strong>
+                <span>所有 9 个子页面已添加 robots、googlebot、author meta 标签。index.html 已添加 og:locale。</span>
+            </div>
+        </div>
+        <div class="checklist-item">
+            <div class="check-icon check-yes">✓</div>
+            <div class="checklist-text">
+                <strong>结构化数据 — 已增强</strong>
+                <span>Person schema 已添加 jobTitle、alumniOf（苏州大学）、knowsLanguage、更多 alternateName。</span>
+            </div>
+        </div>
+        <div class="checklist-item">
+            <div class="check-icon check-yes">✓</div>
+            <div class="checklist-text">
+                <strong>404 页面 — 已创建</strong>
+                <span>自定义 404.html，包含导航链接回首页和文章页。</span>
+            </div>
+        </div>
+        <div class="checklist-item">
+            <div class="check-icon check-yes">✓</div>
+            <div class="checklist-text">
+                <strong>keywords — 已优化</strong>
+                <span>index.html 的 keywords 已将"文鳐夜飞"放在第一位（原先是最后）。</span>
+            </div>
+        </div>
+        <div class="checklist-item">
+            <div class="check-icon check-no">!</div>
+            <div class="checklist-text">
+                <strong>Google Search Console 验证 — 待手动完成</strong>
+                <span>已在 index.html 添加占位 meta 标签，需要你替换为真实验证码。</span>
+            </div>
+        </div>
+        <div class="checklist-item">
+            <div class="check-icon check-no">!</div>
+            <div class="checklist-text">
+                <strong>提交 Sitemap 到 Google — 待手动完成</strong>
+                <span>需要在 GSC 中手动提交 sitemap.xml。</span>
+            </div>
+        </div>
+        <div class="checklist-item">
+            <div class="check-icon check-no">!</div>
+            <div class="checklist-text">
+                <strong>请求重新索引 — 待手动完成</strong>
+                <span>需要在 GSC 中对首页和关键页面请求重新索引。</span>
+            </div>
+        </div>
+    </div>
+
+    <h2 id="gsc">二、注册 Google Search Console（最关键）</h2>
+
+    <p>这是整个 SEO 修复中最重要的一步。没有 GSC，Google 可能根本不知道你的网站存在。</p>
+
+    <h3>操作步骤：</h3>
+    <ol>
+        <li>访问 <a href="https://search.google.com/search-console" target="_blank">Google Search Console</a>，用你的 Google 账号登录。</li>
+        <li>点击"添加资源"，选择"网址前缀"（URL prefix），输入 <code>https://wenyaoyefei.com</code>。</li>
+        <li>选择验证方式 → "HTML 标签"。</li>
+        <li>Google 会给你一段类似这样的代码：
+            <pre><code>&lt;meta name="google-site-verification" content="AbC123XYZ.....your_code_here....." /&gt;</code></pre>
+        </li>
+        <li>复制 <code>content="..."</code> 里面的那串验证码。</li>
+        <li>打开项目中的 <code>index.html</code>，找到这一行（在大约第 8 行）：
+            <pre><code>&lt;meta name="google-site-verification" content="YOUR_GOOGLE_VERIFICATION_CODE"&gt;</code></pre>
+        </li>
+        <li>把 <code>YOUR_GOOGLE_VERIFICATION_CODE</code> 替换为你的真实验证码。</li>
+        <li>保存、commit、push 到 GitHub。</li>
+        <li>等待 GitHub Pages 部署完成后（通常 1-2 分钟），回到 GSC 点击"验证"。</li>
+    </ol>
+
+    <div class="alert alert-info">
+        <strong>提示：</strong>验证通过后，Google 可能需要几天时间才能开始显示索引数据。这是正常的。
+    </div>
+
+    <h2 id="submit">三、提交 Sitemap 并请求索引</h2>
+
+    <h3>提交 Sitemap</h3>
+    <ol>
+        <li>在 GSC 左侧菜单点击"Sitemap"。</li>
+        <li>在输入框中输入 <code>sitemap.xml</code>。</li>
+        <li>点击"提交"。</li>
+        <li>状态应该显示为"成功"。如果失败，检查 sitemap.xml 是否可访问。</li>
+    </ol>
+
+    <h3>请求重新索引关键页面</h3>
+    <ol>
+        <li>在 GSC 顶部搜索栏中，逐个输入以下 URL 并回车：</li>
+        <li><code>https://wenyaoyefei.com/</code>（首页 — 最重要）</li>
+        <li><code>https://wenyaoyefei.com/about.html</code>（关于页）</li>
+        <li><code>https://wenyaoyefei.com/articles.html</code>（文章列表）</li>
+        <li>对每个 URL，点击"请求编入索引"。</li>
+        <li>Google 会先抓取页面，然后决定是否索引。通常几分钟到几天内完成。</li>
+    </ol>
+
+    <div class="alert alert-info">
+        <strong>注意：</strong>GSC 对"请求编入索引"有每日配额限制（通常每天约 10-20 个 URL）。优先提交最重要的页面。
+    </div>
+
+    <h2 id="verify">四、验证修复效果</h2>
+
+    <p>提交后，可以通过以下方式验证 Google 是否开始索引：</p>
+
+    <h3>方法 1：GSC 索引覆盖率报告</h3>
+    <p>在 GSC 左侧菜单 → "索引" → "网页"，查看已索引页面数量。提交 sitemap 后通常 3-7 天开始有数据。</p>
+
+    <h3>方法 2：Google 搜索 site: 查询</h3>
+    <p>在 Google 搜索框中输入 <code>site:wenyaoyefei.com</code>，查看 Google 已收录的页面。如果结果为空，说明尚未被索引。</p>
+
+    <h3>方法 3：GSC URL 检查工具</h3>
+    <p>在 GSC 搜索栏输入具体 URL，查看"网址检查"结果。它会告诉你该 URL 是否已被索引、何时被最后抓取、是否有任何问题。</p>
+
+    <h2 id="content">五、内容层面的 SEO 建议</h2>
+
+    <h3>1. 丰富 about.html 的内容</h3>
+    <p>当前关于页面内容较薄（只有 3 个简短段落）。Google 的 E-E-A-T 指南强调作者可信度。
+    建议补充：</p>
+    <ul>
+        <li>更详细的职业经历（每个阶段做了什么、取得了什么成果）</li>
+        <li>你的一人公司实践具体在做什么</li>
+        <li>你对 AI 落地的观点和方法论</li>
+        <li>更多关于你的书《行思无界》的介绍</li>
+    </ul>
+
+    <h3>2. 确保每篇博文有足够的关键词密度</h3>
+    <p>文章页面的 SEO 已经做得很好（有 BlogPosting schema、canonical、breadcrumb）。
+    但确保文章正文中自然出现"文鳐夜飞"这个名字，有助于品牌词排名。</p>
+
+    <h3>3. 持续更新内容</h3>
+    <p>Google 偏好活跃更新的网站。你的文章频率已经不错（2026 年已发 6 篇）。
+    保持节奏即可。每次发布新文章后：</p>
+    <ul>
+        <li>更新 sitemap.xml 的 lastmod</li>
+        <li>在 GSC 中对新文章 URL 请求索引</li>
+    </ul>
+
+    <h3>4. 外链建设</h3>
+    <p>你的 sameAs 已链接了 7 个社交媒体平台。建议：</p>
+    <ul>
+        <li>确保各社交媒体上的个人简介中都包含 wenyaoyefei.com 链接</li>
+        <li>在知乎、小红书等平台发布内容时，适当引导读者访问你的网站</li>
+        <li>考虑在 GitHub 个人主页中添加网站链接</li>
+    </ul>
+
+    <h2 id="ongoing">六、持续维护清单</h2>
+
+    <div class="checklist">
+        <div class="checklist-item">
+            <div class="check-icon check-no">!</div>
+            <div class="checklist-text">
+                <strong>每发布新文章后</strong>
+                <span>更新 sitemap.xml，在 GSC 请求索引新 URL。</span>
+            </div>
+        </div>
+        <div class="checklist-item">
+            <div class="check-icon check-no">!</div>
+            <div class="checklist-text">
+                <strong>每月检查一次 GSC</strong>
+                <span>查看索引状态、爬取错误、搜索关键词表现。</span>
+            </div>
+        </div>
+        <div class="checklist-item">
+            <div class="check-icon check-no">!</div>
+            <div class="checklist-text">
+                <strong>检查 Google Search Console 的"问题"报告</strong>
+                <span>如果有 manual action 或索引问题，GSC 会在这里报告。</span>
+            </div>
+        </div>
+        <div class="checklist-item">
+            <div class="check-icon check-no">!</div>
+            <div class="checklist-text">
+                <strong>关注 Core Web Vitals</strong>
+                <span>GSC 中有"核心网页指标"报告。你的 index.html 有大量内联 CSS（2700+ 行），建议未来考虑拆分到外部 CSS 文件以提升加载速度。</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="alert alert-done">
+        <strong>已完成的代码层面修复汇总：</strong>
+        <ul style="margin-top: 8px;">
+            <li>sitemap.xml — 添加 priority/changefreq，修正 lastmod，文章按时间倒序</li>
+            <li>9 个子页面 — 补全 robots、googlebot、author meta 标签</li>
+            <li>index.html — 添加 google-site-verification 占位、og:locale、优化 keywords</li>
+            <li>index.html — 增强 Person schema（jobTitle、alumniOf、knowsLanguage）</li>
+            <li>404.html — 创建自定义 404 错误页</li>
+        </ul>
+    </div>
+
+    <p class="footer-note">本指南由 Buddy 生成 — 2026-08-14 | wenyaoyefei.com</p>
+</div>
+</body>
+</html>

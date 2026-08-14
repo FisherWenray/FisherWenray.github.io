@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>页面未找到 (404) | 文鳐夜飞</title>
+    <meta name="description" content="您访问的页面不存在。请返回文鳐夜飞的首页继续浏览。">
+    <meta name="robots" content="noindex,follow">
+    <meta name="author" content="文鳐夜飞">
+    <link rel="canonical" href="https://wenyaoyefei.com/">
+    <script>document.documentElement.setAttribute('data-theme', 'dark');</script>
+    <script src="js/theme.js?v=6" defer></script>
+    <link rel="stylesheet" href="css/site.css?v=3">
+    <link rel="stylesheet" href="css/elevated-design.css?v=21">
+    <link rel="icon" type="image/jpeg" href="avatar.jpg">
+    <style>
+        .error-page {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+        .error-card {
+            text-align: center;
+            max-width: 480px;
+        }
+        .error-code {
+            font-family: var(--font-serif);
+            font-size: clamp(80px, 14vw, 140px);
+            line-height: 1;
+            color: var(--gold);
+            margin-bottom: 16px;
+            text-shadow: 0 4px 20px rgba(var(--primary-rgb), 0.2);
+        }
+        .error-message {
+            font-size: clamp(18px, 2.5vw, 22px);
+            color: var(--ink);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        .error-hint {
+            color: var(--ink-soft);
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+        .error-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+        .error-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+        .error-link-primary {
+            background: linear-gradient(135deg, var(--primary), var(--deep));
+            color: #fff;
+            box-shadow: 0 8px 20px rgba(var(--primary-rgb), 0.25);
+        }
+        .error-link-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(var(--primary-rgb), 0.35);
+        }
+        .error-link-secondary {
+            background: rgba(var(--primary-rgb), 0.06);
+            color: var(--gold);
+            border: 1px solid rgba(var(--primary-rgb), 0.15);
+        }
+        .error-link-secondary:hover {
+            background: var(--primary);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        [data-theme='dark'] .error-message { color: #fff; }
+        [data-theme='dark'] .error-hint { color: rgba(230, 240, 250, 0.7); }
+        [data-theme='dark'] .error-link-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--gold);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+    <link rel="stylesheet" href="css/blue-hour-theme.css?v=3">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-container">
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="software.html">产品</a></li>
+                <li><a href="business.html">服务</a></li>
+                <li><a href="content.html">内容</a></li>
+                <li><a href="about.html">关于</a></li>
+            </ul>
+            <div style="display: flex; align-items: center;">
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="菜单">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <main class="error-page">
+        <div class="error-card">
+            <div class="error-code">404</div>
+            <p class="error-message">页面未找到</p>
+            <p class="error-hint">您访问的页面可能已被移动或不存在。<br>请通过下方链接继续浏览文鳐夜飞的内容。</p>
+            <div class="error-links">
+                <a href="index.html" class="error-link error-link-primary">
+                    <i class="fas fa-home"></i>
+                    <span>返回首页</span>
+                </a>
+                <a href="articles.html" class="error-link error-link-secondary">
+                    <i class="fas fa-book-open"></i>
+                    <span>浏览文章</span>
+                </a>
+                <a href="about.html" class="error-link error-link-secondary">
+                    <i class="fas fa-user"></i>
+                    <span>关于我</span>
+                </a>
+            </div>
+        </div>
+    </main>
+    <script src="js/umami-config.js"></script>
+    <script src="js/analytics.js"></script>
+    <script>function toggleMobileMenu(){const n=document.getElementById('navLinks');if(n)n.classList.toggle('active')}</script>
+</body>
+</html>

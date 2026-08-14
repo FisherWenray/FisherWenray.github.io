@@ -5,14 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="baidu-site-verification" content="codeva-Okt4iZkuQv">
+    <!-- Google Search Console 验证：将下方 content 替换为你在 GSC 获取的验证码 -->
+    <meta name="google-site-verification" content="YOUR_GOOGLE_VERIFICATION_CODE">
     <title>文鳐夜飞｜企业 AI 落地、一人公司、终身学习者</title>
     <meta name="description" content="文鳐夜飞的个人网站，分享一人公司、独立开发、投资悟道、播客、视频、产品与原创音乐，记录在 AI 时代探索自由生活方式的实践与思考。">
-    <meta name="keywords" content="一人公司, 投资悟道, 个人成长, 文鳐夜飞">
+    <meta name="keywords" content="文鳐夜飞, 一人公司, 投资悟道, 个人成长, 企业 AI 落地, FDE, 独立开发">
+    <meta name="author" content="文鳐夜飞">
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+    <meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
     <meta property="og:title" content="文鳐夜飞｜企业 AI 落地、一人公司、终身学习者">
     <meta property="og:description" content="文鳐夜飞的个人网站，分享一人公司、独立开发、投资悟道、播客、视频、产品与原创音乐，记录在 AI 时代探索自由生活方式的实践与思考。">
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="文鳐夜飞">
     <meta property="og:url" content="https://wenyaoyefei.com/">
     <meta property="og:image" content="https://wenyaoyefei.com/avatar.jpg">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="og:locale:alternate" content="en_US">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="文鳐夜飞 | 一人公司、独立开发、投资悟道与自由生活">
     <meta name="twitter:description" content="文鳐夜飞的个人网站，分享一人公司、独立开发、投资悟道、播客、视频、产品与原创音乐，记录在 AI 时代探索自由生活方式的实践与思考。">
@@ -24,26 +32,40 @@
       "@graph": [
         {
           "@type": "WebSite",
+          "@id": "https://wenyaoyefei.com/#website",
           "name": "文鳐夜飞",
+          "alternateName": ["文鳐夜飞个人网站", "Wenyao Yefei"],
           "url": "https://wenyaoyefei.com/",
-          "inLanguage": "zh-CN"
+          "inLanguage": "zh-CN",
+          "publisher": { "@id": "https://wenyaoyefei.com/#person" }
         },
         {
           "@type": "WebPage",
+          "@id": "https://wenyaoyefei.com/#webpage",
           "name": "文鳐夜飞 | 一人公司、独立开发、投资悟道与自由生活",
           "url": "https://wenyaoyefei.com/",
           "description": "文鳐夜飞的个人网站，分享一人公司、独立开发、投资悟道、播客、视频、产品与原创音乐，记录在 AI 时代探索自由生活方式的实践与思考。",
           "inLanguage": "zh-CN",
           "isPartOf": {
-            "@type": "WebSite",
-            "name": "文鳐夜飞",
-            "url": "https://wenyaoyefei.com/"
-          }
+            "@id": "https://wenyaoyefei.com/#website"
+          },
+          "about": { "@id": "https://wenyaoyefei.com/#person" }
         },
         {
           "@type": "Person",
+          "@id": "https://wenyaoyefei.com/#person",
           "name": "文鳐夜飞",
+          "alternateName": ["Wenyao Yefei", "Fisher", "FisherWenray"],
           "url": "https://wenyaoyefei.com/",
+          "image": "https://wenyaoyefei.com/avatar.jpg",
+          "description": "文鳐夜飞是关注企业 AI 落地、一人公司、独立开发、投资悟道与终身学习的创作者。",
+          "jobTitle": "企业 AI 落地顾问 / 一人公司实践者",
+          "knowsAbout": ["企业 AI 落地", "一人公司", "独立开发", "投资悟道", "终身学习", "FDE", "大模型 Token 服务"],
+          "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "苏州大学"
+          },
+          "knowsLanguage": ["zh-CN", "en"],
           "sameAs": [
             "https://github.com/FisherWenray",
             "https://x.com/wenyaoyefei",
@@ -2892,7 +2914,7 @@
                         我的产品
                     </h2>
                 </div>
-                <a href="/software.html" class="products-more-link" data-umami-event="homepage_products_more">
+                <a href="software.html" class="products-more-link" data-umami-event="homepage_products_more">
                     <span>全部产品</span>
                     <i class="fas fa-arrow-right"></i>
                 </a>
