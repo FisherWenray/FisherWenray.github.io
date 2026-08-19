@@ -23,16 +23,32 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      "name": "播客 | 文鳐夜飞的一人公司、商业思考与个人成长播客",
-      "url": "https://wenyaoyefei.com/podcast.html",
-      "description": "收听文鳐夜飞播客，围绕一人公司、独立开发、商业思考、文化观察与个人成长展开持续更新的深度声音内容。",
-      "inLanguage": "zh-CN",
-      "isPartOf": {
-        "@type": "WebSite",
-        "name": "文鳐夜飞",
-        "url": "https://wenyaoyefei.com/"
-      }
+      "@graph": [
+        {
+          "@type": "CollectionPage",
+          "@id": "https://wenyaoyefei.com/podcast.html#webpage",
+          "name": "播客 | 文鳐夜飞的一人公司、商业思考与个人成长播客",
+          "url": "https://wenyaoyefei.com/podcast.html",
+          "description": "收听文鳐夜飞播客，围绕一人公司、独立开发、商业思考、文化观察与个人成长展开持续更新的深度声音内容。",
+          "inLanguage": "zh-CN",
+          "isPartOf": { "@id": "https://wenyaoyefei.com/#website" },
+          "mainEntity": { "@id": "https://wenyaoyefei.com/podcast.html#podcastseries" }
+        },
+        {
+          "@type": "PodcastSeries",
+          "@id": "https://wenyaoyefei.com/podcast.html#podcastseries",
+          "name": "文鳐夜飞",
+          "url": "https://wenyaoyefei.com/podcast.html",
+          "description": "文鳐夜飞的播客节目，分享一人公司、投资悟道、自我成长、技术与自由生活。",
+          "inLanguage": "zh-CN",
+          "creator": { "@id": "https://wenyaoyefei.com/#person" },
+          "publisher": { "@id": "https://wenyaoyefei.com/#person" },
+          "sameAs": [
+            "https://podcasts.apple.com/cn/podcast/%E6%96%87%E9%B3%90%E5%A4%9C%E9%A3%9E/id1825759955",
+            "https://www.xiaoyuzhoufm.com/podcast/686bb3edb21def6f47390305"
+          ]
+        }
+      ]
     }
     </script>
     <script>document.documentElement.setAttribute('data-theme', 'dark');</script>
@@ -779,7 +795,7 @@
                         <path d="M9 21.5h6"/>
                     </svg>
                 </span>
-                <h1 class="header-title">&#25105;&#30340;&#25773;&#23458;</h1>
+                <h1 class="header-title">文鳐夜飞播客</h1>
             </div>
             <div class="header-content">
                 <p>主流播客平台搜索<strong>“文鳐夜飞”</strong>即可订阅收听：</p>
@@ -1297,4 +1313,3 @@
 </body>
 
 </html>
-
