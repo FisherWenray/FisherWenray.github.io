@@ -49,11 +49,11 @@
         .offer-meta { min-height: 64px; padding: 2px 64px 0 0; }
         .offer-number { display: block; color: var(--gold); font: 600 12px/1 var(--font-mono); letter-spacing: .1em; }
         .offer-type { display: block; margin-top: 13px; color: var(--ink-soft); font: 600 9px/1.5 var(--font-mono); letter-spacing: .08em; }
-        .offer-copy { display: flex; flex: 1; flex-direction: column; width: 100%; min-width: 0; margin-top: 18px; }
-        .offer-copy h3 { margin: 0 0 14px; color: var(--ink); font: 700 clamp(18px, 1.8vw, 22px)/1.45 var(--font-serif); }
+        .offer-copy { display: grid; flex: 1; grid-template-rows: auto 1fr minmax(94px, auto); gap: 14px; width: 100%; min-width: 0; margin-top: 18px; }
+        .offer-copy h3 { margin: 0; color: var(--ink); font: 700 clamp(18px, 1.8vw, 22px)/1.45 var(--font-serif); }
         .offer-copy p { margin: 0; color: var(--ink-soft); font-size: 14px; line-height: 1.75; }
         .offer-summary { min-height: 74px; }
-        .offer-outcome { margin-top: auto !important; padding: 13px 14px 14px; border-left: 2px solid var(--gold); background: linear-gradient(90deg, rgba(202, 175, 78, .09), rgba(var(--primary-rgb), .025)); }
+        .offer-outcome { box-sizing: border-box; min-height: 94px; margin-top: 0 !important; padding: 13px 14px 14px; border-left: 2px solid var(--gold); background: linear-gradient(90deg, rgba(202, 175, 78, .09), rgba(var(--primary-rgb), .025)); }
         .offer-outcome-label { display: block; margin-bottom: 7px; color: var(--gold); font: 600 10px/1 var(--font-mono); letter-spacing: .12em; }
         .offer-outcome strong { color: var(--ink); font-weight: 650; }
         .offer-copy .service-price { display: block; margin-top: 7px; color: var(--gold); font: 600 12px/1.4 var(--font-sans); }
@@ -78,7 +78,7 @@
         @keyframes contact-fade-in { from { opacity: 0; } to { opacity: 1; } }
         @keyframes contact-panel-in { from { opacity: 0; transform: translateY(10px) scale(.98); } to { opacity: 1; transform: none; } }
         @media (max-width: 960px) { .service-offer-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } .service-offer, .service-offer:nth-child(n + 4) { grid-column: span 1; min-height: 270px; } }
-        @media (max-width: 680px) { .business-page { margin-top: 18px; } .services-directory { margin-top: 24px; min-width: 0; } .services-directory-head { padding: 4px 2px 20px; } .services-positioning { margin-top: 18px; padding-left: 14px; } .service-offer-list { min-width: 0; grid-template-columns: minmax(0, 1fr); gap: 16px; } .service-offer, .service-offer:nth-child(n + 4) { width: 100%; max-width: 100%; min-width: 0; min-height: 230px; grid-column: 1; padding: 22px 20px; } .offer-meta { min-height: 58px; padding-right: 54px; } .offer-copy { min-width: 0; margin-top: 16px; } .offer-summary { min-height: 0; } .offer-icon { top: 18px; right: 18px; width: 42px; height: 42px; font-size: 16px; } .service-contact { margin-top: 32px; } .service-contact-button { width: min(100%, 320px); } .contact-modal-panel { padding: 22px 18px 18px; } }
+        @media (max-width: 680px) { .business-page { margin-top: 18px; } .services-directory { margin-top: 24px; min-width: 0; } .services-directory-head { padding: 4px 2px 20px; } .services-positioning { margin-top: 18px; padding-left: 14px; } .service-offer-list { min-width: 0; grid-template-columns: minmax(0, 1fr); gap: 16px; } .service-offer, .service-offer:nth-child(n + 4) { width: 100%; max-width: 100%; min-width: 0; min-height: 230px; grid-column: 1; padding: 22px 20px; } .offer-meta { min-height: 58px; padding-right: 54px; } .offer-copy { min-width: 0; grid-template-rows: auto auto auto; margin-top: 16px; } .offer-summary, .offer-outcome { min-height: 0; } .offer-icon { top: 18px; right: 18px; width: 42px; height: 42px; font-size: 16px; } .service-contact { margin-top: 32px; } .service-contact-button { width: min(100%, 320px); } .contact-modal-panel { padding: 22px 18px 18px; } }
         @media (prefers-reduced-motion: reduce) { .service-offer, .offer-icon, .service-contact-button, .contact-modal-close { transition: none; } .contact-modal.is-open, .contact-modal-panel { animation: none; } }
     </style>
     <link rel="stylesheet" href="css/blue-hour-theme.css?v=3">
