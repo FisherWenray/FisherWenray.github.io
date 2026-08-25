@@ -36,18 +36,15 @@
     <link rel="icon" type="image/jpeg" href="avatar.jpg">
     <style>
         .business-page { width: min(1180px, 94vw); margin: 34px auto 54px; }
-        .section-number { color: var(--gold); font: 600 12px/1 var(--font-mono); letter-spacing: .14em; }
         .services-directory { margin-top: 30px; }
         .services-directory-head { padding: 8px 4px 24px; border-bottom: 1px solid rgba(var(--primary-rgb), .2); }
-        .services-directory-head h2 { margin: 12px 0 0; color: var(--ink); font: 700 clamp(29px, 4vw, 40px)/1.2 var(--font-serif); }
+        .services-directory-head h2 { margin: 0; color: var(--ink); font: 700 clamp(29px, 4vw, 40px)/1.2 var(--font-serif); }
         .service-offer-list { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 20px; margin-top: 20px; }
         .service-offer { grid-column: span 2; min-width: 0; min-height: 292px; display: flex; flex-direction: column; align-items: flex-start; padding: 26px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface-strong); box-shadow: var(--shadow); overflow: hidden; position: relative; transition: transform .3s cubic-bezier(.19, 1, .22, 1), border-color .3s ease, box-shadow .3s ease; }
         .service-offer:nth-child(n + 4) { grid-column: span 3; min-height: 260px; }
         .service-offer:hover { transform: translateY(-6px); border-color: rgba(var(--primary-rgb), .45); box-shadow: var(--shadow-hover); }
-        .offer-meta { min-height: 24px; padding: 2px 64px 0 0; }
-        .offer-number { display: block; color: var(--gold); font: 600 12px/1 var(--font-mono); letter-spacing: .1em; }
-        .offer-copy { display: grid; flex: 1; grid-template-rows: auto 1fr minmax(94px, auto); gap: 14px; width: 100%; min-width: 0; margin-top: 18px; }
-        .offer-copy h3 { margin: 0; color: var(--ink); font: 700 clamp(18px, 1.8vw, 22px)/1.45 var(--font-serif); }
+        .offer-copy { display: grid; flex: 1; grid-template-rows: auto 1fr minmax(94px, auto); gap: 14px; width: 100%; min-width: 0; }
+        .offer-copy h3 { margin: 0; padding-right: 64px; color: var(--ink); font: 700 clamp(18px, 1.8vw, 22px)/1.45 var(--font-serif); }
         .offer-copy p { margin: 0; color: var(--ink-soft); font-size: 14px; line-height: 1.75; }
         .offer-summary { min-height: 74px; }
         .offer-outcome { box-sizing: border-box; min-height: 94px; display: grid; align-content: center; gap: 4px; margin-top: 0 !important; padding: 13px 14px 14px; border-left: 2px solid var(--gold); background: linear-gradient(90deg, rgba(202, 175, 78, .09), rgba(var(--primary-rgb), .025)); }
@@ -74,7 +71,7 @@
         @keyframes contact-fade-in { from { opacity: 0; } to { opacity: 1; } }
         @keyframes contact-panel-in { from { opacity: 0; transform: translateY(10px) scale(.98); } to { opacity: 1; transform: none; } }
         @media (max-width: 960px) { .service-offer-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } .service-offer, .service-offer:nth-child(n + 4) { grid-column: span 1; min-height: 270px; } }
-        @media (max-width: 680px) { .business-page { margin-top: 18px; } .services-directory { margin-top: 24px; min-width: 0; } .services-directory-head { padding: 4px 2px 20px; } .service-offer-list { min-width: 0; grid-template-columns: minmax(0, 1fr); gap: 16px; } .service-offer, .service-offer:nth-child(n + 4) { width: 100%; max-width: 100%; min-width: 0; min-height: 230px; grid-column: 1; padding: 22px 20px; } .offer-meta { min-height: 24px; padding-right: 54px; } .offer-copy { min-width: 0; grid-template-rows: auto auto auto; margin-top: 16px; } .offer-summary, .offer-outcome { min-height: 0; } .offer-icon { top: 18px; right: 18px; width: 42px; height: 42px; font-size: 16px; } .service-contact { margin-top: 32px; } .service-contact-button { width: min(100%, 320px); } .contact-modal-panel { padding: 22px 18px 18px; } }
+        @media (max-width: 680px) { .business-page { margin-top: 18px; } .services-directory { margin-top: 24px; min-width: 0; } .services-directory-head { padding: 4px 2px 20px; } .service-offer-list { min-width: 0; grid-template-columns: minmax(0, 1fr); gap: 16px; } .service-offer, .service-offer:nth-child(n + 4) { width: 100%; max-width: 100%; min-width: 0; min-height: 230px; grid-column: 1; padding: 22px 20px; } .offer-copy { min-width: 0; grid-template-rows: auto auto auto; } .offer-copy h3 { padding-right: 54px; } .offer-summary, .offer-outcome { min-height: 0; } .offer-icon { top: 18px; right: 18px; width: 42px; height: 42px; font-size: 16px; } .service-contact { margin-top: 32px; } .service-contact-button { width: min(100%, 320px); } .contact-modal-panel { padding: 22px 18px 18px; } }
         @media (prefers-reduced-motion: reduce) { .service-offer, .offer-icon, .service-contact-button, .contact-modal-close { transition: none; } .contact-modal.is-open, .contact-modal-panel { animation: none; } }
     </style>
     <link rel="stylesheet" href="css/blue-hour-theme.css?v=3">
@@ -110,14 +107,12 @@
         <section class="services-directory" aria-labelledby="services-title">
             <header class="services-directory-head">
                 <div>
-                    <span class="section-number">01</span>
                     <h2 id="services-title">我能提供</h2>
                 </div>
             </header>
 
             <div class="service-offer-list">
                 <article class="service-offer">
-                    <div class="offer-meta"><span class="offer-number">01</span></div>
                     <div class="offer-copy">
                         <h3>企业 AI 落地服务</h3>
                         <p class="offer-summary">面向有 AI 转型需求的企业，深入真实业务流程，提供从诊断到生产落地的一体化服务。</p>
@@ -127,7 +122,6 @@
                 </article>
 
                 <article class="service-offer">
-                    <div class="offer-meta"><span class="offer-number">02</span></div>
                     <div class="offer-copy">
                         <h3>软件出海共创计划</h3>
                         <p class="offer-summary">面向正在探索软件出海的独立开发者，一起梳理产品定位、英文表达、落地页与产品发布路径。希望聚集一群愿意行动、乐于分享的伙伴，在真实项目中交换经验、共同试错，把各自的探索沉淀成彼此可用的方法。</p>
@@ -137,7 +131,6 @@
                 </article>
 
                 <article class="service-offer">
-                    <div class="offer-meta"><span class="offer-number">03</span></div>
                     <div class="offer-copy">
                         <h3>AI 体系培训</h3>
                         <p class="offer-summary">面向个人与企业团队，提供从 AI 基础认知到业务落地实战的系统化培训。基础阶段覆盖模型工具、提示词与日常提效；进阶阶段深入工作流、智能体、知识库与业务项目实战。</p>
