@@ -353,7 +353,7 @@ function renderPage({ chapter, chapters, chapterIndex, description, contentHtml 
   <nav class="top-nav">
     <div class="nav-container">
       <ul class="nav-links" id="navLinks">
-        <li><a href="../../index.html">首页</a></li>
+        <li><a href="/">首页</a></li>
         <li><a href="../../software.html">产品</a></li>
         <li><a href="../../business.html">服务</a></li>
         <li><a href="../../content.html" class="active">内容</a></li>

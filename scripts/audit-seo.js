@@ -68,8 +68,11 @@ for (const file of htmlFiles) {
     const href = match[1];
     if (href.includes('${')) continue;
     if (/^(?:https?:|mailto:|tel:|data:|\/\/)/i.test(href)) continue;
-    const target = path.resolve(path.dirname(file), decodeURIComponent(href));
-    const resolved = href.endsWith('/') ? path.join(target, 'index.html') : target;
+    const decodedHref = decodeURIComponent(href);
+    const target = href.startsWith('/')
+      ? path.join(root, decodedHref.replace(/^\/+/, ''))
+      : path.resolve(path.dirname(file), decodedHref);
+    const resolved = href === '/' || href.endsWith('/') ? path.join(target, 'index.html') : target;
     if (!fs.existsSync(resolved)) errors.push(`${relative}: broken internal link ${href}`);
   }
 }

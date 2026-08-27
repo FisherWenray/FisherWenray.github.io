@@ -36,7 +36,29 @@
           "url": "https://wenyaoyefei.com/",
           "inLanguage": "zh-CN",
           "publisher": { "@id": "https://wenyaoyefei.com/#person" },
-          "hasPart": { "@id": "https://wenyaoyefei.com/podcast.html#podcastseries" }
+          "hasPart": [
+            {
+              "@type": "CollectionPage",
+              "name": "产品",
+              "url": "https://wenyaoyefei.com/software.html"
+            },
+            {
+              "@type": "WebPage",
+              "name": "服务",
+              "url": "https://wenyaoyefei.com/business.html"
+            },
+            {
+              "@type": "CollectionPage",
+              "name": "内容",
+              "url": "https://wenyaoyefei.com/content.html"
+            },
+            {
+              "@type": "ProfilePage",
+              "name": "关于",
+              "url": "https://wenyaoyefei.com/about.html"
+            },
+            { "@id": "https://wenyaoyefei.com/podcast.html#podcastseries" }
+          ]
         },
         {
           "@type": "WebPage",
@@ -2776,7 +2798,7 @@
     <nav class="top-nav">
         <div class="nav-container">
             <ul class="nav-links" id="navLinks">
-                <li><a href="index.html" class="active">首页</a></li>
+                <li><a href="/" class="active">首页</a></li>
                 <li><a href="software.html">产品</a></li>
                 <li><a href="business.html">服务</a></li>
                 <li><a href="content.html">内容</a></li><li><a href="about.html">关于</a></li>

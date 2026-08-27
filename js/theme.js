@@ -14,7 +14,7 @@
         footer.innerHTML = `
             <div class="footer-main">
                 <div class="footer-brand">
-                    <a class="footer-name" href="/index.html">文鳐夜飞</a>
+                    <a class="footer-name" href="/">文鳐夜飞</a>
                     <p>一个有着人文精神的极客</p>
                 </div>
                 <nav class="footer-nav" aria-label="页脚导航">
