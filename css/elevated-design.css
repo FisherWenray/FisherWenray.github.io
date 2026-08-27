@@ -66,15 +66,30 @@ body::after {
     width: var(--page-width) !important;
 }
 
+.nav-container {
+    min-height: 62px;
+}
+
 .nav-links {
+    align-items: center;
     gap: 4px !important;
     padding: 12px 0 !important;
 }
 
+.nav-links > li {
+    display: flex;
+}
+
 .nav-links a {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
     width: auto !important;
     min-width: 72px;
     padding: 8px 14px !important;
+    line-height: 1;
     color: rgba(39, 48, 57, 0.72) !important;
     border-radius: 999px !important;
     letter-spacing: 0 !important;
@@ -187,6 +202,8 @@ body::after {
     height: 220px !important;
     max-height: 220px !important;
     margin: 0 0 24px !important;
+    padding-top: 46px !important;
+    justify-content: flex-start !important;
     transform: none !important;
     transition: none !important;
 }
@@ -1096,6 +1113,10 @@ body::after {
         min-width: 0;
         width: 100% !important;
         border-radius: 0 !important;
+    }
+
+    .nav-links > li {
+        width: 100%;
     }
 
     .header,
