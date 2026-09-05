@@ -90,8 +90,33 @@
         .milestone span { color: var(--ink-soft); font-size: 14px; line-height: 1.75; }
         .ride-intro { margin: 0 0 8px; }
         .book-link { color: var(--gold); text-underline-offset: 4px; }
+        .about-service-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+        .about-service-card { min-width: 0; display: grid; grid-template-columns: 44px minmax(0, 1fr); align-items: start; gap: 15px; padding: 21px; border: 1px solid rgba(var(--primary-rgb), .2); border-radius: 16px; background: rgba(var(--primary-rgb), .055); }
+        .about-service-card-button { width: 100%; appearance: none; color: inherit; font: inherit; text-align: left; cursor: pointer; transition: transform .22s ease, border-color .22s ease, background .22s ease; }
+        .about-service-card-button:hover { transform: translateY(-2px); border-color: rgba(var(--primary-rgb), .42); background: rgba(var(--primary-rgb), .085); }
+        .about-service-icon { width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid rgba(197, 179, 88, .34); border-radius: 50%; color: var(--gold); background: rgba(197, 179, 88, .08); font-size: 16px; }
+        .about-service-card h3 { margin: 1px 0 7px; font: 700 clamp(18px, 2vw, 22px)/1.4 var(--font-serif); }
+        .about-service-card p { margin: 0; font-size: 13.5px; line-height: 1.65; }
+        .about-service-price { display: block; margin-top: 9px; color: var(--gold); font: 650 12.5px/1.4 var(--font-sans); }
+        .about-service-action { display: block; margin-top: 5px; color: var(--ink-soft); font: 600 12px/1.4 var(--font-sans); }
+        .about-service-more { width: fit-content; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; margin: 24px auto 0; padding: 0 20px; border: 1px solid rgba(197, 179, 88, .42); border-radius: 999px; color: var(--gold); background: rgba(197, 179, 88, .08); font-size: 14px; font-weight: 700; text-decoration: none; transition: transform .2s ease, color .2s ease, background .2s ease; }
+        .about-service-more:hover { color: #fff; background: rgba(197, 179, 88, .2); transform: translateY(-2px); }
+        .about-service-more:focus-visible, .about-service-card-button:focus-visible, .about-community-close:focus-visible, .about-community-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+        .about-community-modal { display: none; position: fixed; inset: 0; z-index: 400; place-items: center; padding: 20px; background: rgba(0, 12, 24, .72); backdrop-filter: blur(8px); }
+        .about-community-modal.is-open { display: grid; }
+        .about-community-panel { position: relative; width: min(360px, 100%); padding: 24px; border: 1px solid rgba(var(--primary-rgb), .28); border-radius: 20px; background: var(--surface); box-shadow: 0 28px 70px rgba(0, 12, 24, .48); text-align: center; }
+        .about-community-panel h2 { margin: 2px 36px 6px; color: var(--ink); font: 700 24px/1.35 var(--font-serif); }
+        .about-community-panel p { margin: 0 0 16px; color: var(--ink-soft); font-size: 13px; line-height: 1.7; }
+        .about-community-price { display: inline-flex; align-items: center; justify-content: center; margin: 3px auto 12px; padding: 6px 13px; border: 1px solid rgba(202, 175, 78, .42); border-radius: 999px; color: var(--gold); background: rgba(202, 175, 78, .09); font-size: 14px; font-weight: 700; }
+        .about-community-qr { margin: 0 auto; padding: 10px; border: 1px solid rgba(var(--primary-rgb), .18); border-radius: 14px; background: #fff; }
+        .about-community-qr img { display: block; width: 100%; height: auto; border-radius: 8px; }
+        .about-community-close { position: absolute; top: 14px; right: 14px; width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid rgba(var(--primary-rgb), .18); border-radius: 50%; color: var(--ink-soft); background: rgba(var(--primary-rgb), .06); cursor: pointer; }
+        .about-community-link { display: inline-flex; align-items: center; justify-content: center; gap: 7px; margin-top: 15px; color: var(--primary); font-size: 14px; font-weight: 700; text-decoration: none; }
+        .about-community-link:hover { color: var(--gold); }
         [data-theme='dark'] .about-section :is(h1, h2) { color: #fff; text-shadow: 0 0 12px rgba(0, 78, 140, .35); }
-        @media (max-width: 680px) { .about-intro { padding: 26px 20px; } }
+        [data-theme='dark'] .about-community-panel h2 { color: #fff; }
+        [data-theme='dark'] .about-community-link { color: #dfc85c; }
+        @media (max-width: 680px) { .about-intro { padding: 26px 20px; } .about-service-grid { grid-template-columns: minmax(0, 1fr); } }
         @media (max-width: 620px) { .milestones { grid-template-columns: 1fr; } .about-page { margin-top: 18px; } }
         @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
     </style>
@@ -138,6 +163,17 @@
         [data-theme='dark'] body .about-section .milestone span {
             color: rgba(231, 241, 245, .78) !important;
         }
+
+        [data-theme='dark'] body .about-service-card {
+            border-color: rgba(205, 223, 231, .2) !important;
+            background: rgba(4, 28, 44, .2) !important;
+        }
+
+        [data-theme='dark'] body .about-section .about-service-price,
+        [data-theme='dark'] body .about-section .about-service-more {
+            color: #d8c159 !important;
+            text-shadow: none !important;
+        }
     </style>
 </head>
 <body>
@@ -156,10 +192,83 @@
                 <section class="about-section about-intro" id="who"><h1><span class="header-mark" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="7.5" r="3.25"/><path d="M5.5 19c.8-4 3-6 6.5-6s5.7 2 6.5 6"/></svg></span>关于我</h1><p class="about-lede"><strong>文鳐夜飞</strong>是我长期使用的个人品牌与创作者名称，wenyaoyefei.com 是我的官方个人网站。我是一个有着人文精神的极客，专注推动 AI 在企业真实业务中落地，探索 AI 如何让一人公司成为可能</p></section>
                 <section class="about-section" id="career"><h2>职业经历</h2><ul><li>毕业于苏州大学数学系</li><li>曾就职于多家知名 IT 公司，担任程序员、产品经理及相关管理岗位，主要面向 B 端企业交付软件及硬件</li><li>拥有 PMP、信息系统项目管理师证书</li><li>《投资悟道、渡人渡己》栏目专题书籍主编，已出品<a class="book-link" href="books.html">《行思无界：从见天地到见自己》</a></li></ul></section>
                 <section class="about-section" id="interests"><h2>兴趣爱好</h2><h3>旅行</h3><p>我曾是一名背包客，利用工作之外的时间走遍中国，并游历了大半个东南亚。旅行对我而言，不只是抵达不同的地方，更是一种认识世界、理解他人和重新发现自己的方式</p><h3>自行车、摩托车</h3><p class="ride-intro">我喜欢自行车与摩托车，因为在两轮的世界中，我与景色融合在一起，能感受到像风一样的自由</p><ol class="milestones"><li class="milestone"><strong>2012 · 骑行越南</strong><span>从广西东兴出发，历时 15 天抵达胡志明市</span></li><li class="milestone"><strong>2014 · 骑行拉萨</strong><span>从兰州出发，沿途骑行 28 天，最终抵达拉萨</span></li><li class="milestone"><strong>2024 · 铁人三项</strong><span>完成人生中的第一场铁人三项</span></li></ol><h3>民谣摇滚</h3><p>我是民谣与摇滚乐的重度爱好者。从中国城市民谣，到美国 20 世纪 60 年代的民谣摇滚，我着迷于音乐背后的自由精神与人文关怀</p><h3>终身学习</h3><p>我长期关注通识教育与自我成长，并保持无目的、跨领域的广泛阅读，在历史、哲学、社会、科技、商业与艺术之间不断寻找底层关系</p></section>
+                <section class="about-section" id="services">
+                    <h2>我的服务</h2>
+                    <div class="about-service-grid">
+                        <article class="about-service-card"><span class="about-service-icon" aria-hidden="true"><i class="fas fa-robot"></i></span><div><h3>企业 AI 落地服务</h3><p>业务诊断 · 方案设计 · AI 生产落地</p><span class="about-service-price">2000 元 / 人天起 · 陪跑专项报价</span></div></article>
+                        <article class="about-service-card"><span class="about-service-icon" aria-hidden="true"><i class="fas fa-layer-group"></i></span><div><h3>软件定制开发</h3><p>网站 · 小程序 · 管理系统</p><span class="about-service-price">根据需求难度专项报价</span></div></article>
+                        <article class="about-service-card"><span class="about-service-icon" aria-hidden="true"><i class="fas fa-chalkboard-user"></i></span><div><h3>AI 线下培训</h3><p>AI 工具 · 工作流 · 智能体实战</p><span class="about-service-price">2000–5000 元 / 次</span></div></article>
+                        <button class="about-service-card about-service-card-button" type="button" id="openAboutCommunityModal" aria-haspopup="dialog" aria-controls="aboutCommunityModal" onclick="openAboutCommunityModal()"><span class="about-service-icon" aria-hidden="true"><i class="fas fa-user-plus"></i></span><div><h3>知识星球</h3><p>一人公司 · AI 实践 · 产品经营</p><span class="about-service-price">50 元 / 年</span><span class="about-service-action">点击弹窗，扫码加入星球</span></div></button>
+                    </div>
+                    <a class="about-service-more" href="business.html">查看全部服务 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </section>
             </div>
         </div>
     </main>
+    <div class="about-community-modal" id="aboutCommunityModal" role="dialog" aria-modal="true" aria-labelledby="aboutCommunityModalTitle" aria-hidden="true">
+        <div class="about-community-panel">
+            <button class="about-community-close" type="button" id="closeAboutCommunityModal" aria-label="关闭" onclick="closeAboutCommunityModal()"><i class="fas fa-times" aria-hidden="true"></i></button>
+            <h2 id="aboutCommunityModalTitle">加入知识星球</h2>
+            <span class="about-community-price">50 元 / 年</span>
+            <p>使用微信扫码，进入知识星球查看详情并加入</p>
+            <div class="about-community-qr"><img src="images/zsxq-qr.png" alt="知识星球加入二维码" width="320" height="320"></div>
+            <a class="about-community-link" href="https://wx.zsxq.com/group/51114215158484" target="_blank" rel="noopener noreferrer">无法扫码？直接打开 <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+        </div>
+    </div>
     <div class="footer"></div>
-    <script src="js/umami-config.js"></script><script src="js/analytics.js"></script><script>function toggleMobileMenu(){const n=document.getElementById('navLinks');if(n)n.classList.toggle('active')}</script>
+    <script src="js/umami-config.js"></script>
+    <script src="js/analytics.js"></script>
+    <script>
+        let aboutCommunityTrigger = null;
+
+        function toggleMobileMenu() {
+            const nav = document.getElementById('navLinks');
+            if (nav) nav.classList.toggle('active');
+        }
+
+        function openAboutCommunityModal() {
+            const modal = document.getElementById('aboutCommunityModal');
+            if (!modal) return;
+            aboutCommunityTrigger = document.activeElement;
+            modal.classList.add('is-open');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            document.getElementById('closeAboutCommunityModal')?.focus();
+            if (typeof window.trackEvent === 'function') window.trackEvent('qr_modal_open', { type: 'knowledge_planet_about' });
+        }
+
+        function closeAboutCommunityModal() {
+            const modal = document.getElementById('aboutCommunityModal');
+            if (!modal) return;
+            modal.classList.remove('is-open');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            aboutCommunityTrigger?.focus();
+        }
+
+        document.getElementById('aboutCommunityModal')?.addEventListener('click', (event) => {
+            if (event.target === event.currentTarget) closeAboutCommunityModal();
+        });
+
+        document.addEventListener('keydown', (event) => {
+            const modal = document.getElementById('aboutCommunityModal');
+            if (!modal?.classList.contains('is-open')) return;
+            if (event.key === 'Escape') {
+                closeAboutCommunityModal();
+                return;
+            }
+            if (event.key !== 'Tab') return;
+            const focusable = [...modal.querySelectorAll('button, a[href]')];
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            if (event.shiftKey && document.activeElement === first) {
+                event.preventDefault();
+                last.focus();
+            } else if (!event.shiftKey && document.activeElement === last) {
+                event.preventDefault();
+                first.focus();
+            }
+        });
+    </script>
 </body>
 </html>
