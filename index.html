@@ -2077,34 +2077,41 @@
 
         .home-service-list {
             position: relative;
-            border-top: 1px solid rgba(var(--primary-rgb), .22);
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
         }
 
         .home-service-row {
             display: grid;
-            grid-template-columns: 64px minmax(0, 1fr);
-            align-items: center;
-            gap: 24px;
-            min-height: 122px;
-            padding: 22px 8px;
-            border-bottom: 1px solid rgba(var(--primary-rgb), .18);
+            grid-template-columns: 48px minmax(0, 1fr);
+            align-items: start;
+            gap: 16px;
+            min-height: 156px;
+            padding: 24px;
+            border: 1px solid rgba(var(--primary-rgb), .18);
+            border-radius: 16px;
+            background: rgba(255, 255, 255, .36);
+            box-shadow: 0 14px 32px rgba(var(--primary-rgb), .07);
+            transition: transform .24s ease, border-color .24s ease, box-shadow .24s ease, background .24s ease;
+        }
+
+        .home-service-row:hover {
+            transform: translateY(-3px);
+            border-color: rgba(var(--primary-rgb), .36);
+            box-shadow: 0 18px 38px rgba(var(--primary-rgb), .11);
         }
 
         .home-service-button {
             width: 100%;
             appearance: none;
-            border-width: 0 0 1px;
-            border-style: solid;
-            border-color: rgba(var(--primary-rgb), .18);
             color: inherit;
-            background: transparent;
             font: inherit;
             text-align: left;
             cursor: pointer;
-            transition: background .24s ease;
         }
 
-        .home-service-button:hover { background: rgba(var(--primary-rgb), .035); }
+        .home-service-button:hover { background: rgba(var(--primary-rgb), .045); }
         .home-service-button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 
         .home-service-meta {
@@ -2124,24 +2131,24 @@
         }
 
         .home-service-copy h3 {
-            margin: 0 0 8px;
+            margin: 0 0 10px;
             color: var(--ink);
-            font: 700 clamp(22px, 2.5vw, 30px)/1.35 var(--font-serif);
+            font: 700 clamp(20px, 2vw, 25px)/1.35 var(--font-serif);
         }
 
         .home-service-copy p {
             max-width: 760px;
             margin: 0;
             color: var(--ink-soft);
-            font-size: 14px;
-            line-height: 1.75;
+            font-size: 13.5px;
+            line-height: 1.65;
         }
 
         .home-service-copy .service-price {
             display: block;
-            margin-top: 7px;
+            margin-top: 11px;
             color: var(--gold);
-            font: 600 12px/1.4 var(--font-sans);
+            font: 650 12.5px/1.4 var(--font-sans);
         }
 
         .home-content-section {
@@ -2417,9 +2424,9 @@
             }
 
             .home-service-row {
-                grid-template-columns: 54px minmax(0, 1fr);
-                gap: 16px;
-                padding: 24px 4px;
+                grid-template-columns: 46px minmax(0, 1fr);
+                gap: 14px;
+                padding: 22px;
             }
 
             .home-service-meta {
@@ -2449,6 +2456,10 @@
             .hero-flying-fish {
                 display: none;
             }
+
+            .home-service-list {
+                grid-template-columns: minmax(0, 1fr);
+            }
         }
 
         @media (max-width: 480px) {
@@ -2477,8 +2488,9 @@
             }
 
             .home-service-row {
-                grid-template-columns: 46px minmax(0, 1fr);
-                gap: 12px;
+                grid-template-columns: minmax(0, 1fr);
+                min-height: 0;
+                padding: 20px;
             }
 
             .home-service-icon {
@@ -2706,20 +2718,21 @@
         }
 
         [data-theme='dark'] .home-service-list {
-            overflow: hidden;
-            border: 1px solid rgba(42, 82, 104, .18);
-            border-radius: 18px;
-            background: rgba(229, 237, 240, .64);
-            box-shadow: 0 18px 44px rgba(35, 72, 92, .1);
+            overflow: visible;
+            border: 0;
+            border-radius: 0;
+            background: transparent;
+            box-shadow: none;
         }
 
         [data-theme='dark'] .home-service-row {
-            border-bottom-color: rgba(42, 82, 104, .16) !important;
-            background: linear-gradient(90deg, rgba(247, 250, 250, .38), transparent 64%);
+            border-color: rgba(42, 82, 104, .18) !important;
+            background: linear-gradient(145deg, rgba(247, 250, 250, .68), rgba(223, 234, 238, .72));
+            box-shadow: 0 16px 38px rgba(35, 72, 92, .1);
         }
 
         [data-theme='dark'] .home-service-row:last-child {
-            border-bottom: 0;
+            border-bottom-color: rgba(42, 82, 104, .18) !important;
         }
 
         [data-theme='dark'] .home-service-icon {
@@ -3058,22 +3071,22 @@
             <div class="home-service-list">
                 <article class="home-service-row">
                     <div class="home-service-meta"><span class="home-service-icon" aria-hidden="true"><i class="fas fa-robot"></i></span></div>
-                    <div class="home-service-copy"><h3>企业 AI 落地服务</h3><p>深入真实业务流程，提供从诊断、方案设计到生产落地的一体化 AI 服务</p><span class="service-price">简单需求 2000 元 / 人天，复杂需求按年度、月度陪跑报价</span></div>
+                    <div class="home-service-copy"><h3>企业 AI 落地服务</h3><p>业务诊断 · 方案设计 · AI 生产落地</p><span class="service-price">2000 元 / 人天起 · 陪跑专项报价</span></div>
                 </article>
 
                 <article class="home-service-row">
                     <div class="home-service-meta"><span class="home-service-icon" aria-hidden="true"><i class="fas fa-layer-group"></i></span></div>
-                    <div class="home-service-copy"><h3>软件定制开发</h3><p>按业务需求定制网站、小程序与管理系统，覆盖产品设计、开发上线和持续迭代</p><span class="service-price">根据需求难易程度专项报价</span></div>
+                    <div class="home-service-copy"><h3>软件定制开发</h3><p>网站 · 小程序 · 管理系统</p><span class="service-price">根据需求难度专项报价</span></div>
                 </article>
 
                 <article class="home-service-row">
                     <div class="home-service-meta"><span class="home-service-icon" aria-hidden="true"><i class="fas fa-chalkboard-user"></i></span></div>
-                    <div class="home-service-copy"><h3>AI 线下培训</h3><p>覆盖 AI 工具、提示词、工作流、智能体与业务实战</p><span class="service-price">2000–5000 元 / 次</span></div>
+                    <div class="home-service-copy"><h3>AI 线下培训</h3><p>AI 工具 · 工作流 · 智能体实战</p><span class="service-price">2000–5000 元 / 次</span></div>
                 </article>
 
                 <button class="home-service-row home-service-button" type="button" aria-haspopup="dialog" aria-controls="communityQRModal" onclick="openCommunityQRModal()">
                     <div class="home-service-meta"><span class="home-service-icon" aria-hidden="true"><i class="fas fa-user-plus"></i></span></div>
-                    <div class="home-service-copy"><h3>知识星球</h3><p>分享一人公司、AI 实践与产品经营的方法、复盘和实用资源</p><span class="service-price">50 元 / 年</span></div>
+                    <div class="home-service-copy"><h3>知识星球</h3><p>一人公司 · AI 实践 · 产品经营</p><span class="service-price">50 元 / 年</span></div>
                 </button>
 
             </div>
