@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="baidu-site-verification" content="codeva-Okt4iZkuQv">
     <title>文鳐夜飞｜一人公司、FDE 企业 AI 落地、软件出海</title>
-    <meta name="description" content="文鳐夜飞专注一人公司与 AI 商业化，提供 FDE 企业 AI 落地与 AI 课程培训，并探索软件出海共创。">
+    <meta name="description" content="文鳐夜飞提供 FDE 企业 AI 落地、软件定制开发、AI 课程培训与知识星球社群服务">
     <meta name="keywords" content="文鳐夜飞, 一人公司, FDE, 企业 AI 落地, 软件出海, AI 商业化, AI 培训, 独立开发">
     <meta name="author" content="文鳐夜飞">
     <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
     <meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
     <meta property="og:title" content="文鳐夜飞｜一人公司、FDE 企业 AI 落地、软件出海">
-    <meta property="og:description" content="专注一人公司与 AI 商业化实践，提供 FDE 企业 AI 落地与 AI 课程培训，并探索软件出海共创。">
+    <meta property="og:description" content="提供 FDE 企业 AI 落地、软件定制开发、AI 课程培训与知识星球社群服务">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="文鳐夜飞">
     <meta property="og:url" content="https://wenyaoyefei.com/">
@@ -21,7 +21,7 @@
     <meta property="og:locale:alternate" content="en_US">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="文鳐夜飞｜一人公司、FDE 企业 AI 落地、软件出海">
-    <meta name="twitter:description" content="专注一人公司与 AI 商业化实践，提供 FDE 企业 AI 落地与 AI 课程培训，并探索软件出海共创。">
+    <meta name="twitter:description" content="提供 FDE 企业 AI 落地、软件定制开发、AI 课程培训与知识星球社群服务">
     <meta name="twitter:image" content="https://wenyaoyefei.com/avatar.jpg">
     <link rel="canonical" href="https://wenyaoyefei.com/">
     <script type="application/ld+json">
@@ -65,7 +65,7 @@
           "@id": "https://wenyaoyefei.com/#webpage",
           "name": "文鳐夜飞｜一人公司、FDE 企业 AI 落地、软件出海",
           "url": "https://wenyaoyefei.com/",
-          "description": "文鳐夜飞专注一人公司与 AI 商业化，提供 FDE 企业 AI 落地与 AI 课程培训，并探索软件出海共创。",
+          "description": "文鳐夜飞提供 FDE 企业 AI 落地、软件定制开发、AI 课程培训与知识星球社群服务",
           "inLanguage": "zh-CN",
           "isPartOf": {
             "@id": "https://wenyaoyefei.com/#website"
@@ -922,6 +922,15 @@
             line-height: 1.7;
             margin-bottom: 14px;
         }
+
+        .modal-content .community-direct-link {
+            color: var(--primary);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .modal-content .community-direct-link:hover { color: var(--gold); }
+        .modal-content .community-direct-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 
         .close-btn {
             border: none;
@@ -2067,6 +2076,23 @@
             border-bottom: 1px solid rgba(var(--primary-rgb), .18);
         }
 
+        .home-service-button {
+            width: 100%;
+            appearance: none;
+            border-width: 0 0 1px;
+            border-style: solid;
+            border-color: rgba(var(--primary-rgb), .18);
+            color: inherit;
+            background: transparent;
+            font: inherit;
+            text-align: left;
+            cursor: pointer;
+            transition: background .24s ease;
+        }
+
+        .home-service-button:hover { background: rgba(var(--primary-rgb), .035); }
+        .home-service-button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
         .home-service-meta {
             display: grid;
             place-items: center;
@@ -2794,6 +2820,8 @@
             color: rgba(224, 236, 241, .78) !important;
         }
 
+        [data-theme='dark'] .modal-content .community-direct-link { color: #dfc85c; }
+
         @media (max-width: 760px) {
             [data-theme='dark'] .nav-links {
                 background: rgba(12, 43, 63, .98) !important;
@@ -3028,6 +3056,11 @@
                     <div class="home-service-meta"><span class="home-service-icon" aria-hidden="true"><i class="fas fa-chalkboard-user"></i></span></div>
                     <div class="home-service-copy"><h3>AI 课程培训</h3><p>基础课程覆盖 AI 认知、模型工具、提示词与日常提效；进阶课程深入工作流、智能体、知识库与业务项目实战。</p></div>
                 </article>
+
+                <button class="home-service-row home-service-button" type="button" aria-haspopup="dialog" aria-controls="communityQRModal" onclick="openCommunityQRModal()">
+                    <div class="home-service-meta"><span class="home-service-icon" aria-hidden="true"><i class="fas fa-user-plus"></i></span></div>
+                    <div class="home-service-copy"><h3>知识星球</h3><p>围绕一人公司、AI 实践与产品经营，持续分享真实项目经验、方法复盘与实用资源，和一群愿意长期行动的伙伴共同成长</p></div>
+                </button>
             </div>
         </section>
 
@@ -3108,6 +3141,15 @@
             <img class="personal-wechat-qr" data-src="wechat-qr-personal.jpg" alt="&#20010;&#20154;&#24494;&#20449;&#20108;&#32500;&#30721;" width="600" height="813" loading="lazy" decoding="async">
             <p>扫码添加我的个人微信<br>一起交流分享</p>
             <button type="button" class="close-btn" onclick="closePersonalWechatQRModal()">关闭</button>
+        </div>
+    </div>
+
+    <div id="communityQRModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="communityQRTitle">
+        <div class="modal-content" tabindex="-1">
+            <h2 id="communityQRTitle">加入知识星球</h2>
+            <img src="images/zsxq-qr.png" alt="知识星球加入二维码" width="800" height="800" loading="lazy" decoding="async">
+            <p>使用微信扫码，进入知识星球查看详情并加入<br><a class="community-direct-link" href="https://wx.zsxq.com/group/51114215158484" target="_blank" rel="noopener noreferrer">无法扫码？直接打开</a></p>
+            <button type="button" class="close-btn" onclick="closeCommunityQRModal()">关闭</button>
         </div>
     </div>
 
@@ -3291,14 +3333,27 @@
             closeModal(modal);
         }
 
+        function openCommunityQRModal() {
+            trackEvent('qr_modal_open', { type: 'knowledge_planet' });
+            openModal(document.getElementById('communityQRModal'));
+        }
+
+        function closeCommunityQRModal() {
+            closeModal(document.getElementById('communityQRModal'));
+        }
+
         window.onclick = function (event) {
             const wechatModal = document.getElementById('wechatQRModal');
             const personalModal = document.getElementById('personalWechatQRModal');
+            const communityModal = document.getElementById('communityQRModal');
             if (event.target === wechatModal) {
                 closeWechatQRModal();
             }
             if (event.target === personalModal) {
                 closePersonalWechatQRModal();
+            }
+            if (event.target === communityModal) {
+                closeCommunityQRModal();
             }
         }
 
