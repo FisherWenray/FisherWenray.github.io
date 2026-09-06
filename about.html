@@ -99,9 +99,7 @@
         .about-service-card p { margin: 0; font-size: 13.5px; line-height: 1.65; }
         .about-service-price { display: block; margin-top: 9px; color: var(--gold); font: 650 12.5px/1.4 var(--font-sans); }
         .about-service-action { display: block; margin-top: 5px; color: var(--ink-soft); font: 600 12px/1.4 var(--font-sans); }
-        .about-service-more { width: fit-content; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; margin: 24px auto 0; padding: 0 20px; border: 1px solid rgba(197, 179, 88, .42); border-radius: 999px; color: var(--gold); background: rgba(197, 179, 88, .08); font-size: 14px; font-weight: 700; text-decoration: none; transition: transform .2s ease, color .2s ease, background .2s ease; }
-        .about-service-more:hover { color: #fff; background: rgba(197, 179, 88, .2); transform: translateY(-2px); }
-        .about-service-more:focus-visible, .about-service-card-button:focus-visible, .about-community-close:focus-visible, .about-community-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+        .about-service-card-button:focus-visible, .about-community-close:focus-visible, .about-community-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
         .about-community-modal { display: none; position: fixed; inset: 0; z-index: 400; place-items: center; padding: 20px; background: rgba(0, 12, 24, .72); backdrop-filter: blur(8px); }
         .about-community-modal.is-open { display: grid; }
         .about-community-panel { position: relative; width: min(360px, 100%); padding: 24px; border: 1px solid rgba(var(--primary-rgb), .28); border-radius: 20px; background: var(--surface); box-shadow: 0 28px 70px rgba(0, 12, 24, .48); text-align: center; }
@@ -169,8 +167,7 @@
             background: rgba(4, 28, 44, .2) !important;
         }
 
-        [data-theme='dark'] body .about-section .about-service-price,
-        [data-theme='dark'] body .about-section .about-service-more {
+        [data-theme='dark'] body .about-section .about-service-price {
             color: #d8c159 !important;
             text-shadow: none !important;
         }
@@ -200,7 +197,6 @@
                         <article class="about-service-card"><span class="about-service-icon" aria-hidden="true"><i class="fas fa-chalkboard-user"></i></span><div><h3>AI 线下培训</h3><p>AI 工具 · 工作流 · 智能体实战</p><span class="about-service-price">2000–5000 元 / 次</span></div></article>
                         <button class="about-service-card about-service-card-button" type="button" id="openAboutCommunityModal" aria-haspopup="dialog" aria-controls="aboutCommunityModal" onclick="openAboutCommunityModal()"><span class="about-service-icon" aria-hidden="true"><i class="fas fa-user-plus"></i></span><div><h3>知识星球</h3><p>一人公司 · AI 实践 · 产品经营</p><span class="about-service-price">50 元 / 年</span><span class="about-service-action">点击弹窗，扫码加入星球</span></div></button>
                     </div>
-                    <a class="about-service-more" href="business.html">查看全部服务 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                 </section>
             </div>
         </div>
